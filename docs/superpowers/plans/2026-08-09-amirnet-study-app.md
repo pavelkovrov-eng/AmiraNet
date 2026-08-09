@@ -23,6 +23,7 @@ Every task's requirements implicitly include this section.
 - **theta scale is `-3.0` to `+3.0`**, clamped.
 - **Score mapping is `clamp(round(100 + theta * (50/3)), 50, 150)`.** Score 134 corresponds to theta `2.04`.
 - **Mastery threshold:** an FSRS card is mastered when `state === State.Review && scheduled_days > 21`.
+- **`primaryLexeme` vs `targetLexemes`:** a question's `primaryLexeme` is the single word it genuinely tests and is the ONLY input to the `vocabulary-gap` diagnosis and to remediation targeting. `targetLexemes` lists every lexeme the item exercises (including distractors), must contain `primaryLexeme`, and drives content coverage and SRS review scheduling. Reading `targetLexemes` where `primaryLexeme` is specified collapses the five-cause classifier into one cause.
 - **Pilot sections are out of scope** except `grammar-in-context`. No audio, no writing task, no word-formation.
 - **All design values come from `src/styles/tokens.css`.** No hardcoded colors, font sizes, or spacing in components.
 - **Files stay focused.** Target 200–400 lines, 800 hard maximum.
@@ -459,6 +460,9 @@ export interface QuestionItem {
   options: [string, string, string, string];
   correctIndex: 0 | 1 | 2 | 3;
   explanationPerOption: [string, string, string, string];
+  /** The one word this item is really testing. Drives vocabulary-gap diagnosis. */
+  primaryLexeme: string;
+  /** Every lexeme the item exercises, including distractors. Drives coverage and SRS review. Must contain primaryLexeme. */
   targetLexemes: string[];
   trapType: TrapType;
   passageId?: string;
@@ -531,6 +535,7 @@ function question(over: Partial<QuestionItem> = {}): QuestionItem {
     options: ['analyze', 'analogy', 'apologize', 'anarchy'],
     correctIndex: 0,
     explanationPerOption: ['correct', 'sounds similar', 'unrelated', 'unrelated'],
+    primaryLexeme: 'awl-analyze',
     targetLexemes: ['awl-analyze'],
     trapType: 'phonetic-neighbor',
     ...over,
@@ -632,6 +637,50 @@ describe('validateContent', () => {
     expect(result.ok).toBe(false);
     expect(result.ok === false && result.errors.join(' ')).toContain('duplicate option');
   });
+
+  it('rejects an unknown primaryLexeme', () => {
+    const bundle: ContentBundle = {
+      lexemes: [lexeme()],
+      questions: [
+        question({ primaryLexeme: 'awl-ghost', targetLexemes: ['awl-analyze', 'awl-ghost'] }),
+      ],
+      passages: [],
+    };
+    const result = validateContent(bundle);
+    expect(result.ok).toBe(false);
+    expect(result.ok === false && result.errors.join(' ')).toContain('unknown primaryLexeme');
+  });
+
+  it('rejects a primaryLexeme that is not among the targetLexemes', () => {
+    const bundle: ContentBundle = {
+      lexemes: [lexeme(), lexeme({ id: 'awl-other', headword: 'other' })],
+      questions: [question({ primaryLexeme: 'awl-other', targetLexemes: ['awl-analyze'] })],
+      passages: [],
+    };
+    const result = validateContent(bundle);
+    expect(result.ok).toBe(false);
+    expect(result.ok === false && result.errors.join(' ')).toContain('missing from targetLexemes');
+  });
+
+  it('accepts a question whose targetLexemes extend beyond the primary', () => {
+    const bundle: ContentBundle = {
+      lexemes: [lexeme(), lexeme({ id: 'awl-other', headword: 'other' })],
+      questions: [
+        question({ primaryLexeme: 'awl-analyze', targetLexemes: ['awl-analyze', 'awl-other'] }),
+      ],
+      passages: [],
+    };
+    expect(validateContent(bundle)).toEqual({ ok: true });
+  });
+
+  it('rejects an empty targetLexemes list', () => {
+    const bundle: ContentBundle = {
+      lexemes: [lexeme()],
+      questions: [question({ targetLexemes: [] })],
+      passages: [],
+    };
+    expect(validateContent(bundle).ok).toBe(false);
+  });
 });
 ```
 
@@ -678,7 +727,8 @@ export const questionSchema = z.object({
     z.string().min(1),
     z.string().min(1),
   ]),
-  targetLexemes: z.array(z.string()),
+  primaryLexeme: z.string().min(1),
+  targetLexemes: z.array(z.string()).min(1),
   trapType: z.enum([
     'phonetic-neighbor',
     'logic-inversion',
@@ -757,6 +807,17 @@ export function validateContent(bundle: ContentBundle): ValidationResult {
         errors.push(`question ${q.id}: unknown targetLexeme ${target}`);
       }
     }
+    if (!lexemeIds.has(q.primaryLexeme)) {
+      errors.push(`question ${q.id}: unknown primaryLexeme ${q.primaryLexeme}`);
+    }
+    // The primary must also be a target: diagnosis reads primaryLexeme,
+    // while SRS review and coverage read targetLexemes. If they diverge,
+    // the word driving the diagnosis never gets scheduled for review.
+    if (!q.targetLexemes.includes(q.primaryLexeme)) {
+      errors.push(
+        `question ${q.id}: primaryLexeme ${q.primaryLexeme} missing from targetLexemes`,
+      );
+    }
     const uniqueOptions = new Set(q.options);
     if (uniqueOptions.size !== q.options.length) {
       errors.push(`question ${q.id}: duplicate option text`);
@@ -793,7 +854,7 @@ npm install zod@4
 npm test -- validate
 ```
 
-Expected: PASS — 8 tests
+Expected: PASS — 13 tests
 
 - [ ] **Step 7: Commit**
 
@@ -930,11 +991,14 @@ One full example:
       "A verb, but semantically unrelated to examining findings.",
       "A noun meaning absence of government. Wrong part of speech and wrong meaning."
     ],
+    "primaryLexeme": "awl-analyze",
     "targetLexemes": ["awl-analyze"],
     "trapType": "phonetic-neighbor"
   }
 ]
 ```
+
+`primaryLexeme` is the word the item is genuinely testing; `targetLexemes` lists every lexeme it exercises and must contain the primary. When a distractor is itself an authored lexeme, add it to `targetLexemes` — that is what gives the content bank full coverage without distorting diagnosis.
 
 - [ ] **Step 5: Author the seed passage**
 
@@ -1844,6 +1908,7 @@ const question: QuestionItem = {
   options: ['analyze', 'analogy', 'apologize', 'anarchy'],
   correctIndex: 0,
   explanationPerOption: ['a', 'b', 'c', 'd'],
+  primaryLexeme: 'awl-analyze',
   targetLexemes: ['awl-analyze'],
   trapType: 'phonetic-neighbor',
 };
@@ -1878,13 +1943,35 @@ describe('diagnose', () => {
 
   it('treats an unseen lexeme as a vocabulary gap', () => {
     const result = diagnose({
-      question: { ...question, targetLexemes: ['awl-unseen'] },
+      question: {
+        ...question,
+        primaryLexeme: 'awl-unseen',
+        targetLexemes: ['awl-unseen'],
+      },
       chosenIndex: 2,
       elapsedMs: 20_000,
       isMastered: () => false,
       ...deps,
     });
     expect(result).toBe('vocabulary-gap');
+  });
+
+  it('ignores unmastered secondary lexemes when the primary is mastered', () => {
+    const result = diagnose({
+      question: {
+        ...question,
+        trapType: 'scope-shift',
+        primaryLexeme: 'awl-analyze',
+        targetLexemes: ['awl-analyze', 'awl-secondary-unmastered'],
+      },
+      chosenIndex: 2,
+      elapsedMs: 20_000,
+      isMastered: (id) => id === 'awl-analyze',
+      ...deps,
+    });
+    // A secondary gap must not masquerade as the root cause, or the
+    // classifier degenerates into reporting vocabulary-gap for everything.
+    expect(result).toBe('inference-error');
   });
 
   it('prioritizes vocabulary gap over the phonetic trap', () => {
@@ -2020,16 +2107,17 @@ export function diagnose(input: DiagnosisInput): DiagnosisCause | null {
 
   if (chosenIndex === question.correctIndex) return null;
 
-  // 1. Vocabulary gap — an unseen lexeme has no card and is not mastered.
-  const hasGap = question.targetLexemes.some((id) => !isMastered(id));
-  if (hasGap) return 'vocabulary-gap';
+  // 1. Vocabulary gap — checked against the PRIMARY lexeme only. Reading the
+  // full targetLexemes list here would classify almost every wrong answer as
+  // a vocabulary gap, since most items exercise several words and any one of
+  // them being unmastered would trip the branch. That would collapse a
+  // five-cause classifier into a one-cause one.
+  if (!isMastered(question.primaryLexeme)) return 'vocabulary-gap';
 
-  // 2. Chose a word the target is known to be confused with.
+  // 2. Chose a word the primary lexeme is known to be confused with.
   const chosenText = question.options[chosenIndex];
-  const isConfusable = question.targetLexemes.some((id) =>
-    lexemeById(id)?.confusableWith.includes(chosenText),
-  );
-  if (isConfusable) return 'distractor-phonetic';
+  const primary = lexemeById(question.primaryLexeme);
+  if (primary?.confusableWith.includes(chosenText)) return 'distractor-phonetic';
 
   // 3. The item's trap was a reversed logical relation.
   if (question.trapType === 'logic-inversion') return 'connector-misread';
@@ -2177,7 +2265,7 @@ export function recordServing(
 - [ ] **Step 7: Run all engine tests to verify they pass**
 
 Run: `npm test -- diagnosis remediation`
-Expected: PASS — 12 diagnosis tests, 10 remediation tests
+Expected: PASS — 13 diagnosis tests, 10 remediation tests
 
 - [ ] **Step 8: Commit**
 
@@ -2220,7 +2308,8 @@ function q(id: string, difficulty: number, over: Partial<QuestionItem> = {}): Qu
     options: ['a', 'b', 'c', 'd'],
     correctIndex: 0,
     explanationPerOption: ['1', '2', '3', '4'],
-    targetLexemes: [],
+    primaryLexeme: 'awl-stub',
+    targetLexemes: ['awl-stub'],
     trapType: 'phonetic-neighbor',
     ...over,
   };
@@ -2323,7 +2412,7 @@ describe('buildSession', () => {
         { cause: 'vocabulary-gap', targetId: 'awl-x', createdAt: 1, servings: 0 },
       ],
       questions: [
-        q('remedial', 0.2, { targetLexemes: ['awl-x'] }),
+        q('remedial', 0.2, { primaryLexeme: 'awl-x', targetLexemes: ['awl-x'] }),
         q('new', 1.5),
       ],
     });
@@ -2526,7 +2615,8 @@ const question: QuestionItem = {
   options: ['analyze', 'analogy', 'apologize', 'anarchy'],
   correctIndex: 0,
   explanationPerOption: ['right', 'sounds alike', 'unrelated', 'unrelated'],
-  targetLexemes: [],
+  primaryLexeme: 'awl-analyze',
+  targetLexemes: ['awl-analyze'],
   trapType: 'phonetic-neighbor',
 };
 
@@ -2995,8 +3085,9 @@ export function useSessionState() {
         queue = recordServing(queue, lexemeId, correct, now);
       }
       if (cause) {
-        const target = question.targetLexemes[0] ?? question.trapType;
-        queue = addRemediation(queue, cause, target, now);
+        // Remediate the word the item was actually testing, not an incidental
+        // distractor that happens to sort first.
+        queue = addRemediation(queue, cause, question.primaryLexeme, now);
       }
       await saveRemediation(queue);
 
@@ -3490,7 +3581,8 @@ function q(id: string, difficulty: number): QuestionItem {
     options: ['a', 'b', 'c', 'd'],
     correctIndex: 0,
     explanationPerOption: ['1', '2', '3', '4'],
-    targetLexemes: [],
+    primaryLexeme: 'awl-stub',
+    targetLexemes: ['awl-stub'],
     trapType: 'phonetic-neighbor',
   };
 }
@@ -4433,10 +4525,23 @@ describe('wave 1 content volume', () => {
     expect(hard).toBeGreaterThanOrEqual(30);
   });
 
-  it('gives every lexeme at least one question that targets it', () => {
+  it('gives every lexeme at least one question that exercises it', () => {
     const targeted = new Set(content.questions.flatMap((q) => q.targetLexemes));
     const orphans = content.lexemes.filter((l) => !targeted.has(l.id));
     expect(orphans.map((l) => l.id)).toEqual([]);
+  });
+
+  it('spreads primaryLexeme across many distinct words', () => {
+    // Coverage comes from targetLexemes; primaryLexeme must still vary, or
+    // the diagnosis and remediation queue keep pointing at the same handful.
+    const primaries = new Set(content.questions.map((q) => q.primaryLexeme));
+    expect(primaries.size).toBeGreaterThanOrEqual(100);
+  });
+
+  it('keeps targetLexemes wider than primaryLexeme on average', () => {
+    const totalTargets = content.questions.reduce((n, q) => n + q.targetLexemes.length, 0);
+    const average = totalTargets / content.questions.length;
+    expect(average).toBeGreaterThan(1.3);
   });
 });
 ```
@@ -4474,7 +4579,9 @@ Authoring rules:
 1. `explanationPerOption` needs four non-empty, genuinely distinct explanations. Each wrong option's explanation must name *why* it fails — wrong part of speech, reversed logic, added information, phonetic lure.
 2. Difficulty spread: at least 30 items at `difficulty >= 2`. Without hard items the session builder cannot push toward the pass threshold, and the app cannot do its job.
 3. At least 12 restatement items must use `"trapType": "logic-inversion"` — connector misreads are the signature restatement failure.
-4. Every `targetLexemes` entry must reference an existing lexeme id.
+4. Every `targetLexemes` entry must reference an existing lexeme id, and `primaryLexeme` must appear in `targetLexemes`.
+5. **Set `primaryLexeme` to the one word the item genuinely tests, then list every other authored lexeme the item exercises in `targetLexemes`** — most usefully the distractors, when they are themselves AWL words. This is how 140 questions cover 190 lexemes: coverage rides on `targetLexemes`, while diagnosis reads only `primaryLexeme`. Do not pad `targetLexemes` with words the item does not actually exercise; the SRS scheduler reviews everything listed there.
+6. Vary `primaryLexeme` across the bank — at least 100 distinct primaries. A bank that keeps testing the same 30 words produces a remediation queue that circles.
 
 - [ ] **Step 5: Author the passage file**
 
