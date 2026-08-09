@@ -223,16 +223,17 @@ describe('validateContent', () => {
         question({ id: 'rc-0003', type: 'reading', passageId: 'psg-001' }),
         question({ id: 'rc-0004', type: 'reading', passageId: 'psg-001' }),
         question({ id: 'rc-0005', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0006', type: 'reading', passageId: 'psg-001' }),
       ],
       passages: [
         passage({
-          questionIds: ['rc-0001', 'rc-0002', 'rc-0003', 'rc-0004', 'rc-0006'],
+          questionIds: ['rc-0001', 'rc-0002', 'rc-0003', 'rc-0004', 'rc-0005'],
         }),
       ],
     };
     const result = validateContent(bundle);
     expect(result.ok).toBe(false);
-    // rc-0006 is listed in passage but doesn't exist
+    // rc-0006 is a reading question that points to psg-001 but is not listed in its questionIds
     expect(result.ok === false && result.errors.join(' ')).toContain('rc-0006');
   });
 
@@ -241,7 +242,7 @@ describe('validateContent', () => {
     const bundle = {
       lexemes: [lexeme()],
       questions: [question()],
-    } as ContentBundle;
+    } as unknown as ContentBundle;
     expect(() => validateContent(bundle)).not.toThrow();
     // Should not crash, and treating missing array as empty is valid
     const result = validateContent(bundle);
