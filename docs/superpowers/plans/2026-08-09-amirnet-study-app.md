@@ -27,6 +27,8 @@ Every task's requirements implicitly include this section.
 - **Pilot sections are out of scope** except `grammar-in-context`. No audio, no writing task, no word-formation.
 - **All design values come from `src/styles/tokens.css`.** No hardcoded colors, font sizes, or spacing in components.
 - **Files stay focused.** Target 200–400 lines, 800 hard maximum.
+- **`npx tsc --noEmit` must be clean before every commit.** `npm test` runs Vitest, which transpiles with esbuild and does **not** type-check — a fully green test run says nothing about whether the branch compiles. This was found the hard way in Task 2, where two TypeScript errors sat at HEAD behind 33 passing tests. Treat type-checking as part of the test step, not an optional extra.
+- **A test you have not watched fail is not evidence.** When a test targets a specific rule or branch, verify it by temporarily disabling that rule and confirming the test fails, then restore. Task 2's first fix round produced three tests that passed with their own rule disabled, because a different rule caught the same bad input first. A test that passes for an incidental reason reports safety that is not there.
 - **Commit after every task** using conventional commit format (`feat:`, `test:`, `docs:`, `chore:`).
 
 ---
