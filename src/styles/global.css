@@ -1,0 +1,16 @@
+@import './tokens.css';
+@import './typography.css';
+
+html {
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}

@@ -1,0 +1,18 @@
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+}
+
+/* Bidi isolation: Hebrew UI wrapping English content.
+   Without this, terminal punctuation and quotes jump to the wrong edge. */
+.english-text {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+}
+
+.reading-measure {
+  max-width: var(--measure);
+}
