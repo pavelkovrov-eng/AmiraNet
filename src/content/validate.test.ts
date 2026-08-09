@@ -178,7 +178,13 @@ describe('validateContent', () => {
   it('rejects when passage lists a non-reading question', () => {
     const bundle: ContentBundle = {
       lexemes: [lexeme()],
-      questions: [question({ id: 'sc-9999', type: 'sentence-completion' })],
+      questions: [
+        question({ id: 'sc-9999', type: 'sentence-completion', passageId: 'psg-001' }),
+        question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0002', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0003', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0004', type: 'reading', passageId: 'psg-001' }),
+      ],
       passages: [passage({ questionIds: ['sc-9999', 'rc-0001', 'rc-0002', 'rc-0003', 'rc-0004'] })],
     };
     const result = validateContent(bundle);
@@ -191,20 +197,21 @@ describe('validateContent', () => {
       lexemes: [lexeme()],
       questions: [
         question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' }),
-        question({ id: 'rc-0002', type: 'reading', passageId: 'psg-999' }),
+        question({ id: 'rc-0002', type: 'reading', passageId: 'psg-001' }),
         question({ id: 'rc-0003', type: 'reading', passageId: 'psg-001' }),
         question({ id: 'rc-0004', type: 'reading', passageId: 'psg-001' }),
         question({ id: 'rc-0005', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0006', type: 'reading', passageId: 'psg-001' }),
       ],
       passages: [
         passage({
-          questionIds: ['rc-0001', 'rc-0003', 'rc-0004', 'rc-0005', 'rc-0002'],
+          questionIds: ['rc-0001', 'rc-0003', 'rc-0004', 'rc-0005', 'rc-0006'],
         }),
       ],
     };
     const result = validateContent(bundle);
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.errors.join(' ')).toContain('must be listed in passage');
+    expect(result.ok === false && result.errors.join(' ')).toContain('rc-0002');
   });
 
   it('rejects when passage question list has orphaned reading question', () => {
@@ -212,17 +219,21 @@ describe('validateContent', () => {
       lexemes: [lexeme()],
       questions: [
         question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0002', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0003', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0004', type: 'reading', passageId: 'psg-001' }),
         question({ id: 'rc-0005', type: 'reading', passageId: 'psg-001' }),
       ],
       passages: [
         passage({
-          questionIds: ['rc-0001', 'rc-0002', 'rc-0003', 'rc-0004', 'rc-0005'],
+          questionIds: ['rc-0001', 'rc-0002', 'rc-0003', 'rc-0004', 'rc-0006'],
         }),
       ],
     };
     const result = validateContent(bundle);
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.errors.join(' ')).toContain('rc-0002');
+    // rc-0006 is listed in passage but doesn't exist
+    expect(result.ok === false && result.errors.join(' ')).toContain('rc-0006');
   });
 
   // Issue 2: Crashes on malformed input
@@ -252,7 +263,7 @@ describe('validateContent', () => {
     const bundle = {
       questions: [question()],
       passages: [],
-    } as ContentBundle;
+    } as unknown as ContentBundle;
     expect(() => validateContent(bundle)).not.toThrow();
     const result = validateContent(bundle);
     expect(result.ok).toBe(false);
@@ -304,7 +315,13 @@ describe('validateContent', () => {
   it('rejects a passage with invalid domain', () => {
     const bundle: ContentBundle = {
       lexemes: [lexeme()],
-      questions: [question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' })],
+      questions: [
+        question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0002', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0003', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0004', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0005', type: 'reading', passageId: 'psg-001' }),
+      ],
       passages: [
         passage({
           domain: 'invalid' as any,
@@ -318,7 +335,13 @@ describe('validateContent', () => {
   it('rejects a passage with non-positive wordCount', () => {
     const bundle: ContentBundle = {
       lexemes: [lexeme()],
-      questions: [question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' })],
+      questions: [
+        question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0002', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0003', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0004', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0005', type: 'reading', passageId: 'psg-001' }),
+      ],
       passages: [
         passage({
           wordCount: 0,
@@ -357,7 +380,7 @@ describe('validateContent', () => {
   });
 
   // Issue 5: Better error locators
-  it('provides item index in error message when id is missing', () => {
+  it('provides item index and headword when lexeme id is missing', () => {
     const bundle: ContentBundle = {
       lexemes: [lexeme({ id: '' })],
       questions: [question()],
@@ -365,13 +388,31 @@ describe('validateContent', () => {
     };
     const result = validateContent(bundle);
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.errors.join(' ')).toContain('lexeme');
+    expect(result.ok === false && result.errors.join(' ')).toContain('index 0');
+    expect(result.ok === false && result.errors.join(' ')).toContain('headword');
+  });
+
+  it('provides item index in error message when question id is missing', () => {
+    const bundle: ContentBundle = {
+      lexemes: [lexeme()],
+      questions: [question({ id: '' })],
+      passages: [],
+    };
+    const result = validateContent(bundle);
+    expect(result.ok).toBe(false);
+    expect(result.ok === false && result.errors.join(' ')).toContain('index 0');
   });
 
   it('provides passage title in error message when id is missing', () => {
     const bundle: ContentBundle = {
       lexemes: [lexeme()],
-      questions: [question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' })],
+      questions: [
+        question({ id: 'rc-0001', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0002', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0003', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0004', type: 'reading', passageId: 'psg-001' }),
+        question({ id: 'rc-0005', type: 'reading', passageId: 'psg-001' }),
+      ],
       passages: [
         passage({
           id: '',

@@ -1,4 +1,4 @@
-import { lexemeSchema, questionSchema, passageSchema, contentBundleSchema } from './schema';
+import { lexemeSchema, questionSchema, passageSchema } from './schema';
 import type { ContentBundle, QuestionItem, Passage } from './types';
 
 export type ValidationResult = { ok: true } | { ok: false; errors: string[] };
