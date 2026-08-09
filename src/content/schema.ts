@@ -52,3 +52,9 @@ export const passageSchema = z.object({
   wordCount: z.number().int().positive(),
   questionIds: z.array(z.string()),
 });
+
+export const contentBundleSchema = z.object({
+  lexemes: z.array(lexemeSchema),
+  questions: z.array(questionSchema),
+  passages: z.array(passageSchema),
+});
