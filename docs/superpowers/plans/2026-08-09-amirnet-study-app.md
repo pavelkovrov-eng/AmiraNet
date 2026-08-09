@@ -6,7 +6,7 @@
 
 **Architecture:** Vocabulary-first and diagnosis-driven. An FSRS spaced-repetition engine over Academic Word List lexemes is the core; practice questions serve as both application and diagnostic signal. Every wrong answer is classified into one of five root causes, which feeds a remediation queue that shapes the next session. A session builder assembles elastic sessions from a user-supplied time budget. No server, no network at runtime — a Vite client app with content bundled as validated JSON and progress in IndexedDB.
 
-**Tech Stack:** Vite 8, React 19, TypeScript 7, Vitest 4, Dexie 4 (IndexedDB), ts-fsrs 5 (FSRS scheduling), Zod 4 (content validation), fake-indexeddb 6 (DB tests). No CSS framework — plain CSS with custom properties.
+**Tech Stack:** Vite 8, React 19, TypeScript 5, Vitest 4, Dexie 4 (IndexedDB), ts-fsrs 5 (FSRS scheduling), Zod 4 (content validation), fake-indexeddb 6 (DB tests). No CSS framework — plain CSS with custom properties.
 
 **Spec:** `docs/superpowers/specs/2026-08-09-amirnet-study-app-design.md`
 
@@ -95,12 +95,99 @@ Bidi is a correctness requirement, not styling — so it gets a test in the very
 
 - [ ] **Step 1: Initialize the project**
 
-```bash
-cd /Users/pavelkovrov/Desktop/Amiranet
-npm create vite@latest . -- --template react-ts
-npm install
-npm install -D vitest@4 @vitest/ui jsdom @testing-library/react @testing-library/jest-dom
+Do **not** run `npm create vite` here — the repo root already contains `docs/`, `.git`, and `.gitignore`, and the scaffolder opens an interactive "directory is not empty" prompt that cannot be answered non-interactively. Write the scaffold by hand instead.
+
+Create `package.json`:
+
+```json
+{
+  "name": "amirnet-study-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}
 ```
+
+Create `index.html`:
+
+```html
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>הכנה לאמירנט</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
+
+Create `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["vitest/globals"]
+  },
+  "include": ["src", "scripts"]
+}
+```
+
+Create `src/main.tsx`:
+
+```tsx
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import './styles/global.css';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+```
+
+Create a placeholder `src/App.tsx` (Task 15 replaces it):
+
+```tsx
+export default function App() {
+  return <h1>הכנה לאמירנט</h1>;
+}
+```
+
+Then install:
+
+```bash
+npm install react@19 react-dom@19
+npm install -D vite@8 @vitejs/plugin-react typescript@5 @types/react @types/react-dom \
+  vitest@4 jsdom @testing-library/react @testing-library/jest-dom
+```
+
+`typescript@5` is deliberate: TypeScript 7 is current, but the `@types/*` and tooling ecosystem this project depends on is still settling against it. Pin 5 and revisit after the app is working — a toolchain fight is not what this project's deadline can absorb.
 
 - [ ] **Step 2: Configure Vitest**
 
@@ -2951,16 +3038,20 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
     startedAt.current = Date.now();
   }, [index]);
 
+  // Skipping and completion are state changes, so they belong in effects.
+  // Calling setIndex or onComplete during render re-enters render immediately
+  // and React loops.
+  useEffect(() => {
+    if (ready && !item) onComplete();
+  }, [ready, item, onComplete]);
+
+  useEffect(() => {
+    // Non-question kinds have no runner yet; Task 12 adds the SRS branch.
+    if (item && item.kind !== 'question') setIndex((i) => i + 1);
+  }, [item]);
+
   if (!ready) return <p>טוען…</p>;
-  if (!item) {
-    onComplete();
-    return null;
-  }
-  if (item.kind !== 'question') {
-    // SRS cards and passages are handled by their own runners; skip for now.
-    setIndex((i) => i + 1);
-    return null;
-  }
+  if (!item || item.kind !== 'question') return null;
 
   const question = questionById(item.questionId);
   if (!question) return <p>שאלה חסרה</p>;
@@ -3264,9 +3355,17 @@ In `src/components/session/SessionRunner.tsx`, pull `reviewLexeme` from the hook
   const { ready, submitAnswer, reviewLexeme } = useSessionState();
 ```
 
-Then replace the placeholder branch that skipped non-question items:
+Then replace Task 11's catch-all guard line —
 
 ```tsx
+  if (!item || item.kind !== 'question') return null;
+```
+
+— with an SRS branch followed by a narrower guard:
+
+```tsx
+  if (!item) return null;
+
   if (item.kind === 'srs') {
     const lexeme = lexemeById(item.lexemeId);
     if (!lexeme) return <p>מילה חסרה</p>;
@@ -3286,11 +3385,16 @@ Then replace the placeholder branch that skipped non-question items:
     );
   }
 
-  if (item.kind === 'passage') {
+  if (item.kind !== 'question') return null;
+```
+
+The skip effect from Task 11 now needs to leave SRS items alone — narrow its condition to passages only:
+
+```tsx
+  useEffect(() => {
     // Passage runner is out of scope for wave 1; skip past it.
-    setIndex((i) => i + 1);
-    return null;
-  }
+    if (item && item.kind === 'passage') setIndex((i) => i + 1);
+  }, [item]);
 ```
 
 Add the imports at the top of the file:
