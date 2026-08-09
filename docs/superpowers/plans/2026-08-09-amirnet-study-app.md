@@ -854,7 +854,7 @@ npm install zod@4
 npm test -- validate
 ```
 
-Expected: PASS — 13 tests
+Expected: PASS — 12 tests
 
 - [ ] **Step 7: Commit**
 
