@@ -108,6 +108,19 @@ describe('createTimer', () => {
     expect(timer.isWarning()).toBe(true);
   });
 
+  it('floors elapsed to zero when clock is before startedAt on first read', () => {
+    const clock = fakeClock(5000); // Start at 5000
+    const timer = createTimer(60000, clock.now); // startedAt = 5000
+
+    // Clock jumps backward before startedAt without any prior read
+    clock.advance(-10000); // Now at -5000 (before startedAt)
+
+    // Should return full duration, not negative or excessive
+    expect(timer.remainingMs()).toBe(60000);
+    expect(timer.fraction()).toBe(1);
+    expect(timer.isExpired()).toBe(false);
+  });
+
   it('remains expired after backward clock jump', () => {
     const clock = fakeClock();
     const timer = createTimer(5000, clock.now);
