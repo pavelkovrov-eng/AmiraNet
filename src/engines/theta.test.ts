@@ -36,6 +36,22 @@ describe('thetaToScore', () => {
   it('returns integers', () => {
     expect(Number.isInteger(thetaToScore(1.234))).toBe(true);
   });
+
+  it('throws on NaN theta', () => {
+    expect(() => thetaToScore(NaN)).toThrow();
+  });
+
+  it('throws on Infinity theta', () => {
+    expect(() => thetaToScore(Infinity)).toThrow();
+  });
+
+  it('rounds non-integer raw scores (theta 1.0 -> 117)', () => {
+    expect(thetaToScore(1.0)).toBe(117);
+  });
+
+  it('rounds non-integer raw scores (theta 0.2 -> 103)', () => {
+    expect(thetaToScore(0.2)).toBe(103);
+  });
 });
 
 describe('stepSize', () => {
@@ -46,6 +62,12 @@ describe('stepSize', () => {
 
   it('stays positive', () => {
     expect(stepSize(1000)).toBeGreaterThan(0);
+  });
+
+  it('stays finite and positive with negative input', () => {
+    const size = stepSize(-1);
+    expect(Number.isFinite(size)).toBe(true);
+    expect(size).toBeGreaterThan(0);
   });
 });
 
@@ -88,5 +110,29 @@ describe('updateTheta', () => {
     const early = Math.abs(updateTheta(0, 0, true, 0) - 0);
     const late = Math.abs(updateTheta(0, 0, true, 40) - 0);
     expect(early).toBeGreaterThan(late);
+  });
+
+  it('throws on NaN theta', () => {
+    expect(() => updateTheta(NaN, 0, true, 0)).toThrow();
+  });
+
+  it('throws on Infinity theta', () => {
+    expect(() => updateTheta(Infinity, 0, true, 0)).toThrow();
+  });
+
+  it('throws on NaN itemDifficulty', () => {
+    expect(() => updateTheta(0, NaN, true, 0)).toThrow();
+  });
+
+  it('throws on Infinity itemDifficulty', () => {
+    expect(() => updateTheta(0, Infinity, true, 0)).toThrow();
+  });
+
+  it('throws on NaN answered', () => {
+    expect(() => updateTheta(0, 0, true, NaN)).toThrow();
+  });
+
+  it('throws on Infinity answered', () => {
+    expect(() => updateTheta(0, 0, true, Infinity)).toThrow();
   });
 });

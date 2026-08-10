@@ -20,7 +20,7 @@ function pCorrect(theta: number, difficulty: number): number {
 
 /** Step shrinks as evidence accumulates, so the estimate settles. */
 export function stepSize(answered: number): number {
-  return STEP_BASE / Math.sqrt(answered + 1);
+  return STEP_BASE / Math.sqrt(Math.max(0, answered) + 1);
 }
 
 export function updateTheta(
@@ -29,6 +29,16 @@ export function updateTheta(
   correct: boolean,
   answered: number,
 ): number {
+  if (!Number.isFinite(theta)) {
+    throw new Error(`Invalid theta: ${theta} (must be finite)`);
+  }
+  if (!Number.isFinite(itemDifficulty)) {
+    throw new Error(`Invalid itemDifficulty: ${itemDifficulty} (must be finite)`);
+  }
+  if (!Number.isFinite(answered)) {
+    throw new Error(`Invalid answered: ${answered} (must be finite)`);
+  }
+
   const expected = pCorrect(theta, itemDifficulty);
   const observed = correct ? 1 : 0;
   const next = theta + stepSize(answered) * (observed - expected);
@@ -36,6 +46,10 @@ export function updateTheta(
 }
 
 export function thetaToScore(theta: number): number {
+  if (!Number.isFinite(theta)) {
+    throw new Error(`Invalid theta: ${theta} (must be finite)`);
+  }
+
   const raw = SCORE_CENTER + theta * SCORE_PER_THETA;
   return clamp(Math.round(raw), SCORE_MIN, SCORE_MAX);
 }
