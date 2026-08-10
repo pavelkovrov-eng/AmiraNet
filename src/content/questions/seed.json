@@ -171,14 +171,14 @@
     "id": "gc-0001",
     "type": "grammar-in-context",
     "difficulty": 0.6,
-    "stem": "For an argument to persuade a skeptical reader, each new claim must ___ with the one before it, not contradict it.",
-    "options": ["coherent", "cohere", "coherence", "coherently"],
-    "correctIndex": 1,
+    "stem": "Neither the introduction nor the concluding claims ___ coherent with the central argument of the essay.",
+    "options": ["is", "being", "been", "are"],
+    "correctIndex": 3,
     "explanationPerOption": [
-      "An adjective. It cannot follow the modal 'must' directly; that slot requires a bare verb, not a description.",
-      "Correct. After the modal 'must', the sentence needs a bare infinitive verb, and 'cohere with' is the standard phrase for one claim logically fitting together with another.",
-      "A noun. Nouns cannot serve as the main verb of a clause, so it cannot complete 'must ___ with the one before it'.",
-      "An adverb. It could modify a verb but cannot itself act as the verb the sentence requires after 'must'."
+      "A singular verb. It wrongly agrees with 'the introduction' rather than the nearer noun phrase; with 'neither...nor', the verb must agree with the closer subject, 'the concluding claims'.",
+      "The present participle of 'be'. It cannot stand alone as the main finite verb of the clause without an auxiliary such as 'is' or 'are'.",
+      "The past participle of 'be'. Like 'being', it needs an auxiliary ('have been', 'has been') and cannot serve as the clause's only verb.",
+      "Correct. With 'neither...nor', the verb agrees with the nearer subject, 'the concluding claims', which is plural."
     ],
     "primaryLexeme": "awl-coherent",
     "targetLexemes": ["awl-coherent"],
