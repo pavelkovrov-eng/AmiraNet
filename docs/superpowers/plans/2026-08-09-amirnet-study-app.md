@@ -4584,6 +4584,7 @@ Authoring rules:
 4. Every `targetLexemes` entry must reference an existing lexeme id, and `primaryLexeme` must appear in `targetLexemes`.
 5. **Set `primaryLexeme` to the one word the item genuinely tests, then list every other authored lexeme the item exercises in `targetLexemes`** — most usefully the distractors, when they are themselves AWL words. This is how 140 questions cover 190 lexemes: coverage rides on `targetLexemes`, while diagnosis reads only `primaryLexeme`. Do not pad `targetLexemes` with words the item does not actually exercise; the SRS scheduler reviews everything listed there.
 6. Vary `primaryLexeme` across the bank — at least 100 distinct primaries. A bank that keeps testing the same 30 words produces a remediation queue that circles.
+7. **`grammar-in-context` means syntax, never word formation.** Options must be structurally different choices — tense or aspect, clause type, subordination, preposition selection, subject-verb agreement, participle form. Options that are four derivational forms of one lemma (`coherent` / `cohere` / `coherence` / `coherently`) make it a word-formation item, which section 8 rejects, and no schema check will catch the substitution. The model to follow is a connector-distribution item: `Although` / `Notwithstanding` / `Despite of` / `However`. Task 3's first attempt drifted exactly this way, so assume the pull is real across 60 items.
 
 - [ ] **Step 5: Author the passage file**
 
