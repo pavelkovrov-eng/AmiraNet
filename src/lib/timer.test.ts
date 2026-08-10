@@ -25,14 +25,24 @@ describe('createTimer', () => {
     expect(timer.fraction()).toBeCloseTo(0.75);
   });
 
-  it('does not drift across many reads', () => {
+  it('does not drift across many reads with varied tick spacing', () => {
     const clock = fakeClock();
     const timer = createTimer(60000, clock.now);
-    for (let i = 0; i < 500; i++) {
-      clock.advance(100);
+
+    // Alternate between 60ms and 140ms advances to vary tick spacing
+    for (let i = 0; i < 200; i++) {
+      const advance = i % 2 === 0 ? 60 : 140;
+      clock.advance(advance);
+
+      // Read 3 times per advance - discriminates timestamp-delta from accumulator
+      timer.remainingMs();
+      timer.remainingMs();
       timer.remainingMs();
     }
-    expect(timer.remainingMs()).toBe(10000);
+
+    // Total advanced: 100 * 60 + 100 * 140 = 6000 + 14000 = 20000ms
+    // Remaining should be 60000 - 20000 = 40000
+    expect(timer.remainingMs()).toBe(40000);
   });
 
   it('floors remaining time at zero', () => {
@@ -96,5 +106,69 @@ describe('createTimer', () => {
     expect(timer.fraction()).toBe(0);
     expect(timer.isExpired()).toBe(true);
     expect(timer.isWarning()).toBe(true);
+  });
+
+  it('remains expired after backward clock jump', () => {
+    const clock = fakeClock();
+    const timer = createTimer(5000, clock.now);
+    clock.advance(5000);
+    expect(timer.isExpired()).toBe(true);
+
+    // Clock jumps backward
+    clock.advance(-2000);
+
+    // Should still be expired - monotonic expiry latch
+    expect(timer.isExpired()).toBe(true);
+    expect(timer.remainingMs()).toBe(0);
+  });
+
+  it('does not increase remaining time after backward clock jump', () => {
+    const clock = fakeClock();
+    const timer = createTimer(60000, clock.now);
+
+    clock.advance(30000);
+    const remaining1 = timer.remainingMs();
+    expect(remaining1).toBe(30000);
+
+    // Clock jumps backward by 20s
+    clock.advance(-20000);
+
+    // Remaining should not increase beyond previous value
+    const remaining2 = timer.remainingMs();
+    expect(remaining2).toBeLessThanOrEqual(remaining1);
+    expect(remaining2).toBe(remaining1); // Should be identical with max elapsed tracking
+  });
+
+  it('maintains fraction in [0,1] across backward clock jump', () => {
+    const clock = fakeClock();
+    const timer = createTimer(60000, clock.now);
+
+    clock.advance(30000);
+    expect(timer.fraction()).toBeGreaterThanOrEqual(0);
+    expect(timer.fraction()).toBeLessThanOrEqual(1);
+
+    // Clock jumps backward by 20s
+    clock.advance(-20000);
+
+    // Fraction should still be in [0,1]
+    expect(timer.fraction()).toBeGreaterThanOrEqual(0);
+    expect(timer.fraction()).toBeLessThanOrEqual(1);
+  });
+
+  it('maintains monotonic remaining time across multiple backward jumps', () => {
+    const clock = fakeClock();
+    const timer = createTimer(60000, clock.now);
+
+    clock.advance(45000);
+    const r1 = timer.remainingMs();
+    expect(r1).toBe(15000);
+
+    clock.advance(-10000); // Backward jump
+    const r2 = timer.remainingMs();
+    expect(r2).toBeLessThanOrEqual(r1);
+
+    clock.advance(-10000); // Another backward jump
+    const r3 = timer.remainingMs();
+    expect(r3).toBeLessThanOrEqual(r2);
   });
 });
