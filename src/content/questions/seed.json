@@ -1,0 +1,314 @@
+[
+  {
+    "id": "sc-0001",
+    "type": "sentence-completion",
+    "difficulty": 0.4,
+    "stem": "The committee refused to ___ the findings until further data arrived.",
+    "options": ["analyze", "analogy", "apologize", "anarchy"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The slot needs a transitive verb meaning to examine in detail.",
+      "A noun meaning comparison, and a phonetic neighbor of the answer. Cannot follow 'to'.",
+      "A verb, but semantically unrelated to examining findings.",
+      "A noun meaning absence of government. Wrong part of speech and wrong meaning."
+    ],
+    "primaryLexeme": "awl-analyze",
+    "targetLexemes": ["awl-analyze"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0002",
+    "type": "sentence-completion",
+    "difficulty": 0.7,
+    "stem": "The contract never stated the deadline directly, but both parties treated it as an ___ condition of the agreement.",
+    "options": ["complicit", "implicate", "implicit", "explicit"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "A real word meaning involved in someone else's wrongdoing. It sounds similar to the answer but is unrelated to an unstated condition.",
+      "The verb form, meaning to involve someone in wrongdoing. Wrong part of speech for this adjective slot, and wrong meaning besides.",
+      "Correct. The slot needs an adjective meaning understood without being directly stated, matching 'never stated the deadline directly'.",
+      "Means stated clearly and directly — the exact opposite of the answer. A phonetic and orthographic neighbor, but its meaning contradicts 'never stated... directly'."
+    ],
+    "primaryLexeme": "awl-implicit",
+    "targetLexemes": ["awl-implicit"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0003",
+    "type": "sentence-completion",
+    "difficulty": 0.4,
+    "stem": "A shared glossary of key terms can ___ communication between researchers from different fields.",
+    "options": ["hesitate", "differentiate", "felicitate", "facilitate"],
+    "correctIndex": 3,
+    "explanationPerOption": [
+      "Means to pause before acting or speaking. It rhymes with the answer but does not fit a sentence about helping communication.",
+      "A verb meaning to recognize or establish a difference. It is grammatically valid here but describes the opposite process — separating ideas rather than easing exchange between them.",
+      "A real verb meaning to congratulate someone. It is a phonetic neighbor of the answer but means something entirely different.",
+      "Correct. The slot needs a verb meaning to make something easier, which fits a glossary helping communication along."
+    ],
+    "primaryLexeme": "awl-facilitate",
+    "targetLexemes": ["awl-facilitate"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0004",
+    "type": "sentence-completion",
+    "difficulty": 0.5,
+    "stem": "Limited laboratory funding forced the team to ___ the scope of the experiment to a single semester.",
+    "options": ["sustain", "contain", "constrain", "restrain"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "Means to maintain something over time. It is grammatically valid here but means nearly the opposite of the answer — continuing something rather than limiting it.",
+      "Means to hold something within fixed physical or numerical limits, such as a container. A phonetic neighbor of the answer, but it does not mean to restrict scope.",
+      "Correct. The verb means to restrict the scope of something, matching 'to a single semester'.",
+      "Means to hold back a person or emotion from acting. Close in form and meaning to the answer, but it does not take 'the scope of the experiment' as a natural object."
+    ],
+    "primaryLexeme": "awl-constrain",
+    "targetLexemes": ["awl-constrain"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0005",
+    "type": "sentence-completion",
+    "difficulty": 0.8,
+    "stem": "Without any documented criteria, the judge's ruling appeared entirely ___ to the observers in the courtroom.",
+    "options": ["arboreal", "arbitrate", "arbitrary", "arbitrage"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "An adjective meaning related to trees. It looks similar to the answer at a glance but has no connection to courtroom decisions.",
+      "The verb meaning to formally mediate a dispute between two sides. Wrong part of speech for this slot, and the sentence describes no negotiation between parties.",
+      "Correct. The adjective means based on random choice rather than any reason or system, matching 'without any documented criteria'.",
+      "A noun from finance meaning the practice of profiting from price differences between markets. It shares a root with the answer but belongs to a completely different field."
+    ],
+    "primaryLexeme": "awl-arbitrary",
+    "targetLexemes": ["awl-arbitrary"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0006",
+    "type": "sentence-completion",
+    "difficulty": 0.9,
+    "stem": "Enrollment in the online program has grown steadily since 2020; ___, the university now offers three additional sections each semester.",
+    "options": ["whereas", "consequently", "nonetheless", "furthermore"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "Sets up a contrast between two clauses ('while X, Y'). Using it here reverses the sentence's logic: the extra sections are a result of the growth, not a contrast to it.",
+      "Correct. The connector must signal that the added sections are a result of the enrollment growth, which is what 'consequently' marks.",
+      "Signals concession — that something holds true despite the first clause. That reverses the relationship: the sections were added because of the growth, not in spite of it.",
+      "Signals simple addition of a separate point. It would imply the extra sections are just another fact, not a consequence of the growth described first."
+    ],
+    "primaryLexeme": "conn-consequently",
+    "targetLexemes": ["conn-consequently", "conn-whereas"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0001",
+    "type": "restatement",
+    "difficulty": 0.3,
+    "stem": "The survey's wording was ambiguous, so respondents interpreted the same question in several different ways.",
+    "options": [
+      "Every respondent understood the question in exactly the same way because it was written with unusual precision.",
+      "Respondents understood the question differently because it could be read in more than one way.",
+      "Respondents refused to answer the question because they judged it irrelevant to the survey.",
+      "Respondents interpreted every question on the survey in several different ways."
+    ],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "Reverses the original meaning: the source says the wording caused different interpretations, not identical ones, and never claims the wording was precise.",
+      "Correct. This restates 'ambiguous wording' as 'could be read in more than one way' and preserves that it was one specific question, not the whole survey.",
+      "Introduces information the original does not contain; nothing in the source says respondents refused to answer or judged the question irrelevant.",
+      "Overgeneralizes: the original describes one ambiguous question, not every question on the survey."
+    ],
+    "primaryLexeme": "awl-ambiguous",
+    "targetLexemes": ["awl-ambiguous"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rs-0002",
+    "type": "restatement",
+    "difficulty": 0.5,
+    "stem": "The initial trial produced weak results, but subsequent studies confirmed the effect.",
+    "options": [
+      "Studies conducted at the same time as the first trial confirmed the effect.",
+      "The first trial confirmed the effect, while the later studies produced weak results.",
+      "Later studies confirmed the effect even though the first trial had produced weak results.",
+      "Earlier studies had already confirmed the effect before the first trial produced weak results."
+    ],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "Changes the timing: the source says the confirming studies came after the first trial, not that they ran at the same time as it.",
+      "Swaps which study did what: the source says the first trial was weak and the later studies confirmed the effect, not the reverse.",
+      "Correct. It preserves the sequence — a weak first trial, followed by later studies that confirmed the effect.",
+      "Reverses the sequence: the source says the confirming studies came after the first trial, not before it."
+    ],
+    "primaryLexeme": "awl-subsequent",
+    "targetLexemes": ["awl-subsequent"],
+    "trapType": "tense-shift"
+  },
+  {
+    "id": "rs-0003",
+    "type": "restatement",
+    "difficulty": 0.6,
+    "stem": "Critics dismissed the proposal as unrealistic; nevertheless, the city council approved full funding the following month.",
+    "options": [
+      "The city council postponed the funding decision until critics reconsidered the proposal.",
+      "Because critics thought the proposal was unrealistic, the city council approved full funding the following month.",
+      "Critics praised the proposal as practical, so the city council approved full funding the following month.",
+      "Although critics thought the proposal was unrealistic, the city council still approved full funding the following month."
+    ],
+    "correctIndex": 3,
+    "explanationPerOption": [
+      "Introduces an outcome the original does not contain; the source says funding was approved, not postponed.",
+      "Turns a concession into a cause: the original says the council approved funding despite the criticism, not because of it.",
+      "Reverses the critics' judgment (from dismissive to approving) and turns the concession into a cause, misreporting both the opinion and the logical relationship.",
+      "Correct. It preserves the concession: the council approved funding despite, not because of, the critics' negative view."
+    ],
+    "primaryLexeme": "conn-nevertheless",
+    "targetLexemes": ["conn-nevertheless"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "gc-0001",
+    "type": "grammar-in-context",
+    "difficulty": 0.6,
+    "stem": "For an argument to persuade a skeptical reader, each new claim must ___ with the one before it, not contradict it.",
+    "options": ["coherent", "cohere", "coherence", "coherently"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "An adjective. It cannot follow the modal 'must' directly; that slot requires a bare verb, not a description.",
+      "Correct. After the modal 'must', the sentence needs a bare infinitive verb, and 'cohere with' is the standard phrase for one claim logically fitting together with another.",
+      "A noun. Nouns cannot serve as the main verb of a clause, so it cannot complete 'must ___ with the one before it'.",
+      "An adverb. It could modify a verb but cannot itself act as the verb the sentence requires after 'must'."
+    ],
+    "primaryLexeme": "awl-coherent",
+    "targetLexemes": ["awl-coherent"],
+    "trapType": "surface-match"
+  },
+  {
+    "id": "gc-0002",
+    "type": "grammar-in-context",
+    "difficulty": 0.7,
+    "stem": "___ the objections raised by two board members, the merger proceeded as planned.",
+    "options": ["Although", "Notwithstanding", "Despite of", "However"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "A subordinating conjunction; it must introduce a full clause with its own subject and verb, not just a noun phrase like 'the objections...'.",
+      "Correct. 'Notwithstanding' is a preposition and can be directly followed by a noun phrase such as 'the objections raised by two board members'.",
+      "Never grammatical in standard English; 'despite' alone takes a noun phrase directly, without 'of'.",
+      "A conjunctive adverb that typically stands alone before an independent clause; it cannot directly govern a noun phrase this way."
+    ],
+    "primaryLexeme": "conn-notwithstanding",
+    "targetLexemes": ["conn-notwithstanding"],
+    "trapType": "surface-match"
+  },
+  {
+    "id": "rc-0001",
+    "type": "reading",
+    "passageId": "psg-001",
+    "difficulty": -0.2,
+    "stem": "As used in paragraph 1, the word 'implicit' most nearly means",
+    "options": ["not directly stated", "frequently repeated", "publicly announced", "logically proven"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Paragraph 1 contrasts implicit assumptions with 'explicit reasoning', so 'implicit' means understood without being stated outright.",
+      "Unrelated meaning; nothing in the passage links 'implicit' to repetition.",
+      "Echoes the passage's topic but means the opposite: 'implicit' is precisely what is not announced or stated openly.",
+      "Echoes nearby words like 'reasoning' and 'evidence' from the same paragraph, but 'implicit' does not mean proven — it means unstated."
+    ],
+    "primaryLexeme": "awl-implicit",
+    "targetLexemes": ["awl-implicit"],
+    "trapType": "surface-match"
+  },
+  {
+    "id": "rc-0002",
+    "type": "reading",
+    "passageId": "psg-001",
+    "difficulty": 0.5,
+    "stem": "In paragraph 3, the word 'Whereas' signals that the sentence is about to",
+    "options": [
+      "explain the cause of the early critics' objections",
+      "summarize every argument made earlier in the passage",
+      "introduce a new example of ambiguous survey wording",
+      "contrast the view of early critics with the view most researchers hold now"
+    ],
+    "correctIndex": 3,
+    "explanationPerOption": [
+      "Misreads the connector: 'whereas' signals contrast between two clauses, not a cause-and-effect relationship.",
+      "Overstates the connector's role; 'whereas' contrasts the two clauses it directly joins, not the whole passage's argument.",
+      "Invented detail; paragraph 3 does not introduce a new example of ambiguous wording.",
+      "Correct. 'Whereas' introduces a contrast: early critics judged the shortcuts irrational, whereas most researchers now see them as a coherent adaptation."
+    ],
+    "primaryLexeme": "conn-whereas",
+    "targetLexemes": ["conn-whereas"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rc-0003",
+    "type": "reading",
+    "passageId": "psg-001",
+    "difficulty": 0.6,
+    "stem": "The phrase 'arbitrary rules of thumb' in paragraph 2 suggests that these mental shortcuts are",
+    "options": [
+      "identical in every situation a person faces",
+      "used only by inexperienced decision-makers",
+      "carefully tested by researchers before people rely on them",
+      "not based on any consistent, justifiable system"
+    ],
+    "correctIndex": 3,
+    "explanationPerOption": [
+      "Overstates the claim; the passage never says the shortcuts are identical across situations, only that the errors they produce are consistent across people.",
+      "Contradicts the passage, which says the resulting errors are 'remarkably consistent across otherwise very different people' — not limited to the inexperienced.",
+      "Reverses the meaning of 'arbitrary': the passage says these shortcuts 'cannot be justified by any consistent logic', not that they are carefully tested.",
+      "Correct. 'Arbitrary' here means the shortcuts feel principled but cannot be justified by any consistent logic — they lack a real system."
+    ],
+    "primaryLexeme": "awl-arbitrary",
+    "targetLexemes": ["awl-arbitrary"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0004",
+    "type": "reading",
+    "passageId": "psg-001",
+    "difficulty": 1.2,
+    "stem": "Which title best captures the main idea of the passage?",
+    "options": [
+      "The History of Survey Design in Behavioral Research",
+      "How Ambiguous Instructions Lower Workplace Productivity",
+      "A Step-by-Step Guide to Eliminating Cognitive Bias",
+      "Why Quick, Implicit Judgments Are Not Simply Irrational"
+    ],
+    "correctIndex": 3,
+    "explanationPerOption": [
+      "Off-topic; the passage never discusses the history of survey design.",
+      "Too narrow: workplace productivity is never mentioned, and this would turn one illustrative idea into the whole passage's subject.",
+      "Reverses the passage's actual position: paragraph 3 argues these shortcuts are a coherent adaptation, not a flaw to be eliminated step by step.",
+      "Correct. The passage's overall argument, especially paragraph 3, is that fast, implicit judgment is a coherent adaptation rather than a simple error."
+    ],
+    "primaryLexeme": "awl-coherent",
+    "targetLexemes": ["awl-coherent"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0005",
+    "type": "reading",
+    "passageId": "psg-001",
+    "difficulty": 1.0,
+    "stem": "Based on the passage, which statement would the researchers most likely support?",
+    "options": [
+      "Heuristics are reliable only in laboratory settings and rarely apply to daily life.",
+      "Ambiguous information should be removed from all real-world decisions before they are made.",
+      "People should be trained to rely exclusively on deliberate, step-by-step analysis in every decision.",
+      "Institutions should design choices, forms, and defaults that work with, rather than against, people's implicit judgment."
+    ],
+    "correctIndex": 3,
+    "explanationPerOption": [
+      "Contradicts the passage, which describes errors as 'remarkably consistent across otherwise very different people' in real, not only laboratory, situations.",
+      "Unsupported extreme; the passage never proposes removing ambiguity from decisions, only understanding how people respond to it.",
+      "Reverses the passage's conclusion: paragraph 3 explicitly rejects 'impossible deliberation on every choice' as the promising path.",
+      "Correct. Paragraph 3 concludes that the better path is designing forms, warnings, and defaults that steer implicit judgment toward better outcomes."
+    ],
+    "primaryLexeme": "conn-consequently",
+    "targetLexemes": ["conn-consequently"],
+    "trapType": "logic-inversion"
+  }
+]

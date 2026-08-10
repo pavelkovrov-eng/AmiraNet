@@ -1,0 +1,11 @@
+[
+  {
+    "id": "psg-001",
+    "title": "The Hidden Architecture of Judgment",
+    "body": "For decades, psychologists assumed that human judgment relied mainly on deliberate, step-by-step reasoning. Individuals were thought to analyze the available evidence, weigh the alternatives, and select the option that best served their interests. Subsequent research complicated this tidy picture. Much of everyday decision-making, it turns out, rests on implicit assumptions that operate below conscious awareness, guiding choices long before any explicit reasoning begins.\n\nThis shift in understanding became especially clear when researchers examined how people respond to ambiguous information. When a situation offers no single correct interpretation, most people do not suspend judgment until better evidence arrives. Instead, they resolve the ambiguity using arbitrary rules of thumb: mental shortcuts that feel principled in the moment but cannot be justified by any consistent logic. A shortcut that facilitates a quick decision in one context can constrain accuracy in another, producing errors that are remarkably consistent across otherwise very different people.\n\nNotwithstanding these limitations, the pattern is not simply a flaw to be eliminated. Whereas early critics treated such shortcuts as evidence of irrationality, most researchers now argue that quick, implicit judgments are a coherent adaptation to a world that rarely offers complete information. Consequently, the more promising path is not to demand impossible deliberation on every choice, but to design forms, warnings, and defaults that steer implicit judgment toward better outcomes.",
+    "domain": "psychology",
+    "difficulty": 0.9,
+    "wordCount": 220,
+    "questionIds": ["rc-0001", "rc-0002", "rc-0003", "rc-0004", "rc-0005"]
+  }
+]
