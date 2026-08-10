@@ -1,0 +1,100 @@
+import { createTimer, WARNING_FRACTION } from './timer';
+
+function fakeClock(start = 1000) {
+  let t = start;
+  return { now: () => t, advance: (ms: number) => { t += ms; } };
+}
+
+describe('createTimer', () => {
+  it('starts with the full duration remaining', () => {
+    const clock = fakeClock();
+    const timer = createTimer(60000, clock.now);
+    expect(timer.remainingMs()).toBe(60000);
+  });
+
+  it('starts at fraction 1', () => {
+    const clock = fakeClock();
+    expect(createTimer(60000, clock.now).fraction()).toBe(1);
+  });
+
+  it('decreases as the clock advances', () => {
+    const clock = fakeClock();
+    const timer = createTimer(60000, clock.now);
+    clock.advance(15000);
+    expect(timer.remainingMs()).toBe(45000);
+    expect(timer.fraction()).toBeCloseTo(0.75);
+  });
+
+  it('does not drift across many reads', () => {
+    const clock = fakeClock();
+    const timer = createTimer(60000, clock.now);
+    for (let i = 0; i < 500; i++) {
+      clock.advance(100);
+      timer.remainingMs();
+    }
+    expect(timer.remainingMs()).toBe(10000);
+  });
+
+  it('floors remaining time at zero', () => {
+    const clock = fakeClock();
+    const timer = createTimer(5000, clock.now);
+    clock.advance(999999);
+    expect(timer.remainingMs()).toBe(0);
+    expect(timer.fraction()).toBe(0);
+  });
+
+  it('reports expiry only after the duration elapses', () => {
+    const clock = fakeClock();
+    const timer = createTimer(5000, clock.now);
+    expect(timer.isExpired()).toBe(false);
+    clock.advance(4999);
+    expect(timer.isExpired()).toBe(false);
+    clock.advance(1);
+    expect(timer.isExpired()).toBe(true);
+  });
+
+  it('enters the warning state below the warning fraction', () => {
+    const clock = fakeClock();
+    const timer = createTimer(10000, clock.now);
+    expect(timer.isWarning()).toBe(false);
+    clock.advance(10000 * (1 - WARNING_FRACTION) + 1);
+    expect(timer.isWarning()).toBe(true);
+  });
+
+  it('rejects NaN duration', () => {
+    const clock = fakeClock();
+    expect(() => {
+      createTimer(NaN, clock.now);
+    }).toThrow('Invalid durationMs: NaN (must be finite)');
+  });
+
+  it('rejects Infinity duration', () => {
+    const clock = fakeClock();
+    expect(() => {
+      createTimer(Infinity, clock.now);
+    }).toThrow('Invalid durationMs: Infinity (must be finite)');
+  });
+
+  it('rejects negative infinity duration', () => {
+    const clock = fakeClock();
+    expect(() => {
+      createTimer(-Infinity, clock.now);
+    }).toThrow('Invalid durationMs: -Infinity (must be finite)');
+  });
+
+  it('rejects negative duration', () => {
+    const clock = fakeClock();
+    expect(() => {
+      createTimer(-100, clock.now);
+    }).toThrow('Invalid durationMs: -100 (must be non-negative)');
+  });
+
+  it('allows zero duration', () => {
+    const clock = fakeClock();
+    const timer = createTimer(0, clock.now);
+    expect(timer.remainingMs()).toBe(0);
+    expect(timer.fraction()).toBe(0);
+    expect(timer.isExpired()).toBe(true);
+    expect(timer.isWarning()).toBe(true);
+  });
+});
