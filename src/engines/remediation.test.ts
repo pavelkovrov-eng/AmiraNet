@@ -37,6 +37,18 @@ describe('addRemediation', () => {
     addRemediation(original, 'vocabulary-gap', 'awl-analyze', T0);
     expect(original).toHaveLength(0);
   });
+
+  it('returns new references when deduplicating an existing entry', () => {
+    // The existing non-mutation test above always has exists === false
+    // (starting queue is empty), so it never runs the dedup branch. This
+    // exercises that branch specifically: queue already contains the
+    // (cause, targetId) pair, so addRemediation must still hand back a
+    // fresh array of fresh objects rather than the same references.
+    const original = addRemediation([], 'vocabulary-gap', 'awl-analyze', T0);
+    const deduped = addRemediation(original, 'vocabulary-gap', 'awl-analyze', T0 + 5000);
+    expect(deduped).not.toBe(original);
+    expect(deduped[0]).not.toBe(original[0]);
+  });
 });
 
 describe('recordServing', () => {
@@ -65,6 +77,14 @@ describe('recordServing', () => {
     const queue = addRemediation([], 'vocabulary-gap', 'awl-analyze', T0);
     const next = recordServing(queue, 'other-target', true, T0 + EVICT_AFTER_MS + 1);
     expect(next).toHaveLength(0);
+  });
+
+  it('does not evict an entry exactly at the age limit', () => {
+    // now - createdAt === EVICT_AFTER_MS exactly. The comparison is strict
+    // (>), so this must survive; only one millisecond past should evict.
+    const queue = addRemediation([], 'vocabulary-gap', 'awl-analyze', T0);
+    const next = recordServing(queue, 'other-target', true, T0 + EVICT_AFTER_MS);
+    expect(next).toHaveLength(1);
   });
 
   it('leaves untouched targets alone', () => {
