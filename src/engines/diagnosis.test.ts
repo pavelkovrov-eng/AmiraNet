@@ -122,6 +122,33 @@ describe('diagnose', () => {
     expect(result).toBe('connector-misread');
   });
 
+  it('prioritizes the phonetic distractor over the connector-misread trap', () => {
+    const result = diagnose({
+      // Both conditions are true at once: chosenIndex 1 ('analogy') is a
+      // confusable AND the trap is logic-inversion. Only priority order
+      // decides the outcome.
+      question: { ...question, trapType: 'logic-inversion' },
+      chosenIndex: 1,
+      elapsedMs: 20_000,
+      isMastered: () => true,
+      ...deps,
+    });
+    expect(result).toBe('distractor-phonetic');
+  });
+
+  it('prioritizes the connector-misread trap over time pressure', () => {
+    const result = diagnose({
+      // Both conditions are true at once: the trap is logic-inversion AND
+      // elapsedMs is over the threshold. Only priority order decides.
+      question: { ...question, trapType: 'logic-inversion' },
+      chosenIndex: 2,
+      elapsedMs: 120_000,
+      isMastered: () => true,
+      ...deps,
+    });
+    expect(result).toBe('connector-misread');
+  });
+
   it('classifies a slow wrong answer as time pressure', () => {
     const result = diagnose({
       question: { ...question, trapType: 'scope-shift' },
@@ -131,6 +158,19 @@ describe('diagnose', () => {
       ...deps,
     });
     expect(result).toBe('time-pressure');
+  });
+
+  it('does not classify a wrong answer as time pressure exactly at the threshold', () => {
+    const result = diagnose({
+      // elapsedMs equals timeThresholdMs exactly (90_000). The comparison
+      // must be strict (>), so this must fall through to inference-error.
+      question: { ...question, trapType: 'scope-shift' },
+      chosenIndex: 2,
+      elapsedMs: 90_000,
+      isMastered: () => true,
+      ...deps,
+    });
+    expect(result).toBe('inference-error');
   });
 
   it('falls back to inference error', () => {
