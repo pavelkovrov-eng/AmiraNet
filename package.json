@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "validate:content": "vite-node scripts/validate-content.ts"
+    "validate:content": "vite-node scripts/validate-content.ts",
+    "demo": "vite-node scripts/demo-session.ts"
   },
   "dependencies": {
     "dexie": "^4.4.4",
