@@ -32,6 +32,8 @@ Every task's requirements implicitly include this section.
 - **Guard on write first, and on read as well — never on read alone.** A write-side guard rejects the bad value at the call site closest to the bug and leaves the last-known-good record on disk untouched. A read-only guard means the corrupt write already succeeded: the good value is gone, the bad one is persisted, and the throw arrives later at an unrelated read. For a single-user local app with no backup, that is the difference between one refused write and weeks of overwritten progress. Test the property that matters — that a rejected write leaves the previously stored value intact — not merely that the call throws.
 - **A test you have not watched fail is not evidence.** When a test targets a specific rule or branch, verify it by temporarily disabling that rule and confirming the test fails, then restore. Task 2's first fix round produced three tests that passed with their own rule disabled, because a different rule caught the same bad input first. A test that passes for an incidental reason reports safety that is not there.
 - **Mutate toward a plausible regression, not a trivial deletion.** Deleting a guard is easy for any test to catch; the mutations that matter are the ones a future refactor would actually introduce. Task 4's rounding tests survived `Math.round` → `Math.floor`. Task 5's drift test survived replacing timestamp-delta computation with a stateful accumulator, because the fake clock advanced in perfectly uniform steps and both implementations summed to the same total. When a test's fixture is uniform, regular, or perfectly aligned, assume it is hiding something: vary the spacing, desynchronize the call counts, and pick input values that land off clean boundaries.
+- **Test the boundary itself, not near it.** Three separate tasks shipped fixtures that all sat comfortably away from a comparison boundary, leaving the comparison unpinned: Task 4's score values all landed on clean integers so `round` → `floor` passed; Task 7 had no card due exactly now so `<=` → `<` passed; Task 8 had no elapsed time exactly at the threshold so `>` → `>=` passed. For every comparison in a module, one test must land exactly on the boundary value.
+- **Where a priority order or precedence chain decides behavior, pin every adjacent pair.** A fixture that satisfies only one branch proves nothing about ordering. Each test needs input that satisfies *both* checks in an adjacent pair simultaneously, so only the order decides the result. Task 8's five-cause classifier shipped with just one of three adjacent swaps covered — a reorder would have changed what the app teaches with no test noticing.
 - **Commit after every task** using conventional commit format (`feat:`, `test:`, `docs:`, `chore:`).
 
 ---
@@ -2270,7 +2272,7 @@ export function recordServing(
 - [ ] **Step 7: Run all engine tests to verify they pass**
 
 Run: `npm test -- diagnosis remediation`
-Expected: PASS — 13 diagnosis tests, 10 remediation tests
+Expected: PASS — 13 diagnosis tests, 9 remediation tests (plus any the implementer adds to close a verified coverage gap)
 
 - [ ] **Step 8: Commit**
 
