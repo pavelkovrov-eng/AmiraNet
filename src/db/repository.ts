@@ -87,14 +87,39 @@ export async function getAttempts(): Promise<Attempt[]> {
 
 /**
  * Same reasoning as assertFiniteProfile, applied to the FSRS card's
- * numeric fields. These feed Task 7's ts-fsrs scheduler directly, so a
- * corrupt `stability`/`difficulty`/etc. persisted here would surface later
- * as a broken review schedule with no indication which write caused it.
- * Checked for finiteness only (matching src/engines/theta.ts's own
- * contract of guarding non-finite input, not domain range) — this module
- * isn't in a position to know ts-fsrs's valid ranges for each field.
+ * numeric fields plus its `due` date. These feed Task 7's ts-fsrs
+ * scheduler directly, so a corrupt `stability`/`difficulty`/etc., or a
+ * `due` that is a Date instance wrapping an invalid timestamp (e.g. built
+ * from a garbage string — still `instanceof Date`, but `getTime()` is
+ * NaN, so `Number.isFinite` on the Date object itself would not catch it),
+ * would surface later as a broken review schedule with no indication
+ * which write caused it. Numeric fields are checked for finiteness only
+ * (matching src/engines/theta.ts's own contract of guarding non-finite
+ * input, not domain range) — this module isn't in a position to know
+ * ts-fsrs's valid ranges for each field.
+ *
+ * Enforced at both boundaries, mirroring assertFiniteProfile above:
+ *
+ * - The write boundary (saveCard) is the stronger of the two: refusing a
+ *   bad value there means the call site closest to the actual bug is
+ *   where it gets caught, and the last-known-good card already on disk is
+ *   never overwritten.
+ * - The read boundary (getCards) still matters on its own, because
+ *   storage can be corrupted by something other than this module's own
+ *   writes — a partial write, a failed migration, or a card written
+ *   before this guard existed. A read-only guard would mean the corrupt
+ *   write already succeeded, so both sides are required, not either/or.
+ *
+ * The read boundary specifically protects src/engines/srs.ts, the first
+ * code that actually consumes these cards, and every reader after it —
+ * getCards is the one place all of them pass through. Without it, a
+ * corrupt card flows straight into the FSRS scheduler with no throw
+ * anywhere: dueLexemeIds compares `card.due.getTime()`, and NaN makes
+ * every comparison false, so the card silently never comes up for review
+ * again — the user just stops being shown a word they don't know, with no
+ * error surfaced anywhere.
  */
-function assertFiniteCard(card: FsrsCard): void {
+function assertFiniteCard(lexemeId: string, card: FsrsCard): void {
   const numericFields: [string, number][] = [
     ['stability', card.stability],
     ['difficulty', card.difficulty],
@@ -106,18 +131,25 @@ function assertFiniteCard(card: FsrsCard): void {
   ];
   for (const [name, value] of numericFields) {
     if (!Number.isFinite(value)) {
-      throw new Error(`Corrupt card: ${name} is ${value} (must be finite)`);
+      throw new Error(`Corrupt card ${lexemeId}: ${name} is ${value} (must be finite)`);
     }
+  }
+  if (!Number.isFinite(card.due.getTime())) {
+    throw new Error(`Corrupt card ${lexemeId}: due is ${card.due} (must be a valid date)`);
   }
 }
 
 export async function saveCard(lexemeId: string, card: FsrsCard): Promise<void> {
-  assertFiniteCard(card);
+  assertFiniteCard(lexemeId, card);
   await db.cards.put({ lexemeId, card });
 }
 
 export async function getCards(): Promise<StoredCard[]> {
-  return db.cards.toArray();
+  const rows = await db.cards.toArray();
+  for (const row of rows) {
+    assertFiniteCard(row.lexemeId, row.card);
+  }
+  return rows;
 }
 
 export async function saveRemediation(entries: RemediationEntry[]): Promise<void> {

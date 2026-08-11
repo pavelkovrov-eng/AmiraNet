@@ -91,6 +91,15 @@ describe('dueLexemeIds', () => {
     ];
     expect(dueLexemeIds(cards, NOW)).toEqual([]);
   });
+
+  // The brief's cases only exercise strictly-before and strictly-after; a
+  // card due at exactly `now` is the inclusive edge of "at or before now"
+  // and needs its own case, since an off-by-one here would silently and
+  // permanently exclude a word the moment it becomes due.
+  it('includes a card due at exactly now', () => {
+    const cards = [{ lexemeId: 'a', card: { ...createEmptyCard(NOW), due: new Date(NOW) } }];
+    expect(dueLexemeIds(cards, NOW)).toEqual(['a']);
+  });
 });
 
 describe('seedCard', () => {

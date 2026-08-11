@@ -222,6 +222,41 @@ describe('cards', () => {
     expect(stored).toHaveLength(1);
     expect(stored[0].card.stability).toBe(goodCard.stability);
   });
+
+  // These three seed the corrupt row via db.cards.put directly, bypassing
+  // saveCard's own write guard — simulating corruption that arrived by some
+  // other path (a partial write, a failed migration, or a card written
+  // before this guard existed). saveCard would now reject these same
+  // values outright, so routing through it would no longer exercise the
+  // read boundary at all.
+  it('throws when a stored card has been corrupted to NaN stability', async () => {
+    const card = createEmptyCard(new Date('2026-08-09T09:00:00Z'));
+    await db.cards.put({ lexemeId: 'corrupt', card: { ...card, stability: NaN } });
+    await expect(getCards()).rejects.toThrow();
+  });
+
+  it('throws when a stored card has an invalid due date', async () => {
+    // A Date built from a garbage string is still a Date instance — it
+    // just carries NaN internally. Number.isFinite on the Date object
+    // itself would not catch this; only Number.isFinite(date.getTime())
+    // does.
+    const card = createEmptyCard(new Date('2026-08-09T09:00:00Z'));
+    await db.cards.put({ lexemeId: 'corrupt', card: { ...card, due: new Date('garbage') } });
+    await expect(getCards()).rejects.toThrow();
+  });
+
+  it('does not silently drop a corrupt card among otherwise-good ones', async () => {
+    const goodCard = createEmptyCard(new Date('2026-08-09T09:00:00Z'));
+    await saveCard('awl-analyze', goodCard);
+    await db.cards.put({ lexemeId: 'corrupt', card: { ...goodCard, difficulty: NaN } });
+
+    // Two cards are now on disk: one good, one corrupt. getCards must
+    // throw rather than quietly filtering the corrupt one out — silently
+    // dropping it here would reproduce the exact failure mode this guard
+    // exists to prevent: a corrupt card simply vanishing from every future
+    // reader instead of surfacing as an error.
+    await expect(getCards()).rejects.toThrow();
+  });
 });
 
 describe('remediation', () => {
