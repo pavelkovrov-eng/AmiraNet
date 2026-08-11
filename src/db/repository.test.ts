@@ -69,8 +69,14 @@ describe('profile', () => {
     expect(profile.answered).toBe(9);
   });
 
+  // These four seed the corrupt row via db.profile.put directly, bypassing
+  // saveProfile's own write guard. That's deliberate: it simulates
+  // corruption arriving by a path other than this module's own writes (a
+  // partial write, a failed migration, manual tampering) — saveProfile
+  // would now reject these same values outright, so routing through it
+  // would no longer exercise the read boundary at all.
   it('throws when the stored theta has been corrupted to NaN', async () => {
-    await saveProfile({
+    await db.profile.put({
       id: 'me',
       theta: NaN,
       answered: 5,
@@ -81,7 +87,7 @@ describe('profile', () => {
   });
 
   it('throws when the stored theta has been corrupted to Infinity', async () => {
-    await saveProfile({
+    await db.profile.put({
       id: 'me',
       theta: Infinity,
       answered: 5,
@@ -92,7 +98,7 @@ describe('profile', () => {
   });
 
   it('throws when the stored answered count is negative', async () => {
-    await saveProfile({
+    await db.profile.put({
       id: 'me',
       theta: 0.5,
       answered: -1,
@@ -103,7 +109,7 @@ describe('profile', () => {
   });
 
   it('throws when the stored answered count is non-finite', async () => {
-    await saveProfile({
+    await db.profile.put({
       id: 'me',
       theta: 0.5,
       answered: NaN,
@@ -111,6 +117,44 @@ describe('profile', () => {
       thetaHistory: [],
     });
     await expect(getProfile()).rejects.toThrow();
+  });
+
+  it('rejects a corrupt profile write and leaves the previously stored profile intact', async () => {
+    await saveProfile({
+      id: 'me',
+      theta: 0.7,
+      answered: 4,
+      placementDone: true,
+      thetaHistory: [],
+    });
+
+    await expect(
+      saveProfile({
+        id: 'me',
+        theta: NaN,
+        answered: 4,
+        placementDone: true,
+        thetaHistory: [],
+      }),
+    ).rejects.toThrow();
+
+    const profile = await getProfile();
+    expect(profile.theta).toBe(0.7);
+    expect(profile.answered).toBe(4);
+  });
+
+  it('returns a fresh default profile object on every call', async () => {
+    const first = await getProfile();
+    const second = await getProfile();
+    expect(first).not.toBe(second);
+    expect(first.thetaHistory).not.toBe(second.thetaHistory);
+
+    first.answered = 999;
+    first.thetaHistory.push({ at: 1, theta: 0.5 });
+
+    const third = await getProfile();
+    expect(third.answered).toBe(0);
+    expect(third.thetaHistory).toHaveLength(0);
   });
 });
 
@@ -164,6 +208,19 @@ describe('cards', () => {
     const stored = await getCards();
     expect(stored).toHaveLength(1);
     expect(stored[0].card.reps).toBe(5);
+  });
+
+  it('rejects a corrupt card write and leaves the previously stored card intact', async () => {
+    const goodCard = createEmptyCard(new Date('2026-08-09T09:00:00Z'));
+    await saveCard('awl-analyze', goodCard);
+
+    await expect(
+      saveCard('awl-analyze', { ...goodCard, stability: NaN }),
+    ).rejects.toThrow();
+
+    const stored = await getCards();
+    expect(stored).toHaveLength(1);
+    expect(stored[0].card.stability).toBe(goodCard.stability);
   });
 });
 
