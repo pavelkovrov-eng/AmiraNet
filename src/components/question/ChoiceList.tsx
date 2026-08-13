@@ -9,10 +9,23 @@ interface ChoiceListProps {
   onChoose: (index: number) => void;
 }
 
-function modifier(index: number, correctIndex: number, chosenIndex: number | null): string {
-  if (index === correctIndex) return ' choice--correct';
-  if (index === chosenIndex) return ' choice--wrong';
-  return '';
+interface ChoiceState {
+  /** Leading space so it concatenates directly onto the "choice" base class. */
+  className: string;
+  /** Decorative glyph carrying the correct/wrong distinction without relying on colour. */
+  glyph: string;
+  /** Hebrew text for assistive technology; colour and glyph both convey nothing to a screen reader. */
+  label: string;
+}
+
+function describeState(index: number, correctIndex: number, chosenIndex: number | null): ChoiceState | null {
+  if (index === correctIndex) {
+    return { className: ' choice--correct', glyph: '✓', label: 'תשובה נכונה' };
+  }
+  if (index === chosenIndex) {
+    return { className: ' choice--wrong', glyph: '✕', label: 'התשובה שלך – שגויה' };
+  }
+  return null;
 }
 
 export function ChoiceList({
@@ -25,28 +38,32 @@ export function ChoiceList({
 }: ChoiceListProps) {
   return (
     <ol className="choice-list">
-      {options.map((option, index) => (
-        <li key={option}>
-          <button
-            type="button"
-            className={`choice${revealed ? modifier(index, correctIndex, chosenIndex) : ''}`}
-            disabled={revealed}
-            onClick={() => onChoose(index)}
-          >
-            <EnglishText>{option}</EnglishText>
-          </button>
-          {revealed && (
-            // dir + english-text applied directly (not via <EnglishText>, which has no
-            // className passthrough): explanations are full English prose ending in
-            // terminal punctuation, and without bidi isolation that punctuation visually
-            // renders on the wrong side inside this app's RTL root. Confirmed empirically:
-            // an unwrapped trailing "." renders to the LEFT of its preceding word here.
-            <p className="choice-explanation english-text" dir="ltr">
-              {explanations[index]}
-            </p>
-          )}
-        </li>
-      ))}
+      {options.map((option, index) => {
+        const state = revealed ? describeState(index, correctIndex, chosenIndex) : null;
+        return (
+          <li key={option}>
+            <button
+              type="button"
+              className={`choice${state?.className ?? ''}`}
+              disabled={revealed}
+              onClick={() => onChoose(index)}
+            >
+              <EnglishText>{option}</EnglishText>
+              {state && (
+                <span className="choice-mark" aria-hidden="true">
+                  {state.glyph}
+                </span>
+              )}
+              {state && <span className="visually-hidden">{state.label}</span>}
+            </button>
+            {revealed && (
+              <p className="choice-explanation">
+                <EnglishText>{explanations[index]}</EnglishText>
+              </p>
+            )}
+          </li>
+        );
+      })}
     </ol>
   );
 }

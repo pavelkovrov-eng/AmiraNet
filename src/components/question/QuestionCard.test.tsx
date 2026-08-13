@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { QuestionCard } from './QuestionCard';
 import type { QuestionItem } from '../../content/types';
@@ -61,5 +61,31 @@ describe('QuestionCard', () => {
   it('disables the options after reveal', () => {
     render(<QuestionCard question={question} onAnswer={() => {}} revealed chosenIndex={1} />);
     screen.getAllByRole('button').forEach((b) => expect(b).toBeDisabled());
+  });
+
+  // Colour alone (border-color) is not a legitimate way to convey correct/wrong: WCAG
+  // 1.4.1. These query by accessible name and by the non-colour glyph, never by the
+  // choice--correct / choice--wrong class, so a regression that dropped the marker but
+  // kept the class would fail here even though "marks the correct option" above still
+  // passes.
+  it('marks correct and wrong options with a non-colour glyph, discoverable without the CSS class', () => {
+    render(<QuestionCard question={question} onAnswer={() => {}} revealed chosenIndex={1} />);
+    const correctButton = screen.getByRole('button', { name: /analyze/ });
+    const wrongButton = screen.getByRole('button', { name: /analogy/ });
+    expect(within(correctButton).getByText('✓')).toBeInTheDocument();
+    expect(within(wrongButton).getByText('✕')).toBeInTheDocument();
+  });
+
+  it('announces correct/wrong state to assistive technology via the accessible name', () => {
+    render(<QuestionCard question={question} onAnswer={() => {}} revealed chosenIndex={1} />);
+    expect(screen.getByRole('button', { name: /תשובה נכונה/ })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /שגויה/ })).toBeInTheDocument();
+  });
+
+  it('leaves unmarked distractors without a glyph or state label', () => {
+    render(<QuestionCard question={question} onAnswer={() => {}} revealed chosenIndex={1} />);
+    const distractor = screen.getByRole('button', { name: /apologize/ });
+    expect(within(distractor).queryByText('✓')).not.toBeInTheDocument();
+    expect(within(distractor).queryByText('✕')).not.toBeInTheDocument();
   });
 });

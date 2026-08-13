@@ -48,6 +48,42 @@
   color: var(--color-text-muted);
 }
 
+/* Correct/wrong must be legible without colour: WCAG 1.4.1. The glyph is the
+   primary signal; colour on it is a secondary reinforcement for users who can
+   perceive it, never the only one. Sized at --text-lg (not --text-base) so
+   bold text clears the WCAG large-text threshold (>=14pt/~18.6px bold): at
+   base size --color-correct measured 3.67:1 against --color-surface, short
+   of the 4.5:1 normal-text minimum though clear of the 3:1 large-text one. */
+.choice-mark {
+  margin-inline-start: var(--space-2);
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.choice--correct .choice-mark {
+  color: var(--color-correct);
+}
+
+.choice--wrong .choice-mark {
+  color: var(--color-wrong);
+}
+
+/* Visible to assistive technology only. Standard clip-based sr-only pattern:
+   kept in normal flow-adjacent layout (absolute + 1px box) so it still
+   contributes to the accessible name instead of being pruned like
+   display:none or visibility:hidden content would be. */
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .timer-track {
   block-size: 2px;
   inline-size: 100%;
