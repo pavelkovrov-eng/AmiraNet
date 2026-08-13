@@ -19,6 +19,7 @@ Every task's requirements implicitly include this section.
 - **UI language is Hebrew (RTL). Content language is English (LTR).** Every English text node must carry `dir="ltr"` and be styled `unicode-bidi: isolate`. A question rendered with broken bidi is a failed question.
 - **Light theme is the default.** Dark theme is opt-in only, never auto-applied from `prefers-color-scheme` alone.
 - **Color is semantic only.** Green = correct, red = wrong, amber = due / time warning. No decorative color, no gradients.
+- **Color must never be the only carrier of meaning.** Every state a color communicates needs a second, non-color signal — a glyph, a structural difference, a label — plus an accessible name that a screen reader announces. CSS classes are not announced; a user on a screen reader gets nothing from a colored border. This bit Task 10, where correct and wrong differed only in hue at 58% versus 56% lightness: hue is the exact axis red-green colorblindness degrades, and there was no lightness fallback. Test the state by accessible name or by the non-color marker, never by CSS class.
 - **Persist after every single answer** to IndexedDB — never batch to end of session.
 - **theta scale is `-3.0` to `+3.0`**, clamped.
 - **Score mapping is `clamp(round(100 + theta * (50/3)), 50, 150)`.** Score 134 corresponds to theta `2.04`.
