@@ -334,4 +334,83 @@ describe('buildSession', () => {
     // one standalone would show a question with no passage to read.
     expect(plan.items).toEqual([]);
   });
+
+  // --- Review fix: a fully-answered passage must not be re-served ------------
+  // The calling convention (see scripts/demo-session.ts) passes the entire
+  // static passage bank on every call and relies on buildSession to filter
+  // out what's done, exactly as already happens for `questions`. Without an
+  // analogous filter here, a completed passage comes back as a fresh
+  // 900-second reading item forever.
+
+  it('excludes a passage whose questions are all already answered', () => {
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: COST_SECONDS.passage,
+      passages: [passage],
+      answeredQuestionIds: new Set(passage.questionIds),
+    });
+    expect(plan.items.some((i) => i.kind === 'passage')).toBe(false);
+  });
+
+  it('still schedules a passage with exactly one unanswered question left', () => {
+    // Boundary for the new `every(id => used.has(id))` check: all but one of
+    // the five question ids are answered. One unanswered id must be enough
+    // to keep the passage alive — this is the closest possible fixture to
+    // the "fully answered" case above without actually crossing into it.
+    const [, ...allButOne] = passage.questionIds;
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: COST_SECONDS.passage,
+      passages: [passage],
+      answeredQuestionIds: new Set(allButOne),
+    });
+    expect(plan.items).toContainEqual({ kind: 'passage', passageId: 'psg-001' });
+  });
+
+  // --- Review fix: `continue` (not `break`) fills the budget with cheaper
+  // items the loop hasn't reached yet ------------------------------------
+  // COST_SECONDS varies by question type (60s vs. 120s). A `break` on the
+  // first unaffordable item — even one that isn't first in the array —
+  // strands every cheaper item behind it and wastes the remaining budget.
+  // Reproduces the reviewer's case: a 100s budget, a 120s restatement that
+  // is the closest difficulty match, and a 60s sentence-completion that is
+  // a worse match but affordable.
+
+  it('skips an unaffordable new-material match to schedule a cheaper one behind it', () => {
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: 100,
+      theta: 1.0,
+      questions: [
+        // Closest match to aim (1.5) but costs 120s — does not fit.
+        q('closeButExpensive', 1.5, { type: 'restatement' }),
+        // Worse match (diff 0.5 vs. 0) but costs 60s — fits.
+        q('fartherButCheap', 2.0),
+      ],
+    });
+    const ids = plan.items.map((i) => (i.kind === 'question' ? i.questionId : null));
+    expect(ids).not.toContain('closeButExpensive');
+    expect(ids).toContain('fartherButCheap');
+    expect(plan.estimatedSeconds).toBe(COST_SECONDS['sentence-completion']);
+  });
+
+  it('skips an unaffordable remediation match to schedule a cheaper one behind it', () => {
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: 100,
+      theta: 1.0,
+      remediation: [
+        { cause: 'vocabulary-gap', targetId: 'awl-x', createdAt: 1, servings: 0 },
+      ],
+      questions: [
+        // Listed first, so a `break` would strand the cheap item below it.
+        q('bigRemedial', 0.2, { type: 'restatement', targetLexemes: ['awl-x'] }),
+        q('smallRemedial', 0.2, { targetLexemes: ['awl-x'] }),
+      ],
+    });
+    const ids = plan.items.map((i) => (i.kind === 'question' ? i.questionId : null));
+    expect(ids).not.toContain('bigRemedial');
+    expect(ids).toContain('smallRemedial');
+    expect(plan.estimatedSeconds).toBe(COST_SECONDS['sentence-completion']);
+  });
 });

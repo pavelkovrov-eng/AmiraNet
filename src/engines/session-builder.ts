@@ -56,9 +56,11 @@ export function buildSession(request: SessionRequest): SessionPlan {
     spent += cost;
   };
 
-  // 1. Due SRS cards — cheapest, highest value.
+  // 1. Due SRS cards — cheapest, highest value. Uniform per-item cost, so
+  // continue vs. break cannot change the outcome — kept as `continue` only
+  // for consistency with the loops below, where it does matter.
   for (const lexemeId of request.dueLexemeIds) {
-    if (!fits(COST_SECONDS.srs)) break;
+    if (!fits(COST_SECONDS.srs)) continue;
     take({ kind: 'srs', lexemeId }, COST_SECONDS.srs);
   }
 
@@ -67,32 +69,43 @@ export function buildSession(request: SessionRequest): SessionPlan {
     (q) => !used.has(q.id) && q.type !== 'reading',
   );
 
-  // 2. Remediation — questions touching a queued target.
+  // 2. Remediation — questions touching a queued target. `continue`, not
+  // `break`: item costs vary (60s vs. 120s), so one item that doesn't fit
+  // must not block a cheaper one further down the list.
   const targets = new Set(request.remediation.map((e) => e.targetId));
   const remedial = available.filter((q) =>
     q.targetLexemes.some((id) => targets.has(id)),
   );
   for (const q of remedial) {
-    if (!fits(COST_SECONDS[q.type])) break;
+    if (!fits(COST_SECONDS[q.type])) continue;
     take({ kind: 'question', questionId: q.id }, COST_SECONDS[q.type]);
     used.add(q.id);
   }
 
-  // 3. New material deliberately above the comfort level.
+  // 3. New material deliberately above the comfort level. Same reasoning as
+  // step 2: `continue` lets a cheaper, worse-matched item fill budget a
+  // pricier, better-matched item couldn't.
   const aim = request.theta + NEW_MATERIAL_THETA_OFFSET;
   const fresh = available
     .filter((q) => !used.has(q.id) && q.difficulty > request.theta)
     .sort((a, b) => Math.abs(a.difficulty - aim) - Math.abs(b.difficulty - aim));
 
   for (const q of fresh) {
-    if (!fits(COST_SECONDS[q.type])) break;
+    if (!fits(COST_SECONDS[q.type])) continue;
     take({ kind: 'question', questionId: q.id }, COST_SECONDS[q.type]);
     used.add(q.id);
   }
 
-  // 4. A reading passage is atomic — all or nothing.
-  for (const p of request.passages) {
-    if (!fits(COST_SECONDS.passage)) break;
+  // 4. A reading passage is atomic — all or nothing. Skip passages whose
+  // questions are all already answered; otherwise a completed passage is
+  // re-offered as "new" reading material forever. Uniform per-item cost
+  // (every passage is 900s), so `continue` vs. `break` cannot change the
+  // outcome here either — kept for the same consistency reason as step 1.
+  const unfinishedPassages = request.passages.filter(
+    (p) => !p.questionIds.every((id) => used.has(id)),
+  );
+  for (const p of unfinishedPassages) {
+    if (!fits(COST_SECONDS.passage)) continue;
     take({ kind: 'passage', passageId: p.id }, COST_SECONDS.passage);
   }
 
