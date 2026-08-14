@@ -30,6 +30,34 @@ function isShortfall(plan: SessionPlan, budgetSeconds: number): boolean {
   return plan.estimatedSeconds < budgetSeconds * SESSION_SHORTFALL_THRESHOLD;
 }
 
+interface InfoNoticeProps {
+  /** Concise accessible name for the landmark itself, distinct from its body text. */
+  label: string;
+  lead: string;
+  body: string;
+}
+
+/**
+ * Shared shell for a small, honest explanation panel: a decorative glyph
+ * (never the only signal — WCAG 1.4.1, same reasoning as Task 10's
+ * ChoiceList), a live region so the explanation is announced the moment it
+ * appears rather than requiring the user to go looking for it, and an
+ * explicit accessible name on the landmark.
+ */
+function InfoNotice({ label, lead, body }: InfoNoticeProps) {
+  return (
+    <aside className="info-notice" role="status" aria-label={label}>
+      <p>
+        <span className="info-notice-glyph" aria-hidden="true">
+          ⓘ
+        </span>
+        {lead}
+      </p>
+      <p>{body}</p>
+    </aside>
+  );
+}
+
 /**
  * The session builder deliberately refuses to serve material at or below the
  * user's own level - comfortable practice yields all-correct answers and a
@@ -39,18 +67,29 @@ function isShortfall(plan: SessionPlan, budgetSeconds: number): boolean {
  */
 function SessionShortfallNotice() {
   return (
-    <aside className="shortfall-notice" role="status" aria-label="הסבר לגבי אורך הסשן">
-      <p>
-        <span className="shortfall-glyph" aria-hidden="true">
-          ⓘ
-        </span>
-        התוכן החדש מעל הרמה הנוכחית שלך אזל להיום. לכן הסשן קצר מהזמן שביקשת — וזו לא תקלה.
-      </p>
-      <p>
-        המערכת נמנעת בכוונה מתרגול קל מדי, כי הוא היה פוגע בציון שלך במבחן האמיתי. כרטיסיות
-        חזרה חדשות יצטברו בהמשך.
-      </p>
-    </aside>
+    <InfoNotice
+      label="הסבר לגבי אורך הסשן"
+      lead="התוכן החדש מעל הרמה הנוכחית שלך אזל להיום. לכן הסשן קצר מהזמן שביקשת — וזו לא תקלה."
+      body="המערכת נמנעת בכוונה מתרגול קל מדי, כי הוא היה פוגע בציון שלך במבחן האמיתי. כרטיסיות חזרה חדשות יצטברו בהמשך."
+    />
+  );
+}
+
+/**
+ * The zero-item extreme of the same situation SessionShortfallNotice
+ * explains. Rendered on the picker itself, not alongside a SessionRunner:
+ * mounting SessionRunner with nothing to show would trigger its own
+ * ready-but-no-item effect immediately, completing the "session" before it
+ * ever rendered and bouncing back here anyway with no trace — indistin-
+ * guishable from the button not responding at all.
+ */
+function EmptySessionNotice() {
+  return (
+    <InfoNotice
+      label="הסבר: אין תוכן זמין כרגע"
+      lead="אין כרגע תוכן חדש להציע ברמה הנוכחית, ואין גם כרטיסיות לחזרה שממתינות כרגע."
+      body="זו לא תקלה — כל מה שזמין כבר נוצל. אפשר לנסות תקציב זמן אחר, או לחזור מאוחר יותר כשיצטברו כרטיסיות חדשות לחזרה."
+    />
   );
 }
 
@@ -61,6 +100,7 @@ interface ActiveSession {
 
 export function TodayScreen() {
   const [session, setSession] = useState<ActiveSession | null>(null);
+  const [emptySession, setEmptySession] = useState(false);
 
   async function start(budgetSeconds: number) {
     const [profile, cards, remediation, attempts] = await Promise.all([
@@ -78,6 +118,13 @@ export function TodayScreen() {
       passages: content.passages,
       answeredQuestionIds: new Set(attempts.map((a) => a.questionId)),
     });
+
+    if (plan.items.length === 0) {
+      setEmptySession(true);
+      return;
+    }
+
+    setEmptySession(false);
     setSession({ plan, budgetSeconds });
   }
 
@@ -93,6 +140,7 @@ export function TodayScreen() {
   return (
     <section aria-labelledby="today-heading">
       <h1 id="today-heading">כמה זמן יש לך היום?</h1>
+      {emptySession && <EmptySessionNotice />}
       <div className="budget-options">
         {TIME_BUDGET_OPTIONS.map((option) => (
           <button key={option.seconds} type="button" onClick={() => void start(option.seconds)}>
