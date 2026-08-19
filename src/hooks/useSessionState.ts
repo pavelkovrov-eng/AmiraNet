@@ -103,5 +103,21 @@ export function useSessionState() {
     [cards, masteredCheck],
   );
 
-  return { ready, submitAnswer, totalQuestions: content.questions.length };
+  const reviewLexeme = useCallback(
+    async (lexemeId: string, known: boolean) => {
+      const now = new Date();
+      const existing = cards.get(lexemeId);
+      const updated = existing
+        ? reviewCard(existing, known, now)
+        : seedCard(known, now);
+
+      const nextCards = new Map(cards);
+      nextCards.set(lexemeId, updated);
+      setCards(nextCards);
+      await saveCard(lexemeId, updated);
+    },
+    [cards],
+  );
+
+  return { ready, submitAnswer, reviewLexeme, totalQuestions: content.questions.length };
 }

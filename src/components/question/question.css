@@ -102,3 +102,31 @@
 .timer-fill--warning {
   background: var(--color-due);
 }
+
+.flashcard {
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+}
+
+.flashcard > p:first-child {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+.flashcard-gloss {
+  font-size: var(--text-lg);
+}
+
+.flashcard-family,
+.flashcard-example {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.flashcard-rating {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-4);
+}

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import { FlashCard } from './FlashCard';
 import { QuestionCard } from '../question/QuestionCard';
 import { EnglishText } from '../ui/EnglishText';
 import { useSessionState } from '../../hooks/useSessionState';
-import { questionById } from '../../content/index';
+import { lexemeById, questionById } from '../../content/index';
 import type { SessionPlan } from '../../engines/session-builder';
 import './session-runner.css';
 
@@ -12,7 +13,7 @@ interface SessionRunnerProps {
 }
 
 export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
-  const { ready, submitAnswer } = useSessionState();
+  const { ready, submitAnswer, reviewLexeme } = useSessionState();
   const [index, setIndex] = useState(0);
   const [chosenIndex, setChosenIndex] = useState<number | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
@@ -32,7 +33,9 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
   }, [ready, item, onComplete]);
 
   useEffect(() => {
-    // Non-question kinds have no runner yet; Task 12 adds the SRS branch.
+    // Passage runner is out of scope for wave 1; skip past it. SRS items no
+    // longer belong in this effect - Task 12 renders them via FlashCard
+    // below instead of skipping them.
     //
     // Guarded against StrictMode's double-invoke (mount -> cleanup -> mount,
     // dev-only, no cleanup returned here): both invocations fire against the
@@ -43,13 +46,72 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
     // item this effect closed over. The first invocation's update makes that
     // false for the second, spurious invocation, so it becomes a no-op
     // rather than a second skip.
-    if (item && item.kind !== 'question') {
+    if (item && item.kind === 'passage') {
       setIndex((i) => (plan.items[i] === item ? i + 1 : i));
     }
   }, [item, plan.items]);
 
   if (!ready) return <p>טוען…</p>;
-  if (!item || item.kind !== 'question') return null;
+  if (!item) return null;
+
+  // Shared by both the SRS branch and the question flow below, so rating a
+  // flashcard advances through the exact same path answering a question
+  // does - not a second, independently maintained setIndex call.
+  function advance() {
+    setChosenIndex(null);
+    setSaveFailed(false);
+    setIndex((i) => i + 1);
+  }
+
+  if (item.kind === 'srs') {
+    // Captured as a plain string here, for the same reason questionId is
+    // captured below: narrowing from `item.kind === 'srs'` does not persist
+    // into the nested onRate closure, so `item.lexemeId` inside it would not
+    // type-check.
+    const lexemeId = item.lexemeId;
+    const lexeme = lexemeById(lexemeId);
+    if (!lexeme) return <p>מילה חסרה</p>;
+
+    return (
+      <section aria-label="כרטיסיית מילה">
+        <FlashCard
+          lexeme={lexeme}
+          onRate={async (known) => {
+            try {
+              await reviewLexeme(lexemeId, known);
+            } catch (err) {
+              // Same reasoning as handleAnswer's catch below: onRate is
+              // invoked from FlashCard's onClick, whose return value React
+              // never awaits, so a rejection here would otherwise be
+              // unhandled - exactly the failure mode that once made this
+              // suite exit non-zero with every assertion green. Not calling
+              // advance() on failure is deliberate too: advance() clears
+              // saveFailed, so advancing anyway would erase this notice
+              // before anyone saw it and let the card look reviewed while
+              // nothing was actually persisted.
+              console.error('Failed to persist review', err);
+              setSaveFailed(true);
+              return;
+            }
+            advance();
+          }}
+        />
+        {saveFailed && (
+          <p className="save-error" role="status" aria-label="שגיאת שמירה">
+            <span className="save-error-glyph" aria-hidden="true">
+              ✕
+            </span>
+            הסקירה לא נשמרה.
+          </p>
+        )}
+        <p className="progress-note">
+          <EnglishText>{`${index + 1} / ${plan.items.length}`}</EnglishText>
+        </p>
+      </section>
+    );
+  }
+
+  if (item.kind !== 'question') return null;
 
   // Captured as a plain string here, not read as item.questionId inside the
   // closure below: type narrowing from the `item.kind !== 'question'` guard
@@ -80,12 +142,6 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
     }
   }
 
-  function advance() {
-    setChosenIndex(null);
-    setSaveFailed(false);
-    setIndex((i) => i + 1);
-  }
-
   return (
     <section aria-label="שאלה">
       <QuestionCard
@@ -95,7 +151,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
         chosenIndex={chosenIndex}
       />
       {saveFailed && (
-        <p className="save-error" role="status">
+        <p className="save-error" role="status" aria-label="שגיאת שמירה">
           <span className="save-error-glyph" aria-hidden="true">
             ✕
           </span>
