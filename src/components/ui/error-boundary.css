@@ -1,0 +1,13 @@
+/* Duplicated from session-runner.css / placement.css / simulation.css
+   rather than imported cross-feature: ErrorBoundary does not depend on any
+   of them being present. */
+.save-error {
+  margin-block-start: var(--space-2);
+  color: var(--color-wrong);
+  font-size: var(--text-sm);
+}
+
+.save-error-glyph {
+  margin-inline-end: var(--space-1);
+  font-weight: 700;
+}

@@ -101,31 +101,53 @@ interface ActiveSession {
 export function TodayScreen() {
   const [session, setSession] = useState<ActiveSession | null>(null);
   const [emptySession, setEmptySession] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
 
+  // Addition 1: getProfile and getCards (src/db/repository.ts) both throw
+  // on corrupt stored data - assertFiniteProfile / assertFiniteCard. Before
+  // Task 15 this Promise.all was unreachable (App.tsx rendered a
+  // placeholder); routing now makes it live, and this is the literal
+  // entrance to a study session. Audited the whole Promise.all, not just
+  // getProfile: getRemediation/getAttempts have no corruption guard of
+  // their own today, but wrapping the full load-and-build sequence in one
+  // try/catch means that stays true regardless, rather than pinning safety
+  // to which two of four calls happen to guard themselves right now.
+  // Without this, a rejection here was completely unhandled: no status
+  // role, no session, an unhandled promise rejection in the background -
+  // the same failure shape SessionRunner's save-error notice already
+  // exists to avoid for a single answer, just one level earlier, for
+  // everything a session needs before it can even start.
   async function start(budgetSeconds: number) {
-    const [profile, cards, remediation, attempts] = await Promise.all([
-      getProfile(),
-      getCards(),
-      getRemediation(),
-      getAttempts(),
-    ]);
-    const plan = buildSession({
-      budgetSeconds,
-      theta: profile.theta,
-      dueLexemeIds: dueLexemeIds(cards, new Date()),
-      remediation,
-      questions: content.questions,
-      passages: content.passages,
-      answeredQuestionIds: new Set(attempts.map((a) => a.questionId)),
-    });
-
-    if (plan.items.length === 0) {
-      setEmptySession(true);
-      return;
-    }
-
+    setLoadFailed(false);
     setEmptySession(false);
-    setSession({ plan, budgetSeconds });
+
+    try {
+      const [profile, cards, remediation, attempts] = await Promise.all([
+        getProfile(),
+        getCards(),
+        getRemediation(),
+        getAttempts(),
+      ]);
+      const plan = buildSession({
+        budgetSeconds,
+        theta: profile.theta,
+        dueLexemeIds: dueLexemeIds(cards, new Date()),
+        remediation,
+        questions: content.questions,
+        passages: content.passages,
+        answeredQuestionIds: new Set(attempts.map((a) => a.questionId)),
+      });
+
+      if (plan.items.length === 0) {
+        setEmptySession(true);
+        return;
+      }
+
+      setSession({ plan, budgetSeconds });
+    } catch (err) {
+      console.error('Failed to load stored data', err);
+      setLoadFailed(true);
+    }
   }
 
   if (session) {
@@ -141,6 +163,14 @@ export function TodayScreen() {
     <section aria-labelledby="today-heading">
       <h1 id="today-heading">כמה זמן יש לך היום?</h1>
       {emptySession && <EmptySessionNotice />}
+      {loadFailed && (
+        <p className="save-error" role="status" aria-label="שגיאת טעינה">
+          <span className="save-error-glyph" aria-hidden="true">
+            ✕
+          </span>
+          לא ניתן לטעון את הנתונים השמורים. ייתכן שהמידע פגום.
+        </p>
+      )}
       <div className="budget-options">
         {TIME_BUDGET_OPTIONS.map((option) => (
           <button key={option.seconds} type="button" onClick={() => void start(option.seconds)}>

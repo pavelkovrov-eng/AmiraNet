@@ -1,0 +1,21 @@
+.type-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-3);
+}
+
+.type-options button {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.type-options button:hover {
+  border-color: var(--color-text);
+}

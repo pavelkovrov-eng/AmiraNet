@@ -12,6 +12,7 @@ import {
   type SimulationState,
 } from '../engines/simulation';
 import { thetaToScore, updateTheta } from '../engines/theta';
+import { getProfile, saveProfile } from '../db/repository';
 import type { QuestionItem } from '../content/types';
 import './simulation.css';
 
@@ -29,29 +30,44 @@ const POLL_INTERVAL_MS = 250;
 const SECTION_QUESTIONS = assignSectionQuestions(EXAM_SECTIONS, content.questions);
 
 /**
+ * The simulation's own ability estimate, folded fresh from just its own
+ * answers (starting at acc=0) rather than continuing from the user's stored
+ * profile.theta - a simulated exam reflects performance on that exam alone,
+ * the same way a real exam does not care what last week's practice scored.
+ * Shared by describeSimulationScore below (the render-time display) and
+ * Addition 2's persistence effect (the history point), so both derive from
+ * exactly one computation rather than two that could drift apart.
+ *
+ * Throws on non-finite input, same contract as updateTheta itself (valid
+ * content can never drive it there - the schema clamps difficulty to
+ * [-3, 3] - but nothing here assumes that holds).
+ */
+function computeSimulationTheta(state: SimulationState, questions: QuestionItem[]): number {
+  return Object.entries(state.answers).reduce((acc, [id, choice], i) => {
+    const q = questions.find((x) => x.id === id);
+    if (!q) return acc;
+    return updateTheta(acc, q.difficulty, choice === q.correctIndex, i);
+  }, 0);
+}
+
+/**
  * thetaToScore (engines/theta.ts) throws on non-finite input, and so does
- * updateTheta feeding it. Valid content can never drive either non-finite -
- * the content schema clamps difficulty to [-3, 3] - but this feeds the
- * completion view's render, and an uncaught throw there would blank the
- * screen at the exact moment a 39-minute exam finishes: the worst possible
- * time to lose the screen. Computed ahead of the JSX rather than inside it,
- * so a failure here is a value the render branches on instead of an
- * exception the render dies on - same shape as PlacementScreen.tsx's
- * describePlacementScore. Returns null (never a valid score) to signal
- * failure, and logs so the failure is not silent even though the screen
- * recovers from it.
+ * computeSimulationTheta's own updateTheta fold. Valid content can never
+ * drive either non-finite, but this feeds the completion view's render, and
+ * an uncaught throw there would blank the screen at the exact moment a
+ * 39-minute exam finishes: the worst possible time to lose the screen.
+ * Computed ahead of the JSX rather than inside it, so a failure here is a
+ * value the render branches on instead of an exception the render dies on -
+ * same shape as PlacementScreen.tsx's describePlacementScore. Returns null
+ * (never a valid score) to signal failure, and logs so the failure is not
+ * silent even though the screen recovers from it.
  */
 function describeSimulationScore(
   state: SimulationState,
   questions: QuestionItem[],
 ): number | null {
   try {
-    const theta = Object.entries(state.answers).reduce((acc, [id, choice], i) => {
-      const q = questions.find((x) => x.id === id);
-      if (!q) return acc;
-      return updateTheta(acc, q.difficulty, choice === q.correctIndex, i);
-    }, 0);
-    return thetaToScore(theta);
+    return thetaToScore(computeSimulationTheta(state, questions));
   } catch (err) {
     console.error('Failed to compute simulation score', err);
     return null;
@@ -106,6 +122,17 @@ export function SimulationScreen() {
   // synchronously, before React has any chance to re-render and disable
   // anything.
   const advancing = useRef(false);
+  // Addition 2: guards the persistence effect below against StrictMode's
+  // double-invoke on the render where `section` first goes undefined -
+  // same shape as `advancing` above, set synchronously before any await so
+  // a second invocation sees it as already-true regardless of render
+  // timing. Never reset (unlike `advancing`, which must reset every time
+  // the section changes so the NEXT confirm can proceed): completion is a
+  // one-way transition - once `section` is undefined it stays undefined
+  // for the rest of this component's life - so there is no "next attempt"
+  // this guard would ever need to allow through again.
+  const resultSaved = useRef(false);
+  const [resultSaveFailed, setResultSaveFailed] = useState(false);
 
   const section = EXAM_SECTIONS[state.sectionIndex];
   const sectionQuestions = section ? SECTION_QUESTIONS[state.sectionIndex] : [];
@@ -162,6 +189,62 @@ export function SimulationScreen() {
     if (timer?.isExpired()) confirmSection();
   }, [tick, timer]);
 
+  // Addition 2: Task 14 deliberately left simulation results unpersisted -
+  // its own brief named no repository functions, so it invented none. That
+  // left a real gap: a full 39-minute simulation is the single most
+  // information-dense signal this app can produce (all 23 scored slots,
+  // every question type in one pass), closer to the real exam than any
+  // practice session, and a user who sits through one saw nothing of it on
+  // the progress screen afterward.
+  //
+  // Fires exactly once, when `section` first goes undefined (all sections
+  // locked). Appends one point to profile.thetaHistory - the same shape
+  // PlacementScreen.tsx's finish() already writes for a completed placement
+  // - without touching profile.theta or profile.answered. Deliberately not
+  // folded into the live adaptive estimate: session-builder.ts selects
+  // future practice material from profile.theta, and letting an occasional
+  // mock exam (independently seeded from acc=0, see computeSimulationTheta)
+  // overwrite that would make ordinary practice selection jump around based
+  // on a completely different, freshly-seeded computation. Plotting it as
+  // one more timestamped point on the same history the chart already reads
+  // is the minimal, additive fix for what was actually reported missing -
+  // "the progress screen's picture" - without perturbing anything else.
+  //
+  // No repository function is added for this: it reuses getProfile/
+  // saveProfile exactly as PlacementScreen.tsx's finish() already does for
+  // the identical read-modify-write shape, keeping repository.ts's role as
+  // thin CRUD and the "what changed and why" business logic where every
+  // other caller already keeps it.
+  useEffect(() => {
+    if (section) return;
+    if (resultSaved.current) return;
+    resultSaved.current = true;
+
+    void (async () => {
+      let theta: number;
+      try {
+        theta = computeSimulationTheta(state, content.questions);
+      } catch (err) {
+        // Non-finite theta: already surfaced to the user via the score
+        // notice below (describeSimulationScore hits the same throw). Not
+        // a second, redundant failure to report - there is nothing sane to
+        // persist either way.
+        console.error('Failed to compute simulation result for history', err);
+        return;
+      }
+      try {
+        const profile = await getProfile();
+        await saveProfile({
+          ...profile,
+          thetaHistory: [...profile.thetaHistory, { at: Date.now(), theta }],
+        });
+      } catch (err) {
+        console.error('Failed to persist simulation result', err);
+        setResultSaveFailed(true);
+      }
+    })();
+  }, [section, state]);
+
   if (!section) {
     const score = describeSimulationScore(state, content.questions);
 
@@ -184,6 +267,21 @@ export function SimulationScreen() {
             it still appears even when the score itself could not be
             computed. */}
         <p className="disclaimer">אומדן פנימי בלבד, לא ציון מאל"ו. השתמש בו למעקב אחר מגמה.</p>
+        {/* Addition 2: the history write is best-effort - failing to save it
+            must not look like the exam itself failed, so this is its own,
+            separate notice rather than folded into the score-error one
+            above. No retry control, matching SessionRunner's own per-answer
+            save-error notice (Addition 1's cited pattern): telling the user
+            plainly is the fix here, not offering a retry for a background
+            write they never directly triggered. */}
+        {resultSaveFailed && (
+          <p className="save-error" role="status" aria-label="שגיאת שמירה">
+            <span className="save-error-glyph" aria-hidden="true">
+              ✕
+            </span>
+            תוצאת הסימולציה לא נשמרה בהיסטוריית ההתקדמות.
+          </p>
+        )}
       </section>
     );
   }

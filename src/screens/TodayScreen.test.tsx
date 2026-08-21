@@ -1,4 +1,5 @@
 import 'fake-indexeddb/auto';
+import { createEmptyCard } from 'ts-fsrs';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TodayScreen } from './TodayScreen';
@@ -77,6 +78,47 @@ describe('TodayScreen shortfall notice', () => {
     // explanation, and no SessionRunner mounted underneath it - there was
     // never anything for it to run.
     expect(screen.getByRole('heading', { name: 'כמה זמן יש לך היום?' })).toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'שאלה' })).not.toBeInTheDocument();
+  });
+});
+
+// Addition 1 (Context section's carry-forward note): start()'s Promise.all
+// was completely unreachable before Task 15 wired routing - App.tsx
+// rendered a placeholder. These seed the corrupt row via db.profile.put /
+// db.cards.put directly, bypassing saveProfile/saveCard's own write guards -
+// same technique as src/db/repository.test.ts - simulating corruption that
+// arrived by some other path than this app's own writes.
+describe('TodayScreen corrupt-storage handling', () => {
+  it('shows a visible failure state instead of going silently inert when the stored profile is corrupt', async () => {
+    await db.profile.put({
+      id: 'me',
+      theta: NaN,
+      answered: 0,
+      placementDone: false,
+      thetaHistory: [],
+    });
+
+    render(<TodayScreen />);
+    await userEvent.click(screen.getByRole('button', { name: '10 דקות' }));
+
+    const notice = await screen.findByRole('status', { name: 'שגיאת טעינה' });
+    expect(notice).toHaveTextContent('לא ניתן לטעון את הנתונים השמורים');
+
+    // Not a silent bounce: no session ever mounts, and no other status
+    // (e.g. the unrelated empty-session notice) fires instead.
+    expect(screen.queryByRole('region', { name: 'שאלה' })).not.toBeInTheDocument();
+    expect(screen.getAllByRole('status')).toHaveLength(1);
+  });
+
+  it('shows a visible failure state instead of going silently inert when a stored card is corrupt', async () => {
+    const card = createEmptyCard(new Date('2026-08-09T09:00:00Z'));
+    await db.cards.put({ lexemeId: 'corrupt', card: { ...card, stability: NaN } });
+
+    render(<TodayScreen />);
+    await userEvent.click(screen.getByRole('button', { name: '10 דקות' }));
+
+    const notice = await screen.findByRole('status', { name: 'שגיאת טעינה' });
+    expect(notice).toHaveTextContent('לא ניתן לטעון את הנתונים השמורים');
     expect(screen.queryByRole('region', { name: 'שאלה' })).not.toBeInTheDocument();
   });
 });

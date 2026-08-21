@@ -55,6 +55,22 @@ async function expireCurrentSection() {
   });
 }
 
+// Addition 2: SimulationScreen now persists its result on completion
+// (getProfile/saveProfile). This file deliberately does NOT set up
+// fake-indexeddb: combining it with the fake timers this file already needs
+// for fast section traversal hangs indefinitely - confirmed directly, both
+// for db.delete()/db.open() and for a plain getProfile()/saveProfile() call
+// once already open, no matter how much fake time is advanced afterward
+// (fake-indexeddb's internal dispatch depends on a real timer queue that
+// fake timers intercept but never advance on their own). Without it,
+// indexedDB is simply absent in jsdom, so getProfile() rejects quickly (no
+// waiting - Dexie detects the missing API and rejects rather than trying to
+// schedule anything) and the persistence effect's own try/catch turns that
+// into a caught, logged failure - exercised, not hidden, by the render-throw
+// test below tolerating the extra save-error notice this produces. The
+// happy-path persistence behavior itself is covered separately in
+// SimulationScreen.persistence.test.tsx, using real timers instead so
+// fake-indexeddb behaves normally.
 beforeEach(() => {
   vi.useFakeTimers();
 });
@@ -198,5 +214,18 @@ describe('SimulationScreen render-throw handling', () => {
     for (const [theta] of vi.mocked(thetaToScore).mock.calls) {
       expect(theta).toBeGreaterThan(0);
     }
+
+    // Addition 2's persistence effect also ran on this same completion
+    // transition. No fake-indexeddb is set up in this file (see this file's
+    // beforeEach for why - combining it with the fake timers this file needs
+    // elsewhere hangs indefinitely), so getProfile() inside that effect
+    // rejects (indexedDB is simply absent in jsdom) and its own try/catch
+    // turns that into a second, differently-named notice rather than an
+    // unhandled rejection - proving that failure path is non-silent too,
+    // and that it coexists with the score-error notice above rather than
+    // replacing or hiding it.
+    expect(screen.getByRole('status', { name: 'שגיאת שמירה' })).toHaveTextContent(
+      'תוצאת הסימולציה לא נשמרה',
+    );
   });
 });

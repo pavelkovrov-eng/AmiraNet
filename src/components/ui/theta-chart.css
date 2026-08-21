@@ -1,0 +1,30 @@
+.theta-chart-figure {
+  margin: 0;
+}
+
+.theta-chart {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 640px;
+  block-size: auto;
+}
+
+.theta-chart-pass-label {
+  font-size: var(--text-sm);
+  fill: var(--color-text-muted);
+}
+
+.theta-chart-caption {
+  margin-block-start: var(--space-2);
+  max-inline-size: var(--measure);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* Shared with ProgressScreen's own empty diagnosis-distribution state
+   (src/screens/progress.css duplicates this rather than importing
+   cross-feature - same convention as .save-error elsewhere in the app). */
+.empty-state {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,31 @@
+/* Duplicated from placement.css / simulation.css / session-runner.css
+   rather than imported cross-feature: ProgressScreen does not depend on any
+   of them being present. */
+.disclaimer {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.save-error {
+  margin-block-start: var(--space-2);
+  color: var(--color-wrong);
+  font-size: var(--text-sm);
+}
+
+.save-error-glyph {
+  margin-inline-end: var(--space-1);
+  font-weight: 700;
+}
+
+.score-display {
+  font-size: var(--text-lg);
+  margin-block-end: var(--space-2);
+}
+
+/* Duplicated from theta-chart.css for the same reason - this screen's own
+   "no classified mistakes yet" state uses the identical treatment as the
+   chart's own empty state. */
+.empty-state {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
