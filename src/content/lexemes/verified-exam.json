@@ -1003,5 +1003,847 @@
       "verified-exam",
       "sim1"
     ]
+  },
+  {
+    "id": "ve2-speculate",
+    "headword": "speculate",
+    "family": [
+      "speculate",
+      "speculates"
+    ],
+    "definitionHe": "לשער, להעלות השערות",
+    "definitionEn": "to form a theory without firm evidence",
+    "pos": "verb",
+    "morphology": {
+      "root": "specul",
+      "suffixes": [
+        "-ate",
+        "-ation"
+      ]
+    },
+    "confusableWith": [
+      "spectate",
+      "stipulate"
+    ],
+    "exampleSentence": "Historians can only speculate about why the settlement was abandoned.",
+    "difficulty": 4,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-elusive",
+    "headword": "elusive",
+    "family": [
+      "elusive",
+      "elusives"
+    ],
+    "definitionHe": "חמקמק, קשה לתפיסה",
+    "definitionEn": "difficult to find, catch or define",
+    "pos": "adjective",
+    "morphology": {
+      "prefix": "e-",
+      "root": "lus",
+      "suffixes": [
+        "-ive"
+      ]
+    },
+    "confusableWith": [
+      "illusive",
+      "allusive"
+    ],
+    "exampleSentence": "A convincing explanation has proved elusive for over a century.",
+    "difficulty": 5,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-prone",
+    "headword": "prone",
+    "family": [
+      "prone",
+      "prones"
+    ],
+    "definitionHe": "נוטה ל-, מועד ל-",
+    "definitionEn": "likely to suffer from or do something undesirable",
+    "pos": "adjective",
+    "morphology": {
+      "root": "prone",
+      "suffixes": []
+    },
+    "confusableWith": [
+      "proud",
+      "prune"
+    ],
+    "exampleSentence": "Shallow soils are prone to erosion after heavy rain.",
+    "difficulty": 4,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-rival",
+    "headword": "rival",
+    "family": [
+      "rival",
+      "rivals"
+    ],
+    "definitionHe": "יריב, מתחרה",
+    "definitionEn": "a person or thing competing with another",
+    "pos": "noun",
+    "morphology": {
+      "root": "rival",
+      "suffixes": [
+        "-ry",
+        "-ed"
+      ]
+    },
+    "confusableWith": [
+      "revival",
+      "arrival"
+    ],
+    "exampleSentence": "The two firms were rivals for the same contract.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-remarkable",
+    "headword": "remarkable",
+    "family": [
+      "remarkable",
+      "remarkables"
+    ],
+    "definitionHe": "יוצא דופן, ראוי לציון",
+    "definitionEn": "worthy of attention; striking",
+    "pos": "adjective",
+    "morphology": {
+      "prefix": "re-",
+      "root": "mark",
+      "suffixes": [
+        "-able",
+        "-ably"
+      ]
+    },
+    "confusableWith": [
+      "removable",
+      "remediable"
+    ],
+    "exampleSentence": "The manuscript survived in remarkable condition.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-cultivate",
+    "headword": "cultivate",
+    "family": [
+      "cultivate",
+      "cultivates"
+    ],
+    "definitionHe": "לגדל, לעבד אדמה; לטפח",
+    "definitionEn": "to prepare land for crops; to develop a quality",
+    "pos": "verb",
+    "morphology": {
+      "root": "cultiv",
+      "suffixes": [
+        "-ate",
+        "-ation"
+      ]
+    },
+    "confusableWith": [
+      "captivate",
+      "calculate"
+    ],
+    "exampleSentence": "The valley has been cultivated continuously for eight centuries.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-hypothesize",
+    "headword": "hypothesize",
+    "family": [
+      "hypothesize",
+      "hypothesizes"
+    ],
+    "definitionHe": "להעלות השערה",
+    "definitionEn": "to propose an explanation for testing",
+    "pos": "verb",
+    "morphology": {
+      "prefix": "hypo-",
+      "root": "thes",
+      "suffixes": [
+        "-ize",
+        "-is"
+      ]
+    },
+    "confusableWith": [
+      "hypnotize",
+      "synthesize"
+    ],
+    "exampleSentence": "Researchers hypothesized that the pattern reflected seasonal migration.",
+    "difficulty": 5,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-extract",
+    "headword": "extract",
+    "family": [
+      "extract",
+      "extracts"
+    ],
+    "definitionHe": "לחלץ, להפיק",
+    "definitionEn": "to remove or obtain from a source",
+    "pos": "verb",
+    "morphology": {
+      "prefix": "ex-",
+      "root": "tract",
+      "suffixes": [
+        "-ion",
+        "-ed"
+      ]
+    },
+    "confusableWith": [
+      "exact",
+      "extort"
+    ],
+    "exampleSentence": "The mineral is extracted from seawater rather than mined.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-principally",
+    "headword": "principally",
+    "family": [
+      "principally",
+      "principallys"
+    ],
+    "definitionHe": "בעיקר",
+    "definitionEn": "mainly; for the most part",
+    "pos": "adverb",
+    "morphology": {
+      "root": "princip",
+      "suffixes": [
+        "-al",
+        "-ally"
+      ]
+    },
+    "confusableWith": [
+      "principle",
+      "practically"
+    ],
+    "exampleSentence": "The delay was principally caused by a shortage of skilled labour.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-ignorant",
+    "headword": "ignorant",
+    "family": [
+      "ignorant",
+      "ignorants"
+    ],
+    "definitionHe": "בור, חסר ידיעה",
+    "definitionEn": "lacking knowledge or awareness",
+    "pos": "adjective",
+    "morphology": {
+      "root": "ignor",
+      "suffixes": [
+        "-ant",
+        "-ance"
+      ]
+    },
+    "confusableWith": [
+      "indignant",
+      "arrogant"
+    ],
+    "exampleSentence": "He was entirely ignorant of the change until it was announced.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-secular",
+    "headword": "secular",
+    "family": [
+      "secular",
+      "seculars"
+    ],
+    "definitionHe": "חילוני",
+    "definitionEn": "not connected with religion",
+    "pos": "adjective",
+    "morphology": {
+      "root": "secul",
+      "suffixes": [
+        "-ar",
+        "-arism"
+      ]
+    },
+    "confusableWith": [
+      "circular",
+      "singular"
+    ],
+    "exampleSentence": "The school follows a secular curriculum.",
+    "difficulty": 4,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-undergo",
+    "headword": "undergo",
+    "family": [
+      "undergo",
+      "undergos"
+    ],
+    "definitionHe": "לעבור, לחוות",
+    "definitionEn": "to experience something, especially a change",
+    "pos": "verb",
+    "morphology": {
+      "prefix": "under-",
+      "root": "go",
+      "suffixes": [
+        "-ne",
+        "-went"
+      ]
+    },
+    "confusableWith": [
+      "undertake",
+      "undermine"
+    ],
+    "exampleSentence": "The building underwent extensive repair before reopening.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-substitute",
+    "headword": "substitute",
+    "family": [
+      "substitute",
+      "substitutes"
+    ],
+    "definitionHe": "תחליף; להחליף",
+    "definitionEn": "a replacement; to use in place of another",
+    "pos": "noun",
+    "morphology": {
+      "prefix": "sub-",
+      "root": "stitut",
+      "suffixes": [
+        "-e",
+        "-ion"
+      ]
+    },
+    "confusableWith": [
+      "constitute",
+      "institute"
+    ],
+    "exampleSentence": "Margarine was used as a substitute during the shortage.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-allocate",
+    "headword": "allocate",
+    "family": [
+      "allocate",
+      "allocates"
+    ],
+    "definitionHe": "להקצות",
+    "definitionEn": "to distribute for a particular purpose",
+    "pos": "verb",
+    "morphology": {
+      "prefix": "al-",
+      "root": "loc",
+      "suffixes": [
+        "-ate",
+        "-ation"
+      ]
+    },
+    "confusableWith": [
+      "advocate",
+      "abdicate"
+    ],
+    "exampleSentence": "Half the budget was allocated to maintenance.",
+    "difficulty": 4,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-coin",
+    "headword": "coin",
+    "family": [
+      "coin",
+      "coins"
+    ],
+    "definitionHe": "לטבוע מטבע; לטבוע מונח",
+    "definitionEn": "to invent a new word or phrase",
+    "pos": "verb",
+    "morphology": {
+      "root": "coin",
+      "suffixes": [
+        "-ed",
+        "-age"
+      ]
+    },
+    "confusableWith": [
+      "join",
+      "corn"
+    ],
+    "exampleSentence": "The term was coined in the 1950s and spread quickly.",
+    "difficulty": 4,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-monarchy",
+    "headword": "monarchy",
+    "family": [
+      "monarchy",
+      "monarchys"
+    ],
+    "definitionHe": "מונרכיה, מלוכה",
+    "definitionEn": "government headed by a king or queen",
+    "pos": "noun",
+    "morphology": {
+      "prefix": "mon-",
+      "root": "arch",
+      "suffixes": [
+        "-y"
+      ]
+    },
+    "confusableWith": [
+      "anarchy",
+      "hierarchy"
+    ],
+    "exampleSentence": "The monarchy was restored after eleven years of republic.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-defective",
+    "headword": "defective",
+    "family": [
+      "defective",
+      "defectives"
+    ],
+    "definitionHe": "פגום",
+    "definitionEn": "having a fault; imperfect",
+    "pos": "adjective",
+    "morphology": {
+      "prefix": "de-",
+      "root": "fect",
+      "suffixes": [
+        "-ive"
+      ]
+    },
+    "confusableWith": [
+      "detective",
+      "effective"
+    ],
+    "exampleSentence": "The batch was recalled after defective wiring was found.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-flaw",
+    "headword": "flaw",
+    "family": [
+      "flaw",
+      "flaws"
+    ],
+    "definitionHe": "פגם, ליקוי",
+    "definitionEn": "a fault or weakness",
+    "pos": "noun",
+    "morphology": {
+      "root": "flaw",
+      "suffixes": [
+        "-ed",
+        "-less"
+      ]
+    },
+    "confusableWith": [
+      "floor",
+      "flow"
+    ],
+    "exampleSentence": "The argument has a flaw that no amount of data can repair.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-salvage",
+    "headword": "salvage",
+    "family": [
+      "salvage",
+      "salvages"
+    ],
+    "definitionHe": "לחלץ, להציל מהריסות",
+    "definitionEn": "to rescue something from loss or destruction",
+    "pos": "verb",
+    "morphology": {
+      "root": "salv",
+      "suffixes": [
+        "-age",
+        "-ageable"
+      ]
+    },
+    "confusableWith": [
+      "savage",
+      "selvage"
+    ],
+    "exampleSentence": "Only the ship's log was salvaged from the wreck.",
+    "difficulty": 4,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-amicable",
+    "headword": "amicable",
+    "family": [
+      "amicable",
+      "amicables"
+    ],
+    "definitionHe": "ידידותי, בהסכמה",
+    "definitionEn": "characterised by friendliness and goodwill",
+    "pos": "adjective",
+    "morphology": {
+      "root": "amic",
+      "suffixes": [
+        "-able",
+        "-ably"
+      ]
+    },
+    "confusableWith": [
+      "applicable",
+      "aimable"
+    ],
+    "exampleSentence": "The dispute ended in an amicable settlement.",
+    "difficulty": 5,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-simmer",
+    "headword": "simmer",
+    "family": [
+      "simmer",
+      "simmers"
+    ],
+    "definitionHe": "לרתוח על אש קטנה; לרחוש",
+    "definitionEn": "to cook just below boiling; to be barely contained",
+    "pos": "verb",
+    "morphology": {
+      "root": "simmer",
+      "suffixes": [
+        "-ing",
+        "-ed"
+      ]
+    },
+    "confusableWith": [
+      "shimmer",
+      "summer"
+    ],
+    "exampleSentence": "Resentment simmered for years before it surfaced.",
+    "difficulty": 4,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-breed",
+    "headword": "breed",
+    "family": [
+      "breed",
+      "breeds"
+    ],
+    "definitionHe": "לגדל, להרבות",
+    "definitionEn": "to raise animals or plants for reproduction",
+    "pos": "verb",
+    "morphology": {
+      "root": "breed",
+      "suffixes": [
+        "-ing",
+        "-er"
+      ]
+    },
+    "confusableWith": [
+      "bread",
+      "brood"
+    ],
+    "exampleSentence": "The variety was bred for resistance rather than yield.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-leap",
+    "headword": "leap",
+    "family": [
+      "leap",
+      "leaps"
+    ],
+    "definitionHe": "לזנק, לקפוץ",
+    "definitionEn": "to jump a long way or with force",
+    "pos": "verb",
+    "morphology": {
+      "root": "leap",
+      "suffixes": [
+        "-ed",
+        "-ing"
+      ]
+    },
+    "confusableWith": [
+      "leak",
+      "lead"
+    ],
+    "exampleSentence": "Output leaped by a third in a single season.",
+    "difficulty": 2,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-deposit",
+    "headword": "deposit",
+    "family": [
+      "deposit",
+      "deposits"
+    ],
+    "definitionHe": "מרבץ; פיקדון; להניח",
+    "definitionEn": "a layer of accumulated matter; money placed in a bank",
+    "pos": "noun",
+    "morphology": {
+      "prefix": "de-",
+      "root": "posit",
+      "suffixes": [
+        "-s",
+        "-ion"
+      ]
+    },
+    "confusableWith": [
+      "depot",
+      "disposit"
+    ],
+    "exampleSentence": "The deposits were laid down over millions of years.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-access",
+    "headword": "access",
+    "family": [
+      "access"
+    ],
+    "definitionHe": "גישה",
+    "definitionEn": "the means or right to approach or enter",
+    "pos": "noun",
+    "morphology": {
+      "prefix": "ac-",
+      "root": "cess",
+      "suffixes": [
+        "-ible",
+        "-ibility"
+      ]
+    },
+    "confusableWith": [
+      "excess",
+      "assess"
+    ],
+    "exampleSentence": "Access to the archive is restricted to registered researchers.",
+    "difficulty": 2,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-vowel",
+    "headword": "vowel",
+    "family": [
+      "vowel",
+      "vowels"
+    ],
+    "definitionHe": "תנועה (בלשנות)",
+    "definitionEn": "a speech sound made without obstructing airflow",
+    "pos": "noun",
+    "morphology": {
+      "root": "vowel",
+      "suffixes": [
+        "-s"
+      ]
+    },
+    "confusableWith": [
+      "vow",
+      "bowel"
+    ],
+    "exampleSentence": "The language distinguishes eleven vowels.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-ashore",
+    "headword": "ashore",
+    "family": [
+      "ashore",
+      "ashores"
+    ],
+    "definitionHe": "אל החוף",
+    "definitionEn": "onto the shore from water",
+    "pos": "adverb",
+    "morphology": {
+      "prefix": "a-",
+      "root": "shore",
+      "suffixes": []
+    },
+    "confusableWith": [
+      "assure",
+      "offshore"
+    ],
+    "exampleSentence": "The crates washed ashore three days after the storm.",
+    "difficulty": 3,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-grain",
+    "headword": "grain",
+    "family": [
+      "grain",
+      "grains"
+    ],
+    "definitionHe": "גרעין, תבואה",
+    "definitionEn": "a small hard seed of a cereal plant",
+    "pos": "noun",
+    "morphology": {
+      "root": "grain",
+      "suffixes": [
+        "-s",
+        "-y"
+      ]
+    },
+    "confusableWith": [
+      "gain",
+      "groan"
+    ],
+    "exampleSentence": "Grain prices rose sharply after two poor harvests.",
+    "difficulty": 2,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-slope",
+    "headword": "slope",
+    "family": [
+      "slope",
+      "slopes"
+    ],
+    "definitionHe": "מדרון",
+    "definitionEn": "a surface with one end higher than the other",
+    "pos": "noun",
+    "morphology": {
+      "root": "slop",
+      "suffixes": [
+        "-e",
+        "-ing"
+      ]
+    },
+    "confusableWith": [
+      "slop",
+      "scope"
+    ],
+    "exampleSentence": "The northern slopes hold snow well into summer.",
+    "difficulty": 2,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
+  },
+  {
+    "id": "ve2-profession",
+    "headword": "profession",
+    "family": [
+      "profession",
+      "professions"
+    ],
+    "definitionHe": "מקצוע",
+    "definitionEn": "a paid occupation requiring training",
+    "pos": "noun",
+    "morphology": {
+      "prefix": "pro-",
+      "root": "fess",
+      "suffixes": [
+        "-ion",
+        "-ional"
+      ]
+    },
+    "confusableWith": [
+      "procession",
+      "possession"
+    ],
+    "exampleSentence": "Medicine was the only profession open to him at the time.",
+    "difficulty": 2,
+    "tags": [
+      "verified-exam",
+      "sc-answer"
+    ]
   }
 ]
