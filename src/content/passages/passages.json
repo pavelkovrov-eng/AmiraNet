@@ -1,0 +1,29 @@
+[
+  {
+    "id": "psg-002",
+    "title": "The Cost of Redundancy",
+    "body": "Engineers designing critical systems have long accepted a principle that seems, at first, wasteful: the safest design is rarely the most efficient one. A bridge calculated to bear exactly the load it will carry is a bridge with no margin, and margins are what absorb the errors that calculation cannot anticipate. Redundancy is therefore built in deliberately, and it is paid for in weight, cost, and complexity.\n\nWhat is less often acknowledged is that redundancy carries its own risk. Every additional component is another thing that can fail, and every backup system introduces the possibility that operators will rely on it without verifying that it works. A famous analysis of industrial accidents found that a substantial proportion involved a backup that had been silently inoperative for months, discovered only when the primary system failed and the backup was called upon for the first time.\n\nThis produces an uncomfortable conclusion. Redundancy does not simply add safety; it redistributes where failure can originate. A system with three independent power supplies is protected against the loss of any one of them, but it is also a system in which three sets of maintenance schedules must be honoured, three sets of alarms attended to, and three opportunities exist for a technician to disable something while believing it inactive.\n\nThe practical response has not been to abandon redundancy but to treat it as a claim requiring evidence. A backup that is never exercised is not a backup; it is an assumption. Regular deliberate failover — switching to the secondary system while the primary is still healthy — converts that assumption into a tested fact, at the cost of accepting small, controlled disruptions in order to avoid large uncontrolled ones.",
+    "domain": "science",
+    "difficulty": 1.8,
+    "wordCount": 271,
+    "questionIds": ["rc-0006", "rc-0007", "rc-0008", "rc-0009", "rc-0010"]
+  },
+  {
+    "id": "psg-003",
+    "title": "Reading the Silence in the Archive",
+    "body": "Historians of the early modern period work from records that were never intended to inform them. Parish registers, tax rolls, and court transcripts were produced to serve immediate administrative purposes, and they document what those purposes required. A person who paid no tax, owned no land, and never appeared before a magistrate may leave no written trace at all.\n\nThis creates a distinctive methodological difficulty. The surviving evidence is not a random sample of past lives; it is systematically weighted toward those whose activities the state had reason to record. A historian who counts only what the archive contains will reliably reproduce the state's own view of who mattered. The poor, the mobile, and the legally invisible are not merely underrepresented — they are absent in a patterned way.\n\nSeveral responses have emerged. One is to read administrative documents against their intended purpose, extracting from a tax assessment not the sum owed but the household composition it incidentally reveals. Another is to treat absence itself as evidence: a village whose register shows no burials in a year of known epidemic is telling us something about the register, not about the epidemic.\n\nNeither technique recovers what was never written down. What they offer instead is a disciplined awareness of the shape of the gap. The historian who knows which silences are structural can qualify conclusions accordingly, and can resist the temptation to mistake the limits of the archive for the limits of the past. That is a more modest achievement than reconstruction, but it is considerably more honest.",
+    "domain": "history",
+    "difficulty": 2.3,
+    "wordCount": 254,
+    "questionIds": ["rc-0011", "rc-0012", "rc-0013", "rc-0014", "rc-0015"]
+  },
+  {
+    "id": "psg-004",
+    "title": "Why Forecasts Resist Correction",
+    "body": "When a published forecast proves wrong, one might expect the forecaster to revise the model that produced it. In practice, revision is far less common than explanation. The unexpected outcome is attributed to a shock the model could not have been expected to capture, and the model itself survives intact.\n\nThis is not necessarily dishonest. Genuine shocks do occur, and a model that were rewritten after every surprise would track noise rather than structure. The difficulty is that the same reasoning is available after every failure, and nothing internal to it distinguishes a legitimate exception from an accumulating pattern of error. A forecaster can be wrong repeatedly, each time for a different stated reason, and never confront the possibility that the reasons share a cause.\n\nEconomists have proposed a partial remedy: require forecasts to be accompanied, in advance, by a statement of what result would count as disconfirming. A prediction issued with its own falsification condition attached cannot be rescued after the fact without the rescue being visible. The requirement is easy to state and unpopular to adopt, since it converts a reputational asset — the appearance of expertise — into something that can be publicly lost.\n\nEvidence on whether the practice improves accuracy is mixed. What it does reliably improve is the record. Forecasts made under such conditions can be scored, aggregated, and compared, which makes it possible to identify who is systematically better and by how much. That is a smaller claim than improved prediction, but it is the precondition for any such improvement being detected at all.",
+    "domain": "economics",
+    "difficulty": 2.6,
+    "wordCount": 258,
+    "questionIds": ["rc-0016", "rc-0017", "rc-0018", "rc-0019", "rc-0020"]
+  }
+]

@@ -1,0 +1,347 @@
+[
+  {
+    "id": "rc-0006",
+    "type": "reading",
+    "difficulty": 1.5,
+    "passageId": "psg-002",
+    "stem": "In the final paragraph, calling an unexercised backup 'an assumption' rather than a backup serves to emphasise that",
+    "options": [
+      "its availability has been supposed but never established",
+      "it was installed without proper authorisation",
+      "it is theoretically sound but physically absent",
+      "engineers disagree about whether it is needed"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. An assumption is something taken to be true without proof, which is exactly the status of a backup that has never been tested.",
+      "Authorisation is never discussed; the point concerns verification, not permission.",
+      "The backup exists physically. What is missing is evidence that it works.",
+      "The passage reports no disagreement about need, only about whether availability has been demonstrated."
+    ],
+    "primaryLexeme": "awl-assume",
+    "targetLexemes": ["awl-assume"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0007",
+    "type": "reading",
+    "difficulty": 2.1,
+    "passageId": "psg-002",
+    "stem": "The analysis of industrial accidents is cited primarily in order to",
+    "options": [
+      "show that a backup can fail silently long before it is needed",
+      "prove that redundant systems are more dangerous than simple ones",
+      "argue that industrial regulation has been ineffective",
+      "explain why backups are expensive to install"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The finding is that backups had been inoperative for months and the fault surfaced only on first use.",
+      "Overstates the passage, which says redundancy redistributes where failure originates, not that it is worse overall.",
+      "Regulation is never mentioned.",
+      "Cost appears in paragraph 1 as a price of redundancy, but it is not what this study is cited to show."
+    ],
+    "primaryLexeme": "awl-analyze",
+    "targetLexemes": ["awl-analyze"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0008",
+    "type": "reading",
+    "difficulty": 2.4,
+    "passageId": "psg-002",
+    "stem": "The passage suggests that a system with three independent power supplies is best described as",
+    "options": [
+      "better protected against one failure but exposed to more sources of failure",
+      "three times as reliable as a system with a single supply",
+      "unsafe, because complexity always outweighs redundancy",
+      "adequately safe provided the supplies are never used simultaneously"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The third paragraph names both the protection gained and the three sets of schedules, alarms, and opportunities for error.",
+      "The passage explicitly rejects the idea that redundancy simply adds safety.",
+      "Too strong. The passage recommends keeping redundancy while testing it, not abandoning it.",
+      "Simultaneous use is never discussed; the risk described is unverified availability."
+    ],
+    "primaryLexeme": "awl-complex",
+    "targetLexemes": ["awl-complex"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0009",
+    "type": "reading",
+    "difficulty": 1.9,
+    "passageId": "psg-002",
+    "stem": "According to the final paragraph, deliberate failover is valuable chiefly because it",
+    "options": [
+      "turns an untested assumption into a verified fact",
+      "eliminates the need for a secondary system",
+      "reduces the cost of maintaining redundant components",
+      "prevents the primary system from ever failing"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph states that an unexercised backup is an assumption, and that failover converts it into a tested fact.",
+      "The opposite: failover exists to confirm the secondary works, not to remove it.",
+      "The passage says failover costs small controlled disruptions; it makes no claim about lowering maintenance cost.",
+      "Nothing prevents primary failure. Failover ensures the response to it works."
+    ],
+    "primaryLexeme": "awl-ensure",
+    "targetLexemes": ["awl-ensure"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rc-0010",
+    "type": "reading",
+    "difficulty": 2.2,
+    "passageId": "psg-002",
+    "stem": "Which title best captures the passage as a whole?",
+    "options": [
+      "Redundancy Must Be Tested, Not Assumed",
+      "The Case Against Redundant Engineering",
+      "How Bridges Are Designed to Carry Load",
+      "Industrial Accidents of the Last Century"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage grants redundancy's value, identifies its hidden cost, and closes on exercising it as the remedy.",
+      "The passage does not argue against redundancy; it argues for verifying it.",
+      "The bridge appears only as an opening illustration in one paragraph.",
+      "The accident analysis is a single piece of evidence, not the passage's subject."
+    ],
+    "primaryLexeme": "awl-principle",
+    "targetLexemes": ["awl-principle"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0011",
+    "type": "reading",
+    "difficulty": 2.0,
+    "passageId": "psg-003",
+    "stem": "As used in paragraph 2, 'weighted' most nearly means",
+    "options": [
+      "skewed toward",
+      "made heavier",
+      "carefully measured",
+      "held down"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The sentence denies the evidence is a random sample and says it favours those the state recorded.",
+      "The literal physical sense, unrelated to sampling.",
+      "Suggests precision, whereas the paragraph is describing distortion.",
+      "A physical sense again; nothing is being restrained."
+    ],
+    "primaryLexeme": "awl-source",
+    "targetLexemes": ["awl-source"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "rc-0012",
+    "type": "reading",
+    "difficulty": 2.5,
+    "passageId": "psg-003",
+    "stem": "The passage indicates that the absent are missing from the archive",
+    "options": [
+      "in a pattern determined by what the state needed to record",
+      "at random, because early record-keeping was careless",
+      "because their records were deliberately destroyed",
+      "only in periods of epidemic"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage says they are absent 'in a patterned way', tied to what administrative purposes required.",
+      "The passage explicitly denies randomness.",
+      "Deliberate destruction is never mentioned; the records were simply never made.",
+      "The epidemic appears only as one illustration of reading absence as evidence."
+    ],
+    "primaryLexeme": "awl-document",
+    "targetLexemes": ["awl-document"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0013",
+    "type": "reading",
+    "difficulty": 2.3,
+    "passageId": "psg-003",
+    "stem": "The example of the village register with no burials illustrates",
+    "options": [
+      "using an absence in the record as evidence about the record itself",
+      "the reliability of parish registers during epidemics",
+      "a case where the archive preserved unusually complete data",
+      "the difficulty of dating early modern documents"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage says such a register tells us about the register, not about the epidemic.",
+      "The example demonstrates unreliability, not reliability.",
+      "The example turns on missing data, not complete data.",
+      "Dating is never discussed."
+    ],
+    "primaryLexeme": "awl-evident",
+    "targetLexemes": ["awl-evident"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rc-0014",
+    "type": "reading",
+    "difficulty": 2.7,
+    "passageId": "psg-003",
+    "stem": "The author's attitude toward the two techniques described in paragraph 3 is best characterised as",
+    "options": [
+      "appreciative of their discipline while clear about their limits",
+      "dismissive, since neither recovers unwritten lives",
+      "confident that they fully reconstruct the missing past",
+      "neutral, offering them without evaluation"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The final paragraph calls the achievement 'more modest' than reconstruction but 'considerably more honest'.",
+      "Too negative. The author endorses the techniques while stating what they cannot do.",
+      "Directly contradicted by 'Neither technique recovers what was never written down'.",
+      "The closing sentence is an explicit evaluation, not a neutral presentation."
+    ],
+    "primaryLexeme": "awl-evaluate",
+    "targetLexemes": ["awl-evaluate"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0015",
+    "type": "reading",
+    "difficulty": 2.8,
+    "passageId": "psg-003",
+    "stem": "It can be inferred that a historian who counted only what the archive contains would most likely",
+    "options": [
+      "mistake the state's priorities for the shape of past society",
+      "produce an unusually complete account of the rural poor",
+      "overstate the size of the landowning class relative to the truth only in tax years",
+      "find that the surviving evidence forms a random sample"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage says such a historian 'will reliably reproduce the state's own view of who mattered'.",
+      "The poor are precisely who the archive omits.",
+      "Narrows a general distortion to tax years, a restriction the passage never makes.",
+      "The passage denies the evidence is a random sample."
+    ],
+    "primaryLexeme": "awl-conclude",
+    "targetLexemes": ["awl-conclude"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0016",
+    "type": "reading",
+    "difficulty": 2.2,
+    "passageId": "psg-004",
+    "stem": "As used in paragraph 2, 'disconfirming' most nearly means",
+    "options": [
+      "showing a prediction to be false",
+      "delaying confirmation of a result",
+      "repeating a measurement",
+      "withdrawing a published claim"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph pairs it with 'falsification condition', a result that would refute the forecast.",
+      "Introduces timing, which the passage does not discuss here.",
+      "Replication is a different practice and is not mentioned.",
+      "Withdrawal is what a forecaster might do afterward; disconfirming describes the evidence, not the act."
+    ],
+    "primaryLexeme": "awl-demonstrate",
+    "targetLexemes": ["awl-demonstrate"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "rc-0017",
+    "type": "reading",
+    "difficulty": 2.6,
+    "passageId": "psg-004",
+    "stem": "The passage suggests that explaining a failed forecast by citing a shock is problematic mainly because",
+    "options": [
+      "the same explanation is available every time, so it cannot separate exception from pattern",
+      "genuine shocks almost never occur",
+      "it requires rewriting the model after every surprise",
+      "forecasters rarely publish their models"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage says nothing internal to the reasoning distinguishes a legitimate exception from accumulating error.",
+      "The passage grants that genuine shocks do occur.",
+      "That is the opposite practice, which the passage says would track noise.",
+      "Publication of models is never raised."
+    ],
+    "primaryLexeme": "awl-consequent",
+    "targetLexemes": ["awl-consequent"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rc-0018",
+    "type": "reading",
+    "difficulty": 2.4,
+    "passageId": "psg-004",
+    "stem": "According to the passage, the proposed remedy is unpopular chiefly because it",
+    "options": [
+      "makes reputational loss possible in public",
+      "is technically difficult to implement",
+      "requires forecasters to abandon their models",
+      "has been shown to reduce forecasting accuracy"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage says it converts the appearance of expertise into something that can be publicly lost.",
+      "The passage calls it 'easy to state', not technically hard.",
+      "No abandonment of models is proposed.",
+      "The evidence on accuracy is described as mixed, not negative."
+    ],
+    "primaryLexeme": "awl-require",
+    "targetLexemes": ["awl-require"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0019",
+    "type": "reading",
+    "difficulty": 2.9,
+    "passageId": "psg-004",
+    "stem": "The final paragraph draws which distinction?",
+    "options": [
+      "between making forecasts better and making them measurable",
+      "between short-term and long-term forecasts",
+      "between economic and scientific prediction",
+      "between individual forecasters and institutions"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It concedes the accuracy evidence is mixed while claiming the record reliably improves, calling that 'a smaller claim'.",
+      "Time horizon is never discussed.",
+      "The passage stays within economic forecasting throughout.",
+      "It mentions identifying who is better, but the contrast drawn is accuracy versus measurability."
+    ],
+    "primaryLexeme": "awl-distinct",
+    "targetLexemes": ["awl-distinct"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0020",
+    "type": "reading",
+    "difficulty": 2.5,
+    "passageId": "psg-004",
+    "stem": "The author's primary purpose in the passage is to",
+    "options": [
+      "explain why forecasting errors persist and what would make them visible",
+      "demonstrate that economic forecasting is worthless",
+      "compare several competing forecasting models",
+      "trace the history of economic prediction"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage diagnoses why revision is rare and proposes advance falsification conditions as the corrective.",
+      "Too strong. The author seeks to improve the record, not to dismiss the enterprise.",
+      "No specific models are compared.",
+      "No historical account is given."
+    ],
+    "primaryLexeme": "awl-primary",
+    "targetLexemes": ["awl-primary"],
+    "trapType": "scope-shift"
+  }
+]
