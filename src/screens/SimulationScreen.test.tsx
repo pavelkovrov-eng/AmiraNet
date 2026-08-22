@@ -182,12 +182,12 @@ describe('SimulationScreen render-throw handling', () => {
     await expireCurrentSection();
     expect(screen.getByRole('heading', { name: 'פרק 5 מתוך 6' })).toBeInTheDocument();
 
-    // Section 5 (restatement): the bank holds only 3 restatement items and
-    // section 4 already consumed them, so this section has zero left. It
-    // must show the sane empty-section notice instead of an undefined
-    // question, and must still lock on expiry. This is the under-filled
-    // path the section exists to exercise.
-    expect(screen.getByRole('status', { name: /אין שאלות/ })).toBeInTheDocument();
+    // Section 5 (restatement): the bank now holds enough restatement items
+    // to fill sections 4 and 5 both, so this renders a real question. The
+    // empty-section path is pinned at engine level in simulation.test.ts,
+    // where the bank can be made deficient on purpose instead of depending
+    // on the real one staying small.
+    expect(screen.queryByRole('status', { name: /אין שאלות/ })).not.toBeInTheDocument();
     await expireCurrentSection();
     expect(screen.getByRole('heading', { name: 'פרק 6 מתוך 6' })).toBeInTheDocument();
 

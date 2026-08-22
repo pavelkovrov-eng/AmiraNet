@@ -1,4 +1,6 @@
+import type { QuestionItem } from '../content/types';
 import {
+  assignSectionQuestions,
   EXAM_SECTIONS,
   TOTAL_SCORED_QUESTIONS,
   advanceSection,
@@ -71,5 +73,46 @@ describe('section locking', () => {
     state = advanceSection(state);
     state = advanceSection(state);
     expect(state.locked).toEqual([0, 1]);
+  });
+});
+
+describe('assignSectionQuestions under a deficient bank', () => {
+  // The screen-level test can no longer exercise the empty-section path,
+  // because the real content bank now fills every section. The behaviour
+  // still needs pinning, so it is pinned here where the input is injectable
+  // rather than left to a bank size that keeps changing under it.
+  function q(id: string, type: QuestionItem['type']): QuestionItem {
+    return {
+      id,
+      type,
+      difficulty: 0,
+      stem: id,
+      options: ['a', 'b', 'c', 'd'],
+      correctIndex: 0,
+      explanationPerOption: ['1', '2', '3', '4'],
+      primaryLexeme: 'awl-stub',
+      targetLexemes: ['awl-stub'],
+      trapType: 'phonetic-neighbor',
+    };
+  }
+
+  it('gives a section an empty list when the bank has none of its type', () => {
+    const assigned = assignSectionQuestions(EXAM_SECTIONS, [q('sc-a', 'sentence-completion')]);
+    // Section 4 (index 3) is restatement; the bank holds none.
+    expect(assigned[3]).toEqual([]);
+  });
+
+  it('never assigns the same question to two sections', () => {
+    const bank = [q('sc-a', 'sentence-completion'), q('sc-b', 'sentence-completion')];
+    const assigned = assignSectionQuestions(EXAM_SECTIONS, bank);
+    const ids = assigned.flat().map((item) => item.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it('short-fills rather than padding when a type runs out mid-section', () => {
+    const bank = [q('sc-a', 'sentence-completion'), q('sc-b', 'sentence-completion')];
+    const assigned = assignSectionQuestions(EXAM_SECTIONS, bank);
+    // Section 1 wants 4 sentence-completion items and can only get 2.
+    expect(assigned[0]).toHaveLength(2);
   });
 });

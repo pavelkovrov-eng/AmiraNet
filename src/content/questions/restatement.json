@@ -1,0 +1,376 @@
+[
+  {
+    "id": "rs-0004",
+    "type": "restatement",
+    "difficulty": 1.2,
+    "stem": "Although the equipment was delivered on schedule, the installation could not begin until the permits were issued.",
+    "options": [
+      "The permits, not the delivery date, determined when installation could start.",
+      "The equipment arrived late, which delayed the installation.",
+      "Installation began as soon as the equipment was delivered.",
+      "The permits were issued before the equipment was delivered."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The concession isolates the permits as the binding constraint: delivery was punctual, so it was not the cause of delay.",
+      "Reverses the original. 'Delivered on schedule' explicitly rules out a late arrival.",
+      "Contradicts the second clause, which says installation could not begin until a separate condition was met.",
+      "Adds an ordering the original never states. It says only that permits gated the start, not when they arrived relative to delivery."
+    ],
+    "primaryLexeme": "conn-albeit",
+    "targetLexemes": ["conn-albeit"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0005",
+    "type": "restatement",
+    "difficulty": 1.8,
+    "stem": "The drug reduced symptoms in most patients; nevertheless, the trial was suspended when three participants developed liver damage.",
+    "options": [
+      "The trial stopped despite the drug working for most patients.",
+      "The trial stopped because the drug failed to reduce symptoms.",
+      "The liver damage was caused by the reduction in symptoms.",
+      "The drug was suspended after it stopped reducing symptoms in most patients."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Nevertheless' marks the suspension as contrary to what the first clause would lead you to expect.",
+      "Inverts the logic. The original says the drug did reduce symptoms in most patients.",
+      "Invents a causal link. The original places the two facts in tension, not in a cause-and-effect chain.",
+      "Introduces a change over time the original never mentions; efficacy is not described as ceasing."
+    ],
+    "primaryLexeme": "conn-nevertheless",
+    "targetLexemes": ["conn-nevertheless"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0006",
+    "type": "restatement",
+    "difficulty": 2.3,
+    "stem": "Far from settling the question, the new evidence has forced historians to reopen debates that had been considered closed for a generation.",
+    "options": [
+      "The new evidence revived old disputes rather than resolving the question.",
+      "The new evidence finally resolved a question debated for a generation.",
+      "Historians had already reopened the debates before the evidence appeared.",
+      "The question had been closed for a generation because the evidence was missing."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Far from X' negates X and asserts the opposite, which is exactly the revival of settled debates.",
+      "Reads 'far from settling' as settling. The construction denies resolution outright.",
+      "Reverses the causal order: the evidence is what forced the reopening.",
+      "Supplies an explanation for the closure the original never offers."
+    ],
+    "primaryLexeme": "awl-evident",
+    "targetLexemes": ["awl-evident"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0007",
+    "type": "restatement",
+    "difficulty": 1.5,
+    "stem": "Whereas the northern sites yielded pottery from three distinct periods, the southern excavation produced material from only one.",
+    "options": [
+      "The northern sites spanned more periods than the southern one.",
+      "The southern excavation produced three times as much pottery.",
+      "Both excavations yielded material from the same period.",
+      "The northern sites were excavated over three separate periods."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Whereas' sets up a contrast, and the contrast here is three periods against one.",
+      "Reverses which site was richer, and swaps period-count for quantity.",
+      "Contradicts the contrast the sentence is built on.",
+      "Confuses the periods the pottery belongs to with the timing of the excavation itself."
+    ],
+    "primaryLexeme": "conn-whereas",
+    "targetLexemes": ["conn-whereas"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0008",
+    "type": "restatement",
+    "difficulty": 2.0,
+    "stem": "The policy succeeded in raising enrolment, but only among households that were already within walking distance of a school.",
+    "options": [
+      "Enrolment rose, though the gain was confined to households living near a school.",
+      "Enrolment rose fastest among households far from any school.",
+      "The policy failed to raise enrolment anywhere.",
+      "Households near schools enrolled before the policy was introduced."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It preserves both the success and the restriction 'only among', which limits its scope.",
+      "Inverts the restriction, assigning the gain to exactly the group the original excludes.",
+      "Drops the success entirely; the original says the policy did raise enrolment.",
+      "Shifts to a claim about timing the original never makes."
+    ],
+    "primaryLexeme": "awl-restrict",
+    "targetLexemes": ["awl-restrict"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rs-0009",
+    "type": "restatement",
+    "difficulty": 2.6,
+    "stem": "It is not that the theory lacks explanatory power; rather, it explains too much, accommodating any result the experiment might produce.",
+    "options": [
+      "The theory's weakness is that no possible outcome could contradict it.",
+      "The theory cannot explain the experiment's results.",
+      "The theory explains the results better than any rival.",
+      "The experiment produced results the theory had predicted in advance."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. A theory compatible with every possible result is unfalsifiable, which is precisely what 'accommodating any result' means.",
+      "Contradicts the opening clause, which denies that the theory lacks explanatory power.",
+      "Treats 'explains too much' as praise. The sentence frames it as a fault.",
+      "Introduces successful prediction, which is the opposite of accommodating any outcome whatever."
+    ],
+    "primaryLexeme": "awl-theory",
+    "targetLexemes": ["awl-theory"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0010",
+    "type": "restatement",
+    "difficulty": 1.0,
+    "stem": "Consequently, the department revised its guidelines to require a second signature on every purchase above the threshold.",
+    "options": [
+      "As a result, large purchases now need two signatures.",
+      "The department removed the second-signature requirement.",
+      "Every purchase now requires a second signature.",
+      "The threshold was raised so fewer purchases needed approval."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It keeps the causal marker and the condition that the rule applies above a threshold.",
+      "Reverses the change: the requirement was added, not removed.",
+      "Drops 'above the threshold', widening the rule to every purchase.",
+      "Describes a change to the threshold, which the original never mentions."
+    ],
+    "primaryLexeme": "conn-consequently",
+    "targetLexemes": ["conn-consequently"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rs-0011",
+    "type": "restatement",
+    "difficulty": 2.4,
+    "stem": "Prior to the reform, appeals were heard by the same body that had issued the original ruling.",
+    "options": [
+      "Before the reform, the appeal and the original decision were handled by one body.",
+      "After the reform, appeals returned to the body that issued the ruling.",
+      "The reform was introduced because appeals were too numerous.",
+      "Appeals were heard by a separate body before the reform."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It preserves both the time marker 'prior to' and the identity of the two bodies.",
+      "Flips the time relation: the arrangement described belongs to the period before the reform.",
+      "Supplies a motive for the reform that the sentence does not give.",
+      "Contradicts 'the same body', which is the whole point of the sentence."
+    ],
+    "primaryLexeme": "conn-prior-to",
+    "targetLexemes": ["conn-prior-to"],
+    "trapType": "tense-shift"
+  },
+  {
+    "id": "rs-0012",
+    "type": "restatement",
+    "difficulty": 1.7,
+    "stem": "The survey's findings should be treated with caution, since respondents were recruited through a single online forum.",
+    "options": [
+      "The recruitment method gives reason to doubt how far the findings generalise.",
+      "The findings are unreliable because too few people responded.",
+      "The survey was conducted carefully, so its findings can be trusted.",
+      "Respondents were recruited from several forums to improve the sample."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. A sample drawn from one forum is unrepresentative, which is the reason the caution is warranted.",
+      "Substitutes sample size for sample source. The original faults how respondents were found, not how many replied.",
+      "Reverses the recommendation, which is explicitly to treat the findings with caution.",
+      "Contradicts 'a single online forum'."
+    ],
+    "primaryLexeme": "awl-survey",
+    "targetLexemes": ["awl-survey"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rs-0013",
+    "type": "restatement",
+    "difficulty": 2.8,
+    "stem": "Whilst the two measures correlate strongly across the full sample, the association disappears once income is held constant.",
+    "options": [
+      "The apparent relationship between the measures is explained by income.",
+      "Income strengthens the relationship between the two measures.",
+      "The two measures are unrelated across the full sample.",
+      "Holding income constant makes the correlation stronger."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. An association that vanishes under control for a third variable was being produced by that variable.",
+      "Inverts the finding: controlling for income removes the association rather than reinforcing it.",
+      "Contradicts the first clause, which reports a strong correlation across the full sample.",
+      "Reverses the direction of the change described in the second clause."
+    ],
+    "primaryLexeme": "conn-whilst",
+    "targetLexemes": ["conn-whilst", "awl-income"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0014",
+    "type": "restatement",
+    "difficulty": 0.9,
+    "stem": "Owing to the storm, the conference was moved online rather than cancelled outright.",
+    "options": [
+      "The storm caused the conference to be held online instead of cancelled.",
+      "The conference was cancelled because of the storm.",
+      "The conference took place in person despite the storm.",
+      "The storm was expected, so the conference was planned online from the start."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It keeps the cause and the 'rather than' contrast between the two possible responses.",
+      "Chooses the option the original explicitly rejects.",
+      "Contradicts 'moved online'.",
+      "Adds foresight and prior planning the sentence does not describe."
+    ],
+    "primaryLexeme": "conn-owing-to",
+    "targetLexemes": ["conn-owing-to"],
+    "trapType": "surface-match"
+  },
+  {
+    "id": "rs-0015",
+    "type": "restatement",
+    "difficulty": 2.1,
+    "stem": "The author concedes that the earlier estimates were flawed, yet maintains that correcting them leaves the central conclusion untouched.",
+    "options": [
+      "The author accepts the errors but argues the main conclusion still holds.",
+      "The author denies that the earlier estimates contained any errors.",
+      "The author withdraws the central conclusion in light of the errors.",
+      "The author argues the errors were too small to be worth correcting."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Concedes... yet maintains' is exactly the concede-then-hold structure this preserves.",
+      "Contradicts the concession in the first clause.",
+      "Reverses the second clause, which insists the conclusion survives correction.",
+      "The author corrects the estimates rather than dismissing them as negligible."
+    ],
+    "primaryLexeme": "awl-estimate",
+    "targetLexemes": ["awl-estimate", "awl-conclude"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0016",
+    "type": "restatement",
+    "difficulty": 1.4,
+    "stem": "Subsequently, the committee adopted the recommendation it had rejected the previous year.",
+    "options": [
+      "The committee later approved a recommendation it had earlier turned down.",
+      "The committee rejected the recommendation for a second year.",
+      "The committee adopted the recommendation as soon as it was proposed.",
+      "The recommendation was withdrawn before the committee could vote."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It keeps both the reversal and the sequence marked by 'subsequently' and 'the previous year'.",
+      "Contradicts 'adopted'.",
+      "Erases the year-long delay and the earlier rejection.",
+      "Introduces a withdrawal that never occurs."
+    ],
+    "primaryLexeme": "conn-subsequently",
+    "targetLexemes": ["conn-subsequently"],
+    "trapType": "tense-shift"
+  },
+  {
+    "id": "rs-0017",
+    "type": "restatement",
+    "difficulty": 2.5,
+    "stem": "Notwithstanding its modest sample, the study remains the only source of longitudinal data on the population in question.",
+    "options": [
+      "The study is small, but nothing else tracks this population over time.",
+      "The study's sample is large enough to make it authoritative.",
+      "Several other studies provide longitudinal data on this population.",
+      "The study is valuable because its sample is unusually large."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Notwithstanding' concedes the limitation while preserving the claim to uniqueness.",
+      "Denies the concession the sentence opens with.",
+      "Contradicts 'the only source'.",
+      "Inverts the concession into a strength, reversing 'modest sample'."
+    ],
+    "primaryLexeme": "conn-notwithstanding",
+    "targetLexemes": ["conn-notwithstanding"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0018",
+    "type": "restatement",
+    "difficulty": 1.9,
+    "stem": "The regulation applies to all vessels registered locally, irrespective of where they operate.",
+    "options": [
+      "Local registration alone determines whether the regulation applies.",
+      "The regulation applies only to vessels operating in local waters.",
+      "Vessels operating abroad are exempt from the regulation.",
+      "The regulation applies to every vessel operating locally, wherever registered."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Irrespective of where they operate' removes operating location as a criterion, leaving registration as the sole test.",
+      "Reintroduces operating location as a condition, which the sentence explicitly excludes.",
+      "Creates an exemption the sentence rules out.",
+      "Swaps the two criteria: the original keys on registration, this keys on operation."
+    ],
+    "primaryLexeme": "awl-regulate",
+    "targetLexemes": ["awl-regulate"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rs-0019",
+    "type": "restatement",
+    "difficulty": 2.7,
+    "stem": "That the practice persisted for decades says less about its effectiveness than about the absence of any mechanism for reviewing it.",
+    "options": [
+      "The practice endured because nothing existed to evaluate it, not because it worked.",
+      "The practice endured because it was demonstrably effective.",
+      "Reviews of the practice repeatedly confirmed its effectiveness.",
+      "The practice was abandoned once a review mechanism was introduced."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Says less about X than about Y' subordinates X to Y as the real explanation.",
+      "Selects the explanation the sentence explicitly downgrades.",
+      "Contradicts 'the absence of any mechanism for reviewing it'.",
+      "Adds an outcome the sentence never reports."
+    ],
+    "primaryLexeme": "awl-evaluate",
+    "targetLexemes": ["awl-evaluate"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rs-0020",
+    "type": "restatement",
+    "difficulty": 1.1,
+    "stem": "Moreover, the second trial confirmed the finding under conditions the first had not tested.",
+    "options": [
+      "The second trial supported the finding and extended it to untested conditions.",
+      "The second trial contradicted the first under identical conditions.",
+      "The second trial repeated the first exactly.",
+      "The first trial had already tested every relevant condition."
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It keeps both the confirmation and the extension into new conditions.",
+      "Reverses 'confirmed'.",
+      "Contradicts the claim that new conditions were involved.",
+      "Denies the gap that the second trial is said to fill."
+    ],
+    "primaryLexeme": "conn-moreover",
+    "targetLexemes": ["conn-moreover"],
+    "trapType": "surface-match"
+  }
+]
