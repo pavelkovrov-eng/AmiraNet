@@ -26,12 +26,23 @@ describe('TodayScreen shortfall notice', () => {
   });
 
   it('explains a session that lands far under the requested budget', async () => {
-    // theta 1.0 exceeds every non-reading question's difficulty in the seed
-    // bank (max 0.9), so the new-material step contributes nothing. Only
-    // the one question targeting the queued remediation lexeme is
-    // scheduled - the same shape as the real second session in
+    // theta is set above every non-reading question's difficulty in the
+    // bank, so the new-material step contributes nothing and only the
+    // questions targeting the queued remediation lexeme are scheduled -
+    // the same shape as the real exhausted-bank session in
     // scripts/demo-session.ts, reproduced deterministically here.
-    await saveProfile({ id: 'me', theta: 1.0, answered: 0, placementDone: false, thetaHistory: [] });
+    // Pinned above the bank's maximum rather than at a literal that a
+    // later content wave would silently invalidate.
+    const hardest = Math.max(
+      ...content.questions.filter((q) => q.type !== 'reading').map((q) => q.difficulty),
+    );
+    await saveProfile({
+      id: 'me',
+      theta: hardest,
+      answered: 0,
+      placementDone: false,
+      thetaHistory: [],
+    });
     await saveRemediation([
       { cause: 'vocabulary-gap', targetId: 'awl-analyze', createdAt: Date.now(), servings: 0 },
     ]);

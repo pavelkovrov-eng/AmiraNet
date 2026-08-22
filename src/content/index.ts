@@ -3,13 +3,14 @@ import awl2 from './lexemes/awl-sublist-2.json';
 import awl3 from './lexemes/awl-sublist-3.json';
 import connectors from './lexemes/connectors.json';
 import questionsJson from './questions/seed.json';
+import sentenceCompletion from './questions/sentence-completion.json';
 import passagesJson from './passages/seed.json';
 import { validateContent } from './validate';
 import type { ContentBundle, Lexeme, QuestionItem } from './types';
 
 export const content: ContentBundle = {
   lexemes: [...awl1, ...awl2, ...awl3, ...connectors] as Lexeme[],
-  questions: questionsJson as QuestionItem[],
+  questions: [...questionsJson, ...sentenceCompletion] as QuestionItem[],
   passages: passagesJson as ContentBundle['passages'],
 };
 

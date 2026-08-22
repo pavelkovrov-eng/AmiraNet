@@ -98,6 +98,12 @@ async function main(): Promise<void> {
   rule('4. ANSWERING — every answer diagnosed and persisted individually');
   let queue = await getRemediation();
 
+  // Kept short deliberately. The builder fixes item difficulty from theta at
+  // BUILD time, so a long run answers a whole session calibrated to the
+  // learner's starting estimate — every item stays below their real ability,
+  // nothing supplies counter-evidence, and theta climbs unopposed. That is
+  // correct Rasch behaviour, not a defect: the correction arrives when the
+  // NEXT session is built against the updated estimate.
   for (const item of firstPlan.items.filter((i) => i.kind === 'question').slice(0, 6)) {
     if (item.kind !== 'question') continue;
     const q = questionById(item.questionId)!;

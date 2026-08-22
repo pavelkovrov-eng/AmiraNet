@@ -1,0 +1,512 @@
+[
+  {
+    "id": "sc-0007",
+    "type": "sentence-completion",
+    "difficulty": 0.3,
+    "stem": "Before drawing any conclusion, the team will ___ the survey responses for recurring patterns.",
+    "options": ["analyze", "analogy", "paralysis", "announce"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The slot needs a transitive verb meaning to examine in detail; 'analyze' takes 'responses' as its object.",
+      "A noun meaning a comparison. It cannot follow 'will' as a main verb, and it does not mean to examine.",
+      "A noun naming a loss of movement. Orthographically close to the answer but semantically unrelated.",
+      "A verb, but it means to declare publicly, which contradicts 'before drawing any conclusion'."
+    ],
+    "primaryLexeme": "awl-analyze",
+    "targetLexemes": ["awl-analyze"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0008",
+    "type": "sentence-completion",
+    "difficulty": 1.1,
+    "stem": "The committee could not ___ the two accounts of the incident, since each contradicted the other on every material point.",
+    "options": ["reconcile", "recognize", "recommend", "reconsider"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Reconcile' means to make two conflicting accounts consistent, which is exactly what contradiction prevents.",
+      "To identify something already known. The problem is not identification but conflict.",
+      "To advise in favour of. One does not recommend two accounts to each other.",
+      "To think again about. Possible grammatically, but it leaves the contradiction unexplained."
+    ],
+    "primaryLexeme": "awl-conclude",
+    "targetLexemes": ["awl-conclude"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0009",
+    "type": "sentence-completion",
+    "difficulty": 0.6,
+    "stem": "Researchers must ___ the reliability of a source before citing it as evidence.",
+    "options": ["assist", "assess", "asset", "assert"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "To help. A phonetic neighbour of the answer, but one does not help a source's reliability.",
+      "Correct. 'Assess' means to evaluate or judge, which is what one does to reliability.",
+      "A noun meaning a useful resource. Wrong part of speech for the slot after 'must'.",
+      "To state confidently. One asserts a claim, not the reliability of a source one has yet to judge."
+    ],
+    "primaryLexeme": "awl-assess",
+    "targetLexemes": ["awl-assess"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0010",
+    "type": "sentence-completion",
+    "difficulty": 2.1,
+    "stem": "The author's argument is ___ rather than stated outright, and readers who skim the introduction will miss it entirely.",
+    "options": ["implicit", "implacable", "implausible", "imperative"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Implicit' means suggested without being directly expressed, which the contrast with 'stated outright' requires.",
+      "Means unappeasable. Shares a prefix with the answer but does not concern how something is expressed.",
+      "Means unbelievable. The sentence is about how the argument is conveyed, not whether it is credible.",
+      "Means essential or commanding. Would not contrast with 'stated outright'."
+    ],
+    "primaryLexeme": "awl-implicit",
+    "targetLexemes": ["awl-implicit"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0011",
+    "type": "sentence-completion",
+    "difficulty": 2.4,
+    "stem": "Because the wording of the clause was ___, two courts reached opposite readings of the same contract.",
+    "options": ["ambiguous", "ambitious", "amenable", "amplified"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Ambiguous' means open to more than one interpretation, which is precisely what two opposite readings demonstrate.",
+      "Means strongly desirous of success. A phonetic neighbour, but wording cannot be ambitious in this sense.",
+      "Means willing to comply. Does not explain why readings diverged.",
+      "Means made louder or larger. Amplified wording would be clearer, not more disputable."
+    ],
+    "primaryLexeme": "awl-ambiguous",
+    "targetLexemes": ["awl-ambiguous"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0012",
+    "type": "sentence-completion",
+    "difficulty": 2.2,
+    "stem": "The distinction the paper draws is ___: it rests on no principle the author is willing to state, and shifts from case to case.",
+    "options": ["arbitrary", "arbitrated", "articulate", "artificial"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Arbitrary' means based on personal whim rather than reason or system, which the absence of a stated principle establishes.",
+      "Means settled by an arbitrator. A shared root, but the sentence describes no dispute resolution.",
+      "Means clearly expressed. The colon explains the opposite: the author will not state the principle.",
+      "Means man-made or contrived. Close in spirit but does not capture the absence of any governing rule."
+    ],
+    "primaryLexeme": "awl-arbitrary",
+    "targetLexemes": ["awl-arbitrary"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0013",
+    "type": "sentence-completion",
+    "difficulty": 1.4,
+    "stem": "A grant of this size should ___ the fieldwork the project has postponed for two seasons.",
+    "options": ["facilitate", "felicitate", "fabricate", "fluctuate"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Facilitate' means to make an action easier, which funding does for postponed fieldwork.",
+      "Means to congratulate. A close phonetic neighbour with an entirely unrelated meaning.",
+      "Means to invent or construct falsely. A grant does not fabricate fieldwork.",
+      "Means to vary irregularly. Intransitive here, so it cannot take 'the fieldwork' as an object."
+    ],
+    "primaryLexeme": "awl-facilitate",
+    "targetLexemes": ["awl-facilitate"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0014",
+    "type": "sentence-completion",
+    "difficulty": 2.6,
+    "stem": "The findings are ___ with the earlier study, though the two used samples drawn from populations that barely overlap.",
+    "options": ["coherent", "cohesive", "coincident", "concurrent"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Coherent with' means logically consistent with, which is what a comparison of findings asserts.",
+      "Means sticking together as a unit. Describes internal unity, not agreement between two separate studies.",
+      "Means occupying the same place or time. The sentence compares content, not position.",
+      "Means happening at the same time. 'Though' signals a concession about method, not timing."
+    ],
+    "primaryLexeme": "awl-coherent",
+    "targetLexemes": ["awl-coherent"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0015",
+    "type": "sentence-completion",
+    "difficulty": 0.8,
+    "stem": "The editor asked the author to ___ the term in the opening paragraph, since readers outside the field would not know it.",
+    "options": ["refine", "confine", "define", "decline"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "To improve by small changes. One cannot refine a term readers have never met.",
+      "To restrict within limits. A phonetic neighbour, but confining a term does not help an unfamiliar reader.",
+      "Correct. 'Define' means to state the precise meaning, which is what an unfamiliar reader needs.",
+      "To refuse, or to decrease. Neither sense fits an instruction about an unfamiliar term."
+    ],
+    "primaryLexeme": "awl-define",
+    "targetLexemes": ["awl-define"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0016",
+    "type": "sentence-completion",
+    "difficulty": 1.7,
+    "stem": "The model ___ its predictions from three variables, none of which is measured directly.",
+    "options": ["deprives", "derives", "arrives", "deranges"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "Means to take something away from someone. It takes a person as object, not predictions.",
+      "Correct. 'Derive X from Y' means to obtain X from a source, which matches the 'from three variables' structure.",
+      "Intransitive in this sense and does not take 'from' with an object of origin in the required way.",
+      "Means to throw into disorder. Unrelated to producing predictions."
+    ],
+    "primaryLexeme": "awl-derive",
+    "targetLexemes": ["awl-derive"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0017",
+    "type": "sentence-completion",
+    "difficulty": 1.2,
+    "stem": "Please do not ___ the speaker; questions will be taken at the end.",
+    "options": ["interpret", "interject", "interrupt", "intersect"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "Means to explain the meaning of something. One interprets a text, not a speaker mid-sentence.",
+      "Means to insert a remark. Closer, but it is typically used of the remark, not with the speaker as object.",
+      "Correct. 'Interrupt' takes a person as object and means to break in on them while they are speaking.",
+      "Means to cross. Geometric, not conversational."
+    ],
+    "primaryLexeme": "awl-interpret",
+    "targetLexemes": ["awl-interpret"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0018",
+    "type": "sentence-completion",
+    "difficulty": 1.9,
+    "stem": "The reform will ___ several agencies whose functions currently overlap.",
+    "options": ["consolidate", "console", "constitute", "construe"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Consolidate' means to combine into a single more effective whole, which is the remedy for overlapping functions.",
+      "Means to comfort someone in distress. Takes a person as object.",
+      "Means to form or make up. A reform that constituted agencies would create them, not merge existing ones.",
+      "Means to interpret. One construes a text or a rule, not an agency."
+    ],
+    "primaryLexeme": "awl-constitute",
+    "targetLexemes": ["awl-constitute"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0019",
+    "type": "sentence-completion",
+    "difficulty": 0.5,
+    "stem": "A single sentence can change meaning entirely when the surrounding ___ is removed.",
+    "options": ["contest", "content", "context", "contact"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "Means a competition. Nothing in the sentence concerns rivalry.",
+      "Means the material contained in something. Close, but content is what the sentence contains, not what surrounds it.",
+      "Correct. 'Context' is the surrounding text or circumstances that fix a sentence's meaning.",
+      "Means touch or communication. Not something that surrounds a sentence."
+    ],
+    "primaryLexeme": "awl-context",
+    "targetLexemes": ["awl-context"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0020",
+    "type": "sentence-completion",
+    "difficulty": 2.0,
+    "stem": "The data ___ a trend, but the sample is too small for the pattern to be called established.",
+    "options": ["dedicate", "indicate", "vindicate", "abdicate"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "Means to devote to a purpose. Data cannot dedicate a trend.",
+      "Correct. 'Indicate' means to point to or suggest, which is the appropriately tentative verb before 'but the sample is too small'.",
+      "Means to clear of blame or to justify. Too strong given the concession that follows.",
+      "Means to renounce a throne or duty. Unrelated."
+    ],
+    "primaryLexeme": "awl-indicate",
+    "targetLexemes": ["awl-indicate"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0021",
+    "type": "sentence-completion",
+    "difficulty": 1.5,
+    "stem": "The argument ___ of three claims, the last of which does not follow from the first two.",
+    "options": ["persists", "consists", "resists", "insists"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "Means to continue stubbornly. It does not take 'of' with a list of parts.",
+      "Correct. 'Consist of' means to be composed of, which introduces the three claims.",
+      "Means to withstand. Takes a direct object, not 'of'.",
+      "Means to demand firmly. Takes 'on' or a clause, not a list of components."
+    ],
+    "primaryLexeme": "awl-consist",
+    "targetLexemes": ["awl-consist"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0022",
+    "type": "sentence-completion",
+    "difficulty": 2.3,
+    "stem": "The paper is careful to ___ correlation from causation, a distinction its critics accuse it of blurring elsewhere.",
+    "options": ["distinguish", "extinguish", "diminish", "distribute"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Distinguish X from Y' means to recognise the difference between them, which 'a distinction' confirms.",
+      "Means to put out a fire. A phonetic neighbour with no relevant sense.",
+      "Means to make smaller. Does not take the 'X from Y' structure in this sense.",
+      "Means to share out. One distributes goods, not one concept from another."
+    ],
+    "primaryLexeme": "awl-distinct",
+    "targetLexemes": ["awl-distinct"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0023",
+    "type": "sentence-completion",
+    "difficulty": 0.9,
+    "stem": "The study was designed to ___ which of the two treatments produced the faster recovery.",
+    "options": ["identity", "indemnify", "identify", "intensify"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "A noun meaning who or what someone is. Wrong part of speech after 'to'.",
+      "Means to compensate for loss. Legal or financial, not investigative.",
+      "Correct. 'Identify' means to establish which thing something is, matching 'which of the two'.",
+      "Means to make more intense. The study establishes a fact rather than strengthening anything."
+    ],
+    "primaryLexeme": "awl-identify",
+    "targetLexemes": ["awl-identify"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0024",
+    "type": "sentence-completion",
+    "difficulty": 1.8,
+    "stem": "Any serious account of the period must ___ the economic pressures that preceded the reforms.",
+    "options": ["involve", "evolve", "revolve", "devolve"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Involve' means to include as a necessary part, which is what a serious account must do with those pressures.",
+      "Means to develop gradually. Intransitive here; an account does not evolve pressures.",
+      "Means to turn about an axis, or with 'around', to have as a main concern. Requires 'around' to take this object.",
+      "Means to transfer power downward. Unrelated to what an account must contain."
+    ],
+    "primaryLexeme": "awl-involve",
+    "targetLexemes": ["awl-involve"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0025",
+    "type": "sentence-completion",
+    "difficulty": 2.5,
+    "stem": "Although the ___ for inclusion were published in advance, reviewers applied them so unevenly that the shortlist tells us little.",
+    "options": ["criteria", "criterion", "critiques", "crises"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Criteria' is the plural form and agrees with the plural verb 'were published'.",
+      "The singular form. It would require 'was published', so the verb rules it out.",
+      "Means critical assessments. Reviewers apply standards, not assessments, for inclusion.",
+      "The plural of crisis. Nothing in the sentence concerns emergencies."
+    ],
+    "primaryLexeme": "awl-criteria",
+    "targetLexemes": ["awl-criteria"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0026",
+    "type": "sentence-completion",
+    "difficulty": 2.7,
+    "stem": "From the fragmentary records the historian was able to ___ a chronology that no single document supplies.",
+    "options": ["deduce", "seduce", "reduce", "induct"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Deduce' means to reach a conclusion by reasoning from available evidence, which fragmentary records require.",
+      "Means to lead astray. A phonetic neighbour with no scholarly sense.",
+      "Means to make smaller. The historian builds a chronology rather than shrinking one.",
+      "Means to formally admit someone to a post. Takes a person as object."
+    ],
+    "primaryLexeme": "awl-deduce",
+    "targetLexemes": ["awl-deduce"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0027",
+    "type": "sentence-completion",
+    "difficulty": 1.3,
+    "stem": "The report will ___ its central claim with three case studies drawn from different regions.",
+    "options": ["illustrate", "illuminate", "illegitimate", "eliminate"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Illustrate' means to make clear by example, which is exactly the function of case studies.",
+      "Means to light up, or figuratively to clarify. Possible in loose usage, but it does not take examples as its instrument in this construction.",
+      "An adjective meaning not authorised. Wrong part of speech after 'will'.",
+      "Means to remove entirely. The report supports its claim rather than removing it."
+    ],
+    "primaryLexeme": "awl-illustrate",
+    "targetLexemes": ["awl-illustrate"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0028",
+    "type": "sentence-completion",
+    "difficulty": 2.8,
+    "stem": "The author never says the policy failed; the judgement is left to ___ from the figures in the appendix.",
+    "options": ["emerge", "immerse", "emigrate", "merge"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Emerge' means to become apparent gradually, which is how an unstated judgement arises from data.",
+      "Means to submerge in liquid, or to absorb oneself. Takes an object or a reflexive.",
+      "Means to leave one's country. A phonetic neighbour with no relevant sense.",
+      "Means to combine into one. Figures do not merge a judgement."
+    ],
+    "primaryLexeme": "awl-imply",
+    "targetLexemes": ["awl-imply"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0029",
+    "type": "sentence-completion",
+    "difficulty": 0.7,
+    "stem": "The new regulations ___ how much of the catch a single vessel may land in one season.",
+    "options": ["restrict", "restrain", "resist", "revise"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Restrict' means to set a limit on quantity or extent, which a catch limit does.",
+      "Means to hold back physically or emotionally. Usually takes a person or an impulse as object.",
+      "Means to withstand. Regulations do not resist a quantity.",
+      "Means to alter after review. The sentence states a limit, not a change to one."
+    ],
+    "primaryLexeme": "awl-restrict",
+    "targetLexemes": ["awl-restrict"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0030",
+    "type": "sentence-completion",
+    "difficulty": 2.9,
+    "stem": "What the essay presents as a ___ reading of the treaty is in fact one interpretation among several, and not the most widely held.",
+    "options": ["definitive", "defensive", "deferential", "definable"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Definitive' means authoritative and final, which is precisely the claim the second clause overturns.",
+      "Means protective against attack. Does not set up the contrast with 'one interpretation among several'.",
+      "Means showing respect. A deferential reading would not conflict with being one among several.",
+      "Means capable of being defined. Too weak to be contradicted by the rest of the sentence."
+    ],
+    "primaryLexeme": "awl-define",
+    "targetLexemes": ["awl-define"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "sc-0031",
+    "type": "sentence-completion",
+    "difficulty": 1.6,
+    "stem": "The two departments were asked to ___ their schedules so that the shared equipment would not sit idle.",
+    "options": ["coordinate", "corroborate", "correspond", "cooperate"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Coordinate' takes schedules as a direct object and means to bring them into an efficient relationship.",
+      "Means to confirm with supporting evidence. One corroborates a claim, not a schedule.",
+      "Means to match, or to exchange letters. In the matching sense it takes 'to' or 'with', not a direct object.",
+      "Means to work together. Intransitive, so it cannot take 'their schedules' directly."
+    ],
+    "primaryLexeme": "awl-correspond",
+    "targetLexemes": ["awl-correspond"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0032",
+    "type": "sentence-completion",
+    "difficulty": 2.2,
+    "stem": "The committee's remit is deliberately narrow: it may ___ evidence but may not act on it.",
+    "options": ["obtain", "attain", "abstain", "ordain"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Obtain' means to acquire or get, which pairs with the restriction that follows.",
+      "Means to achieve or reach a goal. One attains a standard, not evidence.",
+      "Means to refrain, and takes 'from'. It cannot take 'evidence' as a direct object.",
+      "Means to order officially or to confer holy orders. Unrelated."
+    ],
+    "primaryLexeme": "awl-obtain",
+    "targetLexemes": ["awl-obtain"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0033",
+    "type": "sentence-completion",
+    "difficulty": 1.0,
+    "stem": "Each chapter ends with a summary that ___ the main points for the reader.",
+    "options": ["recaps", "relapses", "recasts", "retracts"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Recap' means to state the main points again briefly, which is the function of a summary.",
+      "Means to fall back into a former state, typically illness. Intransitive.",
+      "Means to present in a different form. A summary restates rather than reshapes.",
+      "Means to withdraw a statement. A summary confirms rather than withdraws."
+    ],
+    "primaryLexeme": "awl-conclude",
+    "targetLexemes": ["awl-conclude"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "sc-0034",
+    "type": "sentence-completion",
+    "difficulty": 2.4,
+    "stem": "The trial was halted not because the drug proved harmful but because its benefit over the placebo was too ___ to justify continuing.",
+    "options": ["slight", "slighted", "sleight", "severe"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. 'Slight' means small in degree, which explains halting a trial whose benefit was negligible.",
+      "The past participle of a verb meaning to insult. Wrong part of speech for the slot after 'too'.",
+      "A noun meaning dexterity, as in 'sleight of hand'. A homophone with no adjectival use.",
+      "Means very great. It would reverse the logic: a severe benefit would argue for continuing."
+    ],
+    "primaryLexeme": "awl-significant",
+    "targetLexemes": ["awl-significant"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "sc-0035",
+    "type": "sentence-completion",
+    "difficulty": 1.9,
+    "stem": "Funding was withdrawn ___ the project had met every milestone in its original proposal.",
+    "options": ["even though", "because", "so that", "as soon as"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Meeting every milestone would normally protect funding, so the clause is concessive and requires a contrast connector.",
+      "Reverses the logic: meeting milestones is not a reason to withdraw funding.",
+      "Expresses purpose. Withdrawal was not undertaken in order to meet milestones.",
+      "Expresses time. It would imply the milestones triggered the withdrawal, which is the same inversion as 'because'."
+    ],
+    "primaryLexeme": "conn-albeit",
+    "targetLexemes": ["conn-albeit", "conn-consequently"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "sc-0036",
+    "type": "sentence-completion",
+    "difficulty": 2.6,
+    "stem": "The instrument is accurate to within a millimetre; ___, it is useless in the field, where vibration exceeds that margin many times over.",
+    "options": ["nonetheless", "consequently", "similarly", "in addition"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. High accuracy would normally suggest usefulness, so the reversal requires a concessive connector.",
+      "Signals a result. Accuracy does not cause uselessness; the field conditions do.",
+      "Signals likeness. The two clauses stand in opposition, not parallel.",
+      "Signals addition. It would make uselessness a further virtue alongside accuracy."
+    ],
+    "primaryLexeme": "conn-nonetheless",
+    "targetLexemes": ["conn-nonetheless", "conn-consequently", "conn-similarly"],
+    "trapType": "logic-inversion"
+  }
+]

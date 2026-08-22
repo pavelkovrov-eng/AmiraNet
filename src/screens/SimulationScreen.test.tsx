@@ -182,16 +182,22 @@ describe('SimulationScreen render-throw handling', () => {
     await expireCurrentSection();
     expect(screen.getByRole('heading', { name: 'פרק 5 מתוך 6' })).toBeInTheDocument();
 
-    // Section 5 (restatement): every restatement question already went to
-    // section 4 - zero left. Must show the sane empty-section notice
-    // instead of an undefined question, and must still lock on expiry.
+    // Section 5 (restatement): the bank holds only 3 restatement items and
+    // section 4 already consumed them, so this section has zero left. It
+    // must show the sane empty-section notice instead of an undefined
+    // question, and must still lock on expiry. This is the under-filled
+    // path the section exists to exercise.
     expect(screen.getByRole('status', { name: /אין שאלות/ })).toBeInTheDocument();
     await expireCurrentSection();
     expect(screen.getByRole('heading', { name: 'פרק 6 מתוך 6' })).toBeInTheDocument();
 
-    // Section 6 (sentence-completion): every sentence-completion question
-    // already went to sections 1 and 2 - also zero left.
-    expect(screen.getByRole('status', { name: /אין שאלות/ })).toBeInTheDocument();
+    // Section 6 (sentence-completion): the bank now holds enough
+    // sentence-completion items to fill sections 1, 2 and 6, so this one
+    // renders a real question rather than the empty notice. Asserted
+    // positively so the filled path is pinned too, and so a later content
+    // wave changing the balance surfaces here instead of passing silently.
+    expect(screen.queryByRole('status', { name: /אין שאלות/ })).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'פרק 6 מתוך 6' })).toBeInTheDocument();
     await expireCurrentSection();
 
     // Completion view: thetaToScore throws, but the screen must not blank.
