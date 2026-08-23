@@ -1,0 +1,87 @@
+[
+  {
+    "id": "cl-0017",
+    "type": "sentence-completion",
+    "difficulty": 2.1,
+    "stem": "A single leaking drum was enough to ___ the groundwater for the entire valley.",
+    "options": ["cultivate", "contaminate", "compensate", "accelerate"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "To prepare land for crops or to develop a quality. One cultivates soil, not groundwater, and a leaking drum does not improve anything.",
+      "Correct. To contaminate is to make impure by introducing a harmful substance, which is what a leaking drum does to water.",
+      "To make up for a loss. The drum causes the harm rather than offsetting it.",
+      "To increase in speed. Nothing in the sentence is moving faster."
+    ],
+    "primaryLexeme": "ve-contaminate",
+    "targetLexemes": ["ve-contaminate", "ve2-cultivate", "awl-compensate", "xf-accelerate"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0018",
+    "type": "sentence-completion",
+    "difficulty": 2.3,
+    "stem": "The trustees voted to ___ half the endowment to scholarships and the remainder to maintenance.",
+    "options": ["advocate", "allocate", "duplicate", "legislate"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "To publicly support a cause. One advocates for scholarships, but the sentence describes dividing a sum, not arguing for it.",
+      "Correct. To allocate is to distribute a resource for a particular purpose, which the split between two uses requires.",
+      "To make an exact copy. Duplicating an endowment would double it, not divide it.",
+      "To make law. Trustees of an endowment do not legislate."
+    ],
+    "primaryLexeme": "ve2-allocate",
+    "targetLexemes": ["ve2-allocate", "xf-advocate", "xf-duplicate", "awl-legislate"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0019",
+    "type": "sentence-completion",
+    "difficulty": 2.5,
+    "stem": "With no written record surviving, historians can only ___ about why the settlement was abandoned.",
+    "options": ["regulate", "evaluate", "speculate", "demonstrate"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "To control by rule. Historians do not regulate a past event.",
+      "To judge the value or quality of something. Evaluation needs material to judge, which the missing record denies.",
+      "Correct. To speculate is to form a theory without firm evidence, which is exactly what the absent record forces.",
+      "To prove or show clearly. It reverses the sentence: with no record, nothing can be demonstrated."
+    ],
+    "primaryLexeme": "ve2-speculate",
+    "targetLexemes": ["ve2-speculate", "awl-regulate", "awl-evaluate", "awl-demonstrate"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "cl-0020",
+    "type": "sentence-completion",
+    "difficulty": 1.9,
+    "stem": "The revised design ___ a watermark and several other security features that the original lacked.",
+    "options": ["dominates", "incorporates", "participates", "creates"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "To be the controlling or most important element. A watermark is included in the design, not controlled by it.",
+      "Correct. To incorporate is to include something as part of a larger whole, which is the design's relation to the new features.",
+      "To take part in. It is intransitive here and needs 'in', so it cannot take 'a watermark' directly.",
+      "To bring into existence. Closer, but the sentence contrasts with an original that lacked these features, so they are added to an existing design rather than invented from nothing."
+    ],
+    "primaryLexeme": "ve-incorporate",
+    "targetLexemes": ["ve-incorporate", "awl-dominate", "awl-participate", "awl-create"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0021",
+    "type": "sentence-completion",
+    "difficulty": 2.4,
+    "stem": "The committee concluded that a written warning was the ___ response, given that no harm had actually occurred.",
+    "options": ["appropriate", "estimate", "illustrate", "ultimate"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Appropriate means suitable to the circumstances, and the absence of harm is what makes the mild response fitting.",
+      "A noun or verb meaning an approximate judgement of quantity. Wrong part of speech for the slot before 'response'.",
+      "A verb meaning to make clear by example. Also wrong part of speech here.",
+      "An adjective, so it fits grammatically, but it means final or most extreme — the opposite of what 'no harm had occurred' calls for."
+    ],
+    "primaryLexeme": "awl-appropriate",
+    "targetLexemes": ["awl-appropriate", "awl-estimate", "awl-illustrate", "awl-ultimate"],
+    "trapType": "phonetic-neighbor"
+  }
+]
