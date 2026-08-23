@@ -1,0 +1,274 @@
+[
+  {
+    "id": "cl-0001",
+    "type": "sentence-completion",
+    "difficulty": 1.6,
+    "stem": "Engineers reduced the ___ between the moving parts by machining the surfaces to a finer tolerance.",
+    "options": ["function", "section", "friction", "abduction"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "The purpose a thing serves. Surfaces do not have a purpose between them that machining would reduce.",
+      "A distinct part of something larger. Machining does not reduce a section.",
+      "Correct. Friction is resistance between surfaces moving over one another, and smoother surfaces reduce it.",
+      "The taking of a person by force. Shares the -ction ending but belongs to an unrelated domain."
+    ],
+    "primaryLexeme": "xf-friction",
+    "targetLexemes": ["xf-friction", "awl-function", "awl-section", "ve-abduction"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0002",
+    "type": "sentence-completion",
+    "difficulty": 2.0,
+    "stem": "The site yielded such an ___ of pottery that cataloguing it took three seasons.",
+    "options": ["instance", "abundance", "finance", "circumstance"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "A single example of something. An instance of pottery would be one piece, which no one would spend three seasons cataloguing.",
+      "Correct. Abundance means a very large quantity, which is what makes the cataloguing take three seasons.",
+      "The management of money. Shares the -ance ending but has no quantitative sense.",
+      "A fact or condition connected to an event. It describes context, not quantity."
+    ],
+    "primaryLexeme": "xf-abundance",
+    "targetLexemes": ["xf-abundance", "awl-instance", "awl-finance", "awl-circumstance"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0003",
+    "type": "sentence-completion",
+    "difficulty": 2.2,
+    "stem": "The adaptation bears so little ___ to the novel that readers of one would not recognise the other.",
+    "options": ["resemblance", "circumstance", "instance", "finance"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Resemblance is the state of being similar, which is exactly what the second clause denies.",
+      "A fact or condition attending an event. It cannot be borne between two works.",
+      "A single occurrence or example. One does not bear an instance to something.",
+      "The management of money. Shares the ending only."
+    ],
+    "primaryLexeme": "ve-resemblance",
+    "targetLexemes": ["ve-resemblance", "awl-circumstance", "awl-instance", "awl-finance"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0004",
+    "type": "sentence-completion",
+    "difficulty": 1.3,
+    "stem": "The alloy was chosen because it is more ___ than steel in salt water, lasting decades without pitting.",
+    "options": ["available", "considerable", "durable", "predictable"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "Obtainable or at hand. Availability says nothing about lasting decades without pitting.",
+      "Large in amount or importance. It describes magnitude, not resistance to wear.",
+      "Correct. Durable means able to withstand wear over time, which the decades without pitting demonstrate.",
+      "Able to be known in advance. A predictable alloy would behave consistently, not necessarily last longer."
+    ],
+    "primaryLexeme": "xf-durable",
+    "targetLexemes": ["xf-durable", "awl-available", "awl-considerable", "ve-predictable"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0005",
+    "type": "sentence-completion",
+    "difficulty": 2.5,
+    "stem": "What might have become a bitter lawsuit ended instead in an ___ settlement that both parties described as fair.",
+    "options": ["amicable", "remarkable", "available", "durable"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Amicable means marked by goodwill, which is what contrasts with the bitter lawsuit that was avoided.",
+      "Worthy of attention. A settlement can be remarkable without being friendly, so it misses the contrast.",
+      "Obtainable. Settlements are reached, not made obtainable.",
+      "Able to withstand wear. It applies to materials, not to the tone of an agreement."
+    ],
+    "primaryLexeme": "ve2-amicable",
+    "targetLexemes": ["ve2-amicable", "ve2-remarkable", "awl-available", "xf-durable"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0006",
+    "type": "sentence-completion",
+    "difficulty": 2.3,
+    "stem": "Her ___ spending drew more comment than her considerable charitable giving ever did.",
+    "options": ["relevant", "constant", "extravagant", "inhabitant"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "Bearing on the matter at hand. Spending can be relevant to an argument, but that is not what draws comment here.",
+      "Occurring continuously. Constant spending describes frequency, not excess.",
+      "Correct. Extravagant means spending far beyond what is necessary, which is what attracts comment.",
+      "A person who lives somewhere. A noun, so it cannot modify 'spending'."
+    ],
+    "primaryLexeme": "ve-extravagant",
+    "targetLexemes": ["ve-extravagant", "awl-relevant", "awl-constant", "ve-inhabitant"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0007",
+    "type": "sentence-completion",
+    "difficulty": 1.8,
+    "stem": "He remained entirely ___ of the change until a colleague mentioned it three weeks later.",
+    "options": ["ignorant", "significant", "relevant", "constant"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Ignorant means lacking knowledge of something, which the three-week delay establishes.",
+      "Important or meaningful. A person is not significant of something.",
+      "Bearing on the matter. A person is not relevant of a change.",
+      "Unchanging. It describes something's behaviour over time, not a person's awareness."
+    ],
+    "primaryLexeme": "ve2-ignorant",
+    "targetLexemes": ["ve2-ignorant", "awl-significant", "awl-relevant", "awl-constant"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0008",
+    "type": "sentence-completion",
+    "difficulty": 2.6,
+    "stem": "The nest is deliberately ___: it sits in plain sight yet is almost never noticed.",
+    "options": ["previous", "ostentatious", "inconspicuous", "outrageous"],
+    "correctIndex": 2,
+    "explanationPerOption": [
+      "Coming before in time. It cannot describe how visible something is.",
+      "Designed to attract notice. This is the exact opposite of what the colon explains.",
+      "Correct. Inconspicuous means not attracting attention, which is why the nest goes unnoticed in plain sight.",
+      "Shockingly excessive. Something outrageous would be noticed, not overlooked."
+    ],
+    "primaryLexeme": "xf-inconspicuous",
+    "targetLexemes": ["xf-inconspicuous", "awl-previous", "xf-ostentatious", "xf-outrageous"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "cl-0009",
+    "type": "sentence-completion",
+    "difficulty": 2.1,
+    "stem": "The illness is ___ for several days before any symptom appears, which is what makes containment so difficult.",
+    "options": ["contagious", "enormous", "cautious", "ambiguous"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Contagious means transmissible by contact, and silent transmission is precisely what defeats containment.",
+      "Very large in size. An illness's size is not what containment addresses.",
+      "Careful to avoid danger. A person can be cautious; an illness cannot.",
+      "Open to more than one interpretation. It describes wording, not transmission."
+    ],
+    "primaryLexeme": "xf-contagious",
+    "targetLexemes": ["xf-contagious", "xf-enormous", "xf-cautious", "awl-ambiguous"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0010",
+    "type": "sentence-completion",
+    "difficulty": 2.7,
+    "stem": "A convincing explanation has proved ___: each new theory accounts for some of the evidence and contradicts the rest.",
+    "options": ["positive", "alternative", "extensive", "elusive"],
+    "correctIndex": 3,
+    "explanationPerOption": [
+      "Constructive, or confirming. It would suggest the explanation was found, reversing the sentence.",
+      "Offering a different possibility. The problem is that no theory works, not that several do.",
+      "Covering a wide range. An extensive explanation would be a success, not a failure.",
+      "Correct. Elusive means difficult to find or capture, which the colon then illustrates."
+    ],
+    "primaryLexeme": "ve2-elusive",
+    "targetLexemes": ["ve2-elusive", "awl-positive", "awl-alternative", "ve-extensive"],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "cl-0011",
+    "type": "sentence-completion",
+    "difficulty": 1.9,
+    "stem": "The entire batch was recalled after ___ wiring was found in a single unit.",
+    "options": ["defective", "extensive", "positive", "alternative"],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Defective means having a fault, which is what justifies a recall.",
+      "Covering a wide range. Extensive wiring describes quantity and would not on its own prompt a recall.",
+      "Constructive or affirmative. Positive wiring is not a fault.",
+      "Offering another option. Alternative wiring would be a design choice, not a defect."
+    ],
+    "primaryLexeme": "ve2-defective",
+    "targetLexemes": ["ve2-defective", "ve-extensive", "awl-positive", "awl-alternative"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0012",
+    "type": "sentence-completion",
+    "difficulty": 1.5,
+    "stem": "Every ___ of the design was tested separately before the parts were assembled.",
+    "options": ["comment", "component", "consent", "element"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "A remark or observation. Remarks are not tested before assembly.",
+      "Correct. A component is a part of a larger whole, which is what gets tested before assembly.",
+      "Permission. Consent is given, not tested and assembled.",
+      "A basic constituent part. Close in meaning, but 'element' is used of abstract or chemical constituents rather than physical parts that are assembled."
+    ],
+    "primaryLexeme": "awl-component",
+    "targetLexemes": ["awl-component", "awl-comment", "awl-consent", "awl-element"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0013",
+    "type": "sentence-completion",
+    "difficulty": 2.4,
+    "stem": "No treatment may proceed until the patient's written ___ has been recorded.",
+    "options": ["comment", "consent", "component", "document"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "A remark. A recorded remark does not authorise treatment.",
+      "Correct. Consent is permission granted, which is the legal precondition for treatment.",
+      "A part of a larger whole. Patients do not give components.",
+      "A written record. Close, since consent is often documented, but the document is the vehicle and the consent is what must be given."
+    ],
+    "primaryLexeme": "awl-consent",
+    "targetLexemes": ["awl-consent", "awl-comment", "awl-component", "awl-document"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0014",
+    "type": "sentence-completion",
+    "difficulty": 2.8,
+    "stem": "The scheme was ___ from the outset: it promised returns that no legitimate investment could produce.",
+    "options": ["remarkable", "predictable", "considerable", "defective"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "Worthy of attention. True but weak, and it does not follow from returns that were impossible.",
+      "Correct. If the promised returns were impossible, the collapse could be known in advance, which is what predictable means.",
+      "Large in amount. It describes size, not foreseeability.",
+      "Having a fault. Closer, but a scheme is not defective in the way a manufactured part is; the colon explains foreseeability, not a flaw in construction."
+    ],
+    "primaryLexeme": "ve-predictable",
+    "targetLexemes": ["ve-predictable", "ve2-remarkable", "awl-considerable", "ve2-defective"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "cl-0015",
+    "type": "sentence-completion",
+    "difficulty": 2.0,
+    "stem": "Only one ___ of the report was released; the remaining chapters stayed classified for a decade.",
+    "options": ["function", "section", "friction", "abduction"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "The purpose a thing serves. A report's function is not released chapter by chapter.",
+      "Correct. A section is a distinct part of a larger document, which the contrast with 'the remaining chapters' confirms.",
+      "Resistance between moving surfaces. It has no textual sense.",
+      "The taking of a person by force. Shares the ending only."
+    ],
+    "primaryLexeme": "awl-section",
+    "targetLexemes": ["awl-section", "awl-function", "xf-friction", "ve-abduction"],
+    "trapType": "phonetic-neighbor"
+  },
+  {
+    "id": "cl-0016",
+    "type": "sentence-completion",
+    "difficulty": 1.7,
+    "stem": "The building ___ extensive repair before it could reopen to the public.",
+    "options": ["undertook", "underwent", "undermined", "understood"],
+    "correctIndex": 1,
+    "explanationPerOption": [
+      "Took on a task deliberately. A building cannot choose to take on repair; it receives it.",
+      "Correct. To undergo something is to experience it passively, which is the building's relation to being repaired.",
+      "Weakened gradually from beneath. It would mean the building damaged the repair.",
+      "Grasped the meaning of. Buildings do not comprehend."
+    ],
+    "primaryLexeme": "ve2-undergo",
+    "targetLexemes": ["ve2-undergo", "xf-undermine"],
+    "trapType": "phonetic-neighbor"
+  }
+]

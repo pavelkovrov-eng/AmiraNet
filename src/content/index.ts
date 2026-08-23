@@ -8,6 +8,7 @@ import questionsJson from './questions/seed.json';
 import sentenceCompletion from './questions/sentence-completion.json';
 import restatement from './questions/restatement.json';
 import reading from './questions/reading.json';
+import cluster from './questions/cluster.json';
 import seedPassages from './passages/seed.json';
 import passagesJson from './passages/passages.json';
 import { validateContent } from './validate';
@@ -15,7 +16,7 @@ import type { ContentBundle, Lexeme, QuestionItem } from './types';
 
 export const content: ContentBundle = {
   lexemes: [...awl1, ...awl2, ...awl3, ...connectors, ...examFrequent, ...verifiedExam] as Lexeme[],
-  questions: [...questionsJson, ...sentenceCompletion, ...restatement, ...reading] as QuestionItem[],
+  questions: [...questionsJson, ...sentenceCompletion, ...restatement, ...reading, ...cluster] as QuestionItem[],
   passages: [...seedPassages, ...passagesJson] as ContentBundle['passages'],
 };
 
