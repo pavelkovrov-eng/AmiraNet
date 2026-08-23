@@ -1,0 +1,253 @@
+[
+  {
+    "id": "rc-0021",
+    "type": "reading",
+    "difficulty": 2.2,
+    "passageId": "psg-005",
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "present experimental evidence that memory drifts in a direction set by the questioning",
+      "argue that eyewitnesses deliberately alter their accounts",
+      "describe the legal standards courts apply to circumstantial evidence",
+      "compare staged incidents with real crimes"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph reports controlled studies and states the drift moves toward whatever the questioner's phrasing implies.",
+      "The third paragraph explicitly says witnesses are not lying, so this contradicts the passage.",
+      "Circumstantial evidence appears once in paragraph 1 as a comparison and is not the second paragraph's subject.",
+      "Staged incidents are the method used, not a topic the paragraph compares with anything."
+    ],
+    "primaryLexeme": "awl-demonstrate",
+    "targetLexemes": [
+      "awl-demonstrate",
+      "awl-evident"
+    ],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0022",
+    "type": "reading",
+    "difficulty": 2.5,
+    "passageId": "psg-005",
+    "stem": "According to the third paragraph, a witness's confidence often rises because -",
+    "options": [
+      "repeating an account makes it easier to deliver, and ease is mistaken for certainty",
+      "witnesses receive feedback confirming their identification",
+      "courts reward witnesses who appear certain",
+      "the original memory becomes clearer over time"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph says rehearsal produces fluency and that fluency reads as certainty to everyone in the room.",
+      "Feedback appears in the final paragraph as something to record before, not as the cause described here.",
+      "The passage never claims courts reward apparent certainty; it says juries read confidence as accuracy.",
+      "Reverses the paragraph, which says accuracy falls as confidence rises."
+    ],
+    "primaryLexeme": "awl-perceive",
+    "targetLexemes": [
+      "awl-perceive"
+    ],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rc-0023",
+    "type": "reading",
+    "difficulty": 2.6,
+    "passageId": "psg-005",
+    "stem": "The word 'they' in the phrase 'do not know they are wrong' (third paragraph) refers to -",
+    "options": [
+      "the witnesses",
+      "the courts",
+      "the researchers",
+      "the juries"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The subject of the sentence is 'the witnesses in these studies', and both verbs take that subject.",
+      "Courts are the sentence's opening topic but not the subject of 'are not lying and do not know'.",
+      "Researchers conduct the studies; they are not the ones described as unaware of being wrong.",
+      "Juries appear in paragraph 1 and are not mentioned in this sentence at all."
+    ],
+    "primaryLexeme": "awl-interpret",
+    "targetLexemes": [
+      "awl-interpret"
+    ],
+    "trapType": "surface-match"
+  },
+  {
+    "id": "rc-0024",
+    "type": "reading",
+    "difficulty": 2.3,
+    "passageId": "psg-005",
+    "stem": "According to the final paragraph, recording a witness's confidence at the first identification is valuable because it -",
+    "options": [
+      "captures a measurement that later proceedings cannot inflate",
+      "makes jurors sceptical of all testimony",
+      "prevents witnesses from being questioned more than once",
+      "replaces the need for judicial instructions entirely"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph says it preserves a measurement later proceedings cannot inflate.",
+      "That is the passage's criticism of judicial instructions, not of this reform.",
+      "Nothing in the passage limits how often a witness may be questioned.",
+      "The passage calls the reform narrower and says it does not solve the problem, so it does not replace anything."
+    ],
+    "primaryLexeme": "awl-require",
+    "targetLexemes": [
+      "awl-require"
+    ],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0025",
+    "type": "reading",
+    "difficulty": 2.8,
+    "passageId": "psg-005",
+    "stem": "Which of the following is NOT presented in the passage as a problem with eyewitness testimony?",
+    "options": [
+      "Witnesses are often paid for their appearance in court",
+      "Recalled details can be shaped by how a question is worded",
+      "Confidence can increase while accuracy decreases",
+      "Repetition before trial makes an account sound more certain"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Payment is never mentioned anywhere in the passage.",
+      "Paragraph 2 gives exactly this: the smashed-versus-contacted phrasing changes reported speeds.",
+      "Paragraph 3 states that confidence often rises as accuracy falls.",
+      "Paragraph 3 attributes fluency, and therefore apparent certainty, to rehearsal before trial."
+    ],
+    "primaryLexeme": "awl-issue",
+    "targetLexemes": [
+      "awl-issue"
+    ],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0026",
+    "type": "reading",
+    "difficulty": 2.4,
+    "passageId": "psg-006",
+    "stem": "The main idea of the third paragraph is that -",
+    "options": [
+      "word-for-word translation is not neutral, because it adds a strangeness the original lacked",
+      "medieval readers preferred archaic language",
+      "footnotes are the best solution to translation difficulties",
+      "the scholarly convention of the twentieth century has been vindicated"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph argues literal rendering imports source-language habits and produces a distance the original readers did not feel.",
+      "The paragraph says the opposite: a medieval reader did not experience the text as archaic.",
+      "Footnotes belong to paragraph 2 and are qualified in paragraph 4; they are not this paragraph's claim.",
+      "The paragraph opens by saying that convention has weakened."
+    ],
+    "primaryLexeme": "awl-convention",
+    "targetLexemes": [
+      "awl-convention"
+    ],
+    "trapType": "logic-inversion"
+  },
+  {
+    "id": "rc-0027",
+    "type": "reading",
+    "difficulty": 2.7,
+    "passageId": "psg-006",
+    "stem": "The main purpose of the fourth paragraph is to -",
+    "options": [
+      "acknowledge the cost of the fluent approach rather than presenting it as a solution",
+      "argue that fluent translation is superior to literal translation",
+      "explain how footnotes are formatted in scholarly editions",
+      "describe the training translators receive"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It states the alternative carries its own cost and that translators who take it say so plainly.",
+      "The paragraph does the opposite of advocating: it names what fluency removes.",
+      "Footnotes appear as a limit on the remedy, not as a matter of formatting.",
+      "Training is never discussed anywhere in the passage."
+    ],
+    "primaryLexeme": "awl-comment",
+    "targetLexemes": [
+      "awl-comment"
+    ],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0028",
+    "type": "reading",
+    "difficulty": 2.5,
+    "passageId": "psg-006",
+    "stem": "According to the passage, a text carrying a note on every line would be -",
+    "options": [
+      "no longer a translation but an apparatus",
+      "the ideal outcome of scholarly fidelity",
+      "impossible to produce from a medieval manuscript",
+      "the standard practice of twentieth-century translators"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage says exactly this at the end of the fourth paragraph.",
+      "It is offered as a limit on the footnote remedy, not as an ideal.",
+      "The passage says nothing about whether such a text could be produced.",
+      "Twentieth-century practice put notes at the foot of the page, not on every line."
+    ],
+    "primaryLexeme": "awl-text",
+    "targetLexemes": [
+      "awl-text"
+    ],
+    "trapType": "surface-match"
+  },
+  {
+    "id": "rc-0029",
+    "type": "reading",
+    "difficulty": 2.9,
+    "passageId": "psg-006",
+    "stem": "According to the final paragraph, what has changed in contemporary translation is chiefly -",
+    "options": [
+      "how openly the translator's choices are disclosed",
+      "the number of choices a translator must make",
+      "the availability of medieval manuscripts",
+      "the preference for literal over fluent rendering"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph says what has changed is less the practice than the disclosure, and that decisions are now visible.",
+      "The passage says the decisions are no more avoidable than before, so their number has not changed.",
+      "Manuscript availability is never mentioned.",
+      "The shift described in the passage runs the other way, and the final paragraph is about disclosure rather than preference."
+    ],
+    "primaryLexeme": "awl-alternative",
+    "targetLexemes": [
+      "awl-alternative"
+    ],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0030",
+    "type": "reading",
+    "difficulty": 2.6,
+    "passageId": "psg-006",
+    "stem": "The main purpose of the passage as a whole is to -",
+    "options": [
+      "show that translation requires unavoidable choices and to argue these should be visible",
+      "establish that literal translation is the only honest method",
+      "trace the history of medieval manuscript preservation",
+      "compare the difficulty of translating poetry and prose"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The passage rejects both approaches as neutral and closes on disclosure letting a reader judge the translation as an argument.",
+      "Paragraph 3 explicitly denies that literal rendering is neutral.",
+      "Preservation is never discussed; the manuscript is only the translator's starting point.",
+      "No distinction between poetry and prose appears anywhere."
+    ],
+    "primaryLexeme": "awl-justify",
+    "targetLexemes": [
+      "awl-justify"
+    ],
+    "trapType": "scope-shift"
+  }
+]
