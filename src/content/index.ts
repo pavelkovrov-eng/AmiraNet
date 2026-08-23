@@ -11,16 +11,18 @@ import reading from './questions/reading.json';
 import cluster from './questions/cluster.json';
 import clusterAte from './questions/cluster-ate.json';
 import reading2 from './questions/reading-2.json';
+import reading3 from './questions/reading-3.json';
 import seedPassages from './passages/seed.json';
 import passagesJson from './passages/passages.json';
 import passages2 from './passages/passages-2.json';
+import passages3 from './passages/passages-3.json';
 import { validateContent } from './validate';
 import type { ContentBundle, Lexeme, QuestionItem } from './types';
 
 export const content: ContentBundle = {
   lexemes: [...awl1, ...awl2, ...awl3, ...connectors, ...examFrequent, ...verifiedExam] as Lexeme[],
-  questions: [...questionsJson, ...sentenceCompletion, ...restatement, ...reading, ...cluster, ...clusterAte, ...reading2] as QuestionItem[],
-  passages: [...seedPassages, ...passagesJson, ...passages2] as ContentBundle['passages'],
+  questions: [...questionsJson, ...sentenceCompletion, ...restatement, ...reading, ...cluster, ...clusterAte, ...reading2, ...reading3] as QuestionItem[],
+  passages: [...seedPassages, ...passagesJson, ...passages2, ...passages3] as ContentBundle['passages'],
 };
 
 const result = validateContent(content);

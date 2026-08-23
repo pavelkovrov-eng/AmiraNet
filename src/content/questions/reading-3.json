@@ -1,0 +1,117 @@
+[
+  {
+    "id": "rc-0031",
+    "type": "reading",
+    "difficulty": 2.3,
+    "passageId": "psg-007",
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "explain how Daniels reframed the task he had been given",
+      "list the ten dimensions relevant to cockpit design",
+      "criticise the researchers who took the original measurements",
+      "describe the training pilots received before 1950"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The paragraph turns on 'rather than simply recomputing the averages, he asked a different question', which is the reframing.",
+      "The paragraph mentions that there were ten dimensions but never lists them.",
+      "No criticism of the earlier researchers appears; the fourth paragraph faults the philosophy, not the measurements.",
+      "Training is mentioned only in paragraph 1, and not as something the second paragraph describes."
+    ],
+    "primaryLexeme": "awl-method",
+    "targetLexemes": ["awl-method", "awl-research"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0032",
+    "type": "reading",
+    "difficulty": 2.6,
+    "passageId": "psg-007",
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "report the result and show why it was not merely a small number",
+      "argue that averages should never be used in engineering",
+      "compare arm length with chest circumference as design factors",
+      "explain how the middle thirty percent was calculated"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It gives the answer, then insists on it — 'not a small number, not a surprising minority — none' — before explaining how it arises.",
+      "Too broad. The passage faults a specific design philosophy, and the final paragraph limits the claim to composites of separate averages.",
+      "Those two measures appear as an illustration of why no pilot matched, not as a comparison of their importance.",
+      "The thirty percent definition is given in paragraph 2, not explained here."
+    ],
+    "primaryLexeme": "awl-percent",
+    "targetLexemes": ["awl-percent"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0033",
+    "type": "reading",
+    "difficulty": 2.7,
+    "passageId": "psg-007",
+    "stem": "The main purpose of the final paragraph is to -",
+    "options": [
+      "generalise the finding beyond the case that produced it",
+      "summarise the changes the Air Force made to its cockpits",
+      "concede that the manufacturers' objections were reasonable",
+      "call for new measurements to be taken"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. It opens with 'the principle has outlasted its origin' and then states the rule for any system built the same way.",
+      "The cockpit changes are given in paragraph 4; this paragraph moves past them.",
+      "The objections are mentioned in paragraph 4 and are not revisited or conceded.",
+      "The passage says the measurements were not wrong, so new ones are not what it calls for."
+    ],
+    "primaryLexeme": "awl-principle",
+    "targetLexemes": ["awl-principle"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0034",
+    "type": "reading",
+    "difficulty": 2.4,
+    "passageId": "psg-007",
+    "stem": "Which title best captures the passage as a whole?",
+    "options": [
+      "A Composite Average Can Describe Nobody",
+      "How the Air Force Improved Pilot Training",
+      "Gilbert Daniels and the History of Aviation",
+      "The Cost of Adjustable Equipment"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. The finding that no pilot matched the composite, and its generalisation, is what the passage is built around.",
+      "Paragraph 1 states that additional training did not help, so training is what the passage rules out.",
+      "Daniels appears as the researcher, but the passage is about his finding rather than his life or the field's history.",
+      "Cost appears once, as a manufacturers' objection, and is not the subject."
+    ],
+    "primaryLexeme": "awl-concept",
+    "targetLexemes": ["awl-concept"],
+    "trapType": "scope-shift"
+  },
+  {
+    "id": "rc-0035",
+    "type": "reading",
+    "difficulty": 2.8,
+    "passageId": "psg-007",
+    "stem": "It can be inferred from the passage that before 1950 the loss of control incidents were most likely attributed to -",
+    "options": [
+      "shortcomings in the pilots themselves",
+      "defects in the aircraft engines",
+      "errors in the original body measurements",
+      "the expense of adjustable equipment"
+    ],
+    "correctIndex": 0,
+    "explanationPerOption": [
+      "Correct. Paragraph 1 says more training was the response, which only makes sense if the pilots were thought to be at fault — and the final paragraph says such misfits 'look like user error'.",
+      "Engines are never mentioned anywhere in the passage.",
+      "The fourth paragraph explicitly says the measurements were not wrong.",
+      "Cost was a manufacturers' objection raised after the finding, not an earlier explanation for the incidents."
+    ],
+    "primaryLexeme": "awl-assume",
+    "targetLexemes": ["awl-assume"],
+    "trapType": "scope-shift"
+  }
+]

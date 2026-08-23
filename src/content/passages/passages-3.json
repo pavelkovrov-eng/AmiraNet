@@ -1,0 +1,11 @@
+[
+  {
+    "id": "psg-007",
+    "title": "The Problem With Averages",
+    "body": "In 1950 the United States Air Force faced a puzzle it could not explain. Pilots were losing control of aircraft at rates that no amount of additional training reduced. Cockpits had been designed a quarter-century earlier around measurements taken from hundreds of pilots, and the assumption was that a cockpit fitted to the average man would fit almost everyone tolerably well.\n\nA young researcher named Gilbert Daniels was assigned to update those measurements. Rather than simply recomputing the averages, he asked a different question: how many pilots actually were average? He took ten dimensions relevant to cockpit design and defined the average range generously, as the middle thirty percent of the distribution for each. Then he counted how many of four thousand pilots fell inside that range on all ten measures at once.\n\nThe answer was zero. Not a small number, not a surprising minority — none. A pilot with average arm length was very likely to have an unusual chest circumference; one with average height often had unusual leg length. Averaging across dimensions had produced a specification that described nobody.\n\nThe conclusion was not that the measurements were wrong but that the design philosophy was. If no pilot matched the composite, then a fixed cockpit fitted to it would misfit every occupant in some respect, and the misfits would compound in an emergency. The Air Force responded by requiring adjustability — movable seats, adjustable pedals and straps — over the objections of manufacturers who considered this expensive and unnecessary.\n\nThe principle has outlasted its origin. Wherever a system is built around a composite of separate averages, the composite is likely to describe no actual member of the population it was derived from, and the fit will fail in ways that look like user error.",
+    "domain": "science",
+    "difficulty": 2.5,
+    "wordCount": 289,
+    "questionIds": ["rc-0031", "rc-0032", "rc-0033", "rc-0034", "rc-0035"]
+  }
+]
