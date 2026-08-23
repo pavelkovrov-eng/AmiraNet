@@ -119,5 +119,15 @@ export function useSessionState() {
     [cards],
   );
 
-  return { ready, submitAnswer, reviewLexeme, totalQuestions: content.questions.length };
+  // A lexeme with no FSRS record has never been shown. New words get the
+  // reveal card; words already met get scored multiple choice.
+  const hasSeenLexeme = useCallback((lexemeId: string) => cards.has(lexemeId), [cards]);
+
+  return {
+    ready,
+    submitAnswer,
+    reviewLexeme,
+    hasSeenLexeme,
+    totalQuestions: content.questions.length,
+  };
 }

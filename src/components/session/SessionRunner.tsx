@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { FlashCard } from './FlashCard';
+import { ChoiceCard } from './ChoiceCard';
 import { QuestionCard } from '../question/QuestionCard';
 import { EnglishText } from '../ui/EnglishText';
 import { useSessionState } from '../../hooks/useSessionState';
-import { lexemeById, questionById } from '../../content/index';
+import { content, lexemeById, questionById } from '../../content/index';
 import type { SessionPlan } from '../../engines/session-builder';
 import './session-runner.css';
 
@@ -13,10 +14,11 @@ interface SessionRunnerProps {
 }
 
 export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
-  const { ready, submitAnswer, reviewLexeme } = useSessionState();
+  const { ready, submitAnswer, reviewLexeme, hasSeenLexeme } = useSessionState();
   const [index, setIndex] = useState(0);
   const [chosenIndex, setChosenIndex] = useState<number | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
+  const [cardAnswered, setCardAnswered] = useState(false);
   const startedAt = useRef(Date.now());
 
   const item = plan.items[index];
@@ -60,6 +62,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
   function advance() {
     setChosenIndex(null);
     setSaveFailed(false);
+    setCardAnswered(false);
     setIndex((i) => i + 1);
   }
 
@@ -72,11 +75,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
     const lexeme = lexemeById(lexemeId);
     if (!lexeme) return <p>מילה חסרה</p>;
 
-    return (
-      <section aria-label="כרטיסיית מילה">
-        <FlashCard
-          lexeme={lexeme}
-          onRate={async (known) => {
+    const persist = async (known: boolean) => {
             try {
               await reviewLexeme(lexemeId, known);
             } catch (err) {
@@ -93,9 +92,44 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
               setSaveFailed(true);
               return;
             }
-            advance();
-          }}
-        />
+      advance();
+    };
+
+    const persistOnly = async (known: boolean) => {
+      try {
+        await reviewLexeme(lexemeId, known);
+      } catch (err) {
+        console.error('Failed to persist review', err);
+        setSaveFailed(true);
+      }
+    };
+
+    const seen = hasSeenLexeme(lexemeId);
+
+    return (
+      <section aria-label="כרטיסיית מילה">
+        {seen ? (
+          <ChoiceCard
+            lexeme={lexeme}
+            pool={content.lexemes}
+            seed={index + 1}
+            onAnswer={(correct) => {
+              // Score and persist, but do not advance: the card has to stay
+              // on screen long enough to show whether the answer was right,
+              // along with the word family and example. Advancing here would
+              // score the card and skip the part that teaches.
+              setCardAnswered(true);
+              void persistOnly(correct);
+            }}
+          />
+        ) : (
+          <FlashCard lexeme={lexeme} onRate={(known) => void persist(known)} />
+        )}
+        {seen && cardAnswered && !saveFailed && (
+          <button type="button" onClick={advance}>
+            המשך
+          </button>
+        )}
         {saveFailed && (
           <p className="save-error" role="status" aria-label="שגיאת שמירה">
             <span className="save-error-glyph" aria-hidden="true">
