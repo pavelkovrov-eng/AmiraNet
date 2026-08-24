@@ -2,6 +2,13 @@ import type { QuestionItem, Passage, RemediationEntry, QuestionType } from '../c
 
 export const NEW_MATERIAL_THETA_OFFSET = 0.5;
 
+/**
+ * Ceiling on first exposures per session. Beyond roughly this many, a
+ * session becomes a vocabulary list rather than practice, and the review
+ * schedule floods days later with everything introduced at once.
+ */
+export const MAX_NEW_LEXEMES_PER_SESSION = 8;
+
 export const COST_SECONDS: Record<QuestionType | 'srs' | 'passage', number> = {
   srs: 8,
   'sentence-completion': 60,
@@ -25,6 +32,14 @@ export interface SessionRequest {
   budgetSeconds: number;
   theta: number;
   dueLexemeIds: string[];
+  /**
+   * Lexemes with no FSRS record yet. Without this the only way a word could
+   * ever reach a session was to be named by some question's targetLexemes,
+   * because cards are created solely when a question is answered or during
+   * placement. Words the bank held but no question referenced were reachable
+   * only by browsing the lexicon by hand.
+   */
+  unseenLexemeIds: string[];
   remediation: RemediationEntry[];
   questions: QuestionItem[];
   passages: Passage[];
@@ -82,7 +97,19 @@ export function buildSession(request: SessionRequest): SessionPlan {
     used.add(q.id);
   }
 
-  // 3. New material deliberately above the comfort level. Same reasoning as
+  // 3. New vocabulary. Placed after remediation because a word already
+  // missed is more urgent than a word never met, and before new questions
+  // because a card costs 8s against 60-120s. Capped: a session that is
+  // nothing but first exposures teaches recognition and never application.
+  let introduced = 0;
+  for (const lexemeId of request.unseenLexemeIds) {
+    if (introduced >= MAX_NEW_LEXEMES_PER_SESSION) break;
+    if (!fits(COST_SECONDS.srs)) continue;
+    take({ kind: 'srs', lexemeId }, COST_SECONDS.srs);
+    introduced += 1;
+  }
+
+  // 4. New material deliberately above the comfort level. Same reasoning as
   // step 2: `continue` lets a cheaper, worse-matched item fill budget a
   // pricier, better-matched item couldn't.
   const aim = request.theta + NEW_MATERIAL_THETA_OFFSET;
@@ -96,7 +123,7 @@ export function buildSession(request: SessionRequest): SessionPlan {
     used.add(q.id);
   }
 
-  // 4. A reading passage is atomic — all or nothing. Skip passages whose
+  // 5. A reading passage is atomic — all or nothing. Skip passages whose
   // questions are all already answered; otherwise a completed passage is
   // re-offered as "new" reading material forever. Uniform per-item cost
   // (every passage is 900s), so `continue` vs. `break` cannot change the

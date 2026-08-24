@@ -1,4 +1,4 @@
-import { buildSession, COST_SECONDS, NEW_MATERIAL_THETA_OFFSET } from './session-builder';
+import { buildSession, MAX_NEW_LEXEMES_PER_SESSION, COST_SECONDS, NEW_MATERIAL_THETA_OFFSET } from './session-builder';
 import type { QuestionItem, Passage, RemediationEntry } from '../content/types';
 
 function q(id: string, difficulty: number, over: Partial<QuestionItem> = {}): QuestionItem {
@@ -30,6 +30,7 @@ const passage: Passage = {
 const base = {
   theta: 1.0,
   dueLexemeIds: [] as string[],
+  unseenLexemeIds: [] as string[],
   remediation: [] as RemediationEntry[],
   questions: [] as QuestionItem[],
   passages: [] as Passage[],
@@ -412,5 +413,60 @@ describe('buildSession', () => {
     expect(ids).not.toContain('bigRemedial');
     expect(ids).toContain('smallRemedial');
     expect(plan.estimatedSeconds).toBe(COST_SECONDS['sentence-completion']);
+  });
+});
+
+describe('new vocabulary tier', () => {
+  it('schedules a word that no question references', () => {
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: 120,
+      unseenLexemeIds: ['awl-orphan'],
+    });
+    expect(plan.items).toContainEqual({ kind: 'srs', lexemeId: 'awl-orphan' });
+  });
+
+  it('caps first exposures per session', () => {
+    const many = Array.from({ length: 40 }, (_, i) => `new-${i}`);
+    const plan = buildSession({ ...base, budgetSeconds: 3600, unseenLexemeIds: many });
+    const introduced = plan.items.filter(
+      (i) => i.kind === 'srs' && i.lexemeId.startsWith('new-'),
+    );
+    expect(introduced).toHaveLength(MAX_NEW_LEXEMES_PER_SESSION);
+  });
+
+  it('serves due cards before first exposures', () => {
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: 600,
+      dueLexemeIds: ['due-word'],
+      unseenLexemeIds: ['new-word'],
+    });
+    const ids = plan.items.filter((i) => i.kind === 'srs').map((i) => i.lexemeId);
+    expect(ids.indexOf('due-word')).toBeLessThan(ids.indexOf('new-word'));
+  });
+
+  it('serves remediation before first exposures', () => {
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: 600,
+      theta: 1.0,
+      remediation: [
+        { cause: 'vocabulary-gap', targetId: 'awl-x', createdAt: 1, servings: 0 },
+      ],
+      questions: [q('remedial', 0.2, { primaryLexeme: 'awl-x', targetLexemes: ['awl-x'] })],
+      unseenLexemeIds: ['new-word'],
+    });
+    const kinds = plan.items.map((i) => i.kind);
+    expect(kinds.indexOf('question')).toBeLessThan(kinds.lastIndexOf('srs'));
+  });
+
+  it('respects the budget when introducing words', () => {
+    const plan = buildSession({
+      ...base,
+      budgetSeconds: COST_SECONDS.srs * 2,
+      unseenLexemeIds: ['a', 'b', 'c', 'd'],
+    });
+    expect(plan.estimatedSeconds).toBeLessThanOrEqual(COST_SECONDS.srs * 2);
   });
 });

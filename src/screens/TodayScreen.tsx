@@ -132,6 +132,12 @@ export function TodayScreen() {
         budgetSeconds,
         theta: profile.theta,
         dueLexemeIds: dueLexemeIds(cards, new Date()),
+        // Words with no card yet. Before this the session could only ever
+        // reach a word some question named, so anything the bank held but no
+        // question referenced was unreachable outside the lexicon browser.
+        unseenLexemeIds: content.lexemes
+          .filter((l) => !cards.some((c) => c.lexemeId === l.id))
+          .map((l) => l.id),
         remediation,
         questions: content.questions,
         passages: content.passages,

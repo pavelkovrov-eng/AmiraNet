@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TodayScreen } from './TodayScreen';
 import { db } from '../db/db';
-import { recordAttempt, saveProfile, saveRemediation } from '../db/repository';
+import { recordAttempt, saveCard, saveProfile, saveRemediation } from '../db/repository';
 import { content } from '../content/index';
 
 beforeEach(async () => {
@@ -21,7 +21,11 @@ describe('TodayScreen shortfall notice', () => {
     // fills the full 600s budget from the 11-item non-reading seed bank
     // (same fixture as scripts/demo-session.ts's first session, at a budget
     // that happens to divide evenly: 8 items land at exactly 600/600).
-    await screen.findByRole('region', { name: 'שאלה' });
+    // The session now opens with vocabulary rather than a question: the
+    // builder introduces unseen words before new material. What this test
+    // pins is that a session mounted and no shortfall notice appeared, not
+    // which item type happens to lead.
+    await screen.findByRole('region', { name: 'כרטיסיית מילה' });
     expect(screen.queryByRole('status')).not.toBeInTheDocument();
   });
 
@@ -50,9 +54,11 @@ describe('TodayScreen shortfall notice', () => {
     render(<TodayScreen />);
     await userEvent.click(screen.getByRole('button', { name: '10 דקות' }));
 
-    // 60s of 600s requested (10%) - well under the 50% threshold, and the
-    // session still renders alongside the notice, not instead of it.
-    await screen.findByRole('region', { name: 'שאלה' });
+    // Well under the 50% threshold, and the session still renders alongside
+    // the notice rather than instead of it. Matched on either session region
+    // so the assertion does not break when a tier change alters which item
+    // type happens to lead.
+    await screen.findByRole('region', { name: /שאלה|כרטיסיית מילה/ });
     const notice = screen.getByRole('status');
     expect(notice).toHaveTextContent('אזל להיום');
   });
@@ -63,10 +69,10 @@ describe('TodayScreen shortfall notice', () => {
   // notice that would have explained it) before the person clicking the
   // button ever sees anything. The button appears not to respond at all.
   it('explains a session with nothing left to offer, without bouncing back silently', async () => {
-    // Every seed question already answered: no due cards, no remediation
-    // targets, nothing left for new-material to select, and the passage
-    // excluded too since all of its questions are in this same set -
-    // buildSession has nothing to schedule at all, for any budget.
+    // Answering every question is no longer enough to empty a session: the
+    // builder now introduces words that have no card yet, and the bank holds
+    // hundreds. Emptying it takes both - every question answered AND every
+    // lexeme already carrying a card that is not yet due.
     await Promise.all(
       content.questions.map((q) =>
         recordAttempt({
@@ -77,6 +83,13 @@ describe('TodayScreen shortfall notice', () => {
           at: Date.now(),
           diagnosis: null,
         }),
+      ),
+    );
+
+    const farFuture = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000);
+    await Promise.all(
+      content.lexemes.map((l) =>
+        saveCard(l.id, { ...createEmptyCard(new Date()), due: farFuture }),
       ),
     );
 

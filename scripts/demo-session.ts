@@ -73,6 +73,7 @@ async function main(): Promise<void> {
     budgetSeconds: 1500,
     theta: profile.theta,
     dueLexemeIds: [],
+    unseenLexemeIds: [],
     remediation: [],
     questions: content.questions,
     passages: content.passages,
@@ -206,6 +207,9 @@ async function main(): Promise<void> {
     budgetSeconds: 600,
     theta: profile.theta,
     dueLexemeIds: due,
+    unseenLexemeIds: content.lexemes
+      .filter((l) => !storedCards.some((c) => c.lexemeId === l.id))
+      .map((l) => l.id),
     remediation: queue,
     questions: content.questions,
     passages: content.passages,
