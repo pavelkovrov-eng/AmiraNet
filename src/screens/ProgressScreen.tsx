@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ThetaChart } from '../components/ui/ThetaChart';
+import { BackupControls } from '../components/ui/BackupControls';
 import { getAttempts, getProfile } from '../db/repository';
 import { PASS_THRESHOLD_SCORE, thetaToScore } from '../engines/theta';
 import type { Attempt, DiagnosisCause } from '../content/types';
@@ -124,6 +125,8 @@ export function ProgressScreen() {
             ))}
         </ul>
       )}
+
+      <BackupControls />
     </section>
   );
 }

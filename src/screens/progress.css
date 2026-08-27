@@ -29,3 +29,43 @@
   color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
+
+.backup {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.backup-why {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: var(--measure);
+}
+
+.backup-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+
+.backup-status {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.backup-glyph {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.backup-status--ok .backup-glyph {
+  color: var(--color-correct);
+}
+
+.backup-status--error .backup-glyph {
+  color: var(--color-wrong);
+}
