@@ -48,6 +48,15 @@ beforeEach(async () => {
   await db.open();
 });
 
+/**
+ * The two taps answering now takes: arm an option, then submit it.
+ * Choices come first in the DOM, so index still addresses them directly.
+ */
+async function answer(index: number) {
+  await userEvent.click(screen.getAllByRole('button')[index]);
+  await userEvent.click(screen.getByRole('button', { name: 'שלח' }));
+}
+
 describe('SessionRunner', () => {
   it('renders the first question of the plan', async () => {
     render(<SessionRunner plan={plan} onComplete={() => {}} />);
@@ -57,7 +66,7 @@ describe('SessionRunner', () => {
   it('persists an attempt immediately after answering', async () => {
     render(<SessionRunner plan={plan} onComplete={() => {}} />);
     await screen.findByText(firstQuestion.stem);
-    await userEvent.click(screen.getAllByRole('button')[0]);
+    await answer(0);
 
     const attempts = await getAttempts();
     expect(attempts).toHaveLength(1);
@@ -67,15 +76,46 @@ describe('SessionRunner', () => {
   it('reveals explanations after answering', async () => {
     render(<SessionRunner plan={plan} onComplete={() => {}} />);
     await screen.findByText(firstQuestion.stem);
-    await userEvent.click(screen.getAllByRole('button')[0]);
+    await answer(0);
     expect(screen.getByText(firstQuestion.explanationPerOption[0])).toBeInTheDocument();
+  });
+
+  // The property the submit step exists for: a tap is recoverable. Touching
+  // an option must change nothing that outlives the screen - no attempt
+  // written, no theta moved, and the explanations still hidden - until the
+  // person says so.
+  it('records nothing, and reveals nothing, until the answer is submitted', async () => {
+    render(<SessionRunner plan={plan} onComplete={() => {}} />);
+    await screen.findByText(firstQuestion.stem);
+
+    await userEvent.click(screen.getAllByRole('button')[0]);
+    expect(await getAttempts()).toHaveLength(0);
+    expect(screen.queryByText(firstQuestion.explanationPerOption[0])).not.toBeInTheDocument();
+
+    // Still answerable, and re-tapping moves the selection rather than
+    // stacking a second answer on top of the first.
+    await userEvent.click(screen.getAllByRole('button')[1]);
+    expect(screen.getAllByRole('button')[1]).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getAllByRole('button')[0]).toHaveAttribute('aria-pressed', 'false');
+    expect(await getAttempts()).toHaveLength(0);
+
+    await userEvent.click(screen.getByRole('button', { name: 'שלח' }));
+    const attempts = await getAttempts();
+    expect(attempts).toHaveLength(1);
+    expect(attempts[0].chosenIndex).toBe(1);
+  });
+
+  it('cannot submit before an option is picked', async () => {
+    render(<SessionRunner plan={plan} onComplete={() => {}} />);
+    await screen.findByText(firstQuestion.stem);
+    expect(screen.getByRole('button', { name: 'שלח' })).toBeDisabled();
   });
 
   it('records a diagnosis for a wrong answer', async () => {
     render(<SessionRunner plan={plan} onComplete={() => {}} />);
     await screen.findByText(firstQuestion.stem);
     const wrongIndex = firstQuestion.correctIndex === 0 ? 1 : 0;
-    await userEvent.click(screen.getAllByRole('button')[wrongIndex]);
+    await answer(wrongIndex);
 
     const attempts = await getAttempts();
     expect(attempts[0].correct).toBe(false);
@@ -85,7 +125,7 @@ describe('SessionRunner', () => {
   it('records no diagnosis for a correct answer', async () => {
     render(<SessionRunner plan={plan} onComplete={() => {}} />);
     await screen.findByText(firstQuestion.stem);
-    await userEvent.click(screen.getAllByRole('button')[firstQuestion.correctIndex]);
+    await answer(firstQuestion.correctIndex);
 
     const attempts = await getAttempts();
     expect(attempts[0].correct).toBe(true);
@@ -96,7 +136,7 @@ describe('SessionRunner', () => {
     const onComplete = vi.fn();
     render(<SessionRunner plan={plan} onComplete={onComplete} />);
     await screen.findByText(firstQuestion.stem);
-    await userEvent.click(screen.getAllByRole('button')[0]);
+    await answer(0);
     await userEvent.click(screen.getByRole('button', { name: /המשך/ }));
     expect(onComplete).toHaveBeenCalled();
   });
@@ -161,7 +201,7 @@ describe('SessionRunner', () => {
 
     render(<SessionRunner plan={plan} onComplete={() => {}} />);
     await screen.findByText(firstQuestion.stem);
-    await userEvent.click(screen.getAllByRole('button')[0]);
+    await answer(0);
 
     // The reveal itself must not be lost because the write failed.
     expect(screen.getByText(firstQuestion.explanationPerOption[0])).toBeInTheDocument();

@@ -103,6 +103,26 @@
   opacity: 1; /* the base control's dimming would erase the reveal state */
 }
 
+/* Picked, not yet submitted. Reads as armed rather than judged: the accent
+   (the app's "you can act on this" colour) rather than either semantic
+   colour, and no glow — the glow belongs to the graded states, which is
+   what makes them feel like a verdict when they arrive. */
+.choice--selected {
+  border-color: var(--color-accent);
+  background: color-mix(in oklab, var(--color-accent) 10%, var(--color-raised));
+}
+
+.choice--selected::before {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.choice--selected .choice-mark {
+  color: var(--color-accent);
+  font-size: var(--text-base);
+}
+
 /* --- The moment an answer lands -----------------------------
    Two distinct physical reactions, because the two outcomes should not
    feel alike: correct settles (a single confident swell), wrong refuses

@@ -105,12 +105,23 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
   // otherwise widen `item` back to QuestionItem | null inside it.
   const currentItem = item;
 
-  // onAnswer's return value is never awaited by React or the DOM (it is
-  // invoked from ChoiceList's synchronous onClick), so handleAnswer must
-  // catch its own failures - an uncaught rejection here has no other
-  // listener and is exactly the failure mode that once made this suite
-  // exit non-zero with every assertion green (see SessionRunner.tsx).
-  async function handleAnswer(choice: number) {
+  // Tapping an option only arms it. Submission is a separate, deliberate
+  // act - see the "שלח" button below. The placement test is what sets the
+  // starting ability estimate and it shows no feedback at all, so under the
+  // old behaviour a mistaken tap moved theta, advanced to the next item,
+  // and left nothing on screen to notice it by.
+  function select(choice: number) {
+    if (answering.current) return;
+    setChosenIndex(choice);
+    setSaveFailed(false);
+  }
+
+  // submit's return value is never awaited by React or the DOM (it is
+  // invoked from a synchronous onClick), so it must catch its own failures -
+  // an uncaught rejection here has no other listener and is exactly the
+  // failure mode that once made this suite exit non-zero with every
+  // assertion green (see SessionRunner.tsx).
+  async function submit(choice: number) {
     // Reentrancy guard: without it, a second click landing before the first
     // click's `await saveCard` resolves re-enters this function with a
     // closure over the same pre-answer `state`, and the two calls'
@@ -125,7 +136,6 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
     if (answering.current) return;
     answering.current = true;
 
-    setChosenIndex(choice);
     setSaveFailed(false);
     const correct = choice === currentItem.correctIndex;
     const now = new Date();
@@ -183,10 +193,20 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
       </p>
       <QuestionCard
         question={item}
-        onAnswer={handleAnswer}
+        onAnswer={select}
         revealed={false}
         chosenIndex={chosenIndex}
       />
+      <button
+        type="button"
+        className="btn-primary placement-submit"
+        disabled={chosenIndex === null}
+        onClick={() => {
+          if (chosenIndex !== null) void submit(chosenIndex);
+        }}
+      >
+        שלח
+      </button>
       {saveFailed && (
         <p className="save-error" role="status" aria-label="שגיאת שמירה">
           <span className="save-error-glyph" aria-hidden="true">

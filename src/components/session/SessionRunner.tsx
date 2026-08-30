@@ -48,6 +48,9 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
   const { ready, submitAnswer, reviewLexeme, hasSeenLexeme } = useSessionState();
   const [index, setIndex] = useState(0);
   const [chosenIndex, setChosenIndex] = useState<number | null>(null);
+  // Armed but not submitted. Separate from chosenIndex, which means graded:
+  // a tap should be recoverable until the person says so.
+  const [pendingIndex, setPendingIndex] = useState<number | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
   const [cardAnswered, setCardAnswered] = useState(false);
   const startedAt = useRef(Date.now());
@@ -92,6 +95,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
   // does - not a second, independently maintained setIndex call.
   function advance() {
     setChosenIndex(null);
+    setPendingIndex(null);
     setSaveFailed(false);
     setCardAnswered(false);
     setIndex((i) => i + 1);
@@ -209,9 +213,10 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
     <section aria-label="שאלה">
       <QuestionCard
         question={question}
-        onAnswer={handleAnswer}
+        onAnswer={setPendingIndex}
         revealed={chosenIndex !== null}
-        chosenIndex={chosenIndex}
+        // Before grading this is the armed choice; after, the answer given.
+        chosenIndex={chosenIndex ?? pendingIndex}
       />
       {saveFailed && (
         <p className="save-error" role="status" aria-label="שגיאת שמירה">
@@ -221,7 +226,21 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
           התשובה לא נשמרה.
         </p>
       )}
-      {chosenIndex !== null && (
+      {/* One control in one place across both steps, so answering is always
+          the same two taps in the same spot: pick, then press the button
+          below. It submits first and advances second. */}
+      {chosenIndex === null ? (
+        <button
+          type="button"
+          className="btn-primary session-continue"
+          disabled={pendingIndex === null}
+          onClick={() => {
+            if (pendingIndex !== null) void handleAnswer(pendingIndex);
+          }}
+        >
+          שלח
+        </button>
+      ) : (
         <button type="button" className="btn-primary session-continue" onClick={advance}>
           המשך
         </button>
