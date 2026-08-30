@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { QuestionCard } from '../components/question/QuestionCard';
+import { ScoreReadout } from '../components/ui/ScoreReadout';
 import { content } from '../content/index';
 import {
   initialPlacementState,
@@ -56,7 +57,8 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
     const score = describePlacementScore(state.theta);
 
     return (
-      <section aria-labelledby="placement-done">
+      <section className="placement placement--done" aria-labelledby="placement-done">
+        <p className="eyebrow">מבחן מיקום</p>
         <h1 id="placement-done">מבחן המיקום הסתיים</h1>
         {score === null ? (
           <p className="save-error" role="status" aria-label="שגיאת חישוב">
@@ -66,7 +68,10 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
             לא הצלחנו לחשב הערכה ראשונית.
           </p>
         ) : (
-          <p>הערכה ראשונית: {score}</p>
+          /* The first time the learner sees their own number. Same readout
+             the header carries from here on, so the figure they meet once is
+             the figure they then watch move. */
+          <ScoreReadout score={score} variant="hero" />
         )}
         {/* Internal estimate only - the real NITE/AMIRNET calibration is not
             public, so this must never be presented as an official score. */}
@@ -81,7 +86,12 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
             השמירה נכשלה. אפשר לנסות שוב.
           </p>
         )}
-        <button type="button" disabled={finishing} onClick={() => void finish()}>
+        <button
+          type="button"
+          className="btn-primary placement-start"
+          disabled={finishing}
+          onClick={() => void finish()}
+        >
           התחל ללמוד
         </button>
       </section>
@@ -165,9 +175,9 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
   }
 
   return (
-    <section aria-labelledby="placement-heading">
+    <section className="placement" aria-labelledby="placement-heading">
       <h1 id="placement-heading">מבחן מיקום</h1>
-      <p>
+      <p className="placement-count numeral">
         שאלה {state.answered + 1} מתוך{' '}
         {Math.min(PLACEMENT_ITEM_COUNT, content.questions.length)}
       </p>

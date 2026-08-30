@@ -1,65 +1,116 @@
-/* Duplicated from placement.css / simulation.css / session-runner.css
-   rather than imported cross-feature: ProgressScreen does not depend on any
-   of them being present. */
 .disclaimer {
+  max-inline-size: var(--measure);
+  margin-block: var(--space-3) 0;
+  color: var(--color-text-faint);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+/* --- Error-cause distribution ------------------------------
+   The one screen that answers "what is actually going wrong", so the
+   comparison between causes has to be readable at a glance. */
+
+.cause-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.cause-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cause-label {
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
-  font-size: var(--text-sm);
 }
 
-.save-error {
-  margin-block-start: var(--space-2);
-  color: var(--color-wrong);
-  font-size: var(--text-sm);
+.cause-track {
+  block-size: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
-.save-error-glyph {
-  margin-inline-end: var(--space-1);
-  font-weight: 700;
+.cause-fill {
+  display: block;
+  block-size: 100%;
+  inline-size: 100%;
+  border-radius: inherit;
+  /* Warm rather than accent-cyan: these are mistakes, and the accent is
+     reserved for the score and for things to act on. */
+  background: linear-gradient(90deg, var(--color-wrong-dim), var(--color-wrong));
+  transform-origin: right center;
+  transition: transform var(--duration-slow) var(--ease-out);
 }
 
-.score-display {
-  font-size: var(--text-lg);
-  margin-block-end: var(--space-2);
+.cause-count {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+  min-inline-size: 1.5rem;
+  text-align: end;
 }
 
-/* Duplicated from theta-chart.css for the same reason - this screen's own
-   "no classified mistakes yet" state uses the identical treatment as the
-   chart's own empty state. */
-.empty-state {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
+@media (max-width: 26rem) {
+  /* Under this width the three-column row squeezes the label to the point
+     of wrapping mid-word, so the bar moves to its own line beneath it. */
+  .cause-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .cause-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
+
+/* --- Backup ------------------------------------------------- */
 
 .backup {
-  margin-top: var(--space-5);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
+  margin-block-start: var(--space-5);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.backup > h2 {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
 }
 
 .backup-why {
+  margin-block: 0;
   font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  max-width: var(--measure);
+  line-height: 1.5;
+  color: var(--color-text-faint);
+  max-inline-size: var(--measure);
 }
 
 .backup-actions {
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
-  margin-top: var(--space-3);
+  margin-block-start: var(--space-3);
 }
 
 .backup-status {
   display: flex;
   align-items: baseline;
   gap: var(--space-2);
-  margin-top: var(--space-3);
+  margin-block-start: var(--space-3);
   font-size: var(--text-sm);
+  animation: reveal-up var(--duration-base) var(--ease-out) both;
 }
 
 .backup-glyph {
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .backup-status--ok .backup-glyph {
@@ -68,4 +119,32 @@
 
 .backup-status--error .backup-glyph {
   color: var(--color-wrong);
+}
+
+/* Duplicated from placement.css / simulation.css / session-runner.css
+   rather than imported cross-feature: ProgressScreen does not depend on any
+   of them being present. */
+.save-error {
+  margin-block-start: var(--space-2);
+  color: var(--color-wrong);
+  font-size: var(--text-sm);
+}
+
+.save-error-glyph {
+  margin-inline-end: var(--space-1);
+  font-weight: var(--weight-bold);
+}
+
+/* reveal-up is declared in components/question/question.css, which every
+   screen loads through the session components. Redeclared here so this
+   screen's own animation does not depend on that import order. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

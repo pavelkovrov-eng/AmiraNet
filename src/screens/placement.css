@@ -1,6 +1,57 @@
-.disclaimer {
-  color: var(--color-text-muted);
+/* Placement renders outside the app shell — App returns it instead of the
+   tabbed layout — so it owns its own page frame rather than inheriting
+   main's. It is also the first screen anyone sees, which is why it is given
+   room instead of being crammed against the viewport edge. */
+
+.placement {
+  inline-size: 100%;
+  max-inline-size: 44rem;
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-3) var(--space-6);
+  padding-block-start: max(var(--space-5), env(safe-area-inset-top));
+}
+
+.placement > h1 {
+  font-size: var(--text-2xl);
+  margin-block-end: var(--space-4);
+}
+
+.placement-count {
+  margin-block: 0 var(--space-4);
   font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-faint);
+}
+
+.placement--done {
+  display: grid;
+  align-content: center;
+  min-block-size: 100dvh;
+}
+
+.placement--done > .eyebrow {
+  margin-block-end: var(--space-2);
+}
+
+.placement-start {
+  inline-size: 100%;
+  margin-block-start: var(--space-5);
+}
+
+@media (min-width: 30rem) {
+  .placement-start {
+    inline-size: auto;
+    min-inline-size: 14rem;
+    justify-self: start;
+  }
+}
+
+.disclaimer {
+  max-inline-size: var(--measure);
+  margin-block: var(--space-3) 0;
+  color: var(--color-text-faint);
+  font-size: var(--text-sm);
+  line-height: 1.5;
 }
 
 /* Duplicated from session-runner.css rather than imported cross-feature:
@@ -13,5 +64,5 @@
 
 .save-error-glyph {
   margin-inline-end: var(--space-1);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }

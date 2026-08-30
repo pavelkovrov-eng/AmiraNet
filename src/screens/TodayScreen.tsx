@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SessionRunner } from '../components/session/SessionRunner';
+import { MomentumStrip } from '../components/ui/MomentumStrip';
+import { answeredToday, streakDays } from '../engines/momentum';
 import { buildSession, type SessionPlan } from '../engines/session-builder';
 import { dueLexemeIds } from '../engines/srs';
 import { content } from '../content/index';
@@ -102,6 +104,25 @@ export function TodayScreen() {
   const [session, setSession] = useState<ActiveSession | null>(null);
   const [emptySession, setEmptySession] = useState(false);
   const [loadFailed, setLoadFailed] = useState(false);
+  const [momentum, setMomentum] = useState({ streak: 0, today: 0 });
+
+  // Deliberately does not set loadFailed on failure. The streak is an
+  // encouragement, not data the session depends on: a failure to read it
+  // should leave the screen usable and silent rather than raising a second
+  // error notice next to the one that actually blocks studying.
+  const loadMomentum = useCallback(async () => {
+    try {
+      const attempts = await getAttempts();
+      const now = Date.now();
+      setMomentum({ streak: streakDays(attempts, now), today: answeredToday(attempts, now) });
+    } catch (err) {
+      console.error('Failed to load momentum', err);
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadMomentum();
+  }, [loadMomentum]);
 
   // Addition 1: getProfile and getCards (src/db/repository.ts) both throw
   // on corrupt stored data - assertFiniteProfile / assertFiniteCard. Before
@@ -160,13 +181,21 @@ export function TodayScreen() {
     return (
       <>
         {isShortfall(session.plan, session.budgetSeconds) && <SessionShortfallNotice />}
-        <SessionRunner plan={session.plan} onComplete={() => setSession(null)} />
+        <SessionRunner
+          plan={session.plan}
+          onComplete={() => {
+            setSession(null);
+            void loadMomentum();
+          }}
+        />
       </>
     );
   }
 
   return (
     <section aria-labelledby="today-heading">
+      <MomentumStrip streak={momentum.streak} answeredToday={momentum.today} />
+
       <h1 id="today-heading">כמה זמן יש לך היום?</h1>
       {emptySession && <EmptySessionNotice />}
       {loadFailed && (
@@ -179,8 +208,21 @@ export function TodayScreen() {
       )}
       <div className="budget-options">
         {TIME_BUDGET_OPTIONS.map((option) => (
-          <button key={option.seconds} type="button" onClick={() => void start(option.seconds)}>
-            {option.label}
+          // aria-label carries the whole label so the accessible name stays
+          // one clean string, independent of how the two lines are split
+          // visually.
+          <button
+            key={option.seconds}
+            type="button"
+            aria-label={option.label}
+            onClick={() => void start(option.seconds)}
+          >
+            <span className="budget-value numeral" aria-hidden="true">
+              {option.seconds / 60}
+            </span>
+            <span className="budget-unit" aria-hidden="true">
+              דקות
+            </span>
           </button>
         ))}
       </div>

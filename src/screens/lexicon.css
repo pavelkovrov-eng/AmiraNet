@@ -1,35 +1,84 @@
+.lexicon-controls {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-block-end: var(--space-4);
+}
+
 .lexicon-search {
-  display: block;
-  margin-block-end: var(--space-3);
+  display: grid;
+  gap: var(--space-1);
+  flex: 1;
+  max-inline-size: 28rem;
 }
 
 .lexicon-search input {
-  display: block;
   inline-size: 100%;
-  max-inline-size: 28rem;
-  margin-block-start: var(--space-1);
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-base);
-  background: var(--color-surface);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
+  min-block-size: 2.75rem;
 }
+
+.lexicon-search input:focus {
+  border-color: var(--color-accent-dim);
+}
+
+.lexicon-count {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+
+/* --- Entries ------------------------------------------------
+   Three tiers in every row: the English word carries the display face at
+   full text colour, the Hebrew gloss sits one step down, and the word family
+   is quietest. Previously all three were the same size and colour separated
+   only by an em dash, which made a 304-entry list into a wall. */
 
 .lexicon-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
+}
+
+@media (min-width: 44rem) {
+  .lexicon-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .lexicon-list li {
+  display: grid;
+  gap: 2px;
   padding: var(--space-3);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.lexicon-list li:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-raised);
+}
+
+.lexicon-list li > .english-text:first-child {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+}
+
+.lexicon-gloss {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
 }
 
 .lexicon-list small {
-  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
 }

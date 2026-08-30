@@ -1,11 +1,27 @@
+/* ============================================================
+   Question card, choices, flashcards, timer.
+   This is where almost all of the app's time is spent, so it
+   carries the direction most explicitly: a lit panel holding
+   the item, and a physical reaction when an answer lands.
+   ============================================================ */
+
 .question-card {
   padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
 }
 
+/* The stem is exam material, not interface. Set larger and in the display
+   face so the eye lands on it before anything around it. */
 .question-card > p {
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-4);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  margin-block: 0 var(--space-4);
 }
+
+/* --- Choices ----------------------------------------------- */
 
 .choice-list {
   list-style: none;
@@ -13,51 +29,160 @@
   padding: 0;
   display: grid;
   gap: var(--space-2);
+  counter-reset: choice;
+}
+
+.choice-list li {
+  counter-increment: choice;
 }
 
 .choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   inline-size: 100%;
   text-align: start;
-  padding: var(--space-3);
+  min-block-size: 3.25rem;
+  padding: var(--space-2) var(--space-3);
   font-size: var(--text-base);
-  background: var(--color-surface);
+  font-weight: var(--weight-normal);
+  background: var(--color-raised);
   color: var(--color-text);
   border: 1px solid var(--color-border);
-  border-radius: 2px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-out);
+  box-shadow: var(--shadow-1);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+/* Option letter as an instrument key. Generated from the <ol> the choices
+   already live in, so nothing has to be threaded through the component. */
+.choice::before {
+  content: counter(choice, upper-alpha);
+  flex: none;
+  direction: ltr;
+  display: grid;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-faint);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
 }
 
 .choice:hover:not(:disabled) {
-  border-color: var(--color-text);
+  background: var(--color-overlay);
+  border-color: var(--color-border-strong);
+  transform: translateY(-1px);
 }
+
+.choice:hover:not(:disabled)::before {
+  color: var(--color-accent);
+  border-color: var(--color-accent-dim);
+}
+
+.choice:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.choice:disabled {
+  cursor: default;
+  opacity: 1; /* the base control's dimming would erase the reveal state */
+}
+
+/* --- The moment an answer lands -----------------------------
+   Two distinct physical reactions, because the two outcomes should not
+   feel alike: correct settles (a single confident swell), wrong refuses
+   (a short lateral shake). Both run once, on the render where the reveal
+   class first appears, and both are removed entirely under
+   prefers-reduced-motion by the global rule in styles/global.css.
+
+   Colour is never the only signal here: the glyph in ChoiceList carries
+   the distinction on its own (WCAG 1.4.1), and the letter key changes
+   fill as well as hue. */
 
 .choice--correct {
   border-color: var(--color-correct);
-  border-inline-start-width: 3px;
+  background: color-mix(in oklab, var(--color-correct) 12%, var(--color-raised));
+  box-shadow: var(--glow-correct);
+  animation: choice-land-correct var(--duration-slow) var(--ease-spring);
+}
+
+.choice--correct::before {
+  color: var(--color-accent-contrast);
+  background: var(--color-correct);
+  border-color: var(--color-correct);
 }
 
 .choice--wrong {
   border-color: var(--color-wrong);
-  border-inline-start-width: 3px;
+  background: color-mix(in oklab, var(--color-wrong) 12%, var(--color-raised));
+  box-shadow: var(--glow-wrong);
+  animation: choice-land-wrong 380ms var(--ease-out);
 }
 
-.choice-explanation {
-  margin: var(--space-1) 0 0;
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
+.choice--wrong::before {
+  color: var(--color-accent-contrast);
+  background: var(--color-wrong);
+  border-color: var(--color-wrong);
+}
+
+@keyframes choice-land-correct {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes choice-land-wrong {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  78% {
+    transform: translateX(-2px);
+  }
 }
 
 /* Correct/wrong must be legible without colour: WCAG 1.4.1. The glyph is the
    primary signal; colour on it is a secondary reinforcement for users who can
-   perceive it, never the only one. Sized at --text-lg (not --text-base) so
-   bold text clears the WCAG large-text threshold (>=14pt/~18.6px bold): at
-   base size --color-correct measured 3.67:1 against --color-surface, short
-   of the 4.5:1 normal-text minimum though clear of the 3:1 large-text one. */
+   perceive it, never the only one. Both marks are set well above the
+   large-text threshold and both sit on a dark ground at better than 5:1. */
+/* `order` rather than source position: ChoiceList renders the mark after the
+   option text and ChoiceCard renders it before, and the mark belongs at the
+   trailing edge of the row in both. Reordering here is presentational only —
+   assistive technology still reads the DOM order, where each mark stays
+   attached to the option it describes. */
 .choice-mark {
-  margin-inline-start: var(--space-2);
+  order: 2;
+  margin-inline-start: auto;
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
+  line-height: 1;
 }
 
 .choice--correct .choice-mark {
@@ -68,25 +193,47 @@
   color: var(--color-wrong);
 }
 
-/* Visible to assistive technology only. Standard clip-based sr-only pattern:
-   kept in normal flow-adjacent layout (absolute + 1px box) so it still
-   contributes to the accessible name instead of being pruned like
-   display:none or visibility:hidden content would be. */
-.visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+/* Explanations arrive in reading order rather than all at once, which reads
+   as the card working through the options with you. */
+.choice-explanation {
+  margin: var(--space-2) var(--space-2) 0;
+  padding-inline-start: calc(1.75rem + var(--space-3));
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  animation: reveal-up var(--duration-base) var(--ease-out) both;
 }
 
+.choice-list li:nth-child(1) .choice-explanation {
+  animation-delay: 40ms;
+}
+.choice-list li:nth-child(2) .choice-explanation {
+  animation-delay: 90ms;
+}
+.choice-list li:nth-child(3) .choice-explanation {
+  animation-delay: 140ms;
+}
+.choice-list li:nth-child(4) .choice-explanation {
+  animation-delay: 190ms;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Timer -------------------------------------------------- */
+
 .timer-track {
-  block-size: 2px;
+  block-size: 3px;
   inline-size: 100%;
+  border-radius: var(--radius-pill);
   background: var(--color-border);
   overflow: hidden;
 }
@@ -94,39 +241,87 @@
 .timer-fill {
   block-size: 100%;
   inline-size: 100%;
-  background: var(--color-text-muted);
+  border-radius: inherit;
+  background: var(--color-text-faint);
   transform-origin: right center;
-  transition: transform 200ms linear;
+  transition:
+    transform 200ms linear,
+    background-color var(--duration-base) var(--ease-out);
 }
 
 .timer-fill--warning {
   background: var(--color-due);
+  box-shadow: 0 0 10px var(--color-due);
 }
+
+/* --- Flashcard ---------------------------------------------
+   The word is the whole point of the card, so it gets the display face at
+   hero scale and everything else sits clearly below it. The old card set
+   the word only one step above its own gloss, which made a vocabulary
+   card look like a paragraph. */
 
 .flashcard {
   padding: var(--space-5) var(--space-4);
   text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
 }
 
 .flashcard > p:first-child {
   font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
-  margin-bottom: var(--space-4);
+  margin-block: 0 var(--space-4);
+  color: var(--color-text);
 }
 
 .flashcard-gloss {
   font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  margin-block: 0 var(--space-3);
+  animation: reveal-up var(--duration-base) var(--ease-out) both;
 }
 
 .flashcard-family,
 .flashcard-example {
   font-size: var(--text-sm);
+  line-height: 1.5;
   color: var(--color-text-muted);
+  margin-block: 0 var(--space-2);
+  animation: reveal-up var(--duration-base) var(--ease-out) both;
+  animation-delay: 70ms;
+}
+
+.flashcard-family {
+  color: var(--color-text-faint);
 }
 
 .flashcard-rating {
   display: flex;
   gap: var(--space-3);
   justify-content: center;
-  margin-top: var(--space-4);
+  margin-block-start: var(--space-4);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.flashcard-rating button {
+  flex: 1;
+  max-inline-size: 11rem;
+}
+
+/* "ידעתי" is the affirmative outcome and reads as one; "לא ידעתי" stays
+   neutral rather than alarming, because not knowing a word you have never
+   been taught is the expected case, not a failure. */
+.flashcard-rating button:last-child {
+  color: var(--color-correct);
+  border-color: var(--color-correct-dim);
+}
+
+.flashcard-rating button:last-child:hover:not(:disabled) {
+  border-color: var(--color-correct);
+  box-shadow: var(--glow-correct);
 }

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ThetaChart } from '../components/ui/ThetaChart';
+import { ScoreReadout } from '../components/ui/ScoreReadout';
 import { BackupControls } from '../components/ui/BackupControls';
 import { getAttempts, getProfile } from '../db/repository';
-import { PASS_THRESHOLD_SCORE, thetaToScore } from '../engines/theta';
+import { thetaToScore } from '../engines/theta';
 import type { Attempt, DiagnosisCause } from '../content/types';
 import './progress.css';
 
@@ -74,6 +75,8 @@ export function ProgressScreen() {
     return acc;
   }, {});
 
+  const ranked = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
   return (
     <section aria-labelledby="progress-heading">
       <h1 id="progress-heading">התקדמות</h1>
@@ -95,9 +98,7 @@ export function ProgressScreen() {
           לא הצלחנו לחשב את האומדן הנוכחי.
         </p>
       ) : (
-        <p className="score-display">
-          אומדן נוכחי: <strong>{score}</strong> · יעד: {PASS_THRESHOLD_SCORE}
-        </p>
+        <ScoreReadout score={score} variant="hero" />
       )}
       {/* Addition 3: this is the app's own internal estimate, not a NITE
           score - the real Amirnet calibration is not public. Rendered
@@ -109,22 +110,37 @@ export function ProgressScreen() {
         אחר מגמה, לא כתחזית לציון בבחינה.
       </p>
 
-      <ThetaChart history={history} />
+      <section className="panel" aria-labelledby="trend-heading">
+        <h2 id="trend-heading">מגמה</h2>
+        <ThetaChart history={history} />
+      </section>
 
-      <h2>התפלגות סיבות טעות</h2>
-      {Object.keys(counts).length === 0 ? (
-        <p className="empty-state">אין עדיין טעויות מסווגות.</p>
-      ) : (
-        <ul>
-          {Object.entries(counts)
-            .sort((a, b) => b[1] - a[1])
-            .map(([cause, count]) => (
-              <li key={cause}>
-                {CAUSE_LABELS[cause as DiagnosisCause]}: {count}
+      <section className="panel" aria-labelledby="causes-heading">
+        <h2 id="causes-heading">התפלגות סיבות טעות</h2>
+        {ranked.length === 0 ? (
+          <p className="empty-state">אין עדיין טעויות מסווגות.</p>
+        ) : (
+          /* Bars rather than a "label: 4" list. The question this answers is
+             which cause dominates, and a ranked list of numerals makes you do
+             that comparison yourself. Scaled against the largest cause, not
+             against the total, so the leading bar always fills the track and
+             the others read as fractions of it. */
+          <ul className="cause-list">
+            {ranked.map(([cause, count]) => (
+              <li key={cause} className="cause-row">
+                <span className="cause-label">{CAUSE_LABELS[cause as DiagnosisCause]}</span>
+                <span className="cause-track" aria-hidden="true">
+                  <span
+                    className="cause-fill"
+                    style={{ transform: `scaleX(${count / ranked[0][1]})` }}
+                  />
+                </span>
+                <span className="cause-count numeral">{count}</span>
               </li>
             ))}
-        </ul>
-      )}
+          </ul>
+        )}
+      </section>
 
       <BackupControls />
     </section>

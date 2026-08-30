@@ -6,7 +6,7 @@
  * offline needs. Cache-first is safe here for the same reason: there is no
  * live data that could go stale.
  */
-const CACHE = 'amirnet-v1';
+const CACHE = 'amirnet-v2';
 
 self.addEventListener('install', (event) => {
   // Take over immediately rather than waiting for every tab to close; a study

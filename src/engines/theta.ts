@@ -5,8 +5,8 @@ export const PASS_THRESHOLD_THETA = 2.04;
 
 const SCORE_CENTER = 100;
 const SCORE_PER_THETA = 50 / 3;
-const SCORE_MIN = 50;
-const SCORE_MAX = 150;
+export const SCORE_MIN = 50;
+export const SCORE_MAX = 150;
 const STEP_BASE = 1.2;
 
 function clamp(value: number, min: number, max: number): number {

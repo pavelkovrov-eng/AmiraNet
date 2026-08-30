@@ -50,6 +50,12 @@ export function ThetaChart({ history }: ThetaChartProps) {
   }));
   const path = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
   const passY = yFor(PASS_THRESHOLD_SCORE);
+  const baseline = HEIGHT - PAD;
+  // Closed back along the baseline so the trend can be filled. A line alone
+  // reads as a thin scratch on a dark ground; the fill is what makes the
+  // climb visible from across the room.
+  const area = `${path} L ${points[points.length - 1].x} ${baseline} L ${points[0].x} ${baseline} Z`;
+  const gridScores = [75, 100, 125];
 
   return (
     <figure className="theta-chart-figure">
@@ -60,6 +66,29 @@ export function ThetaChart({ history }: ThetaChartProps) {
         aria-describedby="theta-chart-desc"
         className="theta-chart"
       >
+        <defs>
+          <linearGradient id="theta-area" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="0.34" />
+            <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        {/* Reference grid. Decorative only - every value it marks is already
+            named in the figure's description, so it is left out of the
+            accessible tree along with the rest of the SVG's internals. */}
+        {gridScores.map((score) => (
+          <line
+            key={score}
+            x1={PAD}
+            x2={WIDTH - PAD}
+            y1={yFor(score)}
+            y2={yFor(score)}
+            className="theta-chart-grid"
+          />
+        ))}
+
+        <path d={area} fill="url(#theta-area)" stroke="none" />
+
         {/* Addition 3: the pass-threshold reference line must be
             distinguishable by more than colour - strokeDasharray gives it a
             shape distinct from the solid trend path below, and the label
@@ -74,9 +103,9 @@ export function ThetaChart({ history }: ThetaChartProps) {
           stroke="var(--color-due)"
           strokeDasharray="4 4"
         />
-        <path d={path} fill="none" stroke="var(--color-text)" strokeWidth={1.5} />
+        <path d={path} fill="none" strokeWidth={2} className="theta-chart-line" />
         {points.map((p, i) => (
-          <circle key={i} cx={p.x} cy={p.y} r={3} fill="var(--color-text)" />
+          <circle key={i} cx={p.x} cy={p.y} r={3.5} className="theta-chart-point" />
         ))}
         {/* Drawn last (on top) so it stays legible even when a data point
             lands near the threshold - the single most likely place for a

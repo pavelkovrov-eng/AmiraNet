@@ -49,7 +49,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <p className="save-error" role="status" aria-label="שגיאה בלתי צפויה">
+        <p className="save-error boundary-error" role="status" aria-label="שגיאה בלתי צפויה">
           <span className="save-error-glyph" aria-hidden="true">
             ✕
           </span>

@@ -2,14 +2,42 @@
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="theme-color" content="#fcfcfc" />
+    <meta name="theme-color" content="#0d1117" />
     <link rel="apple-touch-icon" href="/icon-192.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="אמירנט" />
+
+    <!-- Only the two faces used above the fold. The Latin cuts load on
+         demand; Hebrew is on screen from the first frame. -->
+    <link
+      rel="preload"
+      href="/fonts/heebo-hebrew.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <title>הכנה לאמירנט</title>
+
+    <script>
+      // Runs before the bundle so a stored light preference never flashes
+      // through the dark default. Key duplicated from src/lib/theme.ts on
+      // purpose: this has to execute before any module is parsed, which
+      // rules out importing the constant. Storage access throws outright in
+      // some private-browsing modes, so a failure here falls through to the
+      // default rather than blocking the boot.
+      try {
+        if (localStorage.getItem('amirnet-theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5f6f8');
+        }
+      } catch (e) {
+        /* default theme */
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

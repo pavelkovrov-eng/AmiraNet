@@ -13,6 +13,37 @@ interface SessionRunnerProps {
   onComplete: () => void;
 }
 
+/**
+ * How far into the session you are.
+ *
+ * A bare "3 / 8" states the same fact, but a filled track answers the
+ * question people actually ask mid-session — am I nearly done? — without
+ * arithmetic. It sits below the card rather than above it so it never
+ * competes with the item for attention.
+ */
+function SessionProgress({ index, total }: { index: number; total: number }) {
+  const done = index + 1;
+  const fraction = total === 0 ? 0 : done / total;
+
+  return (
+    <div className="session-progress">
+      <div
+        className="session-progress-track"
+        role="progressbar"
+        aria-valuemin={1}
+        aria-valuemax={total}
+        aria-valuenow={done}
+        aria-label="התקדמות בסשן"
+      >
+        <div className="session-progress-fill" style={{ transform: `scaleX(${fraction})` }} />
+      </div>
+      <p className="progress-note numeral">
+        <EnglishText>{`${done} / ${total}`}</EnglishText>
+      </p>
+    </div>
+  );
+}
+
 export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
   const { ready, submitAnswer, reviewLexeme, hasSeenLexeme } = useSessionState();
   const [index, setIndex] = useState(0);
@@ -126,7 +157,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
           <FlashCard lexeme={lexeme} onRate={(known) => void persist(known)} />
         )}
         {seen && cardAnswered && !saveFailed && (
-          <button type="button" onClick={advance}>
+          <button type="button" className="btn-primary session-continue" onClick={advance}>
             המשך
           </button>
         )}
@@ -138,9 +169,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
             הסקירה לא נשמרה.
           </p>
         )}
-        <p className="progress-note">
-          <EnglishText>{`${index + 1} / ${plan.items.length}`}</EnglishText>
-        </p>
+        <SessionProgress index={index} total={plan.items.length} />
       </section>
     );
   }
@@ -193,13 +222,11 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
         </p>
       )}
       {chosenIndex !== null && (
-        <button type="button" onClick={advance}>
+        <button type="button" className="btn-primary session-continue" onClick={advance}>
           המשך
         </button>
       )}
-      <p className="progress-note">
-        <EnglishText>{`${index + 1} / ${plan.items.length}`}</EnglishText>
-      </p>
+      <SessionProgress index={index} total={plan.items.length} />
     </section>
   );
 }

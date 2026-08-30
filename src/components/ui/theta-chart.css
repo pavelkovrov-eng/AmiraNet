@@ -7,24 +7,44 @@
   inline-size: 100%;
   max-inline-size: 640px;
   block-size: auto;
+  overflow: visible;
+}
+
+.theta-chart-grid {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+/* The trend is the accent's one use outside interaction and the score
+   itself — which is consistent, because it *is* the score, plotted. */
+.theta-chart-line {
+  stroke: var(--color-accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--color-accent) 55%, transparent));
+}
+
+/* Ring rather than a filled dot: a measurement, not a decoration. */
+.theta-chart-point {
+  fill: var(--color-bg);
+  stroke: var(--color-accent);
+  stroke-width: 2;
 }
 
 .theta-chart-pass-label {
-  font-size: var(--text-sm);
-  fill: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: 13px;
+  fill: var(--color-due);
 }
 
 .theta-chart-caption {
-  margin-block-start: var(--space-2);
+  margin-block-start: var(--space-3);
   max-inline-size: var(--measure);
-  color: var(--color-text-muted);
+  color: var(--color-text-faint);
   font-size: var(--text-sm);
+  line-height: 1.5;
 }
 
-/* Shared with ProgressScreen's own empty diagnosis-distribution state
-   (src/screens/progress.css duplicates this rather than importing
-   cross-feature - same convention as .save-error elsewhere in the app). */
-.empty-state {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-}
+/* Shared with ProgressScreen's own "no classified mistakes yet" state.
+   Both now inherit the global .empty-state in styles/controls.css; this
+   file no longer redeclares it. */

@@ -1,6 +1,11 @@
-/* Duplicated from session-runner.css / placement.css / simulation.css
-   rather than imported cross-feature: ErrorBoundary does not depend on any
-   of them being present. */
+/* .save-error is duplicated byte-for-byte across six files on purpose (see
+   the note in session-runner.css): every copy is identical, so which one the
+   bundler happens to emit last cannot change how any notice looks. This file
+   holds the boundary's *additional* treatment under its own class instead of
+   redefining the shared one — a boxed variant written into .save-error here
+   would have silently restyled every save notice in the app, in an order
+   nothing guarantees. */
+
 .save-error {
   margin-block-start: var(--space-2);
   color: var(--color-wrong);
@@ -9,5 +14,23 @@
 
 .save-error-glyph {
   margin-inline-end: var(--space-1);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
+}
+
+/* When a render throws, this notice is the only thing left on the screen, so
+   it gets a frame rather than sitting as loose red text on an empty page. */
+.boundary-error {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  background: color-mix(in oklab, var(--color-wrong) 8%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-wrong) 35%, transparent);
+  border-radius: var(--radius-md);
+  line-height: 1.5;
+}
+
+.boundary-error .save-error-glyph {
+  margin-inline-end: 0;
 }
