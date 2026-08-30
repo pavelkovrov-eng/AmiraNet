@@ -3,6 +3,7 @@
 }
 
 .theta-chart {
+  direction: ltr;
   display: block;
   inline-size: 100%;
   max-inline-size: 640px;
@@ -31,7 +32,12 @@
   stroke-width: 2;
 }
 
+/* The SVG inherits the document's RTL direction, which makes `text-anchor:
+   end` resolve against the wrong edge and pushed this label past the right
+   side of the chart box. Coordinates in the viewBox are LTR by construction,
+   so the label is anchored in the same frame the geometry uses. */
 .theta-chart-pass-label {
+  direction: ltr;
   font-family: var(--font-display);
   font-size: 13px;
   fill: var(--color-due);

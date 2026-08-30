@@ -135,16 +135,15 @@
   font-weight: var(--weight-bold);
 }
 
-/* reveal-up is declared in components/question/question.css, which every
-   screen loads through the session components. Redeclared here so this
-   screen's own animation does not depend on that import order. */
+/* Declared in components/question/question.css; redeclared here so this
+   screen's animation does not depend on that import order. Transform-only
+   for the reason documented there: a frozen animation must never leave
+   content invisible. */
 @keyframes reveal-up {
   from {
-    opacity: 0;
-    transform: translateY(-4px);
+    translate: 0 -6px;
   }
   to {
-    opacity: 1;
-    transform: none;
+    translate: 0 0;
   }
 }

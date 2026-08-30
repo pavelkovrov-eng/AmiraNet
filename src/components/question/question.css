@@ -196,6 +196,12 @@
 /* Explanations arrive in reading order rather than all at once, which reads
    as the card working through the options with you. */
 .choice-explanation {
+  /* Explanations are always English. text-align on the EnglishText span has
+     no effect because the span is inline — alignment is decided by the block
+     container, which is this paragraph, and it was inheriting the page's RTL
+     and setting English ragged-left. */
+  direction: ltr;
+  text-align: left;
   margin: var(--space-2) var(--space-2) 0;
   padding-inline-start: calc(1.75rem + var(--space-3));
   font-size: var(--text-sm);
@@ -217,14 +223,22 @@
   animation-delay: 190ms;
 }
 
+/* Transform-only, and deliberately so.
+   An earlier version faded these in from `opacity: 0` with
+   `animation-fill-mode: both`. That makes the content's visibility depend on
+   the animation actually running — and it does not run while a tab is
+   backgrounded, which on a phone is any moment the learner switches apps
+   mid-session. Measured in that state: all four option explanations and the
+   "המשך" button sat at `opacity: 0` with their full height reserved. The
+   teaching content and the only way forward were both invisible.
+   Offset alone degrades safely: frozen, the element is 6px out of place and
+   completely readable. */
 @keyframes reveal-up {
   from {
-    opacity: 0;
-    transform: translateY(-4px);
+    translate: 0 -6px;
   }
   to {
-    opacity: 1;
-    transform: none;
+    translate: 0 0;
   }
 }
 

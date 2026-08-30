@@ -119,6 +119,10 @@
 
 .score-readout-figures {
   grid-column: 2;
+  /* A score and its target are one LTR expression. Laid out in the page's
+     RTL direction, the flex row put the target first and "123 / 134" read
+     on screen as "134/ 123" — which states the opposite of the truth. */
+  direction: ltr;
   display: flex;
   align-items: baseline;
   gap: 0.15em;
@@ -248,15 +252,18 @@ main {
   border: 0;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-out);
 }
 
+/* Nothing here transitions, deliberately.
+   Which tab is selected is state, and state must never be carried by a
+   property that is mid-flight. Measured with the transition in place: after
+   switching tabs, the colour of the *previous* tab was still the accent
+   while the current one — the one correctly carrying aria-current — was
+   still the inactive grey. Any moment frames are not being produced leaves
+   the wrong tab looking selected. A tab bar should answer instantly anyway. */
 .nav-glyph {
   font-size: var(--text-md);
   line-height: 1;
-  transition:
-    transform var(--duration-base) var(--ease-spring),
-    filter var(--duration-base) var(--ease-out);
 }
 
 .nav-label {
@@ -296,6 +303,15 @@ main {
 /* Wide screens: the tab row belongs under the app bar, not pinned to the
    bottom of a mouse-driven window. */
 @media (min-width: 48rem) {
+  /* The readout stretches to fill the bar on a phone, where the bar is
+     narrow and that is exactly what it should do. Left stretching on a
+     desktop window it became a ~950px hairline running the width of the
+     screen, which reads as a page-loading bar rather than as one figure's
+     progress toward one target. */
+  .score-readout--bar {
+    flex: 0 0 18rem;
+  }
+
   .app-shell {
     grid-template-areas: 'bar' 'nav' 'main';
     grid-template-rows: auto auto 1fr;
