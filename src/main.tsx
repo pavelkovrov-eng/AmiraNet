@@ -14,7 +14,10 @@ createRoot(document.getElementById('root')!).render(
 // apply.
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch((err) => {
+    // BASE_URL, not '/sw.js': under a subpath the worker lives beside
+    // index.html, and a worker registered from the domain root would be
+    // rejected for being outside its own scope.
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch((err) => {
       console.error('Service worker registration failed', err);
     });
   });

@@ -6,13 +6,17 @@
  * offline needs. Cache-first is safe here for the same reason: there is no
  * live data that could go stale.
  */
-const CACHE = 'amirnet-v2';
+const CACHE = 'amirnet-v3';
 
 self.addEventListener('install', (event) => {
   // Take over immediately rather than waiting for every tab to close; a study
   // app is usually a single tab and waiting only delays the update.
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then((c) => c.add('/')));
+  // './' rather than '/': inside a worker a relative URL resolves against the
+  // worker's own location, so this is the app's own index wherever the site
+  // is mounted. '/' would precache the domain root, which under a project
+  // subpath is somebody else's page or a 404.
+  event.waitUntil(caches.open(CACHE).then((c) => c.add('./')));
 });
 
 self.addEventListener('activate', (event) => {
@@ -46,7 +50,7 @@ self.addEventListener('fetch', (event) => {
           // A navigation that misses the cache while offline still has to
           // render something; the app shell is enough, since routing and
           // content are both client-side.
-          if (request.mode === 'navigate') return caches.match('/');
+          if (request.mode === 'navigate') return caches.match('./');
           throw new Error('offline and not cached');
         });
     }),
