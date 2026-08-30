@@ -80,12 +80,22 @@ h3 {
   max-width: var(--measure);
 }
 
-/* Numerals as instrument readout: fixed-width so a changing score does not
-   reflow, and letterspaced tight so large figures hold together. */
+/* Numerals as instrument readout: the display face, letterspaced tight so
+   large figures hold together.
+
+   Proportional rather than tabular, deliberately. Space Grotesk's tabular
+   `1` carries a foot serif and a shoulder — the standard way to make a
+   narrow digit fill a fixed-width slot without leaving a hole in a column —
+   and at readout sizes that foot reads as a stroke through the digit. The
+   scores this app is about run 100-150, so *every* number that matters
+   begins with a 1: the cost was paid constantly, on the one figure the
+   whole app exists to move, to buy fixed widths in the two places a number
+   changes in place. Those two are handled by reserving width on the
+   containers instead (see .progress-note, .cause-count), which costs
+   nothing. */
 .numeral {
   font-family: var(--font-display);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: proportional-nums;
   letter-spacing: var(--tracking-tight);
 }
 

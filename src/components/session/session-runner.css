@@ -41,8 +41,15 @@
   transition: transform var(--duration-base) var(--ease-out);
 }
 
+/* Width reserved rather than fixed by the glyphs. This counter changes on
+   every item, and it sits directly beside a flex-sized track: without a
+   floor here, proportional digits would resize this box and the track would
+   visibly re-scale each time the number ticked. Wide enough for two digits
+   either side of the slash. */
 .progress-note {
   margin: 0;
+  min-inline-size: 4.5rem;
+  text-align: end;
   font-size: var(--text-sm);
   color: var(--color-text-faint);
   white-space: nowrap;
