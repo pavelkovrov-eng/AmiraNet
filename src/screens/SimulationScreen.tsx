@@ -8,10 +8,11 @@ import {
   EXAM_SECTIONS,
   advanceSection,
   assignSectionQuestions,
+  computeSimulationTheta,
   initialSimulationState,
   type SimulationState,
 } from '../engines/simulation';
-import { thetaToScore, updateTheta } from '../engines/theta';
+import { thetaToScore } from '../engines/theta';
 import { getProfile, saveProfile } from '../db/repository';
 import type { QuestionItem } from '../content/types';
 import './simulation.css';
@@ -29,26 +30,6 @@ const POLL_INTERVAL_MS = 250;
  */
 const SECTION_QUESTIONS = assignSectionQuestions(EXAM_SECTIONS, content.questions);
 
-/**
- * The simulation's own ability estimate, folded fresh from just its own
- * answers (starting at acc=0) rather than continuing from the user's stored
- * profile.theta - a simulated exam reflects performance on that exam alone,
- * the same way a real exam does not care what last week's practice scored.
- * Shared by describeSimulationScore below (the render-time display) and
- * Addition 2's persistence effect (the history point), so both derive from
- * exactly one computation rather than two that could drift apart.
- *
- * Throws on non-finite input, same contract as updateTheta itself (valid
- * content can never drive it there - the schema clamps difficulty to
- * [-3, 3] - but nothing here assumes that holds).
- */
-function computeSimulationTheta(state: SimulationState, questions: QuestionItem[]): number {
-  return Object.entries(state.answers).reduce((acc, [id, choice], i) => {
-    const q = questions.find((x) => x.id === id);
-    if (!q) return acc;
-    return updateTheta(acc, q.difficulty, choice === q.correctIndex, i);
-  }, 0);
-}
 
 /**
  * thetaToScore (engines/theta.ts) throws on non-finite input, and so does
@@ -64,10 +45,10 @@ function computeSimulationTheta(state: SimulationState, questions: QuestionItem[
  */
 function describeSimulationScore(
   state: SimulationState,
-  questions: QuestionItem[],
+  sectionQuestions: QuestionItem[][],
 ): number | null {
   try {
-    return thetaToScore(computeSimulationTheta(state, questions));
+    return thetaToScore(computeSimulationTheta(state, sectionQuestions));
   } catch (err) {
     console.error('Failed to compute simulation score', err);
     return null;
@@ -223,7 +204,7 @@ export function SimulationScreen() {
     void (async () => {
       let theta: number;
       try {
-        theta = computeSimulationTheta(state, content.questions);
+        theta = computeSimulationTheta(state, SECTION_QUESTIONS);
       } catch (err) {
         // Non-finite theta: already surfaced to the user via the score
         // notice below (describeSimulationScore hits the same throw). Not
@@ -246,7 +227,7 @@ export function SimulationScreen() {
   }, [section, state]);
 
   if (!section) {
-    const score = describeSimulationScore(state, content.questions);
+    const score = describeSimulationScore(state, SECTION_QUESTIONS);
 
     return (
       <section aria-labelledby="sim-done">

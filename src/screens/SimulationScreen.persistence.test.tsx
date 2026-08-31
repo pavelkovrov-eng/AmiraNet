@@ -3,6 +3,11 @@ import 'fake-indexeddb/auto';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { SimulationScreen } from './SimulationScreen';
 import { content } from '../content/index';
+import {
+  EXAM_SECTIONS,
+  assignSectionQuestions,
+  computeSimulationTheta,
+} from '../engines/simulation';
 import { getProfile } from '../db/repository';
 import { db } from '../db/db';
 
@@ -41,9 +46,12 @@ describe('SimulationScreen result persistence', () => {
     );
     expect(screen.getByRole('heading', { name: 'פרק 1 מתוך 1' })).toBeInTheDocument();
 
-    // Any correct answer from a baseline theta of 0 pushes the persisted
-    // theta strictly above 0 - same technique SimulationScreen.test.tsx
-    // uses to check survival without pinning an exact score.
+    // Answered correctly, so the persisted theta must land strictly above
+    // what the same run scores with nothing answered at all. Compared
+    // against that reference rather than against 0: unanswered questions
+    // now count as wrong (computeSimulationTheta), so a single correct
+    // answer among a section's unanswered rest still leaves theta negative,
+    // and "> 0" would assert the old, flattering scoring instead.
     const question = content.questions.find((q) => screen.queryByText(q.stem))!;
     fireEvent.click(screen.getAllByRole('button')[question.correctIndex]);
 
@@ -63,7 +71,11 @@ describe('SimulationScreen result persistence', () => {
     });
 
     const profile = await getProfile();
-    expect(profile.thetaHistory[0].theta).toBeGreaterThan(0);
+    const nothingAnswered = computeSimulationTheta(
+      { sectionIndex: 1, locked: [0], answers: {} },
+      assignSectionQuestions(EXAM_SECTIONS, content.questions),
+    );
+    expect(profile.thetaHistory[0].theta).toBeGreaterThan(nothingAnswered);
 
     // profile.theta itself (the live adaptive estimate session-builder.ts
     // reads for future practice material) must stay untouched - the

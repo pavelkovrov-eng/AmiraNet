@@ -3,6 +3,11 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { SimulationScreen } from './SimulationScreen';
 import { content } from '../content/index';
 import { thetaToScore } from '../engines/theta';
+import {
+  EXAM_SECTIONS,
+  assignSectionQuestions,
+  computeSimulationTheta,
+} from '../engines/simulation';
 
 // Shortened durations only - type and questionCount stay real, so the real
 // content-bank shortfall this task's Context section calls out (16 seed
@@ -212,13 +217,25 @@ describe('SimulationScreen render-throw handling', () => {
     // source.
     expect(screen.getByText(/אומדן פנימי בלבד/)).toBeInTheDocument();
 
-    // The section-2 answer survived four more section transitions (through
-    // section 6) to reach this computation at all: every call thetaToScore
-    // received a theta only a real, retained correct answer produces from a
-    // baseline of 0 - not the 0 a lost answer would leave behind.
+    // Two properties at once, both measured against the same run scored
+    // with nothing answered.
+    //
+    // Above that reference: the section-2 answer survived four more section
+    // transitions to reach this computation at all.
+    //
+    // Below zero: every other presented question went unanswered, and those
+    // now count as wrong (computeSimulationTheta). This half is the
+    // regression guard - the earlier scoring folded over answers alone, so
+    // one correct answer and twenty-odd skipped ones produced a theta above
+    // 0 and a flattering score. If that ever comes back, this fails.
+    const nothingAnswered = computeSimulationTheta(
+      { sectionIndex: 6, locked: [0, 1, 2, 3, 4, 5], answers: {} },
+      assignSectionQuestions(EXAM_SECTIONS, content.questions),
+    );
     expect(thetaToScore).toHaveBeenCalled();
     for (const [theta] of vi.mocked(thetaToScore).mock.calls) {
-      expect(theta).toBeGreaterThan(0);
+      expect(theta).toBeGreaterThan(nothingAnswered);
+      expect(theta).toBeLessThan(0);
     }
 
     // Addition 2's persistence effect also ran on this same completion

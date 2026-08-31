@@ -1,4 +1,5 @@
 import type { QuestionItem, QuestionType } from '../content/types';
+import { updateTheta } from './theta';
 
 export interface SectionSpec {
   index: number;
@@ -84,4 +85,42 @@ export function assignSectionQuestions(
     }
     return picked;
   });
+}
+
+/**
+ * Ability estimate for a finished (or abandoned) simulation.
+ *
+ * Folds every question the exam actually *presented* — not every question
+ * that got an answer. A presented question with no answer counts as wrong,
+ * which is the real exam's rule, stated outright in NITE's own examinee
+ * presentation: an unmarked question is treated as an incorrect answer, and
+ * guessing can only help. The earlier version folded over `state.answers`
+ * alone, so skipping a hard question cost nothing here and cost a point in
+ * the exam. That made every simulation score flattering, and — worse for a
+ * tool whose whole purpose is rehearsal — it trained the one habit the
+ * official guidance explicitly warns against.
+ *
+ * Only locked sections are scored. A section the examinee never reached was
+ * never put in front of them, so failing it would be an artefact of quitting
+ * early rather than a measurement. Sections lock in exam order, so
+ * `state.locked` already carries the sequence updateTheta's shrinking step
+ * size expects.
+ */
+export function computeSimulationTheta(
+  state: SimulationState,
+  sectionQuestions: QuestionItem[][],
+): number {
+  const presented = state.locked.flatMap((index) => sectionQuestions[index] ?? []);
+  return presented.reduce(
+    (theta, question, answered) =>
+      updateTheta(
+        theta,
+        question.difficulty,
+        // Strict equality against a possibly-undefined lookup: unanswered is
+        // not correct, which is the entire point of this function.
+        state.answers[question.id] === question.correctIndex,
+        answered,
+      ),
+    0,
+  );
 }

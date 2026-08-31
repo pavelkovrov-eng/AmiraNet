@@ -5,6 +5,7 @@ import {
   TOTAL_SCORED_QUESTIONS,
   advanceSection,
   canReturnToSection,
+  computeSimulationTheta,
   initialSimulationState,
 } from './simulation';
 
@@ -114,5 +115,76 @@ describe('assignSectionQuestions under a deficient bank', () => {
     const assigned = assignSectionQuestions(EXAM_SECTIONS, bank);
     // Section 1 wants 4 sentence-completion items and can only get 2.
     expect(assigned[0]).toHaveLength(2);
+  });
+});
+
+describe('computeSimulationTheta', () => {
+  function item(id: string, correctIndex: 0 | 1): QuestionItem {
+    return {
+      id,
+      type: 'sentence-completion',
+      difficulty: 0,
+      stem: id,
+      options: ['a', 'b', 'c', 'd'],
+      correctIndex,
+      explanationPerOption: ['1', '2', '3', '4'],
+      primaryLexeme: 'awl-stub',
+      targetLexemes: ['awl-stub'],
+      trapType: 'phonetic-neighbor',
+    };
+  }
+
+  const twoQuestions = [[item('a', 0), item('b', 0)]];
+  const locked = (answers: Record<string, number>) => ({
+    sectionIndex: 1,
+    locked: [0],
+    answers,
+  });
+
+  // The rule this function exists for. NITE's examinee presentation states
+  // it outright: an unmarked question is treated as an incorrect answer,
+  // which is why guessing can only help. A simulation that ignored skipped
+  // questions scored every run high and rehearsed the opposite habit.
+  it('counts a presented but unanswered question as wrong', () => {
+    const skipped = computeSimulationTheta(locked({ a: 0 }), twoQuestions);
+    const answeredWrong = computeSimulationTheta(locked({ a: 0, b: 1 }), twoQuestions);
+    expect(skipped).toBe(answeredWrong);
+  });
+
+  it('scores a correct answer strictly above skipping the same question', () => {
+    const skipped = computeSimulationTheta(locked({ a: 0 }), twoQuestions);
+    const bothCorrect = computeSimulationTheta(locked({ a: 0, b: 0 }), twoQuestions);
+    expect(bothCorrect).toBeGreaterThan(skipped);
+  });
+
+  it('puts an all-skipped section below zero rather than at it', () => {
+    // Zero is what the earlier implementation returned for a blank exam,
+    // because it folded over answers and there were none. A blank exam is a
+    // failed exam, not an average one.
+    expect(computeSimulationTheta(locked({}), twoQuestions)).toBeLessThan(0);
+  });
+
+  // Quitting in section 1 must not be recorded as failing sections 2-6.
+  // Only what was actually put in front of the examinee is measured.
+  it('ignores sections that were never reached', () => {
+    const sections = [[item('a', 0)], [item('b', 0)]];
+    const onlyFirstLocked = computeSimulationTheta(
+      { sectionIndex: 1, locked: [0], answers: { a: 0 } },
+      sections,
+    );
+    const bothLocked = computeSimulationTheta(
+      { sectionIndex: 2, locked: [0, 1], answers: { a: 0 } },
+      sections,
+    );
+    expect(onlyFirstLocked).toBeGreaterThan(0);
+    expect(bothLocked).toBeLessThan(onlyFirstLocked);
+  });
+
+  it('returns the baseline when nothing has been locked yet', () => {
+    expect(computeSimulationTheta(initialSimulationState(), twoQuestions)).toBe(0);
+  });
+
+  it('tolerates a locked section that holds no questions', () => {
+    expect(computeSimulationTheta({ sectionIndex: 1, locked: [0], answers: {} }, [[]])).toBe(0);
   });
 });
