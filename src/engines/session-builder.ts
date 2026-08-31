@@ -89,7 +89,7 @@ export function buildSession(request: SessionRequest): SessionPlan {
   // must not block a cheaper one further down the list.
   const targets = new Set(request.remediation.map((e) => e.targetId));
   const remedial = available.filter((q) =>
-    q.targetLexemes.some((id) => targets.has(id)),
+    (q.targetLexemes ?? []).some((id) => targets.has(id)),
   );
   for (const q of remedial) {
     if (!fits(COST_SECONDS[q.type])) continue;

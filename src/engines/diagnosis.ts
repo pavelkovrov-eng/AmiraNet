@@ -48,11 +48,15 @@ export function diagnose(input: DiagnosisInput): DiagnosisCause | null {
   // a vocabulary gap, since most items exercise several words and any one of
   // them being unmastered would trip the branch. That would collapse a
   // five-cause classifier into a one-cause one.
-  if (!isMastered(question.primaryLexeme)) return 'vocabulary-gap';
+  // An item with no primary lexeme names no word to have a gap in - a reading
+  // question about a passage's purpose is the usual case. Skipping the check
+  // lets it fall through to a cause that is actually true of it, rather than
+  // reporting a vocabulary gap for a word the item never tested.
+  if (question.primaryLexeme && !isMastered(question.primaryLexeme)) return 'vocabulary-gap';
 
   // 2. Chose a word the primary lexeme is known to be confused with.
   const chosenText = question.options[chosenIndex];
-  const primary = lexemeById(question.primaryLexeme);
+  const primary = question.primaryLexeme ? lexemeById(question.primaryLexeme) : undefined;
   if (primary?.confusableWith.includes(chosenText)) return 'distractor-phonetic';
 
   // 3. The item's trap was a reversed logical relation.

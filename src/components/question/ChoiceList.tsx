@@ -2,7 +2,8 @@ import { EnglishText } from '../ui/EnglishText';
 
 interface ChoiceListProps {
   options: readonly string[];
-  explanations: readonly string[];
+  /** Absent on imported exam items, which ship no authored explanations. */
+  explanations?: readonly string[];
   correctIndex: number;
   chosenIndex: number | null;
   revealed: boolean;
@@ -81,7 +82,7 @@ export function ChoiceList({
               )}
               {state && <span className="visually-hidden">{state.label}</span>}
             </button>
-            {revealed && (
+            {revealed && explanations?.[index] && (
               <p className="choice-explanation">
                 <EnglishText>{explanations[index]}</EnglishText>
               </p>

@@ -3,3 +3,6 @@ dist/
 .superpowers/
 .DS_Store
 *.local
+
+# Source exam PDFs: 96MB of binaries the build never reads.
+PsycoExamTakeOnlyEnglish/

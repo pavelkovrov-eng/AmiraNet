@@ -77,7 +77,7 @@ export function useSessionState() {
       });
 
       const nextCards = new Map(cards);
-      for (const lexemeId of question.targetLexemes) {
+      for (const lexemeId of question.targetLexemes ?? []) {
         const existing = nextCards.get(lexemeId);
         const updated = existing
           ? reviewCard(existing, correct, new Date(now))
@@ -88,7 +88,7 @@ export function useSessionState() {
       setCards(nextCards);
 
       let queue = await getRemediation();
-      for (const lexemeId of question.targetLexemes) {
+      for (const lexemeId of question.targetLexemes ?? []) {
         queue = recordServing(queue, lexemeId, correct, now);
       }
       if (cause) {

@@ -1,22 +1,14 @@
 import { useState } from 'react';
 import { SessionRunner } from '../components/session/SessionRunner';
-import { standaloneQuestions } from '../content/index';
+import { passageBackedQuestions, standaloneQuestions } from '../content/index';
 import type { QuestionType } from '../content/types';
 import type { SessionPlan } from '../engines/session-builder';
 import './practice.css';
 
-/**
- * Reading is deliberately absent.
- *
- * Its questions only make sense beside their passage, and this screen renders
- * a bare QuestionCard. Offering the type here served ten unanswerable
- * questions ("the main purpose of the second paragraph is -") with nothing to
- * read. It comes back the moment a passage reader exists; until then the
- * honest option list is the one this screen can actually present.
- */
 const TYPE_LABELS: Partial<Record<QuestionType, string>> = {
   'sentence-completion': 'השלמת משפטים',
   restatement: 'ניסוח מחדש',
+  reading: 'הבנת הנקרא',
   'grammar-in-context': 'דקדוק בהקשר',
 };
 
@@ -24,7 +16,12 @@ export function PracticeScreen() {
   const [plan, setPlan] = useState<SessionPlan | null>(null);
 
   function startType(type: QuestionType) {
-    const items = standaloneQuestions
+    // Reading draws from the passage-backed pool and everything else from the
+    // self-contained one. Both are filtered on whether a passage exists rather
+    // than on the type name, so an item can never reach the runner without the
+    // text it asks about.
+    const pool = type === 'reading' ? passageBackedQuestions : standaloneQuestions;
+    const items = pool
       .filter((q) => q.type === type)
       .slice(0, 10)
       .map((q) => ({ kind: 'question' as const, questionId: q.id }));

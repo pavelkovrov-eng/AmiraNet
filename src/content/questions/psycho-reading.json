@@ -1,0 +1,3602 @@
+[
+  {
+    "id": "pr-autumn2022-1-13",
+    "type": "reading",
+    "difficulty": -0.33,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Constantly Changing: The Many Forms of the Northern Lights",
+      "The Northern Lights in Native Traditions",
+      "The Aurora Borealis and Its Symbolic Meanings",
+      "The Aurora Borealis: Science and Legend"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-001"
+  },
+  {
+    "id": "pr-autumn2022-1-14",
+    "type": "reading",
+    "difficulty": -0.33,
+    "stem": "According to the first paragraph, the northern lights -",
+    "options": [
+      "can be seen all night",
+      "are easiest to see at dawn",
+      "do not always look the same",
+      "are usually red, blue, or violet"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-001"
+  },
+  {
+    "id": "pr-autumn2022-1-15",
+    "type": "reading",
+    "difficulty": -0.33,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "present a theory about the earth's magnetic field",
+      "discuss the source of electrically charged particles",
+      "provide a scientific explanation for the northern lights",
+      "explain how energy produces light"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-001"
+  },
+  {
+    "id": "pr-autumn2022-1-16",
+    "type": "reading",
+    "difficulty": -0.33,
+    "stem": "In line 19, \"however\" could be replaced with -",
+    "options": [
+      "despite the beauty of the northern lights",
+      "though their explanations for the northern lights are different",
+      "although they disagree with the Inuit",
+      "except for Robert Service"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-001"
+  },
+  {
+    "id": "pr-autumn2022-1-17",
+    "type": "reading",
+    "difficulty": -0.33,
+    "stem": "It can be inferred from the last paragraph that Robert Service -",
+    "options": [
+      "wrote many poems about the northern lights",
+      "thought the northern lights were very beautiful",
+      "had his own explanation for the northern lights",
+      "never actually saw the northern lights"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-001"
+  },
+  {
+    "id": "pr-autumn2022-1-18",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "According to the first paragraph, one of the reasons King Louis-Philippe established the French Foreign Legion was to -",
+    "options": [
+      "make his throne more secure",
+      "establish France as the strongest country in Europe",
+      "populate the new colony of Algeria",
+      "advance the careers of his favorite soldiers and officers"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-002"
+  },
+  {
+    "id": "pr-autumn2022-1-19",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "Which of the following excerpts from the text relates to the policy of anonymat (line 7)?",
+    "options": [
+      "\"A legionnaire was thus able to escape his past\" (lines 8-9)",
+      "\"put their military duties and devotion to their comrades above all else\" (line 13)",
+      "\"This combination of audacity and mystery\" (line 14)",
+      "\"the Legion could serve as the model for an international military organization\" (lines 23-24)"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-002"
+  },
+  {
+    "id": "pr-autumn2022-1-20",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "The second and third paragraphs focus on the of the French Foreign Legion.",
+    "options": [
+      "history",
+      "success",
+      "image",
+      "growth"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-002"
+  },
+  {
+    "id": "pr-autumn2022-1-21",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "The third paragraph mentions Beau Geste in order to -",
+    "options": [
+      "provide an example of P. C. Wren's novels",
+      "show how the French Foreign Legion has influenced popular culture",
+      "illustrate the characteristics of the legionnaire",
+      "describe the public's perception of the French Foreign Legion"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-002"
+  },
+  {
+    "id": "pr-autumn2022-1-22",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "The main purpose of the last paragraph is to discuss -",
+    "options": [
+      "reasons why people join the French Foreign Legion",
+      "the size and structure of the French Foreign Legion",
+      "changes in the French Foreign Legion in recent years",
+      "the French Foreign Legion's future role as an international army - 43 - 59 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-002"
+  },
+  {
+    "id": "pr-autumn2022-2-13",
+    "type": "reading",
+    "difficulty": 0.71,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "argue that doctors should use laughter to treat their patients",
+      "discuss the reasons why some people laugh more than others",
+      "describe the physiological processes that produce laughter",
+      "explore claims regarding the effects of laughter on health"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-003"
+  },
+  {
+    "id": "pr-autumn2022-2-14",
+    "type": "reading",
+    "difficulty": 0.71,
+    "stem": "According to the first paragraph, Anatomy of an Illness as Perceived by the Patient -",
+    "options": [
+      "argues that laughter can prevent illness",
+      "was written by a physician suffering from a rare illness",
+      "describes one man's approach to dealing with illness",
+      "questions the effectiveness of conventional remedies"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-003"
+  },
+  {
+    "id": "pr-autumn2022-2-15",
+    "type": "reading",
+    "difficulty": 0.71,
+    "stem": "According to the second paragraph, high levels of cortisol may -",
+    "options": [
+      "make a person laugh more often",
+      "enable a person to recover quickly from a virus",
+      "cause a person to have low blood sugar levels",
+      "shorten a person's life"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-003"
+  },
+  {
+    "id": "pr-autumn2022-2-16",
+    "type": "reading",
+    "difficulty": 0.71,
+    "stem": "According to the last paragraph, Pro vine thinks that many researchers who believe in the medical benefits of laughter -",
+    "options": [
+      "have not collected information from enough patients",
+      "do not look at some of the most common illnesses",
+      "are beginning to see that his claims are correct",
+      "are ignoring other reasons for improved health"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-003"
+  },
+  {
+    "id": "pr-autumn2022-2-17",
+    "type": "reading",
+    "difficulty": 0.71,
+    "stem": "Based on the information in the last paragraph, which of the following would Provine be most likely to recommend to someone suffering from pain?",
+    "options": [
+      "Read a humorous book.",
+      "Be sure to get enough sleep.",
+      "Eat healthy foods.",
+      "Spend time with friends."
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-003"
+  },
+  {
+    "id": "pr-autumn2022-2-18",
+    "type": "reading",
+    "difficulty": 0.14,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Rwanda's Campaign against Plastic: The Impact on Tourism",
+      "Rwanda's Cleanliness Program: Popular with the People",
+      "Rwanda's Plastic Bag Ban: Imperfect Success",
+      "Rwanda Achieves the Impossible: Getting Rid of Plastic"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-004"
+  },
+  {
+    "id": "pr-autumn2022-2-19",
+    "type": "reading",
+    "difficulty": 0.14,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "present international reactions to Rwanda's campaign",
+      "discuss some of the problems Rwanda faces today",
+      "describe how Rwanda eliminated plastic bags",
+      "explain why Rwanda banned plastic bags"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-004"
+  },
+  {
+    "id": "pr-autumn2022-2-20",
+    "type": "reading",
+    "difficulty": 0.14,
+    "stem": "Forcing people to is not one of the \"extreme measures\" mentioned in line 13.",
+    "options": [
+      "clean the streets",
+      "pay a fine",
+      "go to prison",
+      "apologize in public"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-004"
+  },
+  {
+    "id": "pr-autumn2022-2-21",
+    "type": "reading",
+    "difficulty": 0.14,
+    "stem": "In line 20, \"them\" refers to -",
+    "options": [
+      "smugglers",
+      "market vendors",
+      "customers",
+      "neighboring countries"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-004"
+  },
+  {
+    "id": "pr-autumn2022-2-22",
+    "type": "reading",
+    "difficulty": 0.14,
+    "stem": "According to the text, Rwanda's ban on plastic bags does not apply to -",
+    "options": [
+      "tourists",
+      "hospitals",
+      "market vendors",
+      "government officials"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-004"
+  },
+  {
+    "id": "pr-autumn2023-1-13",
+    "type": "reading",
+    "difficulty": -0.07,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Snakes, Eagles, and Leopards: The Vervet's Enemies",
+      "The Languages of Vervets and Other African Monkeys",
+      "Vervets: A Study in Animal Communication",
+      "Cheney and Seyfarth: New Research on Animal Behavior"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-005"
+  },
+  {
+    "id": "pr-autumn2023-1-14",
+    "type": "reading",
+    "difficulty": -0.07,
+    "stem": "The first paragraph communicate through language.",
+    "options": [
+      "presents evidence that apes and monkeys",
+      "introduces the idea that some animals",
+      "argues that only humans",
+      "explains how vervets"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-005"
+  },
+  {
+    "id": "pr-autumn2023-1-15",
+    "type": "reading",
+    "difficulty": -0.07,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "describe the vocalizations of African monkeys",
+      "describe vervet life in the wild",
+      "explain why Cheney and Seyfarth chose to study vervets",
+      "discuss the research methods used by Cheney and Seyfarth"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-005"
+  },
+  {
+    "id": "pr-autumn2023-1-16",
+    "type": "reading",
+    "difficulty": -0.07,
+    "stem": "Which of the following is not mentioned in the third paragraph as one of the vervet's survival strategies?",
+    "options": [
+      "running to new territory",
+      "hiding in bushes",
+      "emitting a specific cry",
+      "climbing trees"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-005"
+  },
+  {
+    "id": "pr-autumn2023-1-17",
+    "type": "reading",
+    "difficulty": -0.07,
+    "stem": "In line 20, \"the result\" refers to -",
+    "options": [
+      "a vervet hiding in the trees",
+      "a leopard catching a vervet",
+      "a vervet being unable to sound an alarm",
+      "an eagle attacking a vervet"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-005"
+  },
+  {
+    "id": "pr-autumn2023-1-18",
+    "type": "reading",
+    "difficulty": -0.35,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "explain how to judge the authenticity of a painting",
+      "explain why van Gogh's work was imitated by so many artists",
+      "discuss the claim that there are many fake van Goghs",
+      "discuss a great artist who suffered from severe mental illness"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-006"
+  },
+  {
+    "id": "pr-autumn2023-1-19",
+    "type": "reading",
+    "difficulty": -0.35,
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "discuss different types of fake van Goghs",
+      "explain how to recognize a real van Gogh",
+      "explain how fake van Goghs differ from genuine ones",
+      "discuss other artists who admired van Gogh's style"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-006"
+  },
+  {
+    "id": "pr-autumn2023-1-20",
+    "type": "reading",
+    "difficulty": -0.35,
+    "stem": "It can be inferred that the \"theory\" mentioned in line 18 -",
+    "options": [
+      "was first proposed by van Gogh",
+      "may not apply to van Gogh",
+      "is accepted only by handwriting experts",
+      "is highly individual"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-006"
+  },
+  {
+    "id": "pr-autumn2023-1-21",
+    "type": "reading",
+    "difficulty": -0.35,
+    "stem": "The main purpose of the fifth paragraph is to -",
+    "options": [
+      "explain why it is very difficult to recognize a genuine van Gogh",
+      "discuss the effect of van Gogh's mental illness on his work",
+      "explain why van Gogh made so many copies of his work",
+      "discuss the painting styles with which van Gogh experimented"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-006"
+  },
+  {
+    "id": "pr-autumn2023-1-22",
+    "type": "reading",
+    "difficulty": -0.35,
+    "stem": "According to the last paragraph, Emile Schuffeneck er and Dr. Paul Gachet -",
+    "options": [
+      "are the owners of suspect van Goghs",
+      "are the leading experts on van Gogh's work",
+      "may have produced fake van Goghs",
+      "may have influenced van Gogh's work - 43 - 59 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-006"
+  },
+  {
+    "id": "pr-autumn2023-2-13",
+    "type": "reading",
+    "difficulty": 0.05,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "discuss why the Norse moved to Greenland",
+      "describe the first Norse colonies",
+      "explain why the Norse colony in Greenland failed",
+      "present the history of the Norse people"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-007"
+  },
+  {
+    "id": "pr-autumn2023-2-14",
+    "type": "reading",
+    "difficulty": 0.05,
+    "stem": "The first paragraph mainly discusses -",
+    "options": [
+      "why the Norsemen sailed to Greenland",
+      "what the Norse found when they arrived in Greenland",
+      "the beginning of the Norse settlement in Greenland",
+      "the Norse peoples of Scandinavia"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-007"
+  },
+  {
+    "id": "pr-autumn2023-2-15",
+    "type": "reading",
+    "difficulty": 0.05,
+    "stem": "It can be inferred from the first paragraph that a misnomer (line 6) is -",
+    "options": [
+      "an unsuitable name",
+      "a place with fields, pasturelands, and forests",
+      "the Norse word for Greenland",
+      "a pleasant discovery"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-007"
+  },
+  {
+    "id": "pr-autumn2023-2-16",
+    "type": "reading",
+    "difficulty": 0.05,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "discuss the farming methods of the Greenland Norse",
+      "explain why the Norse settlement in Greenland was successful at first",
+      "show how the Norse way of life was not suited to Greenland",
+      "describe how the Greenland Norse overcame harsh living conditions"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-007"
+  },
+  {
+    "id": "pr-autumn2023-2-17",
+    "type": "reading",
+    "difficulty": 0.05,
+    "stem": "In lines 15-16, \"a factor completely beyond their control\" refers to -",
+    "options": [
+      "the availability of wood",
+      "the weather",
+      "fishing conditions",
+      "rough seas"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-007"
+  },
+  {
+    "id": "pr-autumn2023-2-18",
+    "type": "reading",
+    "difficulty": -0.44,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "discuss changes in the Bonneville Salt Flats from the last ice age to the present",
+      "discuss an important national landmark in the U.S.",
+      "describe efforts to save a striking landscape in danger of disappearing",
+      "discuss the people who are drawn to the Bonneville Salt Flats"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-008"
+  },
+  {
+    "id": "pr-autumn2023-2-19",
+    "type": "reading",
+    "difficulty": -0.44,
+    "stem": "The main purpose of the first paragraph is to describe the the Bonneville Salt Flats.",
+    "options": [
+      "minerals, lake bed, and crust of",
+      "formation and characteristics of",
+      "plants and animals found in",
+      "seasonal changes that occur in"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-008"
+  },
+  {
+    "id": "pr-autumn2023-2-20",
+    "type": "reading",
+    "difficulty": -0.44,
+    "stem": "A view that is \"unobstructed\" (line 14) is -",
+    "options": [
+      "clear",
+      "dark",
+      "uneasy",
+      "inactive"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-008"
+  },
+  {
+    "id": "pr-autumn2023-2-21",
+    "type": "reading",
+    "difficulty": -0.44,
+    "stem": "According to the third paragraph, because of the salt, the speedway is -",
+    "options": [
+      "not stable",
+      "thin",
+      "not slippery",
+      "massive"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-008"
+  },
+  {
+    "id": "pr-autumn2023-2-22",
+    "type": "reading",
+    "difficulty": -0.44,
+    "stem": "According to the last paragraph, racing -",
+    "options": [
+      "no longer takes place on the Salt Flats",
+      "is the main cause of \"bad salt\"",
+      "has become more dangerous because of mineral mining",
+      "may be damaging the Salt Flats"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-008"
+  },
+  {
+    "id": "pr-autumn2025-1-13",
+    "type": "reading",
+    "difficulty": -0.32,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Eighty Eight's Special Post Office",
+      "Eighty Eight: Life in a Kentucky Community",
+      "What Happened in Eighty Eight in 1988?",
+      "Eighty Eight: An Unusual Town Name"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-009"
+  },
+  {
+    "id": "pr-autumn2025-1-14",
+    "type": "reading",
+    "difficulty": -0.32,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "explain why 88 was officially changed to Eighty Eight",
+      "explain how the town got its name",
+      "discuss Dabnie Nunnally's duties",
+      "introduce the town's first postmaster"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-009"
+  },
+  {
+    "id": "pr-autumn2025-1-15",
+    "type": "reading",
+    "difficulty": -0.32,
+    "stem": "The main purpose of the third paragraph is to discuss -",
+    "options": [
+      "an event that brought Eighty Eight to the public's attention",
+      "stories about small towns that appeared in Ripley's Believe It or Not!",
+      "voting patterns among Eighty Eight's residents",
+      "changes that occurred in Eighty Eight between the 1860s and 1948"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-009"
+  },
+  {
+    "id": "pr-autumn2025-1-16",
+    "type": "reading",
+    "difficulty": -0.32,
+    "stem": "The \"surge of interest\" described in the last paragraph was not surprising because -",
+    "options": [
+      "it took place in a year that ended in \"88\"",
+      "many envelopes were mailed on 8/8/88",
+      "the postmistress was replaced in 1988",
+      "it was difficult to get a postmark from Eighty Eight"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-009"
+  },
+  {
+    "id": "pr-autumn2025-1-17",
+    "type": "reading",
+    "difficulty": -0.32,
+    "stem": "In line 23, \"volume\" could best be replaced by -",
+    "options": [
+      "type",
+      "value",
+      "amount",
+      "appearance"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-009"
+  },
+  {
+    "id": "pr-autumn2025-1-18",
+    "type": "reading",
+    "difficulty": 0.33,
+    "stem": "Which of the following words or phrases in the first paragraph means something different from the others?",
+    "options": [
+      "thoughts",
+      "silent speech",
+      "output-input",
+      "internal monologue"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-010"
+  },
+  {
+    "id": "pr-autumn2025-1-19",
+    "type": "reading",
+    "difficulty": 0.33,
+    "stem": "In line 10, \"all but undetectable\" is closest in meaning to -",
+    "options": [
+      "not easy to see",
+      "al ways present",
+      "unpredictable",
+      "immeasurable"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-010"
+  },
+  {
+    "id": "pr-autumn2025-1-20",
+    "type": "reading",
+    "difficulty": 0.33,
+    "stem": "Which of the following best summarizes the process by which AlterEgo works?",
+    "options": [
+      "the user silently addresses AlterEgo → algorithms analyze electrical signals to recreate words → AI selects an appropriate response → AlterEgo sends the response to the user",
+      "a question occurs to the user → sensors in AlterEgo \"hear\" the question → EEG and EMG answer the question → AlterEgo sends the answer back to the user",
+      "the user wants to perform a task → AlterEgo transmits the request → EEG sensors transmit information to EMG sensors → AI determines the response",
+      "the user forms words silently → sensors in AlterEgo detect signals reaching facial muscles → algorithms analyze data to identify the user's words → AlterEgo converts thoughts into actions"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-010"
+  },
+  {
+    "id": "pr-autumn2025-1-21",
+    "type": "reading",
+    "difficulty": 0.33,
+    "stem": "It can be inferred that \"auditory feedback\" (line 22) -",
+    "options": [
+      "is AlterEgo's main feature",
+      "can be heard by the user",
+      "is what enables a computer to read thoughts",
+      "improves AlterEgo's speed"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-010"
+  },
+  {
+    "id": "pr-autumn2025-1-22",
+    "type": "reading",
+    "difficulty": 0.33,
+    "stem": "Which of the following is not a reason that a person might use AlterEgo?",
+    "options": [
+      "to access information without outward action",
+      "to conduct an internal monologue",
+      "to ask questions without disturbing people",
+      "to articulate thoughts out loud - 43 - 59 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-010"
+  },
+  {
+    "id": "pr-autumn2025-2-13",
+    "type": "reading",
+    "difficulty": -0.15,
+    "stem": "Which of the following statements about Burushaski is not made in the text?",
+    "options": [
+      "No other known language is similar to it.",
+      "There are no records of Burusho longevity written in it.",
+      "Its written form is relatively new.",
+      "It does not have words for health problems."
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-011"
+  },
+  {
+    "id": "pr-autumn2025-2-14",
+    "type": "reading",
+    "difficulty": -0.15,
+    "stem": "Which of the following statements about the Burusho can be inferred from the first paragraph?",
+    "options": [
+      "They are one of many small ethnic groups that live in the Hunza Valley.",
+      "Not many people came into contact with them before 1978.",
+      "Their language is one of the oldest in the world.",
+      "They helped build the Karakoram Highway."
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-011"
+  },
+  {
+    "id": "pr-autumn2025-2-15",
+    "type": "reading",
+    "difficulty": -0.15,
+    "stem": "According to the third paragraph, apricots -",
+    "options": [
+      "can not be grown in hilly terrain",
+      "are difficult to grow in the Hunza Valley",
+      "are believed to play an important role in the Burusho people's health",
+      "are eaten by the Burusho more in the summer than in the winter"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-011"
+  },
+  {
+    "id": "pr-autumn2025-2-16",
+    "type": "reading",
+    "difficulty": -0.15,
+    "stem": "The last paragraph mainly -",
+    "options": [
+      "explains how apricot soup is made",
+      "explains why soup is a Burusho delicacy",
+      "describes the frigid winters in the Hunza Valley",
+      "discusses the nutritional value of bataring daudo"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-011"
+  },
+  {
+    "id": "pr-autumn2025-2-17",
+    "type": "reading",
+    "difficulty": -0.15,
+    "stem": "It can be inferred from the last paragraph that during the winter -",
+    "options": [
+      "the Burusho leave the Hunza Valley",
+      "few kinds of food are available in the Hunza Valley",
+      "fuel for cooking must be brought in through the Karakoram Highway",
+      "the Burusho have no access to water"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-011"
+  },
+  {
+    "id": "pr-autumn2025-2-18",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "The main purpose of the first paragraph is to -",
+    "options": [
+      "describe the first European encounter with cochineal",
+      "explain how cochineal is produced",
+      "describe the purpose of Cortés's expedition to the New World",
+      "discuss the uses of red dye"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-012"
+  },
+  {
+    "id": "pr-autumn2025-2-19",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "According to the second paragraph, cochineal dye became a sensation in Europe because -",
+    "options": [
+      "of its vibrant color",
+      "of its limited availability",
+      "it was inexpensive",
+      "it was a natural substance"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-012"
+  },
+  {
+    "id": "pr-autumn2025-2-20",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "In line 12, \"they\" refers to the -",
+    "options": [
+      "Aztecs",
+      "insects",
+      "artists",
+      "techniques"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-012"
+  },
+  {
+    "id": "pr-autumn2025-2-21",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "discuss why Spain wanted to keep cochineal extraction a secret",
+      "explain why Thiéry's plan failed",
+      "describe efforts to control the production of cochineal",
+      "describe the spread of cochineal production to other European countries"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-012"
+  },
+  {
+    "id": "pr-autumn2025-2-22",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "It can be inferred that \"synthetic dyes\" (line 27) -",
+    "options": [
+      "fade more easily than cochineal",
+      "were de veloped by Spain",
+      "are brighter than cochineal",
+      "are produced mainly in Peru"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-012"
+  },
+  {
+    "id": "pr-spring2023-1-13",
+    "type": "reading",
+    "difficulty": -0.1,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Great Chefs, Great Discoveries",
+      "From Veal Stock to Dashi: A World of Extraordinary Cooking",
+      "Umami: The Four Categories of Taste",
+      "In Search of the Fifth Flavor"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-013"
+  },
+  {
+    "id": "pr-spring2023-1-14",
+    "type": "reading",
+    "difficulty": -0.1,
+    "stem": "The main purpose of the first paragraph is to discuss -",
+    "options": [
+      "Escoffier's career as a chef",
+      "what made Escoffier's cooking special",
+      "the most glamorous restaurant in Paris",
+      "the four main categories of taste"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-013"
+  },
+  {
+    "id": "pr-spring2023-1-15",
+    "type": "reading",
+    "difficulty": -0.1,
+    "stem": "According to the second paragraph, dashi -",
+    "options": [
+      "is the fifth category of taste",
+      "does not contain glutamic acid",
+      "was discovered by Ikeda",
+      "is a traditional Japanese food"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-013"
+  },
+  {
+    "id": "pr-spring2023-1-16",
+    "type": "reading",
+    "difficulty": -0.1,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "show why it took a hundred years for umami to be recognized",
+      "compare umami with the other four tastes",
+      "explain how human taste receptors function",
+      "present confirmation of umami"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-013"
+  },
+  {
+    "id": "pr-spring2023-1-17",
+    "type": "reading",
+    "difficulty": -0.1,
+    "stem": "It can be inferred from the last paragraph that the human tongue.",
+    "options": [
+      "taste receptors are found on",
+      "L-glutamate is part of",
+      "umami is not always recognized by",
+      "identifying taste is the main function of"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-013"
+  },
+  {
+    "id": "pr-spring2023-1-18",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "According to the first paragraph, malaria kills -",
+    "options": [
+      "ten percent of the world's population",
+      "at least one million people each year",
+      "most children under five in Africa",
+      "everyone who gets the disease"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-014"
+  },
+  {
+    "id": "pr-spring2023-1-19",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "It can be inferred from the text that pharmaceutical companies are -",
+    "options": [
+      "associated with the World Health Organization and the United Nations",
+      "more concerned with financial issues than humanitarian ones",
+      "investing heavily in the development of new treatments for malaria",
+      "pursuing cost-effective means of reducing the incidence of malaria"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-014"
+  },
+  {
+    "id": "pr-spring2023-1-20",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "In line 10, \"reluctant\" is closest in meaning to -",
+    "options": [
+      "forced",
+      "allo wed",
+      "enthusiastic",
+      "unwilling"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-014"
+  },
+  {
+    "id": "pr-spring2023-1-21",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "suggest ways in which funds for combating malaria might be raised",
+      "argue that extensive funding is needed in order to save both money and lives",
+      "compare the cost of preventing malaria with that of treating it",
+      "describe the program needed to eliminate malaria in Africa"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-014"
+  },
+  {
+    "id": "pr-spring2023-1-22",
+    "type": "reading",
+    "difficulty": 0.36,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Winning the Fight Against Malaria: International Initiatives Against Disease",
+      "Saving Lives and Money: The Battle Against Malaria",
+      "World Health Organization Programs: Rolling Back Malaria",
+      "Controlling Parasitic Diseases in Sub-Saharan Africa - 43 - 60 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-014"
+  },
+  {
+    "id": "pr-spring2023-2-13",
+    "type": "reading",
+    "difficulty": 0.32,
+    "stem": "The main purpose of the first paragraph is to discuss -",
+    "options": [
+      "what sign language is and who uses it",
+      "several different sign languages",
+      "the movements and signs in sign language",
+      "how meaning is conveyed in sign language"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-015"
+  },
+  {
+    "id": "pr-spring2023-2-14",
+    "type": "reading",
+    "difficulty": 0.32,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "discuss l'Epée's work with deaf children",
+      "introduce French Sign Language",
+      "discuss the sign languages that existed in the mid-eighteenth century",
+      "present the early history of sign language"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-015"
+  },
+  {
+    "id": "pr-spring2023-2-15",
+    "type": "reading",
+    "difficulty": 0.32,
+    "stem": "Which of the following is not mentioned in the third paragraph as a way in which a person using ASL conveys meaning?",
+    "options": [
+      "raising eyebrows",
+      "leaning forward",
+      "fingerspelling",
+      "changing word order"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-015"
+  },
+  {
+    "id": "pr-spring2023-2-16",
+    "type": "reading",
+    "difficulty": 0.32,
+    "stem": "It can be inferred from the third paragraph that a non-manual signal (line 14) is one that -",
+    "options": [
+      "does not involve the use of hands",
+      "has only one meaning",
+      "must be spelled out one letter at a time",
+      "follows the rules of syntax and grammar"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-015"
+  },
+  {
+    "id": "pr-spring2023-2-17",
+    "type": "reading",
+    "difficulty": 0.32,
+    "stem": "According to the last paragraph, ASL is influenced by all of the following except -",
+    "options": [
+      "the rhythm of other languages",
+      "local idioms",
+      "cultural factors",
+      "personality and gender"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-015"
+  },
+  {
+    "id": "pr-spring2023-2-18",
+    "type": "reading",
+    "difficulty": 0.56,
+    "stem": "The main purpose of the text is to discuss -",
+    "options": [
+      "a theory of trigonometry and its origins",
+      "an archaeological find and its significance",
+      "the ancient Babylonians and their number system",
+      "Mansfield and Wildberger's mathematical works"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-016"
+  },
+  {
+    "id": "pr-spring2023-2-19",
+    "type": "reading",
+    "difficulty": 0.56,
+    "stem": "According to the second paragraph, allowed Mansfield and Wildberger to determine what P322 was.",
+    "options": [
+      "the missing part of the fourth column",
+      "the measurements of right triangles",
+      "the Greek trigonometric table",
+      "the picture of P322"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-016"
+  },
+  {
+    "id": "pr-spring2023-2-20",
+    "type": "reading",
+    "difficulty": 0.56,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "present a distinguishing feature of P322",
+      "compare the base-60 number system with the base-10 system",
+      "explain why the Greeks did not use the P322 trigonometric table",
+      "explain why the base-60 number system enables more precise calculations"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-016"
+  },
+  {
+    "id": "pr-spring2023-2-21",
+    "type": "reading",
+    "difficulty": 0.56,
+    "stem": "The last paragraph mentions \"measuring time\" (line 25) in order to -",
+    "options": [
+      "illustrate the number system used by the Babylonians",
+      "explain the relationship between the measurement of time and trigonometry",
+      "argue that our system for measuring time was developed by the Babylonians",
+      "describe how the Greeks measured time"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-016"
+  },
+  {
+    "id": "pr-spring2023-2-22",
+    "type": "reading",
+    "difficulty": 0.56,
+    "stem": "According to the text, which of the following statements do Mansf ield and Wildberger disagree with?",
+    "options": [
+      "Trigonometry is concerned with the sides of right triangles.",
+      "Trigonometric tables must include information about the angles of right triangles.",
+      "The Greeks were not the first to develop trigonometric tables.",
+      "Babylonian mathematicians were not familiar with the base-10 system."
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-016"
+  },
+  {
+    "id": "pr-spring2025-1-13",
+    "type": "reading",
+    "difficulty": 0.17,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "describe the history and characteristics of the Shaker community",
+      "discuss the most famous Shaker inventions",
+      "compare the Shaker and Quaker religions",
+      "explain Shaker beliefs and forms of worship"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-017"
+  },
+  {
+    "id": "pr-spring2025-1-14",
+    "type": "reading",
+    "difficulty": 0.17,
+    "stem": "According to the first paragraph, the Shakers got their name from the fact that they -",
+    "options": [
+      "shook while they prayed",
+      "wanted to become Quakers",
+      "moved to the New World in search of religious freedom",
+      "formed a community of their own"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-017"
+  },
+  {
+    "id": "pr-spring2025-1-15",
+    "type": "reading",
+    "difficulty": 0.17,
+    "stem": "According to the second paragraph, the Shakers' distinctive style was a result of their -",
+    "options": [
+      "desire to make their community different from others",
+      "belief that doing everyday things well was a way of serving God",
+      "desire to improve their living conditions",
+      "inability to buy what they needed from other people"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-017"
+  },
+  {
+    "id": "pr-spring2025-1-16",
+    "type": "reading",
+    "difficulty": 0.17,
+    "stem": "According to the second paragraph, Shaker furniture is -",
+    "options": [
+      "difficult to find today",
+      "influenced by the work of Ruskin and Sullivan",
+      "expensive and highly ornamented",
+      "simple and useful"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-017"
+  },
+  {
+    "id": "pr-spring2025-1-17",
+    "type": "reading",
+    "difficulty": 0.17,
+    "stem": "According to the last paragraph, there are very few Shakers today because -",
+    "options": [
+      "Shakers do not have children",
+      "the Shaker way of life is very difficult",
+      "the Shakers could not adapt to the modern world",
+      "Shaker communities were too far away from one another"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-017"
+  },
+  {
+    "id": "pr-spring2025-1-18",
+    "type": "reading",
+    "difficulty": 0.03,
+    "stem": "According to the second paragraph, lamellae -",
+    "options": [
+      "have multiple functions",
+      "are paired rows of ribs",
+      "are equipped with suction discs",
+      "enable the remora to latch on to its host"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-018"
+  },
+  {
+    "id": "pr-spring2025-1-19",
+    "type": "reading",
+    "difficulty": 0.03,
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "present different interpretations of the relationship between remoras and their hosts",
+      "discuss the disagreement among scientists about the benefits remoras derive from symbiosis",
+      "discuss the advantages and disadvantages of being a host",
+      "compare commensalism, parasitism, and mutualism"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-018"
+  },
+  {
+    "id": "pr-spring2025-1-20",
+    "type": "reading",
+    "difficulty": 0.03,
+    "stem": "In lines 21-22, \"a passenger slows down the host's movement and increases its energy expenditure\" is an argument that the relationship is -",
+    "options": [
+      "commensal",
+      "parasitic",
+      "mutualistic",
+      "none of the above"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-018"
+  },
+  {
+    "id": "pr-spring2025-1-21",
+    "type": "reading",
+    "difficulty": 0.03,
+    "stem": "In line 32, \"them\" refers to -",
+    "options": [
+      "remoras",
+      "other fish",
+      "fishermen",
+      "nets"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-018"
+  },
+  {
+    "id": "pr-spring2025-1-22",
+    "type": "reading",
+    "difficulty": 0.03,
+    "stem": "Which of the following does not refer to the remora's appendage?",
+    "options": [
+      "elongated mechanism",
+      "suction disc",
+      "a highly modified skeletal structure",
+      "uneven surface - 43 - 60"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-018"
+  },
+  {
+    "id": "pr-spring2025-2-13",
+    "type": "reading",
+    "difficulty": -0.02,
+    "stem": "\"Indeed\" (line 3) can best be replaced by -",
+    "options": [
+      "So much so that",
+      "Nevertheless",
+      "It is therefore surprising that",
+      "Though they are not expensive"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-019"
+  },
+  {
+    "id": "pr-spring2025-2-14",
+    "type": "reading",
+    "difficulty": -0.02,
+    "stem": "Which of the following statements is not made in the second paragraph?",
+    "options": [
+      "Balloons move in a way that makes them seem alive.",
+      "Balloons remind people of storybooks from their childhood.",
+      "Balloons make people feel cheerful.",
+      "Balloons come in different colors."
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-019"
+  },
+  {
+    "id": "pr-spring2025-2-15",
+    "type": "reading",
+    "difficulty": -0.02,
+    "stem": "The main purpose of the last paragraph is to balloons.",
+    "options": [
+      "present an alternative view of",
+      "compare two interpretations of",
+      "explain why freedom is often associated with",
+      "argue that childhood innocence is symbolized by"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-019"
+  },
+  {
+    "id": "pr-spring2025-2-16",
+    "type": "reading",
+    "difficulty": -0.02,
+    "stem": "The idea of \"freedom constrained\" (line 19) is exemplif ied by a balloon .",
+    "options": [
+      "losing its beauty",
+      "escaping one's grasp",
+      "being tied to a string",
+      "suddenly bursting"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-019"
+  },
+  {
+    "id": "pr-spring2025-2-17",
+    "type": "reading",
+    "difficulty": -0.02,
+    "stem": "According to the text, balloons -",
+    "options": [
+      "make us think about the future",
+      "represent love",
+      "do not last forever",
+      "can never really be lost"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-019"
+  },
+  {
+    "id": "pr-spring2025-2-18",
+    "type": "reading",
+    "difficulty": 0.37,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "describe how women won the right to vote",
+      "explain why Elizabeth Cady Stanton created the women's movement",
+      "show how women were discriminated against in the 1800s",
+      "present the background to the first women's rights convention in America"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-020"
+  },
+  {
+    "id": "pr-spring2025-2-19",
+    "type": "reading",
+    "difficulty": 0.37,
+    "stem": "In line 5, \"on the grounds of\" means -",
+    "options": [
+      "despite",
+      "because of",
+      "notwithstanding",
+      "in terms of"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-020"
+  },
+  {
+    "id": "pr-spring2025-2-20",
+    "type": "reading",
+    "difficulty": 0.37,
+    "stem": "According to the second paragraph, Mott and Stanton met for the second time -",
+    "options": [
+      "as they had planned to eight years earlier",
+      "to discuss women's rights",
+      "at a women's convention",
+      "in a social rather than political setting"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-020"
+  },
+  {
+    "id": "pr-spring2025-2-21",
+    "type": "reading",
+    "difficulty": 0.37,
+    "stem": "It can be inferred from the third paragraph that Lucretia Mott was shocked because she -",
+    "options": [
+      "thought the right to vote was not a realistic goal",
+      "felt that important issues were not being addressed",
+      "did not want to attend a radical convention",
+      "thought Stanton's Declaration was badly written"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-020"
+  },
+  {
+    "id": "pr-spring2025-2-22",
+    "type": "reading",
+    "difficulty": 0.37,
+    "stem": "According to the last paragraph, the Seneca Falls Convention was -",
+    "options": [
+      "attended by more people than Mott had expected",
+      "attended by more men than women",
+      "presided over by Lucretia Mott",
+      "described in detail in the Seneca County Courier"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-020"
+  },
+  {
+    "id": "pr-spring2026-1-13",
+    "type": "reading",
+    "difficulty": -0.58,
+    "stem": "The text is mainly about -",
+    "options": [
+      "life in the oceans",
+      "the Gulf Stream",
+      "shipping in colonial times",
+      "the world's economy"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-021"
+  },
+  {
+    "id": "pr-spring2026-1-14",
+    "type": "reading",
+    "difficulty": -0.58,
+    "stem": "According to the first paragraph, currents are ocean water -",
+    "options": [
+      "patterns",
+      "rotations",
+      "influences",
+      "factors"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-021"
+  },
+  {
+    "id": "pr-spring2026-1-15",
+    "type": "reading",
+    "difficulty": -0.58,
+    "stem": "It can be inferred from the second paragraph that \"transatlantic\" (line 9) means the Atlantic Ocean.",
+    "options": [
+      "behind",
+      "near",
+      "across",
+      "underneath"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-021"
+  },
+  {
+    "id": "pr-spring2026-1-16",
+    "type": "reading",
+    "difficulty": -0.58,
+    "stem": "It can be inferred from the second paragraph that the Gulf Stream -",
+    "options": [
+      "was the fastest route from North America to Europe",
+      "was not used in colonial times",
+      "is no longer a major shipping route",
+      "is still the only way to ship rum, sugar, and corn"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-021"
+  },
+  {
+    "id": "pr-spring2026-1-17",
+    "type": "reading",
+    "difficulty": -0.58,
+    "stem": "Which of the following is not mentioned in the text as something affected by ocean currents?",
+    "options": [
+      "temperature",
+      "the energy of the sun",
+      "rainfall",
+      "life on land"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-021"
+  },
+  {
+    "id": "pr-spring2026-1-18",
+    "type": "reading",
+    "difficulty": 0.87,
+    "stem": "The main purpose of the first paragraph is to -",
+    "options": [
+      "discuss Pavlov's study on edible and non-edible stimuli",
+      "present Pavlov's findings about the digestive system of dogs",
+      "describe the procedures used by Pavlov and his assistants",
+      "describe what led Pavlov to study conditioned responses"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-022"
+  },
+  {
+    "id": "pr-spring2026-1-19",
+    "type": "reading",
+    "difficulty": 0.87,
+    "stem": "According to the first paragraph, salivation -",
+    "options": [
+      "occurs only when the stimulus is edible",
+      "can be either an unconditioned or a conditioned response",
+      "is an important aspect of the digestive system of dogs",
+      "is a reflex that is automatic in both humans and dogs"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-022"
+  },
+  {
+    "id": "pr-spring2026-1-20",
+    "type": "reading",
+    "difficulty": 0.87,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "present two different types of stimulus",
+      "compare dogs' responses to hearing a metronome with their responses to seeing food",
+      "describe how Pavlov proved classical conditioning",
+      "explain the importance of repetition in Pavlov's study on conditioned responses"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-022"
+  },
+  {
+    "id": "pr-spring2026-1-21",
+    "type": "reading",
+    "difficulty": 0.87,
+    "stem": "Which of the following would be a correct continuation of the sentence \"After a number … the metronome\"? (lines 20-21)",
+    "options": [
+      "whether or not they were given food",
+      "and were given food",
+      "until they were given food",
+      "unless they had already been given food"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-022"
+  },
+  {
+    "id": "pr-spring2026-1-22",
+    "type": "reading",
+    "difficulty": 0.87,
+    "stem": "Based on the information in the text, which of the following is an example of a conditioned response?",
+    "options": [
+      "Eating potato chips makes a person thirsty; eating popcorn also makes them thirsty.",
+      "Cutting onions makes a person's eyes tear up; seeing a picture of onions also makes their eyes tear up.",
+      "Listening to a sad song makes a person cry; reading the words of the song also makes them cry.",
+      "Hearing a door bang closed makes a person jump; hearing the sound of breaking glass also makes them jump. - 43 - 60"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-022"
+  },
+  {
+    "id": "pr-spring2026-2-13",
+    "type": "reading",
+    "difficulty": -0.24,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Christopher Marlowe: A Short-Lived Genius",
+      "The Literary Legacies of Shakespeare and Marlowe",
+      "The Age of Shakespeare",
+      "The Plays of Christopher Marlowe"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-023"
+  },
+  {
+    "id": "pr-spring2026-2-14",
+    "type": "reading",
+    "difficulty": -0.24,
+    "stem": "In line 2, \"obscure\" could best be replaced by -",
+    "options": [
+      "ignore",
+      "confirm",
+      "suggest",
+      "exaggerate"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-023"
+  },
+  {
+    "id": "pr-spring2026-2-15",
+    "type": "reading",
+    "difficulty": -0.24,
+    "stem": "It can be inferred from the second paragraph that Shakespeare -",
+    "options": [
+      "influenced Marlowe's writing",
+      "did not know Greek or Latin",
+      "attended Cambridge",
+      "was not as poor as Marlowe"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-023"
+  },
+  {
+    "id": "pr-spring2026-2-16",
+    "type": "reading",
+    "difficulty": -0.24,
+    "stem": "According to the second paragraph, Doctor Faustus -",
+    "options": [
+      "performed on stage with Marlowe",
+      "was a character in one of Shakespeare's plays",
+      "was a character in a play written by Marlowe",
+      "was a contemporary of Marlowe and Shakespeare"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-023"
+  },
+  {
+    "id": "pr-spring2026-2-17",
+    "type": "reading",
+    "difficulty": -0.24,
+    "stem": "It can be inferred from the last paragraph that Marlowe -",
+    "options": [
+      "thought he was a better writer than Shakespeare",
+      "was not recognised during his lifetime",
+      "never reached his full potential",
+      "wrote many plays and poems"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-023"
+  },
+  {
+    "id": "pr-spring2026-2-18",
+    "type": "reading",
+    "difficulty": 0.39,
+    "stem": "In the first paragraph, memory is compared to a scrapbook because -",
+    "options": [
+      "they both become more meaningful as time goes on",
+      "they both relate to the experiences of more than one person",
+      "they are both more detailed if they belong to someone with HSAM",
+      "they are both incomplete records of a person's life"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-024"
+  },
+  {
+    "id": "pr-spring2026-2-19",
+    "type": "reading",
+    "difficulty": 0.39,
+    "stem": "It can be inferred from the second paragraph that Price contacted McGaugh because -",
+    "options": [
+      "she wanted to participate in his study",
+      "she was familiar with his research on HSAM",
+      "he had memory issues similar to hers",
+      "he was an expert in memory formation and retention"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-024"
+  },
+  {
+    "id": "pr-spring2026-2-20",
+    "type": "reading",
+    "difficulty": 0.39,
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "discuss the connection between IQ and memory",
+      "explain how HSAM is diagnosed",
+      "present other cases of HSAM",
+      "describe an unexpected research finding"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-024"
+  },
+  {
+    "id": "pr-spring2026-2-21",
+    "type": "reading",
+    "difficulty": 0.39,
+    "stem": "According to the last paragraph, APOE4 -",
+    "options": [
+      "may help people with hyperthymesia",
+      "is a product of gene therapy",
+      "is negatively correlated with memory capacity",
+      "is a less common gene variant than APOE2"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-024"
+  },
+  {
+    "id": "pr-spring2026-2-22",
+    "type": "reading",
+    "difficulty": 0.39,
+    "stem": "Which of the following would most likely be recalled by someone with HSAM?",
+    "options": [
+      "the capital cities of all the countries in Africa",
+      "the name of the hospital where their grandmother was born",
+      "the events that led to the outbreak of World War I",
+      "the gifts they received for their fifth birthday"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-024"
+  },
+  {
+    "id": "pr-summer2023-1-13",
+    "type": "reading",
+    "difficulty": -0.37,
+    "stem": "The main purpose of the text is to discuss Mumbai.",
+    "options": [
+      "a remarkable food delivery network in",
+      "the traditional food culture of",
+      "the complex transportation system of",
+      "business opportunities in"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-025"
+  },
+  {
+    "id": "pr-summer2023-1-14",
+    "type": "reading",
+    "difficulty": -0.37,
+    "stem": "According to the first paragraph, dabbas -",
+    "options": [
+      "were invented in India",
+      "are used for three meals each day",
+      "keep parts of a meal separate",
+      "are difficult to carry"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-025"
+  },
+  {
+    "id": "pr-summer2023-1-15",
+    "type": "reading",
+    "difficulty": -0.37,
+    "stem": "In line 12, \"to keep up with demand'' could best be restated as -",
+    "options": [
+      "to supply his growing number of customers",
+      "to find another job",
+      "to remain in Mumbai",
+      "to serve people lunch in their homes"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-025"
+  },
+  {
+    "id": "pr-summer2023-1-16",
+    "type": "reading",
+    "difficulty": -0.37,
+    "stem": "According to the third paragraph, which of the following best summarizes the process of delivering a dabba?",
+    "options": [
+      "the dabba is picked up from the customer's home → the dabba is taken to a train station → the dabba is filled with food and marked → the dabba is delivered to the customer's workplace",
+      "the dabba is picked up from the customer's home → the dabba is taken to a train station → the dabba is sent by train to a different station → the dabba is delivered to the customer's workplace",
+      "the dabba is picked up from the customer's home → the dabba is taken to a train station → the dabba is collected by the customer → the customer takes the dabba to his workplace",
+      "the dabba is picked up from the customer's home → the dabba is transported by train → the dabba is unloaded and filled with freshly cooked food → the customer takes the dabba to his workplace"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-025"
+  },
+  {
+    "id": "pr-summer2023-1-17",
+    "type": "reading",
+    "difficulty": -0.37,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "explain how the dabbawalas could improve their methods",
+      "present the results of a study on the dabbawalas",
+      "show how successful the dabbawala system is",
+      "compare the dabbawala system with those of industry giants"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-025"
+  },
+  {
+    "id": "pr-summer2023-1-18",
+    "type": "reading",
+    "difficulty": 0.51,
+    "stem": "In line 5, the word \"allegedly\" is used to -",
+    "options": [
+      "cast doubt on the suicidal nature of the lemmings' behavior",
+      "emphasize the similarity between lemmings and humans",
+      "differentiate between lemming behavior before and after population explosions",
+      "illustrate the long-term effects of lemming mass suicide"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-026"
+  },
+  {
+    "id": "pr-summer2023-1-19",
+    "type": "reading",
+    "difficulty": 0.51,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "list the social factors governing lemming migration",
+      "discuss the periodic fluctuations in lemming populations",
+      "explain why lemmings fall to their deaths",
+      "describe the migration routes of lemmings"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-026"
+  },
+  {
+    "id": "pr-summer2023-1-20",
+    "type": "reading",
+    "difficulty": 0.51,
+    "stem": "According to the second paragraph, the geographic features of the Arctic -",
+    "options": [
+      "compel lemmings to migrate in search of food",
+      "give rise to situations in which lemmings panic",
+      "make the lemming population prone to overcrowding",
+      "are responsible for drastic increases in the lemming population"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-026"
+  },
+  {
+    "id": "pr-summer2023-1-21",
+    "type": "reading",
+    "difficulty": 0.51,
+    "stem": "According to the last paragraph, the makers of White Wilderness -",
+    "options": [
+      "documented an actual \"lemming suicide plunge\"",
+      "forced lemmings over a cliff",
+      "disproved a popular misconception",
+      "made several films about lemmings"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-026"
+  },
+  {
+    "id": "pr-summer2023-1-22",
+    "type": "reading",
+    "difficulty": 0.51,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Lemming Suicide: Fact or Fiction?",
+      "Lemming Migration Patterns",
+      "The Mundane Life of the Lemming",
+      "Suicidal Behavior in the Wild - 43 - 59 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-026"
+  },
+  {
+    "id": "pr-summer2023-2-13",
+    "type": "reading",
+    "difficulty": -0.45,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "discuss the development of Australian English",
+      "compare Australian, Cockney, and Irish rhyming slang",
+      "present the characteristics of informal language",
+      "discuss an unusual form of slang"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-027"
+  },
+  {
+    "id": "pr-summer2023-2-14",
+    "type": "reading",
+    "difficulty": -0.45,
+    "stem": "Which of the following is not true of the word \"shocker\" (line 11)?",
+    "options": [
+      "It is used to refer to something bad.",
+      "It rhymes with \"Barry Crocker\".",
+      "It is a word used in Australia.",
+      "It is Australian slang for \"entertainer\"."
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-027"
+  },
+  {
+    "id": "pr-summer2023-2-15",
+    "type": "reading",
+    "difficulty": -0.45,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "discuss the effect of immigration on the development of language",
+      "present two views on the origins of Australian rhyming slang",
+      "describe the manner of speaking once heard in the East End of London",
+      "compare Australian rhyming slang in the past and today"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-027"
+  },
+  {
+    "id": "pr-summer2023-2-16",
+    "type": "reading",
+    "difficulty": -0.45,
+    "stem": "The \"circles\" referred to in line 20 would most likely include -",
+    "options": [
+      "young people",
+      "residents of large cities",
+      "immigrants to Australia",
+      "older Australians"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-027"
+  },
+  {
+    "id": "pr-summer2023-2-17",
+    "type": "reading",
+    "difficulty": -0.45,
+    "stem": "It can be inferred from the text that in Australian rhyming slang, \"Nice bag of fruit\" most likely means -",
+    "options": [
+      "That's a great car you have!",
+      "You're wearing a lovely suit.",
+      "What a sweet dog!",
+      "You've done a good job."
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-027"
+  },
+  {
+    "id": "pr-summer2023-2-18",
+    "type": "reading",
+    "difficulty": -0.62,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "The Hazards of Inventing Toys",
+      "Zubbles: A Classic Toy Reinvented",
+      "How Kehoe and Sabnis Revolutionized the Toy Market",
+      "Spontaneous Fading: Water-Soluble Dyes"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-028"
+  },
+  {
+    "id": "pr-summer2023-2-19",
+    "type": "reading",
+    "difficulty": -0.62,
+    "stem": "The main purpose of the first paragraph is to -",
+    "options": [
+      "claim that bubbles are the world's favorite toy",
+      "explain why new ideas for toys lose their charm quickly",
+      "describe toys that have been available since the 1940s",
+      "introduce a new form of a favorite toy"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-028"
+  },
+  {
+    "id": "pr-summer2023-2-20",
+    "type": "reading",
+    "difficulty": -0.62,
+    "stem": "\"The realization . . . undertaking\" (line 8) could be restated as -",
+    "options": [
+      "Kehoe realized he had wasted eleven years of his life.",
+      "The solution turned out to be simple.",
+      "Kehoe accomplished his goal very quickly.",
+      "It was extremely difficult to produce colored bubbles."
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-028"
+  },
+  {
+    "id": "pr-summer2023-2-21",
+    "type": "reading",
+    "difficulty": -0.62,
+    "stem": "It can be inferred that \"a water -soluble dye that faded spontaneously\" (line 14) would -",
+    "options": [
+      "wash out easily",
+      "horrify parents",
+      "not leave stains",
+      "not be ready to market"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-028"
+  },
+  {
+    "id": "pr-summer2023-2-22",
+    "type": "reading",
+    "difficulty": -0.62,
+    "stem": "According to the last paragraph, experts on dye chemistry.",
+    "options": [
+      "Sabnis trains",
+      "Kehoe consulted with several",
+      "Kehoe could not find any",
+      "there are very few"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-028"
+  },
+  {
+    "id": "pr-summer2025-1-13",
+    "type": "reading",
+    "difficulty": -0.65,
+    "stem": "Which of the following statements about the vanilla plant cannot be understood from the first paragraph?",
+    "options": [
+      "It has beautiful flowers.",
+      "It is used in preparing food.",
+      "It has an unpleasant smell.",
+      "It is a well-known kind of orchid."
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-029"
+  },
+  {
+    "id": "pr-summer2025-1-14",
+    "type": "reading",
+    "difficulty": -0.65,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "discuss the different places where orchids grow",
+      "explain what epiphytes and lithophytes are",
+      "discuss why orchids are considered exotic",
+      "explain how to grow orchids"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-029"
+  },
+  {
+    "id": "pr-summer2025-1-15",
+    "type": "reading",
+    "difficulty": -0.65,
+    "stem": "In line 6, \"exotic\" is closest in meaning to -",
+    "options": [
+      "unusual",
+      "difficult to grow",
+      "large",
+      "very colorful"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-029"
+  },
+  {
+    "id": "pr-summer2025-1-16",
+    "type": "reading",
+    "difficulty": -0.65,
+    "stem": "The last paragraph is mainly about -",
+    "options": [
+      "orchids in Chinese culture",
+      "the orchid as a symbol",
+      "Taiwan's orchid exports",
+      "the medicinal uses of orchids"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-029"
+  },
+  {
+    "id": "pr-summer2025-1-17",
+    "type": "reading",
+    "difficulty": -0.65,
+    "stem": "According to the text, orchids are used in making all of the following except -",
+    "options": [
+      "perfume",
+      "food",
+      "bark",
+      "medicine"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-029"
+  },
+  {
+    "id": "pr-summer2025-1-18",
+    "type": "reading",
+    "difficulty": -0.42,
+    "stem": "The main purpose of the first paragraph is to -",
+    "options": [
+      "introduce the life and work of Erno Rubik",
+      "describe the structure of the Rubik's Cube",
+      "discuss the origins of a popular puzzle",
+      "discuss the connection between geometry and puzzles"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-030"
+  },
+  {
+    "id": "pr-summer2025-1-19",
+    "type": "reading",
+    "difficulty": -0.42,
+    "stem": "The second paragraph mainly discusses the of a Rubik's Cube.",
+    "options": [
+      "colors and materials",
+      "appearance and manipulations",
+      "size and shape",
+      "configurations and solution"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-030"
+  },
+  {
+    "id": "pr-summer2025-1-20",
+    "type": "reading",
+    "difficulty": -0.42,
+    "stem": "Based on the information in the second paragraph, a correctly solved Rubik's Cube must have -",
+    "options": [
+      "a red square on six faces",
+      "one white corner on each face",
+      "nine squares of different colors on one face",
+      "one face with nine blue squares"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-030"
+  },
+  {
+    "id": "pr-summer2025-1-21",
+    "type": "reading",
+    "difficulty": -0.42,
+    "stem": "It can be inferred from the last paragraph that the Rubik's Cube -",
+    "options": [
+      "did not sell well in the late 1980s",
+      "was less successful in Hungary than in other countries",
+      "is very different from the Magic Cube",
+      "was manufactured with new colors in the 1990s"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-030"
+  },
+  {
+    "id": "pr-summer2025-1-22",
+    "type": "reading",
+    "difficulty": -0.42,
+    "stem": "According to the last paragraph, timed competitions -",
+    "options": [
+      "inspired Rubik to design new puzzles",
+      "were responsible for Rubik becoming famous",
+      "were Rubik's idea",
+      "led to renewed interest in the Rubik's Cube - 43 - 60 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-030"
+  },
+  {
+    "id": "pr-summer2025-2-13",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "The main purpose of the first paragraph is to discuss the Industrial Revolution.",
+    "options": [
+      "health problems that increased after",
+      "the decrease in physical activity caused by",
+      "technologies developed during",
+      "changes in the workplace following"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-031"
+  },
+  {
+    "id": "pr-summer2025-2-14",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "discuss the origins of the physical culture movement",
+      "describe efforts to make fitness a part of everyday life",
+      "compare physical activity in the 19th and 20th centuries",
+      "explain why the fitness industry is so profitable"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-031"
+  },
+  {
+    "id": "pr-summer2025-2-15",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "According to the second paragraph, the physical culture movement -",
+    "options": [
+      "encouraged all people to exercise regularly",
+      "was launched by President Kennedy",
+      "was based on scientific research",
+      "succeeded in improving the fitness of all Americans"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-031"
+  },
+  {
+    "id": "pr-summer2025-2-16",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "Which of the following statements can be inferred from the second paragraph?",
+    "options": [
+      "People are willing to spend money to stay fit.",
+      "Exercise studios have become less popular than they were in the 1960s.",
+      "People like playing organized sports more than going to a gym.",
+      "Many people want to exercise but cannot find something they enjoy."
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-031"
+  },
+  {
+    "id": "pr-summer2025-2-17",
+    "type": "reading",
+    "difficulty": 0.01,
+    "stem": "Which of the following is not an answer to the question \"Why is this so?\" (line 22)?",
+    "options": [
+      "Because people are too busy to exercise.",
+      "Because some people do not enjoy exercising.",
+      "Because people prefer to do other things in their free time.",
+      "Because exercise does not make people healthier."
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-031"
+  },
+  {
+    "id": "pr-summer2025-2-18",
+    "type": "reading",
+    "difficulty": -0.34,
+    "stem": "The main purpose of the first paragraph is to -",
+    "options": [
+      "discuss the benefits of reading to children",
+      "present some world-famous book lovers",
+      "discuss the rewards of reading",
+      "introduce a book meant to encourage children to read"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-032"
+  },
+  {
+    "id": "pr-summer2025-2-19",
+    "type": "reading",
+    "difficulty": -0.34,
+    "stem": "In the second paragraph, Solnit -",
+    "options": [
+      "suggests that books should be selected carefully",
+      "discusses the relationship between a book's architecture and its contents",
+      "describes her favorite books",
+      "describes the benefits that reading can provide"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-032"
+  },
+  {
+    "id": "pr-summer2025-2-20",
+    "type": "reading",
+    "difficulty": -0.34,
+    "stem": "In the second paragraph, Solnit compares books to all of the following except -",
+    "options": [
+      "toolkits",
+      "parties",
+      "friends",
+      "journeys"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-032"
+  },
+  {
+    "id": "pr-summer2025-2-21",
+    "type": "reading",
+    "difficulty": -0.34,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "discuss the role that books played in Solnit's childhood",
+      "explore a less positive aspect of reading",
+      "discuss Solnit's difficult experiences as a child",
+      "show how books teach children to love"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-032"
+  },
+  {
+    "id": "pr-summer2025-2-22",
+    "type": "reading",
+    "difficulty": -0.34,
+    "stem": "\"There\" (line 23) refers to Solnit's -",
+    "options": [
+      "humanity",
+      "childhood",
+      "childhood home",
+      "tower"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-032"
+  },
+  {
+    "id": "pr-summer2026-1-13",
+    "type": "reading",
+    "difficulty": 0.11,
+    "stem": "The first paragraph mainly discusses Tallchief's -",
+    "options": [
+      "Native American origins",
+      "early years",
+      "personality",
+      "love of the outdoors"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-033"
+  },
+  {
+    "id": "pr-summer2026-1-14",
+    "type": "reading",
+    "difficulty": 0.11,
+    "stem": "In lines 8-9, \"captured the young girl's heart\" could best be replaced with -",
+    "options": [
+      "seemed an impossible choice",
+      "was her only talent",
+      "made her famous",
+      "was the focus of her interest"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-033"
+  },
+  {
+    "id": "pr-summer2026-1-15",
+    "type": "reading",
+    "difficulty": 0.11,
+    "stem": "According to Madame Nijinska's philosophy of discipline (lines 13-14) -",
+    "options": [
+      "all obstacles can be overcome",
+      "technical skills should be mastered early in life",
+      "a dancer should always behave like one",
+      "a dancer must be willing to work hard"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-033"
+  },
+  {
+    "id": "pr-summer2026-1-16",
+    "type": "reading",
+    "difficulty": 0.11,
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "summarize Tallchief's career as a performer",
+      "describe Tallchief's introduction to the Ballet Russe de Monte Carlo",
+      "mention Tallchief's marriage to George Balanchine",
+      "compare Tallchief's reputation in the United States and Europe"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-033"
+  },
+  {
+    "id": "pr-summer2026-1-17",
+    "type": "reading",
+    "difficulty": 0.11,
+    "stem": "According to the third paragraph, Tallchief -",
+    "options": [
+      "spent many years in Europe",
+      "was internationally respected",
+      "became a soloist with the New York City Ballet in 1947",
+      "changed her name when she got married"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-033"
+  },
+  {
+    "id": "pr-summer2026-1-18",
+    "type": "reading",
+    "difficulty": 0.53,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Geoglyphs Past and Present",
+      "Exploring the Nazca Lines: The Promise of New Technologies",
+      "The 300 Newest Nazca Lines",
+      "Shrouded in Mystery: Peru's Enormous Geoglyphs"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-034"
+  },
+  {
+    "id": "pr-summer2026-1-19",
+    "type": "reading",
+    "difficulty": 0.53,
+    "stem": "The main purpose of the first paragraph is to introduce -",
+    "options": [
+      "a group of remarkable images found in Peru",
+      "an elaborate geometric pattern produced by nature",
+      "the origin of the term geoglyph",
+      "the first geoglyphs ever found"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-034"
+  },
+  {
+    "id": "pr-summer2026-1-20",
+    "type": "reading",
+    "difficulty": 0.53,
+    "stem": "It can be inferred that the 300 Nazca Lines mentioned in line 18 -",
+    "options": [
+      "depicted animals and geometric figures",
+      "were not man-made",
+      "were found outside Peru",
+      "helped scientists determine the purpose of geoglyphs"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-034"
+  },
+  {
+    "id": "pr-summer2026-1-21",
+    "type": "reading",
+    "difficulty": 0.53,
+    "stem": "It can be inferred that the \"conjecture\" mentioned in line 25 makes sense to many researchers because -",
+    "options": [
+      "the other theories are bizarre",
+      "the Nazca images are best seen from above",
+      "more Nazca Lines have recently been discovered",
+      "the Nazca were an agricultural people"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-034"
+  },
+  {
+    "id": "pr-summer2026-1-22",
+    "type": "reading",
+    "difficulty": 0.53,
+    "stem": "Which of the following statements about the Nazca Lines is not true according to the text?",
+    "options": [
+      "They stand out because they differ in color from the surface of the ground.",
+      "Archaeologists began studying them in the 1930s.",
+      "Some of them were discovered using AI.",
+      "Additional ones are still being found. - 43 - 60"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-034"
+  },
+  {
+    "id": "pr-summer2026-2-13",
+    "type": "reading",
+    "difficulty": 0.52,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "encourage people to cook Indian dishes",
+      "describe how Ashok makes biryani",
+      "compare algorithms and recipes",
+      "present a scientific approach to cooking"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-035"
+  },
+  {
+    "id": "pr-summer2026-2-14",
+    "type": "reading",
+    "difficulty": 0.52,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "explain how Ashok became interested in cooking",
+      "discuss Ashok's choice of profession",
+      "discuss the guiding principle of Ashok's cookbook",
+      "present the contents of Ashok's cookbook"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-035"
+  },
+  {
+    "id": "pr-summer2026-2-15",
+    "type": "reading",
+    "difficulty": 0.52,
+    "stem": "According to the third paragraph, using a mortar and pestle -",
+    "options": [
+      "is useful only for certain spices",
+      "is common practice in Indian cooking",
+      "preserves the full flavor of ingredients",
+      "generates heat that helps to cook the spices"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-035"
+  },
+  {
+    "id": "pr-summer2026-2-16",
+    "type": "reading",
+    "difficulty": 0.52,
+    "stem": "According to the last paragraph, Ashok -",
+    "options": [
+      "hopes his cookbook will encourage readers to create their own unique dishes",
+      "believes that the best cooks are those who are willing to share their recipes",
+      "believes that readers of the cookbook will apply algorithms to other areas of life",
+      "plans to continue experimenting with scientific approaches to cooking"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-035"
+  },
+  {
+    "id": "pr-summer2026-2-17",
+    "type": "reading",
+    "difficulty": 0.52,
+    "stem": "Ashok's philosophy of cooking is discussed in every paragraph except the -",
+    "options": [
+      "first paragraph",
+      "second paragraph",
+      "third paragraph",
+      "last paragraph"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-035"
+  },
+  {
+    "id": "pr-summer2026-2-18",
+    "type": "reading",
+    "difficulty": 0.04,
+    "stem": "The main purpose of the text is to The Old Man and the Sea.",
+    "options": [
+      "analyze the main character in",
+      "present the plot and themes of",
+      "explain the literary importance of",
+      "discuss the symbols of nature in"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-036"
+  },
+  {
+    "id": "pr-summer2026-2-19",
+    "type": "reading",
+    "difficulty": 0.04,
+    "stem": "Based on the information in the first paragraph, which of the following is not one of the obstacles faced by Santiago?",
+    "options": [
+      "He has to return to shore within three days.",
+      "He is by himself on the boat.",
+      "He has not caught a fish for a long time.",
+      "He is old and weak."
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-036"
+  },
+  {
+    "id": "pr-summer2026-2-20",
+    "type": "reading",
+    "difficulty": 0.04,
+    "stem": "It can be inferred from the word \"precious\" (line 8) that Santiago the marlin.",
+    "options": [
+      "had hoped to sell",
+      "did not feel strong enough to fight",
+      "did not want to kill",
+      "decided to free"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-036"
+  },
+  {
+    "id": "pr-summer2026-2-21",
+    "type": "reading",
+    "difficulty": 0.04,
+    "stem": "In lines 18-19, \"another natural force\" refers to -",
+    "options": [
+      "empathy",
+      "sharks",
+      "death",
+      "the sea"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-036"
+  },
+  {
+    "id": "pr-summer2026-2-22",
+    "type": "reading",
+    "difficulty": 0.04,
+    "stem": "The main purpose of the last paragraph is to discuss the theme of -",
+    "options": [
+      "the fragile nature of the human spirit",
+      "death and destruction as part of life",
+      "the rewards for monumental effort",
+      "human dignity in the face of inevitable loss"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-036"
+  },
+  {
+    "id": "pr-winter2022-1-13",
+    "type": "reading",
+    "difficulty": -0.17,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "How Warm-Blooded Marine Mammals Breathe",
+      "The Evolution of the Whale: A Study in Marine Biology",
+      "Coming Up for Air: The Whale's Lung Capacity",
+      "The Extraordinary Respiratory System of the Whale"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-037"
+  },
+  {
+    "id": "pr-winter2022-1-14",
+    "type": "reading",
+    "difficulty": -0.17,
+    "stem": "The main purpose of the first paragraph is to -",
+    "options": [
+      "compare the breathing patterns of whales and other marine mammals",
+      "discuss the efficiency of the whale's breathing system",
+      "explain why whales need to stay underwater for long periods of time",
+      "present several differences between marine mammals and humans"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-037"
+  },
+  {
+    "id": "pr-winter2022-1-15",
+    "type": "reading",
+    "difficulty": -0.17,
+    "stem": "In line 3, \"those\" refers to -",
+    "options": [
+      "mammals",
+      "beasts",
+      "humans",
+      "lungs"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-037"
+  },
+  {
+    "id": "pr-winter2022-1-16",
+    "type": "reading",
+    "difficulty": -0.17,
+    "stem": "In line 13, \"inhales\" can best be replaced by -",
+    "options": [
+      "moves",
+      "breathes in",
+      "relaxes",
+      "opens up"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-037"
+  },
+  {
+    "id": "pr-winter2022-1-17",
+    "type": "reading",
+    "difficulty": -0.17,
+    "stem": "According to the last paragraph, marine biologists have discovered that whales -",
+    "options": [
+      "are never entirely asleep",
+      "need less sleep than humans",
+      "never use more than half the brain",
+      "often lack oxygen"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-037"
+  },
+  {
+    "id": "pr-winter2022-1-18",
+    "type": "reading",
+    "difficulty": -0.04,
+    "stem": "It can be inferred from the first paragraph that Malmesbury -",
+    "options": [
+      "is the oldest town in England",
+      "is usually a very quiet town",
+      "attracts many tourists",
+      "was founded by King Alfred"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-038"
+  },
+  {
+    "id": "pr-winter2022-1-19",
+    "type": "reading",
+    "difficulty": -0.04,
+    "stem": "It can be inferred from the second paragraph that the Tamworth Two were -",
+    "options": [
+      "famous before they ran away",
+      "supposed to be killed",
+      "the only Tamworth pigs in Malmesbury",
+      "considered dangerous"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-038"
+  },
+  {
+    "id": "pr-winter2022-1-20",
+    "type": "reading",
+    "difficulty": -0.04,
+    "stem": "According to the third paragraph, Arnoldo Dijulio -",
+    "options": [
+      "helped capture the pigs",
+      "owned a slaughterhouse",
+      "did not want the pigs to be found",
+      "did not share the public's concern for the pigs"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-038"
+  },
+  {
+    "id": "pr-winter2022-1-21",
+    "type": "reading",
+    "difficulty": -0.04,
+    "stem": "According to the last paragraph, the Tamworth Two -",
+    "options": [
+      "were sold by the Daily Mail",
+      "appeared in the movie The Legend of the Tamworth Two",
+      "tried to escape again",
+      "were never sent to the slaughterhouse"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-038"
+  },
+  {
+    "id": "pr-winter2022-1-22",
+    "type": "reading",
+    "difficulty": -0.04,
+    "stem": "Which of the following is true according to the text?",
+    "options": [
+      "The River Avon is close to Malmesbury.",
+      "The Daily Mail is owned by the BBC.",
+      "Dijulio offered a reward for the safe return of Butch and Sundance.",
+      "Tamworth pigs are protected animals. - 43 - 59 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-038"
+  },
+  {
+    "id": "pr-winter2022-2-13",
+    "type": "reading",
+    "difficulty": 0.16,
+    "stem": "In the second paragraph, the author explains -",
+    "options": [
+      "why Confucius became a teacher",
+      "why the political situation in China was unstable",
+      "how students were educated in China",
+      "how Confucius became interested in politics"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-039"
+  },
+  {
+    "id": "pr-winter2022-2-14",
+    "type": "reading",
+    "difficulty": 0.16,
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "explain why Confucius had so many followers",
+      "discuss some of Confucius's teachings",
+      "describe Confucius's method of debating",
+      "discuss attitudes towards Confucius's ideas"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-039"
+  },
+  {
+    "id": "pr-winter2022-2-15",
+    "type": "reading",
+    "difficulty": 0.16,
+    "stem": "It can be inferred from the third paragraph that a person who practiced Li -",
+    "options": [
+      "was polite and respectful towards others",
+      "actively spread Confucius's teachings",
+      "wanted to become a philosopher",
+      "recognized the importance of education"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-039"
+  },
+  {
+    "id": "pr-winter2022-2-16",
+    "type": "reading",
+    "difficulty": 0.16,
+    "stem": "According to the last paragraph, many people in China follo wed a religion as well as the teachings of Confucius because -",
+    "options": [
+      "this was encouraged by the Communist government",
+      "they thought Confucianism would lead to social progress and change",
+      "they did not consider Confucianism a religion",
+      "Confucius's students had encouraged this practice"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-039"
+  },
+  {
+    "id": "pr-winter2022-2-17",
+    "type": "reading",
+    "difficulty": 0.16,
+    "stem": "An appropriate title for this text would be -",
+    "options": [
+      "Confucius: Politician or Philosopher?",
+      "A Great Teacher and His Philosophy",
+      "Different Religions in China",
+      "The Influence of Confucianism on Communism"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-039"
+  },
+  {
+    "id": "pr-winter2022-2-18",
+    "type": "reading",
+    "difficulty": 0.08,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "present Talhelm's rice theory",
+      "describe a study on individualism in China",
+      "discuss the Yangtze River's influence on agricultural practices",
+      "present geographical characteristics north and south of the Yangtze River"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-040"
+  },
+  {
+    "id": "pr-winter2022-2-19",
+    "type": "reading",
+    "difficulty": 0.08,
+    "stem": "According to the first paragraph, people in China regard those who live north of the Yangtze River as -",
+    "options": [
+      "less culturally diverse than people south of the river",
+      "isolated from the rest of China",
+      "friendly and welcoming",
+      "more independent than those who live south of the river"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-040"
+  },
+  {
+    "id": "pr-winter2022-2-20",
+    "type": "reading",
+    "difficulty": 0.08,
+    "stem": "Which of the following words from the second paragraph means something different from the others?",
+    "options": [
+      "particular",
+      "primary",
+      "staple",
+      "main"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-040"
+  },
+  {
+    "id": "pr-winter2022-2-21",
+    "type": "reading",
+    "difficulty": 0.08,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "compare wheat cultures and rice cultures",
+      "describe how Talhelm showed that people's traits are shaped by the agricultural traditions of their families",
+      "explain why Talhelm's theory came to be called \"rice theory\"",
+      "describe how Talhelm and his colleagues conducted their study of university students"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-040"
+  },
+  {
+    "id": "pr-winter2022-2-22",
+    "type": "reading",
+    "difficulty": 0.08,
+    "stem": "It can be inferred from the last paragraph that in China today -",
+    "options": [
+      "many people who live in cities come from families that once farmed",
+      "most farming families no longer send their children to university",
+      "rice theory is no longer accepted",
+      "loyalty is valued more than individualism"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-040"
+  },
+  {
+    "id": "pr-winter2023-1-13",
+    "type": "reading",
+    "difficulty": 0.22,
+    "stem": "What do the two post of fices described in the text have in common?",
+    "options": [
+      "They are in convenient locations.",
+      "They provide a unique experience.",
+      "They may soon have to close.",
+      "They have streamlined their services."
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-041"
+  },
+  {
+    "id": "pr-winter2023-1-14",
+    "type": "reading",
+    "difficulty": 0.22,
+    "stem": "In line 3, \"become obsolete\" is closest in meaning to -",
+    "options": [
+      "greatly improve",
+      "no longer exist",
+      "spread to new places",
+      "look different"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-041"
+  },
+  {
+    "id": "pr-winter2023-1-15",
+    "type": "reading",
+    "difficulty": 0.22,
+    "stem": "The main purpose of the second paragraph is to describe -",
+    "options": [
+      "the Hideaway Island Marine Sanctuary",
+      "some of Vanuatu's tourist attractions",
+      "the world's smallest post office",
+      "a post office that is not on land"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-041"
+  },
+  {
+    "id": "pr-winter2023-1-16",
+    "type": "reading",
+    "difficulty": 0.22,
+    "stem": "It can be inferred that Vanuatu Post of fers tourists the opportunity to -",
+    "options": [
+      "learn how to dive",
+      "buy scuba equipment",
+      "visit many islands",
+      "see underwater life"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-041"
+  },
+  {
+    "id": "pr-winter2023-1-17",
+    "type": "reading",
+    "difficulty": 0.22,
+    "stem": "Based on the information in the last paragraph, which of the following statements about the Penguin Post Office is true?",
+    "options": [
+      "It is not difficult to find people who want to work there.",
+      "Its workers are well paid.",
+      "Its staff helps look after the penguin colony.",
+      "It changes its location in the winter."
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-041"
+  },
+  {
+    "id": "pr-winter2023-1-18",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "examine the place of science fiction in literature",
+      "compare the works of several well-known science fiction authors",
+      "discuss how accurate the depictions of science fiction writers have been",
+      "present some important features of science fiction"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-042"
+  },
+  {
+    "id": "pr-winter2023-1-19",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "Which of the following is not mentioned in the second paragraph as a development imagined by science fiction writers?",
+    "options": [
+      "rockets",
+      "money",
+      "tracking devices",
+      "the internet"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-042"
+  },
+  {
+    "id": "pr-winter2023-1-20",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "In line 12, \"foreshadowed\" could best be replaced by -",
+    "options": [
+      "transported",
+      "anticipated",
+      "launched",
+      "surveyed"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-042"
+  },
+  {
+    "id": "pr-winter2023-1-21",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "It can be inferred from the text that science fiction writers want to not .",
+    "options": [
+      "entertain; make predictions",
+      "frighten readers; make them think about what is possible",
+      "influence the future of technology; sell a lot of books",
+      "shape reality; describe imaginary worlds"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-042"
+  },
+  {
+    "id": "pr-winter2023-1-22",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "Based on the information in the text, which of the following would least likely be the plot of a science fiction novel?",
+    "options": [
+      "A creature from another planet visits Earth.",
+      "When global warming threatens to destroy life on Earth in 2099, a group of young people set out to save the world.",
+      "An army led by the king of ancient Egypt conquers another empire.",
+      "Machines built by a mad scientist take over the world. - 43 - 60"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-042"
+  },
+  {
+    "id": "pr-winter2023-2-13",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "explain why the Sultan was disappointed with Firdousi's Shahnameh",
+      "discuss the historical events described in the Shahnameh",
+      "compare several versions of the Shahnameh",
+      "present one story about the Shahnameh"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-043"
+  },
+  {
+    "id": "pr-winter2023-2-14",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "The advisors mentioned in the second paragraph recommended giving Firdousi -",
+    "options": [
+      "less than what the Sultan had promised",
+      "a robe",
+      "nothing",
+      "a gold coin for every verse he wrote"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-043"
+  },
+  {
+    "id": "pr-winter2023-2-15",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "According to the second paragraph, Sultan Mahmud -",
+    "options": [
+      "was invited to Firdousi's funeral",
+      "requested that Firdousi write another poem",
+      "did not do as his advisors suggested",
+      "realized he had behav ed badly towards Firdousi"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-043"
+  },
+  {
+    "id": "pr-winter2023-2-16",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "explain why Firdousi's daughter turned down the gold coins",
+      "discuss how the Sultan's money was used",
+      "describe the wall built in Firdousi's memory",
+      "describe the caravanserai built at the Sultan's request"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-043"
+  },
+  {
+    "id": "pr-winter2023-2-17",
+    "type": "reading",
+    "difficulty": 0.02,
+    "stem": "According to the text, Firdousi was not -",
+    "options": [
+      "a respected poet",
+      "an advisor to the Sultan",
+      "familiar with Persian legends",
+      "interested in protecting his village"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-043"
+  },
+  {
+    "id": "pr-winter2023-2-18",
+    "type": "reading",
+    "difficulty": 0.62,
+    "stem": "The main purpose of the text is to -",
+    "options": [
+      "describe crystals and their molecular structure",
+      "discuss an important scientific research method",
+      "present a recent discovery in the field of medicine",
+      "discuss Hodgkin's contribution to x-ray diffraction crystallography"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-044"
+  },
+  {
+    "id": "pr-winter2023-2-19",
+    "type": "reading",
+    "difficulty": 0.62,
+    "stem": "It can be inferred from the second paragraph that all crystals -",
+    "options": [
+      "change when struck by a beam of x-rays",
+      "produce a diffraction pattern",
+      "have medical uses",
+      "have the same molecular configuration"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-044"
+  },
+  {
+    "id": "pr-winter2023-2-20",
+    "type": "reading",
+    "difficulty": 0.62,
+    "stem": "It can be inferred from the second paragraph that \"diffract\" is closest in meaning to -",
+    "options": [
+      "strike",
+      "scatter",
+      "decipher",
+      "configure"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-044"
+  },
+  {
+    "id": "pr-winter2023-2-21",
+    "type": "reading",
+    "difficulty": 0.62,
+    "stem": "According to the last paragraph, in 1934 -",
+    "options": [
+      "the cause of diabetes was not yet known",
+      "x-ray diffraction crystallography was not very advanced",
+      "insulin had just been discovered",
+      "Hodgkin beg an working with other scientists on x-ray diffraction crystallography"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-044"
+  },
+  {
+    "id": "pr-winter2023-2-22",
+    "type": "reading",
+    "difficulty": 0.62,
+    "stem": "It can be inferred from the text that it took Hodgkin 35 years to ascertain the molecular structure of insulin because -",
+    "options": [
+      "insulin is not actually a crystal",
+      "making an exact map of a complex crystal is very difficult",
+      "not all crystals can be analyzed using x-ray diffraction crystallography",
+      "the structure of insulin is very similar to that of other molecules"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-044"
+  },
+  {
+    "id": "pr-winter2025-1-13",
+    "type": "reading",
+    "difficulty": -0.21,
+    "stem": "It can be inferred from the first paragraph that Uncle Jim's Question Bee was -",
+    "options": [
+      "broadcast on both radio and television",
+      "later called Truth or Consequences",
+      "only broadcast until 1950",
+      "the first popular game show in the U.S."
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-045"
+  },
+  {
+    "id": "pr-winter2025-1-14",
+    "type": "reading",
+    "difficulty": -0.21,
+    "stem": "It can be inferred from the first paragraph that a contestant on a game show might be asked to do any of the following except -",
+    "options": [
+      "quit his or her job",
+      "name the capital of Peru",
+      "run up the stairs of a tall building",
+      "describe the kind of person he or she would like to marry"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-045"
+  },
+  {
+    "id": "pr-winter2025-1-15",
+    "type": "reading",
+    "difficulty": -0.21,
+    "stem": "The main purpose of the second paragraph is to discuss -",
+    "options": [
+      "the disadvantages of being on a game show",
+      "different kinds of people who participate in game shows",
+      "why people want to be on game shows",
+      "people made famous by appearing on game shows"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-045"
+  },
+  {
+    "id": "pr-winter2025-1-16",
+    "type": "reading",
+    "difficulty": -0.21,
+    "stem": "According to the second paragraph, contestants on game shows -",
+    "options": [
+      "do not like attention",
+      "can win prizes and money",
+      "are funny as well as smart",
+      "are chosen from the audience"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-045"
+  },
+  {
+    "id": "pr-winter2025-1-17",
+    "type": "reading",
+    "difficulty": -0.21,
+    "stem": "According to the last paragraph, who plays along (line 18) with a game show?",
+    "options": [
+      "the contestant",
+      "the viewers at home",
+      "the host",
+      "the producers"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-045"
+  },
+  {
+    "id": "pr-winter2025-1-18",
+    "type": "reading",
+    "difficulty": -0.09,
+    "stem": "The first paragraph does not state that the Cullinan diamond -",
+    "options": [
+      "is the biggest gem-quality rough diamond ever found",
+      "was bought by the Premier Mine Company",
+      "was exhibited to the public before being sent to London",
+      "was as large as a human heart"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-046"
+  },
+  {
+    "id": "pr-winter2025-1-19",
+    "type": "reading",
+    "difficulty": -0.09,
+    "stem": "According to the text, the Cullinan was brought to by .",
+    "options": [
+      "London ; King Edward VII",
+      "Johannesburg ; the postal service",
+      "the Transvaal Colony ; the Premier Mining Company",
+      "the Netherlands ; Abraham Asscher"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-046"
+  },
+  {
+    "id": "pr-winter2025-1-20",
+    "type": "reading",
+    "difficulty": -0.09,
+    "stem": "\"After due … formidable task\" (line 12) could best be replaced by -",
+    "options": [
+      "Having no other option, the King was forced to give the responsibility",
+      "On the advice of experts, the King granted the enormous honour",
+      "The King, who could not find a qualified Englishman, agreed to give the job",
+      "The King, after careful consideration, assigned the challenging job"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-046"
+  },
+  {
+    "id": "pr-winter2025-1-21",
+    "type": "reading",
+    "difficulty": -0.09,
+    "stem": "It can be inferred from the text that the real reason that both of the Cullinan's sendoffs were so grand was -",
+    "options": [
+      "to attract potential buyers",
+      "to honour the British Empire",
+      "to satisfy the public's interest",
+      "to reduce the chances of its being stolen"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-046"
+  },
+  {
+    "id": "pr-winter2025-1-22",
+    "type": "reading",
+    "difficulty": -0.09,
+    "stem": "The main purpose of the last two paragraphs is to -",
+    "options": [
+      "describe the process of cutting the Cullinan",
+      "present Asscher's plan for cutting the diamond",
+      "explain why Asscher's first attempt at cutting the diamond failed",
+      "discuss the risks that were involved in cutting the Cullinan - 43 - 60 1234567891011121314151617181920212223 1234567891011121314151617181920212223 1234567891011121314151617181920 1234567891011121314151617181920 12345678910111213141516171819202122 12345678910111213141516171819202122"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-046"
+  },
+  {
+    "id": "pr-winter2025-2-13",
+    "type": "reading",
+    "difficulty": 0.15,
+    "stem": "The main purpose of the text is to discuss Parton's -",
+    "options": [
+      "childhood and career",
+      "views on literacy",
+      "struggle to overcome poverty",
+      "philanthropic educational activities"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-047"
+  },
+  {
+    "id": "pr-winter2025-2-14",
+    "type": "reading",
+    "difficulty": 0.15,
+    "stem": "The main purpose of the second paragraph is to -",
+    "options": [
+      "discuss the inspiration for the Buddy Program",
+      "discuss young people's educational goals",
+      "describe a program aimed at encouraging children to finish high school",
+      "explain why the dropout rate in Sevier County was so high"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-047"
+  },
+  {
+    "id": "pr-winter2025-2-15",
+    "type": "reading",
+    "difficulty": 0.15,
+    "stem": "According to the second paragraph, the Dollywood Foundation was created in order to -",
+    "options": [
+      "lower the dropout rate in Sevier County",
+      "raise money for social welfare programs",
+      "pay for high school graduates to go to university",
+      "help rural families living in poverty in Tennessee"
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-047"
+  },
+  {
+    "id": "pr-winter2025-2-16",
+    "type": "reading",
+    "difficulty": 0.15,
+    "stem": "According to the third paragraph, the Imagination Library -",
+    "options": [
+      "helps children who are having difficulty learning to read",
+      "teaches children how to tell stories to one another",
+      "introduces children to books at a very young age",
+      "gives away books written by the Book Lady"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-047"
+  },
+  {
+    "id": "pr-winter2025-2-17",
+    "type": "reading",
+    "difficulty": 0.15,
+    "stem": "According to the last paragraph, Parton's father -",
+    "options": [
+      "encouraged Parton to pursue a career as an entertainer",
+      "couldn't afford to give Parton an education",
+      "thought of the idea for the Imagination Library",
+      "is the reason Parton considers reading so important"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-047"
+  },
+  {
+    "id": "pr-winter2025-2-18",
+    "type": "reading",
+    "difficulty": 0.07,
+    "stem": "The first paragraph does not state that coral reefs -",
+    "options": [
+      "protect the coastline",
+      "are home to a wide range of sea creatures",
+      "remove pollutants from the water",
+      "help fishermen to make a living"
+    ],
+    "correctIndex": 2,
+    "trapType": "surface-match",
+    "passageId": "ppsg-048"
+  },
+  {
+    "id": "pr-winter2025-2-19",
+    "type": "reading",
+    "difficulty": 0.07,
+    "stem": "According to the second paragraph, oxybenzone -",
+    "options": [
+      "causes more damage than other UV filters used in sunscreens",
+      "is more dangerous for coral than for other marine life",
+      "causes coral bleaching, but only in large amounts",
+      "has both short- and long-term negative effects on coral reefs"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-048"
+  },
+  {
+    "id": "pr-winter2025-2-20",
+    "type": "reading",
+    "difficulty": 0.07,
+    "stem": "The main purpose of the third paragraph is to -",
+    "options": [
+      "describe the effect of Palau's ban on other tourist destinations",
+      "present objections to the NOAA study's findings",
+      "consider how best to balance tourism and environmental concerns",
+      "discuss steps taken to protect coral reefs"
+    ],
+    "correctIndex": 3,
+    "trapType": "surface-match",
+    "passageId": "ppsg-048"
+  },
+  {
+    "id": "pr-winter2025-2-21",
+    "type": "reading",
+    "difficulty": 0.07,
+    "stem": "The main purpose of the last paragraph is to -",
+    "options": [
+      "emphasize the importance of protection against sunburn and skin cancer",
+      "suggest alternatives to using oxybenzone-based sunscreens",
+      "present the most coral-friendly method of protection from the sun",
+      "explain how sunscreen protects the body"
+    ],
+    "correctIndex": 1,
+    "trapType": "surface-match",
+    "passageId": "ppsg-048"
+  },
+  {
+    "id": "pr-winter2025-2-22",
+    "type": "reading",
+    "difficulty": 0.07,
+    "stem": "Which of the following cannot be inferred from the text?",
+    "options": [
+      "Some countries have limited the number of visitors to their beaches in order to protect their coral reefs.",
+      "Sunscreen is unlikely to contain both non-nano zinc oxide and oxybenzone.",
+      "Oxybenzone has a high protection factor.",
+      "Tourism can have a negative effect on coral reefs."
+    ],
+    "correctIndex": 0,
+    "trapType": "surface-match",
+    "passageId": "ppsg-048"
+  }
+]

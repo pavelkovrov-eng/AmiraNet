@@ -25,14 +25,18 @@ export const questionSchema = z.object({
   stem: z.string().min(1),
   options: z.tuple([z.string().min(1), z.string().min(1), z.string().min(1), z.string().min(1)]),
   correctIndex: z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]),
-  explanationPerOption: z.tuple([
-    z.string().min(1),
-    z.string().min(1),
-    z.string().min(1),
-    z.string().min(1),
-  ]),
-  primaryLexeme: z.string().min(1),
-  targetLexemes: z.array(z.string()).min(1),
+  // Optional since the psychometric import. An authored item explains every
+  // option and names the word it tests; an imported exam item supplies a
+  // stem, four options and the official answer, and nothing else. Fabricating
+  // the rest would not be neutral: diagnose() treats a lexeme with no FSRS
+  // card as unmastered, so inventing a primaryLexeme for a reading question
+  // would classify every wrong reading answer as a vocabulary gap and flatten
+  // the error-cause distribution the learner is meant to steer by.
+  explanationPerOption: z
+    .tuple([z.string().min(1), z.string().min(1), z.string().min(1), z.string().min(1)])
+    .optional(),
+  primaryLexeme: z.string().min(1).optional(),
+  targetLexemes: z.array(z.string()).optional(),
   trapType: z.enum([
     'phonetic-neighbor',
     'logic-inversion',

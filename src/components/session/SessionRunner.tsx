@@ -4,7 +4,7 @@ import { ChoiceCard } from './ChoiceCard';
 import { QuestionCard } from '../question/QuestionCard';
 import { EnglishText } from '../ui/EnglishText';
 import { useSessionState } from '../../hooks/useSessionState';
-import { content, lexemeById, questionById } from '../../content/index';
+import { content, lexemeById, passageById, questionById } from '../../content/index';
 import type { SessionPlan } from '../../engines/session-builder';
 import './session-runner.css';
 
@@ -219,6 +219,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
     <section aria-label="שאלה">
       <QuestionCard
         question={question}
+        passage={question.passageId ? passageById(question.passageId) : undefined}
         onAnswer={setPendingIndex}
         revealed={chosenIndex !== null}
         // Before grading this is the armed choice; after, the answer given.

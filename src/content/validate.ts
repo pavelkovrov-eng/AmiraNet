@@ -96,13 +96,19 @@ export function validateContent(bundle: ContentBundle): ValidationResult {
       }
     }
 
-    if (!lexemeIds.has(q.primaryLexeme)) {
+    // Absent is allowed (imported exam items name no word); present but
+    // unknown is still an error.
+    if (q.primaryLexeme && !lexemeIds.has(q.primaryLexeme)) {
       errors.push(`question ${q.id}: unknown primaryLexeme ${q.primaryLexeme}`);
     }
     // The primary must also be a target: diagnosis reads primaryLexeme,
     // while SRS review and coverage read targetLexemes. If they diverge,
     // the word driving the diagnosis never gets scheduled for review.
-    if (Array.isArray(q.targetLexemes) && !q.targetLexemes.includes(q.primaryLexeme)) {
+    if (
+      q.primaryLexeme &&
+      Array.isArray(q.targetLexemes) &&
+      !q.targetLexemes.includes(q.primaryLexeme)
+    ) {
       errors.push(
         `question ${q.id}: primaryLexeme ${q.primaryLexeme} missing from targetLexemes`,
       );

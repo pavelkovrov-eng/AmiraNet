@@ -144,7 +144,7 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
       // Seed vs review: a lexeme met during placement gets a seeded card
       // (seedCard), never a reviewed one. Wrong answers seed as due
       // immediately; correct answers enter normal FSRS scheduling.
-      for (const lexemeId of currentItem.targetLexemes) {
+      for (const lexemeId of currentItem.targetLexemes ?? []) {
         await saveCard(lexemeId, seedCard(correct, now));
       }
       setState(applyPlacementAnswer(state, currentItem, correct));

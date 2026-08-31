@@ -249,15 +249,27 @@ describe('validateContent', () => {
     expect(result).toBeDefined();
   });
 
-  it('does not crash when question missing targetLexemes', () => {
+  // Imported exam items carry a stem, four options and the official answer
+  // and nothing else, so an absent targetLexemes is now a supported shape
+  // rather than a defect. What still has to hold is consistency whenever both
+  // fields are present - see the primaryLexeme case below.
+  it('accepts a question with no targetLexemes', () => {
     const bundle = {
       lexemes: [lexeme()],
-      questions: [{ ...question(), targetLexemes: undefined }],
+      questions: [{ ...question(), primaryLexeme: undefined, targetLexemes: undefined }],
       passages: [],
     } as any;
     expect(() => validateContent(bundle)).not.toThrow();
-    const result = validateContent(bundle);
-    expect(result.ok).toBe(false);
+    expect(validateContent(bundle).ok).toBe(true);
+  });
+
+  it('still rejects a primaryLexeme that its own targetLexemes omits', () => {
+    const bundle = {
+      lexemes: [lexeme()],
+      questions: [{ ...question(), primaryLexeme: 'awl-analyze', targetLexemes: ['awl-other'] }],
+      passages: [],
+    } as any;
+    expect(validateContent(bundle).ok).toBe(false);
   });
 
   it('does not crash when bundle missing lexemes array', () => {

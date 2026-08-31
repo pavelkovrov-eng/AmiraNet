@@ -15,10 +15,68 @@
 
 /* The stem is exam material, not interface. Set larger and in the display
    face so the eye lands on it before anything around it. */
-.question-card > p {
+.question-card > p,
+.question-body > p {
   font-size: var(--text-md);
   line-height: 1.5;
   margin-block: 0 var(--space-4);
+}
+
+/* --- Reading passage ---------------------------------------
+   Side by side on a wide screen, stacked on a phone with the passage in its
+   own scroll box so the question and its options stay reachable without
+   scrolling past the whole text every time. The real exam puts the passage
+   left and the questions right; this keeps that relationship where there is
+   room for it. */
+
+.question-card--with-passage {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 60rem) {
+  .question-card--with-passage {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+}
+
+.passage {
+  direction: ltr;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  max-block-size: 45vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (min-width: 60rem) {
+  .passage {
+    max-block-size: none;
+    position: sticky;
+    inset-block-start: var(--space-3);
+  }
+}
+
+.passage-title {
+  margin-block: 0 var(--space-3);
+  font-size: var(--text-md);
+  font-family: var(--font-display);
+  color: var(--color-text-muted);
+  letter-spacing: 0;
+}
+
+.passage-body p {
+  margin-block: 0 var(--space-3);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.passage-body p:last-child {
+  margin-block-end: 0;
 }
 
 /* --- Choices ----------------------------------------------- */

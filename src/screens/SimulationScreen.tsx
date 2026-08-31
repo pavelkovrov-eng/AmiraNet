@@ -3,7 +3,7 @@ import { QuestionCard } from '../components/question/QuestionCard';
 import { TimerBar } from '../components/ui/TimerBar';
 import { EnglishText } from '../components/ui/EnglishText';
 import { createTimer, type Timer } from '../lib/timer';
-import { content } from '../content/index';
+import { content, passageById } from '../content/index';
 import {
   EXAM_SECTIONS,
   advanceSection,
@@ -290,6 +290,7 @@ export function SimulationScreen() {
           {question && (
             <QuestionCard
               question={question}
+              passage={question.passageId ? passageById(question.passageId) : undefined}
               revealed={false}
               chosenIndex={state.answers[question.id] ?? null}
               onAnswer={(choice) =>
