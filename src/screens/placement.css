@@ -41,37 +41,19 @@
   margin-block-start: var(--space-4);
 }
 
-@media (min-width: 30rem) {
-  .placement-submit {
-    inline-size: auto;
-    min-inline-size: 12rem;
-    margin-inline-start: auto;
-  }
-}
-
 .placement-start {
   inline-size: 100%;
   margin-block-start: var(--space-5);
 }
 
 @media (min-width: 30rem) {
-  /* Sits directly under the card and spans it: on a phone the thumb is
-   already at the bottom of the screen, and this is the only thing to do. */
-.placement-submit {
-  display: block;
-  inline-size: 100%;
-  margin-block-start: var(--space-4);
-}
-
-@media (min-width: 30rem) {
   .placement-submit {
     inline-size: auto;
     min-inline-size: 12rem;
     margin-inline-start: auto;
   }
-}
 
-.placement-start {
+  .placement-start {
     inline-size: auto;
     min-inline-size: 14rem;
     justify-self: start;

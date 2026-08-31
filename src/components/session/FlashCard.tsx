@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { EnglishText } from '../ui/EnglishText';
 import type { Lexeme } from '../../content/types';
 
@@ -8,12 +8,11 @@ interface FlashCardProps {
 }
 
 export function FlashCard({ lexeme, onRate }: FlashCardProps) {
+  // SessionRunner keys this component by lexeme id, so a new word is a fresh
+  // mount and this starts false without an effect. The previous version reset
+  // it in a useEffect keyed on lexeme.id, which runs after commit: the next
+  // word's first painted frame still carried the last one's revealed meaning.
   const [revealed, setRevealed] = useState(false);
-
-  // Reset on card change, or the next word arrives already answered.
-  useEffect(() => {
-    setRevealed(false);
-  }, [lexeme.id]);
 
   return (
     <article className="flashcard reading-measure">

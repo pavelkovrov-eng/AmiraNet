@@ -40,3 +40,23 @@ export function lexemeById(id: string): Lexeme | undefined {
 export function questionById(id: string): QuestionItem | undefined {
   return questionIndex.get(id);
 }
+
+/**
+ * Questions that can be put in front of someone with nothing else on screen.
+ *
+ * A reading question ("as used in paragraph 1...", "the main purpose of the
+ * second paragraph is...") is meaningless without its passage, and no screen
+ * that renders a bare QuestionCard renders passages. Answering one is a coin
+ * flip, which is merely annoying in practice and actively harmful in the
+ * placement test, where those guesses set the starting ability estimate that
+ * every later session is built from.
+ *
+ * session-builder.ts already knew this and filtered `type !== 'reading'`
+ * inline. Keeping the rule there and nowhere else is what let the placement
+ * test and the free-practice screen each rediscover it as a bug. Filtering on
+ * `passageId` rather than on the type name so a future passage-backed type
+ * cannot slip through by not being called "reading".
+ */
+export const standaloneQuestions: QuestionItem[] = content.questions.filter(
+  (q) => q.passageId === undefined,
+);

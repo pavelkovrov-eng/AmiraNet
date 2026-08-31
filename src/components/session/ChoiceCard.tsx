@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { EnglishText } from '../ui/EnglishText';
 import { buildChoiceSet } from '../../engines/choice-card';
 import type { Lexeme } from '../../content/types';
@@ -21,17 +21,25 @@ interface ChoiceCardProps {
  */
 export function ChoiceCard({ lexeme, pool, seed, onAnswer }: ChoiceCardProps) {
   const set = useMemo(() => buildChoiceSet(lexeme, pool, seed), [lexeme, pool, seed]);
+  /** Armed, not yet submitted. */
+  const [pending, setPending] = useState<number | null>(null);
+  /** Submitted and graded. */
   const [chosen, setChosen] = useState<number | null>(null);
 
-  // Without this a new card arrives already answered.
-  useEffect(() => {
-    setChosen(null);
-  }, [lexeme.id]);
-
+  // No effect resets state on a lexeme change any more. SessionRunner keys
+  // this component by lexeme id, so a new word arrives as a fresh mount with
+  // fresh state. The reset used to live in a useEffect, which runs *after*
+  // commit: the render carrying the new word and the previous card's
+  // still-stale `chosen` was committed and painted first, so the next card
+  // flashed up with the last card's answer already marked right or wrong and
+  // its meaning already revealed. Caught with a MutationObserver, not by
+  // eye - it is one frame.
   const revealed = chosen !== null;
 
   function stateOf(index: number): { className: string; label: string } | null {
-    if (!revealed) return null;
+    if (!revealed) {
+      return index === pending ? { className: ' choice--selected', label: 'נבחר' } : null;
+    }
     if (index === set.correctIndex) {
       return { className: ' choice--correct', label: 'תשובה נכונה' };
     }
@@ -54,14 +62,12 @@ export function ChoiceCard({ lexeme, pool, seed, onAnswer }: ChoiceCardProps) {
                 type="button"
                 className={`choice${state?.className ?? ''}`}
                 disabled={revealed}
-                onClick={() => {
-                  setChosen(index);
-                  onAnswer(index === set.correctIndex);
-                }}
+                aria-pressed={revealed ? undefined : index === pending}
+                onClick={() => setPending(index)}
               >
                 {state && (
                   <span className="choice-mark" aria-hidden="true">
-                    {index === set.correctIndex ? '✓' : '✕'}
+                    {!revealed ? '●' : index === set.correctIndex ? '✓' : '✕'}
                   </span>
                 )}
                 <EnglishText>{option}</EnglishText>
@@ -71,6 +77,21 @@ export function ChoiceCard({ lexeme, pool, seed, onAnswer }: ChoiceCardProps) {
           );
         })}
       </ol>
+
+      {!revealed && (
+        <button
+          type="button"
+          className="btn-primary session-continue"
+          disabled={pending === null}
+          onClick={() => {
+            if (pending === null) return;
+            setChosen(pending);
+            onAnswer(pending === set.correctIndex);
+          }}
+        >
+          שלח
+        </button>
+      )}
 
       {revealed && (
         <>

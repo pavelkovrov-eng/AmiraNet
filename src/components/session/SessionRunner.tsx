@@ -144,7 +144,13 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
     return (
       <section aria-label="כרטיסיית מילה">
         {seen ? (
+          /* key: a new word must arrive as a fresh mount. Resetting card
+             state in an effect instead let the next card paint with the
+             previous card's answer still marked correct/wrong and its
+             meaning already revealed - the effect only runs after that
+             render has committed. */
           <ChoiceCard
+            key={lexemeId}
             lexeme={lexeme}
             pool={content.lexemes}
             seed={index + 1}
@@ -158,7 +164,7 @@ export function SessionRunner({ plan, onComplete }: SessionRunnerProps) {
             }}
           />
         ) : (
-          <FlashCard lexeme={lexeme} onRate={(known) => void persist(known)} />
+          <FlashCard key={lexemeId} lexeme={lexeme} onRate={(known) => void persist(known)} />
         )}
         {seen && cardAnswered && !saveFailed && (
           <button type="button" className="btn-primary session-continue" onClick={advance}>

@@ -62,14 +62,23 @@ describe('FlashCard', () => {
     expect(onRate).toHaveBeenCalledWith(false);
   });
 
-  it('re-hides the gloss when the lexeme changes', async () => {
-    const { rerender } = render(<FlashCard lexeme={lexeme} onRate={() => {}} />);
+  // The reset lives in SessionRunner's `key={lexemeId}`, not in this
+  // component. It used to be a useEffect keyed on lexeme.id, which runs
+  // after commit: the render carrying the new word and the previous word's
+  // stale `revealed` was painted first, so the next card flashed up with the
+  // last card's meaning already showing. A keyed remount cannot do that,
+  // because there is no stale state to carry.
+  it('starts hidden on every fresh mount, which is how the runner changes words', async () => {
+    const other = { ...lexeme, id: 'awl-other', headword: 'implicit', definitionHe: 'מרומז' };
+
+    const { rerender } = render(<FlashCard key={lexeme.id} lexeme={lexeme} onRate={() => {}} />);
     await userEvent.click(screen.getByRole('button', { name: /הצג/ }));
     expect(screen.getByText('לנתח')).toBeInTheDocument();
 
-    rerender(
-      <FlashCard lexeme={{ ...lexeme, id: 'awl-other', headword: 'implicit', definitionHe: 'מרומז' }} onRate={() => {}} />,
-    );
+    // A different key is a different element: React unmounts and remounts.
+    rerender(<FlashCard key={other.id} lexeme={other} onRate={() => {}} />);
     expect(screen.queryByText('מרומז')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /הצג/ })).toBeInTheDocument();
   });
+
 });
