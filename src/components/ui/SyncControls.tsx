@@ -38,7 +38,12 @@ export function SyncControls() {
       await sendSignInLink(email.trim());
       setStatus({ kind: 'ok', message: `נשלח קישור ל-${email.trim()}. פתח אותו מהמכשיר הזה.` });
     } catch (err) {
-      setStatus({ kind: 'error', message: 'שליחת הקישור נכשלה.' });
+      // Show what actually went wrong. The common failure is Supabase's
+      // built-in mailer, which is rate limited to a couple of messages an
+      // hour and reports exactly that - a generic "it failed" hides the one
+      // detail that tells you to simply wait.
+      const reason = err instanceof Error ? err.message : String(err);
+      setStatus({ kind: 'error', message: `שליחת הקישור נכשלה: ${reason}` });
       console.error('Sign-in link failed', err);
     }
   }
@@ -55,7 +60,11 @@ export function SyncControls() {
       });
       setTimeout(() => window.location.reload(), 1200);
     } catch (err) {
-      setStatus({ kind: 'error', message: 'הסנכרון נכשל. ההתקדמות המקומית לא נפגעה.' });
+      const reason = err instanceof Error ? err.message : String(err);
+      setStatus({
+        kind: 'error',
+        message: `הסנכרון נכשל: ${reason}. ההתקדמות המקומית לא נפגעה.`,
+      });
       console.error('Sync failed', err);
     }
   }
