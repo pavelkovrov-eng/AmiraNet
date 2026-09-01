@@ -133,3 +133,28 @@ export async function importBackup(raw: unknown): Promise<void> {
     );
   });
 }
+
+/**
+ * Wipes every trace of progress, returning the app to a first-run state.
+ *
+ * Needed because progress lives only in this browser's IndexedDB — there is
+ * no server and no account, so without this there is no way to retake the
+ * placement test short of developer tools. One transaction, so a failure
+ * partway cannot leave a half-erased profile that the app would then read as
+ * a real, very poor one.
+ *
+ * Deliberately does not write a fresh profile: getProfile already returns a
+ * default for an empty store, and that default is the same first-run state a
+ * new install has. Writing one here would be a second source of truth for
+ * what "new" means.
+ */
+export async function resetProgress(): Promise<void> {
+  await db.transaction('rw', db.profile, db.cards, db.attempts, db.remediation, async () => {
+    await Promise.all([
+      db.profile.clear(),
+      db.cards.clear(),
+      db.attempts.clear(),
+      db.remediation.clear(),
+    ]);
+  });
+}

@@ -1,8 +1,8 @@
 import 'fake-indexeddb/auto';
 import { createEmptyCard, State } from 'ts-fsrs';
 import { db } from './db';
-import { exportBackup, importBackup, BACKUP_VERSION } from './backup';
-import { getCards, getProfile, recordAttempt, saveCard, saveProfile } from './repository';
+import { exportBackup, importBackup, resetProgress, BACKUP_VERSION } from './backup';
+import { getAttempts, getCards, getProfile, recordAttempt, saveCard, saveProfile } from './repository';
 
 beforeEach(async () => {
   await db.delete();
@@ -137,5 +137,33 @@ describe('importBackup', () => {
     });
     expect((await getProfile()).theta).toBe(-0.5);
     expect(await getCards()).toHaveLength(0);
+  });
+});
+
+describe('resetProgress', () => {
+  it('returns the app to a first-run state', async () => {
+    await seed();
+    await resetProgress();
+
+    const profile = await getProfile();
+    expect(profile.placementDone).toBe(false);
+    expect(profile.theta).toBe(0);
+    expect(profile.answered).toBe(0);
+    expect(await getCards()).toHaveLength(0);
+    expect(await getAttempts()).toHaveLength(0);
+  });
+
+  // The point of the reset is retaking the placement test, which the app
+  // only offers when placementDone is false.
+  it('leaves the placement test available again', async () => {
+    await saveProfile({
+      id: 'me',
+      theta: 1.9,
+      answered: 40,
+      placementDone: true,
+      thetaHistory: [{ at: 1, theta: 1.9 }],
+    });
+    await resetProgress();
+    expect((await getProfile()).placementDone).toBe(false);
   });
 });

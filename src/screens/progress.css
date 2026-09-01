@@ -121,6 +121,58 @@
   color: var(--color-wrong);
 }
 
+/* --- Reset --------------------------------------------------
+   Set apart from backup rather than beside it: one of these controls exists
+   to protect the work and the other destroys it, and they should not read as
+   two neighbouring buttons of equal weight. */
+
+.danger-zone {
+  margin-block-start: var(--space-5);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.danger-zone > h3 {
+  margin-block: 0 var(--space-3);
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+}
+
+.danger-zone .confirm-dialog {
+  margin-block-start: 0;
+  padding: var(--space-4);
+  border: 1px solid color-mix(in oklab, var(--color-wrong) 45%, transparent);
+  border-radius: var(--radius-lg);
+  background: color-mix(in oklab, var(--color-wrong) 7%, var(--color-surface));
+}
+
+.danger-zone .confirm-dialog p {
+  margin: 0;
+  max-inline-size: var(--measure);
+  line-height: 1.5;
+}
+
+.danger-zone .confirm-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-4);
+}
+
+/* The only destructive control in the app, and it says so in its colour. */
+.btn-danger {
+  color: var(--color-accent-contrast);
+  background: var(--color-wrong);
+  border-color: transparent;
+  font-weight: var(--weight-bold);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--color-wrong);
+  border-color: transparent;
+  box-shadow: var(--glow-wrong);
+}
+
 /* Duplicated from placement.css / simulation.css / session-runner.css
    rather than imported cross-feature: ProgressScreen does not depend on any
    of them being present. */

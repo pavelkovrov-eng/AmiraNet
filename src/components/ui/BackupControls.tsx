@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { exportBackup, importBackup } from '../../db/backup';
+import { exportBackup, importBackup, resetProgress } from '../../db/backup';
 
 type Status =
   | { kind: 'idle' }
@@ -15,7 +15,19 @@ type Status =
  */
 export function BackupControls() {
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
+  const [confirmReset, setConfirmReset] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
+
+  async function handleReset() {
+    try {
+      await resetProgress();
+      setStatus({ kind: 'ok', message: 'ההתקדמות אופסה. טוען מחדש…' });
+      setTimeout(() => window.location.reload(), 800);
+    } catch (err) {
+      setStatus({ kind: 'error', message: 'האיפוס נכשל. ההתקדמות נשארה כפי שהיא.' });
+      console.error('Reset failed', err);
+    }
+  }
 
   async function handleExport() {
     try {
@@ -72,6 +84,33 @@ export function BackupControls() {
           שחזור מקובץ
         </button>
       </div>
+
+      {/* Irreversible and unrecoverable - there is no server copy to restore
+          from - so it asks first, and the confirmation names what is lost
+          rather than saying "are you sure". */}
+      <section className="danger-zone" aria-labelledby="reset-heading">
+        <h3 id="reset-heading">התחלה מחדש</h3>
+        {confirmReset ? (
+          <div className="confirm-dialog">
+            <p>
+              פעולה זו מוחקת את מבחן המיקום, כל התשובות, כרטיסיות החזרה ואומדן הציון. אין דרך
+              לשחזר אותם אלא מקובץ גיבוי שייצאת קודם.
+            </p>
+            <div className="confirm-dialog-actions">
+              <button type="button" onClick={() => setConfirmReset(false)}>
+                ביטול
+              </button>
+              <button type="button" className="btn-danger" onClick={() => void handleReset()}>
+                כן, מחק הכול
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button type="button" onClick={() => setConfirmReset(true)}>
+            איפוס ההתקדמות
+          </button>
+        )}
+      </section>
 
       <input
         ref={fileInput}
