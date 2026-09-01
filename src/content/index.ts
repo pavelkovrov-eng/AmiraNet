@@ -13,6 +13,7 @@ import clusterAte from './questions/cluster-ate.json';
 import reading2 from './questions/reading-2.json';
 import reading3 from './questions/reading-3.json';
 import psychoReading from './questions/psycho-reading.json';
+import psychoStandalone from './questions/psycho-standalone.json';
 import seedPassages from './passages/seed.json';
 import passagesJson from './passages/passages.json';
 import passages2 from './passages/passages-2.json';
@@ -23,7 +24,7 @@ import type { ContentBundle, Lexeme, QuestionItem } from './types';
 
 export const content: ContentBundle = {
   lexemes: [...awl1, ...awl2, ...awl3, ...connectors, ...examFrequent, ...verifiedExam] as Lexeme[],
-  questions: [...questionsJson, ...sentenceCompletion, ...restatement, ...reading, ...cluster, ...clusterAte, ...reading2, ...reading3, ...psychoReading] as QuestionItem[],
+  questions: [...questionsJson, ...sentenceCompletion, ...restatement, ...reading, ...cluster, ...clusterAte, ...reading2, ...reading3, ...psychoReading, ...psychoStandalone] as QuestionItem[],
   passages: [...seedPassages, ...passagesJson, ...passages2, ...passages3, ...psychoPassages] as ContentBundle['passages'],
 };
 
@@ -72,4 +73,21 @@ export function passageById(id: string): ContentBundle['passages'][number] | und
 /** Reading questions, each guaranteed to have a passage that actually exists. */
 export const passageBackedQuestions: QuestionItem[] = content.questions.filter(
   (q) => q.passageId !== undefined && passageIndex.has(q.passageId),
+);
+
+/**
+ * The pool the placement test draws from.
+ *
+ * Placement does two jobs: it estimates the starting ability, and it seeds an
+ * FSRS card for every word it puts in front of the learner (design doc §6.1).
+ * The imported exam items support only the first — they name no word, because
+ * inventing one would corrupt the diagnosis output — so a placement run over
+ * the whole bank now measures fine and seeds almost nothing.
+ *
+ * Restricting placement to items that actually name a word keeps both jobs
+ * intact. The pool is 105 questions spanning difficulty -1.45 to 2.9, which
+ * is ample for a 20-item search.
+ */
+export const placementQuestions: QuestionItem[] = standaloneQuestions.filter(
+  (q) => q.primaryLexeme !== undefined,
 );

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { QuestionCard } from '../components/question/QuestionCard';
 import { ScoreReadout } from '../components/ui/ScoreReadout';
-import { standaloneQuestions } from '../content/index';
+import { placementQuestions } from '../content/index';
 import {
   initialPlacementState,
   nextPlacementItem,
@@ -51,7 +51,7 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
   // synchronously-visible guard, not one that only updates next render.
   const answering = useRef(false);
 
-  const item = nextPlacementItem(state, standaloneQuestions);
+  const item = nextPlacementItem(state, placementQuestions);
 
   if (!item) {
     const score = describePlacementScore(state.theta);
@@ -189,7 +189,7 @@ export function PlacementScreen({ onDone }: PlacementScreenProps) {
       <h1 id="placement-heading">מבחן מיקום</h1>
       <p className="placement-count numeral">
         שאלה {state.answered + 1} מתוך{' '}
-        {Math.min(PLACEMENT_ITEM_COUNT, standaloneQuestions.length)}
+        {Math.min(PLACEMENT_ITEM_COUNT, placementQuestions.length)}
       </p>
       <QuestionCard
         question={item}
