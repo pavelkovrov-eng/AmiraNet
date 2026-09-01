@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ThetaChart } from '../components/ui/ThetaChart';
 import { ScoreReadout } from '../components/ui/ScoreReadout';
 import { BackupControls } from '../components/ui/BackupControls';
+import { SyncControls } from '../components/ui/SyncControls';
 import { getAttempts, getProfile } from '../db/repository';
 import { thetaToScore } from '../engines/theta';
 import type { Attempt, DiagnosisCause } from '../content/types';
@@ -142,6 +143,7 @@ export function ProgressScreen() {
         )}
       </section>
 
+      <SyncControls />
       <BackupControls />
     </section>
   );

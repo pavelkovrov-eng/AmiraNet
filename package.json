@@ -13,6 +13,7 @@
     "demo": "vite-node scripts/demo-session.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.112.4",
     "dexie": "^4.4.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
