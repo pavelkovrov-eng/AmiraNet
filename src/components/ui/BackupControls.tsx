@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { exportBackup, importBackup, resetProgress } from '../../db/backup';
+import { exportBackup, importBackup, mergeBackup, resetProgress } from '../../db/backup';
 
 type Status =
   | { kind: 'idle' }
@@ -16,6 +16,9 @@ type Status =
 export function BackupControls() {
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const [confirmReset, setConfirmReset] = useState(false);
+  // Which operation the chosen file feeds. One picker, two meanings, decided
+  // before the file dialog opens rather than after.
+  const [mode, setMode] = useState<'merge' | 'replace'>('merge');
   const fileInput = useRef<HTMLInputElement>(null);
 
   async function handleReset() {
@@ -51,8 +54,13 @@ export function BackupControls() {
 
   async function handleImport(file: File) {
     try {
-      await importBackup(JSON.parse(await file.text()));
-      setStatus({ kind: 'ok', message: 'ההתקדמות שוחזרה. טוען מחדש…' });
+      const parsed = JSON.parse(await file.text());
+      if (mode === 'merge') await mergeBackup(parsed);
+      else await importBackup(parsed);
+      setStatus({
+        kind: 'ok',
+        message: mode === 'merge' ? 'ההתקדמות מוזגה. טוען מחדש…' : 'ההתקדמות שוחזרה. טוען מחדש…',
+      });
       // A full reload rather than juggling local state: every screen reads
       // this data on mount, and half-refreshed screens would show a mix of
       // the old and the restored record.
@@ -73,15 +81,36 @@ export function BackupControls() {
     <section aria-labelledby="backup-heading" className="backup">
       <h2 id="backup-heading">גיבוי</h2>
       <p className="backup-why">
-        ההתקדמות נשמרת רק במכשיר הזה. בטלפון היא עלולה להימחק בלי התראה, אז כדאי לייצא מדי פעם.
+        ההתקדמות נשמרת רק במכשיר הזה. כדי להעביר אותה בין הטלפון למחשב — ייצא כאן וייבא שם עם
+        <strong> מיזוג</strong>, ששומר את מה שנעשה בשני המכשירים. <strong>שחזור</strong> מחליף את
+        הכול במה שבקובץ.
       </p>
 
       <div className="backup-actions">
         <button type="button" onClick={() => void handleExport()}>
           ייצוא לקובץ
         </button>
-        <button type="button" onClick={() => fileInput.current?.click()}>
-          שחזור מקובץ
+        {/* Merge is the device-to-device operation and the safe default;
+            replace is for going back to a snapshot after something went
+            wrong, and it discards whatever this device has done since. */}
+        <button
+          type="button"
+          onClick={() => {
+            setMode('merge');
+            fileInput.current?.click();
+          }}
+        >
+          מיזוג מקובץ
+        </button>
+        <button
+          type="button"
+          className="btn-quiet"
+          onClick={() => {
+            setMode('replace');
+            fileInput.current?.click();
+          }}
+        >
+          שחזור (מחליף)
         </button>
       </div>
 

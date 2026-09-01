@@ -1,4 +1,6 @@
 import { db, type Profile, type StoredCard } from './db';
+import { mergeBackups, recomputeProfile } from '../engines/merge';
+import { questionById } from '../content/index';
 import type { Attempt, RemediationEntry } from '../content/types';
 
 export const BACKUP_VERSION = 1;
@@ -102,7 +104,8 @@ export async function exportBackup(): Promise<Backup> {
  * the user with neither their old progress nor the restored progress — the
  * worst outcome available for a file whose whole purpose is not losing work.
  */
-export async function importBackup(raw: unknown): Promise<void> {
+/** Shared by both import paths, so "valid" means one thing, not two. */
+function parseBackup(raw: unknown): Backup {
   if (!isPlainObject(raw)) throw new Error('Corrupt backup: not an object');
   if (raw.version !== BACKUP_VERSION) {
     throw new Error(
@@ -112,11 +115,18 @@ export async function importBackup(raw: unknown): Promise<void> {
   if (!Array.isArray(raw.cards) || !Array.isArray(raw.attempts) || !Array.isArray(raw.remediation)) {
     throw new Error('Corrupt backup: cards, attempts and remediation must all be arrays');
   }
+  return {
+    version: BACKUP_VERSION,
+    exportedAt: typeof raw.exportedAt === 'string' ? raw.exportedAt : new Date().toISOString(),
+    profile: assertProfile(raw.profile),
+    cards: raw.cards.map(reviveCard),
+    attempts: raw.attempts as Attempt[],
+    remediation: raw.remediation as RemediationEntry[],
+  };
+}
 
-  const profile = assertProfile(raw.profile);
-  const cards = raw.cards.map(reviveCard);
-  const attempts = raw.attempts as Attempt[];
-  const remediation = raw.remediation as RemediationEntry[];
+export async function importBackup(raw: unknown): Promise<void> {
+  const { profile, cards, attempts, remediation } = parseBackup(raw);
 
   await db.transaction('rw', db.profile, db.cards, db.attempts, db.remediation, async () => {
     await Promise.all([
@@ -156,5 +166,45 @@ export async function resetProgress(): Promise<void> {
       db.attempts.clear(),
       db.remediation.clear(),
     ]);
+  });
+}
+
+/**
+ * Folds a backup into what is already stored instead of replacing it.
+ *
+ * This is the operation for carrying progress between devices; importBackup
+ * is the one for restoring a snapshot after something went wrong. They are
+ * kept apart because they answer opposite questions - "add this work to
+ * mine" versus "discard mine and go back to this" - and a single button that
+ * silently did the first when the user wanted the second would be worse than
+ * either.
+ *
+ * Validation runs first, exactly as in importBackup: a corrupt file must not
+ * cost the learner progress that is currently fine.
+ */
+export async function mergeBackup(raw: unknown): Promise<void> {
+  const incoming = parseBackup(raw);
+  const current = await exportBackup();
+  const merged = mergeBackups(current, incoming);
+
+  // The estimate is re-folded over the merged answers, which needs each
+  // question's difficulty; the bundle is already in memory here.
+  merged.profile = recomputeProfile(current.profile, incoming.profile, merged.attempts, (id) =>
+    questionById(id)?.difficulty,
+  );
+
+  await db.transaction('rw', db.profile, db.cards, db.attempts, db.remediation, async () => {
+    await Promise.all([
+      db.profile.clear(),
+      db.cards.clear(),
+      db.attempts.clear(),
+      db.remediation.clear(),
+    ]);
+    await db.profile.put(merged.profile);
+    await db.cards.bulkAdd(merged.cards);
+    await db.attempts.bulkAdd(merged.attempts);
+    await db.remediation.bulkAdd(
+      merged.remediation.map((e) => ({ ...e, key: `${e.cause}:${e.targetId}` })),
+    );
   });
 }

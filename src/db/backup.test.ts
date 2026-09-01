@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { createEmptyCard, State } from 'ts-fsrs';
 import { db } from './db';
-import { exportBackup, importBackup, resetProgress, BACKUP_VERSION } from './backup';
+import { exportBackup, importBackup, mergeBackup, resetProgress, BACKUP_VERSION } from './backup';
 import { getAttempts, getCards, getProfile, recordAttempt, saveCard, saveProfile } from './repository';
 
 beforeEach(async () => {
@@ -165,5 +165,60 @@ describe('resetProgress', () => {
     });
     await resetProgress();
     expect((await getProfile()).placementDone).toBe(false);
+  });
+});
+
+describe('mergeBackup', () => {
+  // The device-to-device case: carrying a phone's progress to a laptop must
+  // not discard what the laptop did. This is what importBackup, which
+  // replaces, gets wrong for that purpose.
+  it('keeps work from both sides instead of replacing', async () => {
+    await recordAttempt({
+      questionId: 'local-only',
+      chosenIndex: 0,
+      correct: true,
+      elapsedMs: 1000,
+      at: 1_700_000_000_000,
+      diagnosis: null,
+    });
+
+    await mergeBackup({
+      version: BACKUP_VERSION,
+      profile: { theta: 0.4, answered: 1, placementDone: true, thetaHistory: [] },
+      cards: [],
+      attempts: [
+        {
+          questionId: 'remote-only',
+          chosenIndex: 1,
+          correct: false,
+          elapsedMs: 2000,
+          at: 1_700_000_100_000,
+          diagnosis: null,
+        },
+      ],
+      remediation: [],
+    });
+
+    const ids = (await getAttempts()).map((a) => a.questionId).sort();
+    expect(ids).toEqual(['local-only', 'remote-only']);
+  });
+
+  it('carries a completed placement across from the incoming record', async () => {
+    expect((await getProfile()).placementDone).toBe(false);
+    await mergeBackup({
+      version: BACKUP_VERSION,
+      profile: { theta: 1.2, answered: 20, placementDone: true, thetaHistory: [] },
+      cards: [],
+      attempts: [],
+      remediation: [],
+    });
+    expect((await getProfile()).placementDone).toBe(true);
+  });
+
+  it('leaves existing progress untouched when the file is corrupt', async () => {
+    await seed();
+    await expect(mergeBackup({ version: 99 })).rejects.toThrow();
+    expect((await getProfile()).theta).toBe(1.4);
+    expect(await getCards()).toHaveLength(1);
   });
 });
